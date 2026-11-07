@@ -1,0 +1,483 @@
+/* A PÁGINA DA POSTAGEM AUTOMÁTICA (07/11/2026): o estúdio da semana, com cara de agenda.
+   Linhas finas, horas em número tabular, o verde do "saiu" e as 4 cores do rodízio. Feito primeiro para o celular.
+   Prefixo pa- (nada daqui vale para as outras páginas). */
+
+/* as 4 cores do rodízio 4-4-4 (as da marca), com o número junto: a cor nunca fala sozinha */
+.pa-t-existe { --t: var(--amarelo); }
+.pa-t-quem-e { --t: var(--creme); }
+.pa-t-o-que-faz { --t: var(--verde); }
+.pa-t-vendendo { --t: var(--laranja); }
+
+/* ---------- o começo ---------- */
+.produto-abre.pa-abre { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-bottom: 40px; }
+.pa-abre-texto { display: grid; gap: 4px; }
+.pa-abre-titulo h1 { max-width: 15ch; }
+.pa-garantias { display: grid; gap: 10px; margin-top: 18px; }
+.pa-garantias li { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--texto-2); font-size: .96rem; }
+.pa-garantias svg { width: 24px; height: 24px; flex: none; padding: 4px; border-radius: 50%; background: rgba(166, 224, 46, .14); color: var(--verde); fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.pa-abre-acao { margin-top: 24px; display: grid; gap: 10px; justify-items: start; }
+.pa-enquanto { font-size: .86rem; color: var(--texto-3); max-width: 40ch; }
+@media (min-width: 960px) {
+  .produto-abre.pa-abre { gap: 40px; padding-bottom: 64px; }
+  .pa-abre-texto { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 56px; align-items: end; }
+  .pa-abre-lado .sub { margin-top: 0; }
+}
+
+/* ---------- o estúdio (o palco de vidro) ---------- */
+.pa-estudio.palco { padding: 14px; min-height: 0; overflow: hidden; overflow: clip; }
+@media (min-width: 600px) { .pa-estudio.palco { padding: 22px; } }
+@media (min-width: 1000px) { .pa-estudio.palco { padding: 24px 26px 20px; } }
+.pa-estudio svg, .pa-evento svg { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.pa-estudio svg.cheio { fill: currentColor; stroke: none; }
+.pa-corpo { display: grid; gap: 16px; }
+.pa-sem-js { color: var(--texto-2); padding: 12px 0 6px; }
+
+/* o relógio, o play e a linha do tempo */
+.pa-topo {
+  display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "relogio" "linha" "tocar"; gap: 12px; align-items: center;
+  padding: 12px 14px; border-radius: 20px; background: rgba(11, 9, 6, .42); border: 1px solid rgba(255, 249, 232, .08);
+}
+@media (min-width: 760px) { .pa-topo { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "relogio linha tocar"; gap: 22px; padding: 12px 14px 12px 20px; } }
+.pa-relogio { grid-area: relogio; position: relative; display: flex; align-items: baseline; gap: 10px; font-variant-numeric: tabular-nums; min-width: 9.5ch; cursor: grab; user-select: none; -webkit-user-select: none; }
+.pa-relogio.pegando { cursor: grabbing; }
+.pa-relogio-dica { display: inline-flex; align-items: center; gap: 4px; align-self: center; margin-left: 2px; padding: 3px 8px 3px 6px; border-radius: 999px; border: 1px solid rgba(166, 224, 46, .28); color: var(--verde); font-size: .62rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+.pa-relogio-dica svg { width: 14px; height: 14px; stroke-width: 2.2; }
+.pa-relogio-dia { font-weight: 800; font-size: .95rem; letter-spacing: .1em; text-transform: uppercase; color: var(--verde); }
+.pa-relogio-hora { font-weight: 800; font-size: clamp(2rem, 9vw, 2.5rem); letter-spacing: -.02em; line-height: 1; }
+.pa-relogio-ponto { width: 8px; height: 8px; border-radius: 50%; align-self: center; background: var(--texto-3); }
+.pa-relogio.rodando .pa-relogio-ponto { background: var(--verde); box-shadow: 0 0 0 4px rgba(166, 224, 46, .2); }
+.pa-tocar {
+  grid-area: tocar; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 10px 22px 10px 12px;
+  border: 0; border-radius: 999px; cursor: pointer; font: inherit; font-weight: 800; font-size: .94rem; color: var(--preto); white-space: nowrap;
+  background: linear-gradient(180deg, #c8f46a, var(--verde) 55%, #8cc51f);
+  box-shadow: 0 14px 30px -14px rgba(166, 224, 46, .85), inset 0 1px 0 rgba(255, 255, 255, .55), inset 0 -2px 0 rgba(40, 70, 0, .2);
+}
+.pa-tocar svg { width: 30px; height: 30px; padding: 7px; border-radius: 50%; background: var(--preto); color: var(--verde); }
+.pa-tocar.rodando { background: linear-gradient(180deg, #fffaf0, var(--creme) 60%, #e7dfcc); box-shadow: 0 14px 30px -16px rgba(247, 244, 236, .6), inset 0 1px 0 #fff; }
+.pa-tocar.rodando svg { color: var(--creme); }
+.pa-tocar:hover { filter: brightness(1.06); }
+
+.pa-linha { grid-area: linha; position: relative; min-width: 0; cursor: grab; user-select: none; -webkit-user-select: none; }
+.pa-linha.pegando { cursor: grabbing; }
+.pa-trilho { position: relative; height: 28px; }
+.pa-trilho-dias { position: absolute; left: 0; right: 0; top: 10px; height: 8px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 3px; }
+.pa-trilho-dias i { border-radius: 999px; background: rgba(255, 249, 232, .1); }
+.pa-trilho-feito { position: absolute; left: 0; top: 10px; height: 8px; width: 0; border-radius: 999px; background: linear-gradient(90deg, rgba(166, 224, 46, .18), rgba(166, 224, 46, .55)); }
+.pa-trilho-marcas i { position: absolute; top: 14px; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: var(--preto); box-shadow: inset 0 0 0 2px var(--t); }
+.pa-trilho-marcas i.foi { background: var(--t); box-shadow: 0 0 0 3px rgba(11, 9, 6, .8); }
+/* o passado fica trancado (as listras): o relógio não volta pra lá */
+.pa-trilho-trava { position: absolute; left: 0; top: 10px; height: 8px; width: 0; border-radius: 999px; pointer-events: none;
+  background: repeating-linear-gradient(135deg, rgba(11, 9, 6, .55) 0 3px, transparent 3px 6px); }
+.pa-linha.nao-volta .pa-trilho-trava { background: repeating-linear-gradient(135deg, rgba(255, 107, 26, .9) 0 3px, rgba(255, 107, 26, .25) 3px 6px); }
+/* a agulha com a pega: o relógio da semana que o dedo arrasta */
+.pa-agulha { position: absolute; top: 0; height: 28px; width: 2px; margin-left: -1px; border-radius: 2px; background: var(--verde); box-shadow: 0 0 14px rgba(166, 224, 46, .85); pointer-events: none; }
+.pa-pega {
+  position: absolute; left: 50%; top: 3px; width: 22px; height: 22px; margin-left: -11px; border-radius: 50%; pointer-events: auto; cursor: grab;
+  background: radial-gradient(circle at 35% 30%, #e3ff9a, var(--verde) 60%, #7fb515); box-shadow: 0 0 0 3px #0b0906, 0 0 0 5px rgba(166, 224, 46, .35), 0 8px 18px -6px rgba(0, 0, 0, .8);
+}
+.pa-pega::before { content: ""; position: absolute; inset: -12px; border-radius: 50%; } /* 46 px para o dedo */
+.pa-pega:focus-visible { outline: 3px solid var(--creme); outline-offset: 4px; }
+.pa-linha.pegando .pa-pega, .pa-relogio.pegando ~ .pa-linha .pa-pega { cursor: grabbing; scale: 1.18; }
+.pa-linha.nao-volta .pa-pega { background: radial-gradient(circle at 35% 30%, #ffd0b0, var(--laranja) 60%, #c94805); box-shadow: 0 0 0 3px #0b0906, 0 0 0 5px rgba(255, 107, 26, .4); }
+.pa-trilho-rotulos { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); margin-top: 2px; font-size: .62rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--texto-3); text-align: center; }
+
+/* a mesa: no celular, o celular primeiro; no computador, a semana à esquerda e o celular à direita */
+.pa-mesa { display: grid; gap: 18px; grid-template-columns: minmax(0, 1fr); grid-template-areas: "dir" "esq"; }
+.pa-esq { grid-area: esq; display: grid; gap: 14px; min-width: 0; align-content: start; }
+.pa-dir { grid-area: dir; display: grid; gap: 12px; justify-items: center; align-content: start; min-width: 0; }
+@media (min-width: 1000px) {
+  .pa-mesa { grid-template-columns: minmax(0, 1fr) 300px; grid-template-areas: "esq dir"; gap: 26px; align-items: start; }
+  .pa-dir { position: sticky; top: 76px; }
+}
+
+.pa-secao-cab { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 12px; }
+.pa-titulo { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; font-size: .74rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--texto-2); }
+.pa-titulo small { font-size: .74rem; letter-spacing: .02em; text-transform: none; color: var(--texto-3); font-weight: 600; }
+.pa-conta { display: inline-grid; place-items: center; min-width: 22px; height: 22px; padding: 0 7px; border-radius: 999px; background: rgba(166, 224, 46, .16); color: var(--verde); font-size: .72rem; letter-spacing: 0; align-self: center; }
+.pa-dica { font-size: .8rem; color: var(--texto-3); }
+.pa-botao {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 8px 16px; border-radius: 999px;
+  border: 1px solid var(--vidro-borda); background: rgba(255, 251, 238, .05); color: var(--creme); font: inherit; font-size: .84rem; font-weight: 700; cursor: pointer; white-space: nowrap;
+}
+.pa-botao:hover { border-color: var(--vidro-luz); background: rgba(255, 251, 238, .1); }
+.pa-botao svg { width: 17px; height: 17px; color: var(--verde); }
+.pa-botao.agora { background: var(--verde); border-color: transparent; color: var(--preto); }
+.pa-botao.agora svg { color: var(--preto); }
+.pa-botao.so-icone { width: 48px; padding: 0; }
+.pa-botao.so-icone svg { color: var(--creme); }
+.pa-agenda-botoes { display: flex; flex-wrap: wrap; gap: 8px; }
+@media (max-width: 639px) {
+  .pa-agenda .pa-secao-cab { display: grid; }
+  .pa-agenda-botoes { display: grid; grid-template-columns: 1fr 1fr; }
+  .pa-agenda-botoes .pa-botao { white-space: normal; justify-content: flex-start; text-align: left; line-height: 1.2; padding: 8px 12px; font-size: .8rem; }
+}
+
+/* ---------- os aprovados (a gaveta) ---------- */
+.pa-gaveta { display: grid; gap: 10px; padding: 12px; border-radius: 20px; background: rgba(11, 9, 6, .38); border: 1px solid rgba(255, 249, 232, .08); }
+.pa-cartas { display: flex; gap: 10px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; padding: 8px 4px 6px; margin: -4px -4px 0; scrollbar-width: thin; scrollbar-color: rgba(255, 249, 232, .2) transparent; border-radius: 14px; }
+.pa-cartas.alvo { box-shadow: inset 0 0 0 2px var(--verde); background: rgba(166, 224, 46, .05); }
+.pa-cartas li { flex: none; scroll-snap-align: start; }
+@media (min-width: 1000px) { .pa-cartas { flex-wrap: wrap; overflow: visible; } }
+.pa-carta {
+  position: relative; display: grid; gap: 5px; width: 82px; padding: 0; border: 0; background: none; color: inherit; font: inherit; text-align: left;
+  cursor: pointer; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; border-radius: 12px;
+}
+.pa-carta[data-arrasta] { cursor: grab; }
+.pa-capa { position: relative; display: block; aspect-ratio: 3 / 4; border-radius: 12px; overflow: hidden; background: var(--fundo-3); box-shadow: 0 0 0 1px rgba(255, 249, 232, .12), 0 14px 26px -16px rgba(0, 0, 0, .9); }
+.pa-capa img, .pa-post img, .pa-cel img, .pa-escolha-capa img, .pa-fantasma img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; -webkit-user-drag: none; user-select: none; }
+.pa-carta::before { content: ""; position: absolute; z-index: 2; left: 10px; right: 10px; top: 0; height: 3px; border-radius: 0 0 3px 3px; background: var(--t); }
+.pa-num { position: absolute; z-index: 2; left: 6px; top: 8px; display: grid; place-items: center; width: 20px; height: 20px; border-radius: 6px; background: var(--t); color: var(--preto); font-size: .68rem; font-weight: 800; font-style: normal; box-shadow: 0 3px 10px rgba(0, 0, 0, .45); }
+.pa-carta-ok { position: absolute; z-index: 2; right: 6px; top: 8px; display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--verde); color: var(--preto); box-shadow: 0 3px 10px rgba(0, 0, 0, .45); }
+.pa-carta-ok svg { width: 13px; height: 13px; stroke-width: 3.2; }
+.pa-carta-nome { font-size: .72rem; font-weight: 700; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.4em; }
+.pa-carta-formato { display: flex; align-items: center; gap: 4px; font-size: .64rem; font-weight: 600; color: var(--texto-3); }
+.pa-carta-formato svg { width: 12px; height: 12px; }
+.pa-carta.escolhido .pa-capa { box-shadow: 0 0 0 2px var(--verde), 0 0 0 6px rgba(166, 224, 46, .2), 0 18px 34px -14px rgba(166, 224, 46, .55); }
+.pa-carta.arrastando { opacity: .35; }
+.pa-carta.sugerido .pa-capa { box-shadow: 0 0 0 1.5px rgba(166, 224, 46, .7), 0 14px 26px -16px rgba(0, 0, 0, .9); }
+.pa-sugerido { position: absolute; z-index: 2; left: 5px; right: 5px; bottom: 5px; padding: 2px 4px; border-radius: 999px; background: rgba(11, 9, 6, .82); color: var(--verde); font-size: .54rem; font-weight: 800; letter-spacing: .1em; text-align: center; text-transform: uppercase; }
+.pa-carta.escolhido .pa-sugerido { display: none; }
+/* quem está voando: o de verdade fica escondido até a cópia pousar */
+.pa-carta.chegando, .pa-post.chegando { opacity: 0; } /* opacidade, não visibility: quem usa o teclado continua com o foco nele */
+.pa-rascunho .pa-capa {
+  display: grid; place-items: center; align-content: center; gap: 8px; text-align: center; color: var(--texto-3);
+  background: repeating-linear-gradient(135deg, rgba(255, 249, 232, .05) 0 7px, transparent 7px 14px), var(--fundo-2);
+  box-shadow: inset 0 0 0 1.5px rgba(255, 249, 232, .2);
+}
+.pa-rascunho .pa-capa svg { width: 32px; height: 32px; color: var(--amarelo); stroke-width: 1.6; }
+.pa-rascunho small { font-size: .58rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; line-height: 1.3; padding: 0 8px; }
+
+/* ---------- a semana (a agenda) ---------- */
+.pa-agenda { display: grid; gap: 12px; padding: 12px; border-radius: 20px; background: rgba(11, 9, 6, .38); border: 1px solid rgba(255, 249, 232, .08); }
+/* no celular: um dia por linha e os 3 horários nas colunas */
+.pa-semana { display: grid; grid-template-columns: 50px repeat(3, minmax(0, 1fr)); gap: 6px; }
+.pa-canto { grid-area: 1 / 1; }
+.pa-cab-hora { font-size: .66rem; font-weight: 800; letter-spacing: .06em; color: var(--texto-3); text-align: center; font-variant-numeric: tabular-nums; align-self: end; padding-bottom: 2px; }
+.pa-cab-hora.h1 { grid-area: 1 / 2; } .pa-cab-hora.h2 { grid-area: 1 / 3; } .pa-cab-hora.h3 { grid-area: 1 / 4; }
+.pa-cab-dia { display: grid; align-content: center; gap: 1px; min-width: 0; }
+.pa-cab-dia.d1 { grid-area: 2 / 1; } .pa-cab-dia.d2 { grid-area: 3 / 1; } .pa-cab-dia.d3 { grid-area: 4 / 1; } .pa-cab-dia.d4 { grid-area: 5 / 1; }
+.pa-cab-dia.d5 { grid-area: 6 / 1; } .pa-cab-dia.d6 { grid-area: 7 / 1; } .pa-cab-dia.d7 { grid-area: 8 / 1; }
+.pa-vaga.d1 { grid-row: 2; } .pa-vaga.d2 { grid-row: 3; } .pa-vaga.d3 { grid-row: 4; } .pa-vaga.d4 { grid-row: 5; }
+.pa-vaga.d5 { grid-row: 6; } .pa-vaga.d6 { grid-row: 7; } .pa-vaga.d7 { grid-row: 8; }
+.pa-vaga.h1 { grid-column: 2; } .pa-vaga.h2 { grid-column: 3; } .pa-vaga.h3 { grid-column: 4; }
+/* com espaço: um dia por coluna e os horários nas linhas, como uma agenda de parede */
+@media (min-width: 640px) {
+  .pa-semana { grid-template-columns: 46px repeat(7, minmax(0, 1fr)); }
+  .pa-cab-hora { text-align: left; align-self: center; padding: 0; }
+  .pa-cab-hora.h1 { grid-area: 2 / 1; } .pa-cab-hora.h2 { grid-area: 3 / 1; } .pa-cab-hora.h3 { grid-area: 4 / 1; }
+  .pa-cab-dia { text-align: center; padding-bottom: 2px; }
+  .pa-cab-dia.d1 { grid-area: 1 / 2; } .pa-cab-dia.d2 { grid-area: 1 / 3; } .pa-cab-dia.d3 { grid-area: 1 / 4; } .pa-cab-dia.d4 { grid-area: 1 / 5; }
+  .pa-cab-dia.d5 { grid-area: 1 / 6; } .pa-cab-dia.d6 { grid-area: 1 / 7; } .pa-cab-dia.d7 { grid-area: 1 / 8; }
+  .pa-vaga.d1 { grid-column: 2; } .pa-vaga.d2 { grid-column: 3; } .pa-vaga.d3 { grid-column: 4; } .pa-vaga.d4 { grid-column: 5; }
+  .pa-vaga.d5 { grid-column: 6; } .pa-vaga.d6 { grid-column: 7; } .pa-vaga.d7 { grid-column: 8; }
+  .pa-vaga.h1 { grid-row: 2; } .pa-vaga.h2 { grid-row: 3; } .pa-vaga.h3 { grid-row: 4; }
+}
+.pa-cab-dia b { font-size: .76rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.pa-cab-dia small { font-size: .62rem; font-weight: 600; color: var(--texto-3); white-space: nowrap; }
+.pa-cab-dia.vazio small { color: var(--amarelo); }
+.pa-cab-dia em { font-style: normal; font-size: .58rem; font-weight: 800; color: var(--verde); white-space: nowrap; }
+.pa-cab-dia.hoje b { color: var(--verde); }
+.pa-cab-dia.hoje b::after { content: ""; display: inline-block; width: 6px; height: 6px; margin-left: 5px; border-radius: 50%; background: var(--verde); vertical-align: 2px; box-shadow: 0 0 0 3px rgba(166, 224, 46, .2); }
+
+.pa-vaga { position: relative; aspect-ratio: 1 / 1; border-radius: 12px; min-width: 0; }
+@media (min-width: 640px) { .pa-vaga { aspect-ratio: 3 / 4; } }
+.pa-livre {
+  display: grid; place-items: center; width: 100%; height: 100%; border-radius: inherit; cursor: pointer; font: inherit;
+  border: 1.5px dashed rgba(255, 249, 232, .16); background: rgba(255, 251, 238, .025); color: rgba(247, 244, 236, .34);
+}
+.pa-livre svg { width: 16px; height: 16px; }
+.pa-livre:hover { border-color: rgba(166, 224, 46, .6); color: var(--verde); background: rgba(166, 224, 46, .06); }
+.escolhendo .pa-livre { border-color: rgba(166, 224, 46, .55); color: var(--verde); background: rgba(166, 224, 46, .07); }
+.pa-vaga.alvo .pa-livre, .pa-vaga.alvo .pa-post { box-shadow: 0 0 0 2px var(--verde), 0 0 26px rgba(166, 224, 46, .5); }
+.pa-vaga.alvo-nao .pa-livre, .pa-vaga.alvo-nao .pa-post, .pa-vaga.alvo-nao.passou { box-shadow: 0 0 0 2px var(--laranja), 0 0 22px rgba(255, 107, 26, .45); }
+.pa-vaga.alvo-nao .pa-livre { color: var(--laranja); border-color: transparent; background: rgba(255, 107, 26, .1); }
+.com-rascunho .pa-livre { border-color: rgba(255, 107, 26, .45); color: rgba(255, 140, 80, .8); }
+.pa-semana { border-radius: 14px; }
+.pa-semana.recusou { box-shadow: 0 0 0 2px rgba(255, 107, 26, .8), 0 0 30px rgba(255, 107, 26, .3); }
+.pa-post.repete { box-shadow: 0 0 0 2px var(--laranja), 0 0 18px rgba(255, 107, 26, .45); }
+.pa-post.deslizando, .pa-cel.deslizando, .pa-carta.deslizando { z-index: 4; }
+.pa-vaga.passou { display: grid; place-items: center; background: repeating-linear-gradient(135deg, rgba(255, 249, 232, .04) 0 6px, transparent 6px 12px); }
+.pa-passou { font-size: .56rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(247, 244, 236, .34); }
+.pa-post {
+  position: relative; display: block; width: 100%; height: 100%; padding: 0; border: 0; border-radius: inherit; overflow: hidden; cursor: pointer;
+  background: var(--fundo-3); box-shadow: 0 0 0 1px rgba(255, 249, 232, .14), 0 10px 20px -12px rgba(0, 0, 0, .9);
+  user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
+}
+.pa-post[data-arrasta] { cursor: grab; }
+.pa-post::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: var(--t); }
+.pa-post .pa-num { left: 4px; top: 7px; width: 18px; height: 18px; font-size: .62rem; border-radius: 5px; }
+.pa-post.escolhido { box-shadow: 0 0 0 2px var(--verde), 0 0 0 6px rgba(166, 224, 46, .22); }
+.pa-post.arrastando { opacity: .35; }
+.foi .pa-post { cursor: default; box-shadow: 0 0 0 1.5px rgba(166, 224, 46, .6); }
+.pa-post-saiu { position: absolute; left: 4px; right: 4px; bottom: 4px; display: flex; align-items: center; justify-content: center; gap: 3px; padding: 3px 4px; border-radius: 999px; background: var(--verde); color: var(--preto); font-size: .56rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.pa-post-saiu svg { width: 10px; height: 10px; stroke-width: 3.4; }
+.pa-tirar { display: none; position: absolute; z-index: 3; right: -7px; top: -7px; place-items: center; width: 26px; height: 26px; padding: 0; border: 0; border-radius: 50%; background: var(--creme); color: var(--preto); cursor: pointer; box-shadow: 0 4px 12px rgba(0, 0, 0, .5); }
+.pa-tirar svg { width: 13px; height: 13px; stroke-width: 2.6; }
+@media (hover: hover) and (pointer: fine) { .pa-vaga:hover .pa-tirar, .pa-tirar:focus-visible { display: grid; } }
+
+/* ---------- o rodízio 4-4-4 ---------- */
+.pa-rodizio { display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: 16px; align-items: center; padding: 12px 16px 12px 12px; border-radius: 20px; background: rgba(11, 9, 6, .38); border: 1px solid rgba(255, 249, 232, .08); }
+.pa-roda { position: relative; }
+.pa-roda svg { display: block; width: 128px; height: 128px; overflow: visible; }
+/* a roda gira (no sentido do relógio) até o próximo tipo parar embaixo do ponteiro; os números ficam de pé */
+.pa-roda-gira { transform: rotate(var(--giro, 0deg)); transform-origin: 60px 60px; }
+.pa-arco { fill: none; stroke: var(--t); stroke-width: 11; opacity: .16; }
+.pa-arco.tem { opacity: 1; }
+.pa-arco.proximo { opacity: .62; }
+.pa-arco.repetiu { stroke: var(--laranja); opacity: 1; }
+.pa-arco-n { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 800; text-anchor: middle; dominant-baseline: central; fill: var(--texto-2);
+  transform: rotate(calc(var(--giro, 0deg) * -1)); transform-box: fill-box; transform-origin: center; }
+.pa-arco-n.tem { fill: var(--preto); }
+.pa-roda-ponteiro { fill: var(--creme); stroke: #0b0906; stroke-width: 1.5; stroke-linejoin: round; }
+.pa-roda-miolo { fill: rgba(11, 9, 6, .6); stroke: rgba(255, 249, 232, .1); }
+.pa-roda-num { font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 800; text-anchor: middle; fill: var(--prox, var(--creme)); letter-spacing: -.02em; }
+.pa-roda-sub { font-family: 'Montserrat', sans-serif; font-size: 8.5px; font-weight: 800; text-anchor: middle; fill: var(--texto-3); letter-spacing: .12em; text-transform: uppercase; }
+.pa-roda-nome { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 800; text-anchor: middle; fill: var(--creme); }
+.pa-roda[data-prox="existe"] { --prox: var(--amarelo); }
+.pa-roda[data-prox="quem-e"] { --prox: var(--creme); }
+.pa-roda[data-prox="o-que-faz"] { --prox: var(--verde); }
+.pa-roda[data-prox="vendendo"] { --prox: var(--laranja); }
+.pa-roda[data-jeito="nao"] { --prox: var(--laranja); }
+.pa-roda[data-jeito="nao"] .pa-roda-sub { fill: #ffb48c; }
+.pa-roda[data-jeito="nao"] .pa-roda-miolo { stroke: rgba(255, 107, 26, .55); }
+.pa-rodizio-lado { display: grid; gap: 8px; min-width: 0; }
+.pa-faixa { display: flex; flex-wrap: wrap; gap: 6px; }
+.pa-bloco { display: grid; gap: 4px; padding: 6px 8px; border-radius: 12px; background: rgba(255, 251, 238, .04); border: 1px solid rgba(255, 249, 232, .1); }
+.pa-bloco.ok { border-color: rgba(166, 224, 46, .4); }
+.pa-bloco.repetiu { border-color: rgba(255, 107, 26, .75); background: rgba(255, 107, 26, .08); }
+.pa-bloco-rot { display: flex; align-items: center; gap: 3px; font-size: .56rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--texto-3); }
+.pa-bloco-rot svg { width: 10px; height: 10px; color: var(--verde); stroke-width: 3.2; }
+.pa-bloco-tipos { display: flex; gap: 3px; }
+.pa-bloco-tipos i { display: grid; place-items: center; width: 18px; height: 18px; border-radius: 5px; background: var(--t); color: var(--preto); font-style: normal; font-size: .6rem; font-weight: 800; }
+.pa-bloco-tipos i.falta { background: none; box-shadow: inset 0 0 0 1.5px rgba(255, 249, 232, .22); }
+.pa-bloco-tipos i.rep { box-shadow: 0 0 0 2px var(--preto), 0 0 0 3.5px var(--laranja); }
+.pa-rodizio-frase { font-size: .86rem; font-weight: 600; color: var(--texto-2); line-height: 1.35; }
+.pa-rodizio-frase b { color: var(--creme); }
+.pa-rodizio-frase[data-jeito="aviso"] b { color: var(--amarelo); }
+.pa-rodizio-frase[data-jeito="nao"] { color: #ffb48c; }
+.pa-legenda { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: .68rem; font-weight: 600; color: var(--texto-3); }
+.pa-legenda span { display: inline-flex; align-items: center; gap: 5px; }
+.pa-legenda i { width: 9px; height: 9px; border-radius: 3px; background: var(--t); }
+/* no celular: a roda com o título e o recado ao lado; os blocos e a legenda embaixo, na largura toda */
+@media (max-width: 639px) {
+  .pa-rodizio { grid-template-columns: 108px minmax(0, 1fr); grid-template-areas: "roda cab" "roda frase" "faixa faixa" "legenda legenda"; gap: 8px 12px; align-items: start; }
+  .pa-rodizio .pa-rodizio-lado { display: contents; }
+  .pa-rodizio .pa-roda { grid-area: roda; }
+  .pa-rodizio .pa-roda svg { width: 108px; height: 108px; }
+  .pa-rodizio .pa-titulo { grid-area: cab; padding-top: 4px; }
+  .pa-rodizio .pa-rodizio-frase { grid-area: frase; font-size: .82rem; }
+  .pa-rodizio .pa-faixa { grid-area: faixa; margin-top: 2px; }
+  .pa-rodizio .pa-legenda { grid-area: legenda; }
+}
+
+/* ---------- o celular com a grade do Instagram ---------- */
+.pa-modo { display: inline-flex; padding: 4px; border-radius: 999px; background: rgba(11, 9, 6, .5); border: 1px solid rgba(255, 249, 232, .1); }
+.pa-modo button { min-height: 44px; padding: 6px 14px; border: 0; border-radius: 999px; background: none; color: var(--texto-2); font: inherit; font-size: .8rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+.pa-modo button[aria-pressed="true"] { background: var(--creme); color: var(--preto); }
+.pa-celular {
+  position: relative; width: min(100%, 300px); padding: 8px; border-radius: 48px;
+  background: linear-gradient(150deg, #4a4231 0%, #17130c 26%, #0b0906 58%, #2b2519 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 249, 232, .22), inset 0 0 0 3px #0b0906, inset 0 0 0 4px rgba(255, 249, 232, .07),
+    0 50px 100px -40px rgba(0, 0, 0, .95), 0 24px 70px -34px rgba(166, 224, 46, .28);
+}
+.pa-tela {
+  position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; aspect-ratio: 9 / 18.6; border-radius: 40px;
+  background: #000; color: #f5f5f5; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+.pa-tela svg { stroke-width: 1.7; }
+.pa-tela-brilho { position: absolute; inset: -20% -40%; z-index: 9; pointer-events: none; background: linear-gradient(115deg, transparent 38%, rgba(255, 255, 255, .07) 46%, rgba(255, 255, 255, .02) 52%, transparent 60%); }
+.pa-status { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 11px 22px 4px; font-size: .78rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.pa-status-hora { letter-spacing: .01em; }
+.pa-ilha { width: 80px; height: 22px; border-radius: 999px; background: #000; box-shadow: 0 0 0 1px rgba(255, 255, 255, .06); }
+.pa-status-icones { justify-self: end; display: flex; align-items: center; gap: 5px; }
+.pa-status-icones svg { width: auto; height: 10.5px; fill: currentColor; stroke: none; }
+.pa-ig-barra { display: flex; align-items: center; gap: 2px; padding: 6px 14px 6px; font-size: .96rem; }
+.pa-ig-barra b { font-weight: 700; letter-spacing: -.01em; }
+.pa-ig-barra > svg { width: 16px; height: 16px; stroke-width: 2.2; }
+.pa-ig-acoes { margin-left: auto; display: flex; gap: 14px; }
+.pa-ig-acoes svg { width: 22px; height: 22px; }
+.pa-ig-perfil { display: flex; align-items: center; gap: 12px; padding: 4px 14px 10px; }
+.pa-avatar { flex: none; display: grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; background: radial-gradient(circle at 32% 26%, #2c2416, #0b0906 70%); box-shadow: 0 0 0 2px #000, 0 0 0 3.5px var(--verde); }
+.pa-avatar img { width: 32px; height: 32px; }
+.pa-ig-quem { display: grid; gap: 1px; min-width: 0; }
+.pa-ig-quem b { font-size: .84rem; font-weight: 600; }
+.pa-ig-quem .pa-numeros { font-size: .74rem; font-variant-numeric: tabular-nums; }
+.pa-numeros b { font-weight: 700; }
+.pa-numeros[data-modo="seguidor"] .pa-n-fila { display: none; }
+.pa-ig-quem small { font-size: .66rem; color: #a8a8a8; }
+.pa-ig-abas { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #262626; }
+.pa-ig-abas span { display: grid; place-items: center; padding: 8px 0; color: #737373; }
+.pa-ig-abas span.ativa { color: #f5f5f5; box-shadow: inset 0 -1.5px 0 #f5f5f5; }
+.pa-ig-abas svg { width: 20px; height: 20px; }
+.pa-ig-rolo { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; }
+.pa-ig-rolo::-webkit-scrollbar { display: none; }
+.pa-grade { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5px; }
+/* a grade vazia: os lugares tracejados que os posts vão ocupar, e o recado embaixo */
+.pa-cel-vazia { aspect-ratio: 3 / 4; background: rgba(255, 255, 255, .025); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .07); }
+.pa-cel-vazia:first-child { box-shadow: inset 0 0 0 1.5px rgba(166, 224, 46, .45); background: rgba(166, 224, 46, .05); }
+.pa-grade-vazia { grid-column: 1 / -1; padding: 16px 18px; text-align: center; color: #a8a8a8; font-size: .78rem; line-height: 1.45; }
+.pa-cel { position: relative; display: block; aspect-ratio: 3 / 4; padding: 0; border: 0; overflow: hidden; background: #121212; cursor: zoom-in; color: #fff; font: inherit; }
+.pa-cel.na-fila img { opacity: .4; filter: saturate(.5); }
+.pa-cel.na-fila::after { content: ""; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 0 1px rgba(166, 224, 46, .3); }
+.pa-cel-formato { position: absolute; top: 5px; right: 5px; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .7)); }
+.pa-cel-formato svg { width: 15px; height: 15px; stroke-width: 2; }
+.pa-cel-quando { position: absolute; left: 4px; right: 4px; bottom: 5px; display: flex; align-items: center; justify-content: center; gap: 3px; padding: 3px 4px; border-radius: 999px; background: rgba(0, 0, 0, .66); font-size: .58rem; font-weight: 700; white-space: nowrap; }
+.pa-cel-quando svg { width: 10px; height: 10px; stroke-width: 2.2; color: var(--verde); }
+.pa-cel-saiu { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); padding: 4px 9px; border-radius: 999px; background: var(--verde); color: var(--preto); font-size: .62rem; font-weight: 800; white-space: nowrap; box-shadow: 0 6px 18px rgba(0, 0, 0, .55); }
+.pa-cel.acabou { z-index: 1; box-shadow: 0 0 0 2px var(--verde); }
+/* a capa ainda voando: na fila ela continua apagadinha; como o seguidor vê, ela ainda não chegou */
+.pa-grade[data-modo="fila"] .pa-cel.chegando img { opacity: .4; filter: saturate(.5); }
+.pa-grade[data-modo="seguidor"] .pa-cel.chegando { opacity: 0; }
+.pa-cel.chegando .pa-cel-saiu { opacity: 0; }
+
+/* o aviso que desce no celular quando um post sai */
+.pa-notif {
+  position: absolute; z-index: 6; left: 8px; right: 8px; top: 38px; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; align-items: center;
+  padding: 10px 12px; border-radius: 20px; pointer-events: none; opacity: 0; transform: translateY(-150%);
+  background: rgba(46, 43, 38, .8); -webkit-backdrop-filter: blur(18px) saturate(170%); backdrop-filter: blur(18px) saturate(170%);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, .6), inset 0 0 0 .5px rgba(255, 255, 255, .14);
+}
+.pa-notif.aparece { opacity: 1; transform: none; }
+.pa-notif-icone { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 9px; background: #0b0906; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1); }
+.pa-notif-icone img { width: 22px; height: 22px; }
+.pa-notif-texto { display: grid; font-size: .7rem; line-height: 1.3; min-width: 0; }
+.pa-notif-texto b { font-weight: 600; }
+.pa-notif-texto span { color: #e8e8e8; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pa-notif small { align-self: start; font-size: .6rem; color: #a8a8a8; }
+
+/* a lupa: a capa inteira, com o pedaço que a grade corta */
+.pa-lupa { position: absolute; inset: 0; z-index: 8; display: flex; flex-direction: column; gap: 10px; padding: 40px 14px 18px; background: rgba(0, 0, 0, .88); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.pa-lupa[hidden] { display: none; }
+.pa-lupa-cab { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: .82rem; }
+.pa-lupa-fechar { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: rgba(255, 255, 255, .12); color: #fff; cursor: pointer; }
+.pa-lupa-palco { flex: 1; min-height: 0; display: grid; place-items: center; container-type: size; }
+.pa-lupa-quadro { position: relative; width: 100%; width: min(100cqw, 100cqh * var(--w) / var(--h)); aspect-ratio: var(--w) / var(--h); border-radius: 10px; overflow: hidden; }
+.pa-lupa-quadro img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.pa-lupa-janela { position: absolute; top: var(--cima); bottom: var(--baixo); left: var(--esq); right: var(--dir); border: 2px dashed var(--verde); border-radius: 4px; box-shadow: 0 0 0 999px rgba(0, 0, 0, .5); }
+.pa-lupa-janela small { position: absolute; left: 6px; top: 6px; padding: 2px 7px; border-radius: 999px; background: var(--verde); color: #000; font-size: .56rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.pa-lupa-some { position: absolute; z-index: 1; display: grid; place-items: center; color: #fff; font-size: .56rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; text-shadow: 0 1px 3px #000; background: repeating-linear-gradient(135deg, rgba(255, 107, 26, .38) 0 6px, transparent 6px 12px); }
+.pa-lupa-some.cima { left: 0; right: 0; top: 0; height: var(--cima); }
+.pa-lupa-some.baixo { left: 0; right: 0; bottom: 0; height: var(--baixo); }
+.pa-lupa-some.esq { top: 0; bottom: 0; left: 0; width: var(--esq); }
+.pa-lupa-some.dir { top: 0; bottom: 0; right: 0; width: var(--dir); }
+.pa-lupa-texto { font-size: .72rem; color: #d6d6d6; text-align: center; line-height: 1.4; }
+.pa-dica-celular { display: flex; align-items: flex-start; gap: 8px; max-width: 300px; font-size: .78rem; color: var(--texto-3); line-height: 1.4; }
+.pa-dica-celular svg { width: 16px; height: 16px; margin-top: 1px; color: var(--verde); }
+
+/* ---------- a barra de baixo: o recado e o post escolhido (gruda no fim da tela enquanto o estúdio está nela) ---------- */
+.pa-estudio .pa-barra { position: sticky; bottom: 12px; z-index: 20; display: grid; gap: 8px; justify-items: center; pointer-events: none; }
+.pa-barra > * { pointer-events: auto; }
+.pa-barra > .pa-recado { pointer-events: none; } /* só avisa: nunca tapa um horário nem um arrasto */
+.pa-recado {
+  max-width: 100%; padding: 10px 16px; border-radius: 999px; font-size: .84rem; font-weight: 600; text-align: center; line-height: 1.35; color: var(--creme);
+  background: rgba(21, 17, 11, .88); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border: 1px solid rgba(255, 249, 232, .12); box-shadow: 0 14px 34px -12px rgba(0, 0, 0, .85);
+}
+.pa-recado:empty { display: none; }
+.pa-recado.quieto { opacity: 0; transform: translateY(8px); pointer-events: none; }
+.pa-recado[data-jeito="ok"] { border-color: rgba(166, 224, 46, .35); }
+.pa-recado[data-jeito="aviso"] { border-color: rgba(249, 199, 72, .5); color: #ffe39a; }
+.pa-recado[data-jeito="nao"] { border-color: rgba(255, 107, 26, .6); color: #ffc0a0; }
+.pa-escolha {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; width: 100%; max-width: 560px; padding: 8px; border-radius: 22px;
+  background: rgba(21, 17, 11, .94); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border: 1px solid rgba(166, 224, 46, .4); box-shadow: 0 18px 40px -14px rgba(0, 0, 0, .9);
+}
+.pa-escolha[hidden] { display: none; }
+.pa-escolha-capa { flex: none; width: 38px; aspect-ratio: 3 / 4; border-radius: 8px; overflow: hidden; box-shadow: 0 0 0 2px var(--t); }
+.pa-escolha-texto { display: grid; flex: 1 1 120px; min-width: 0; }
+.pa-escolha-texto b { font-size: .86rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.pa-escolha-texto small { font-size: .74rem; color: var(--texto-3); }
+.pa-escolha-botoes { display: flex; gap: 6px; flex: none; margin-left: auto; }
+
+/* o post sendo arrastado (fica por cima de tudo, no corpo da página) */
+.pa-fantasma { position: fixed; left: 0; top: 0; z-index: 200; width: 68px; aspect-ratio: 3 / 4; border-radius: 12px; overflow: hidden; pointer-events: none; box-shadow: 0 0 0 2px var(--t), 0 26px 50px -12px rgba(0, 0, 0, .85); }
+.pa-fantasma.rascunho { display: grid; place-items: center; color: var(--amarelo); box-shadow: 0 0 0 2px rgba(255, 249, 232, .35), 0 26px 50px -12px rgba(0, 0, 0, .85);
+  background: repeating-linear-gradient(135deg, rgba(255, 249, 232, .07) 0 7px, transparent 7px 14px), var(--fundo-2); }
+.pa-fantasma-tranca svg { width: 34px; height: 34px; }
+/* a cópia que voa (o FLIP): pousa no lugar do de verdade e anda pelo transform */
+.pa-voo { position: fixed; z-index: 190; border-radius: 10px; overflow: hidden; pointer-events: none; transform-origin: 0 0; will-change: transform;
+  box-shadow: 0 0 0 2px var(--t), 0 22px 44px -14px rgba(0, 0, 0, .85); }
+.pa-voo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.pa-voo-grade { overflow: visible; border-radius: 0; box-shadow: none; }
+.pa-voo-capa { position: absolute; display: block; border-radius: 6px; overflow: hidden; box-shadow: 0 0 0 2px var(--t), 0 26px 50px -12px rgba(0, 0, 0, .9); }
+html.pa-arrastando, html.pa-arrastando * { cursor: grabbing !important; user-select: none; -webkit-user-select: none; }
+
+/* ---------- as seções de baixo ---------- */
+.pa-444 { display: grid; gap: 26px; }
+@media (min-width: 900px) { .pa-444 { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 48px; align-items: center; } }
+.pa-tipos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.pa-tipos li {
+  padding: 18px 16px; border-radius: 22px;
+  background: radial-gradient(120% 70% at 50% 125%, color-mix(in srgb, var(--t) 16%, transparent), transparent 70%), linear-gradient(150deg, var(--vidro-1), var(--vidro-2) 62%);
+}
+.pa-tipo-n { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 11px; background: var(--t); color: var(--preto); font-weight: 800; margin-bottom: 14px; box-shadow: 0 10px 24px -10px var(--t); }
+.pa-tipos b { display: block; font-weight: 800; font-size: 1rem; line-height: 1.2; }
+.pa-tipos p { margin-top: 6px; font-size: .88rem; color: var(--texto-2); }
+
+.pa-evento-grade { display: grid; gap: 24px; }
+@media (min-width: 900px) { .pa-evento-grade { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 48px; align-items: center; } }
+.pa-evento { display: grid; gap: 16px; padding: 20px; }
+@media (min-width: 600px) { .pa-evento { padding: 26px; } }
+.pa-evento .chip { min-height: 48px; padding: 8px 18px; }
+.pa-regua { position: relative; height: 56px; margin: 0 9px; }
+.pa-regua-linha { position: absolute; left: 0; right: 0; top: 18px; height: 2px; border-radius: 2px; background: rgba(255, 249, 232, .16); }
+.pa-regua-hora { position: absolute; top: 34px; transform: translateX(-50%); font-size: .62rem; font-weight: 700; color: var(--texto-3); font-variant-numeric: tabular-nums; }
+.pa-regua-marca { position: absolute; top: 10px; width: 18px; height: 18px; margin-left: -9px; border-radius: 50%; background: var(--verde); box-shadow: 0 0 0 4px rgba(166, 224, 46, .16), 0 0 18px rgba(166, 224, 46, .5); }
+.pa-regua-marca.post { background: var(--amarelo); box-shadow: 0 0 0 4px rgba(249, 199, 72, .16), 0 0 18px rgba(249, 199, 72, .45); }
+.pa-regua-marca.some { opacity: 0; }
+.pa-horas { display: flex; flex-wrap: wrap; gap: 8px; }
+.pa-h { display: inline-flex; align-items: center; gap: 7px; padding: 8px 12px; border-radius: 12px; background: rgba(255, 251, 238, .05); border: 1px solid var(--vidro-borda); font-size: .86rem; }
+.pa-h b { font-variant-numeric: tabular-nums; }
+.pa-h small { font-size: .7rem; font-weight: 700; color: var(--texto-3); }
+.pa-h svg { width: 16px; height: 16px; color: var(--verde); }
+.pa-h-post svg { color: var(--amarelo); }
+.pa-evento-texto { font-weight: 700; }
+.pa-exemplo { display: flex; align-items: center; gap: 8px; font-size: .8rem; color: var(--texto-3); }
+.pa-evento[data-dia="normal"] .pa-exemplo { visibility: hidden; }
+
+/* ---------- o movimento (só para quem não pediu menos) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .pa-carta { transition: transform .35s var(--mola); }
+  .pa-carta:hover .pa-capa { transform: translateY(-3px); }
+  .pa-capa { transition: transform .35s var(--mola), box-shadow .25s; }
+  .pa-carta.escolhido { transform: translateY(-5px); }
+  .pa-livre, .pa-post { transition: border-color .2s, background .2s, box-shadow .2s, transform .3s var(--mola); }
+  .pa-post:hover { transform: scale(1.03); }
+  .escolhendo .pa-livre { animation: pa-respira 1.5s ease-in-out 3; }
+  @keyframes pa-respira { 50% { background: rgba(166, 224, 46, .17); } }
+  .pa-relogio.rodando .pa-relogio-ponto { animation: pulsa 1s ease-in-out infinite; }
+  .pa-trilho-marcas i { transition: background .3s, box-shadow .3s; }
+  .pa-cel img { transition: opacity .6s var(--suave), filter .6s var(--suave); }
+  @keyframes pa-sai { 0% { transform: scale(.82); filter: brightness(1.8); } 100% { transform: none; filter: none; } }
+  .pa-cel.pousou { animation: pa-pousa .6s var(--mola); }
+  @keyframes pa-pousa { 0% { scale: .86; filter: brightness(1.7); } 100% { scale: 1; filter: none; } }
+  .pa-post.pousou, .pa-carta.pousou .pa-capa { animation: pa-pousa .5s var(--mola); }
+  .pa-carta .pa-capa { transition: transform .35s var(--mola), box-shadow .25s, scale .26s var(--suave); }
+  .pa-carta.pegando .pa-capa { scale: .95; }
+  .pa-roda-gira { transition: transform .75s var(--mola); }
+  .pa-semana { transition: box-shadow .3s; }
+  .pa-arco-n { transition: transform .75s var(--mola), fill .3s; }
+  .pa-roda-num { transition: fill .3s; }
+  .pa-trilho-feito, .pa-trilho-trava { transition: background .3s; }
+  .pa-agulha { transition: translate .45s var(--mola); }
+  .pa-linha.mexendo .pa-agulha { transition: translate .08s linear; }
+  .pa-pega { transition: scale .2s var(--mola), background .3s, box-shadow .3s; }
+  .pa-cel-saiu { animation: pa-selo .5s var(--mola) both; }
+  @keyframes pa-selo { from { transform: translate(-50%, -50%) scale(.4); opacity: 0; } }
+  .pa-post.acabou { animation: pa-sai .75s var(--mola); }
+  .pa-notif { transition: transform .55s var(--mola), opacity .3s; }
+  .pa-arco { transition: opacity .4s, stroke .3s; }
+  .pa-arco.proximo { animation: pa-acende-arco 1.1s ease-in-out 2; }
+  @keyframes pa-acende-arco { 50% { opacity: 1; } }
+  .pa-recado { transition: opacity .5s var(--suave), transform .5s var(--suave); }
+  .pa-recado.pisca { animation: pa-recado .4s var(--mola); }
+  @keyframes pa-recado { from { transform: translateY(8px) scale(.97); opacity: .4; } }
+  .treme { animation: pa-treme .42s; }
+  @keyframes pa-treme { 20%, 60% { translate: -5px 0; } 40%, 80% { translate: 5px 0; } }
+  .pa-lupa:not([hidden]) { animation: pa-lupa .3s var(--suave); }
+  @keyframes pa-lupa { from { opacity: 0; } }
+  .pa-regua-marca { transition: left .7s var(--mola), opacity .4s, background .4s, box-shadow .4s; }
+  .pa-h { animation: pa-entra .45s var(--suave) both; animation-delay: calc(var(--i) * 45ms); }
+  @keyframes pa-entra { from { opacity: 0; translate: 0 8px; } }
+  .pa-tocar { transition: filter .2s, background .3s, transform .15s; }
+  .pa-tocar:active { transform: scale(.97); }
+}

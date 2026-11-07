@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pine Club · Pineapple Pro</title>
+<meta name="description" content="O clube de fidelidade da sua loja de comida, sem sorteio: o cliente entra por um link, ganha um presente e junta selo a cada pedido no balcão ou no WhatsApp.">
+<meta name="theme-color" content="#0b0906">
+<link rel="icon" href="../img/marca.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../estilo.css">
+<link rel="stylesheet" href="pine-club.css">
+<script type="module" src="../site.js"></script>
+<script type="module" src="pine-club.js"></script>
+</head>
+<body data-produto="pine-club" data-cor="amarelo">
+<div class="barra-topo">
+  <header class="envolve topo">
+    <a class="marca" href="../index.html"><img src="../img/marca.png" alt="Pineapple Pro" width="34" height="34"><span>Pineapple Pro</span></a>
+    <a class="topo-link" href="../index.html#vitrine">Todas as ferramentas</a>
+  </header>
+</div>
+
+<main>
+  <!-- ===== O COMEÇO: o título e a demonstração dos 2 lados ===== -->
+  <section class="envolve produto-abre clube-abre" aria-labelledby="titulo">
+    <div class="clube-cab">
+      <div class="clube-texto">
+        <div class="selos">
+          <span class="selo-breve" data-so-trancado="pine-club"><span data-cadeado></span>Em breve</span>
+          <span class="selo-aberto" data-so-aberto="pine-club" hidden><i></i>Aberto agora</span>
+        </div>
+        <p class="chapeu">O clube de fidelidade da sua loja</p>
+        <h1 id="titulo">O cliente <em class="brilha">que volta.</em></h1>
+        <p class="sub">Ele entra por um link, ganha 1 presente e junta 1 selo a cada pedido no seu balcão ou WhatsApp.</p>
+        <ul class="sem-lista" aria-label="Como é o clube">
+          <li>Sem sorteio</li>
+          <li>Sem baixar app</li>
+          <li>Sem gráfica</li>
+        </ul>
+      </div>
+
+      <div class="clube-lado">
+        <div class="brasao" aria-hidden="true">
+          <svg viewBox="0 0 200 200" focusable="false">
+            <defs><path id="brasao-roda" d="M100 100m-77 0a77 77 0 1 1 154 0a77 77 0 1 1-154 0"/></defs>
+            <circle class="b-aro" cx="100" cy="100" r="97"/>
+            <circle class="b-aro fino" cx="100" cy="100" r="62"/>
+            <g class="b-giro"><text class="b-texto"><textPath href="#brasao-roda" textLength="474" lengthAdjust="spacing">PINE CLUB · O CLIENTE QUE VOLTA · SEM SORTEIO ·</textPath></text></g>
+            <g class="b-coroa">
+              <path d="M100 124c-15.2-11.2-15.2-28.8 0-40c15.2 11.2 15.2 28.8 0 40z"/>
+              <path d="M100 126c-12.2-9-12.2-23 0-32c12.2 9 12.2 23 0 32z" transform="rotate(-48 100 126)"/>
+              <path d="M100 126c-12.2-9-12.2-23 0-32c12.2 9 12.2 23 0 32z" transform="rotate(48 100 126)"/>
+              <path d="M80 134h40"/>
+            </g>
+          </svg>
+        </div>
+        <div class="clube-cta">
+          <div class="enquanto" data-so-trancado="pine-club">
+            <p><b>Em breve aqui no site.</b> Enquanto isso, comece pelas fichas grátis: é delas que sai o custo do presente.</p>
+            <a class="botao claro" href="../pine-cost/">Comece pelas fichas grátis <span class="seta" aria-hidden="true">→</span></a>
+          </div>
+          <div class="precos" data-so-aberto="pine-club" hidden>
+            <span class="etiqueta-bloco"><span class="etiqueta pacote" data-valor="pine-club.pacote"></span><small>vaga de fundador</small></span>
+          </div>
+          <div class="acao" data-so-aberto="pine-club" hidden>
+            <a class="botao" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="pineClub">Quero ser fundador</a>
+            <p class="ou-mande">Ou mande: “Quero ser fundador do Pine Club 🍍”</p>
+            <p class="aviso" data-aviso aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vidro palco palco-clube" data-demo-clube>
+      <p class="palco-rot"><span>Demonstração · os 2 lados ao mesmo tempo</span><span class="ao-vivo">Mexa aqui</span></p>
+
+      <div class="loja-linha">
+        <label class="loja-rot" for="nome-loja">Escreva o nome da sua loja</label>
+        <input id="nome-loja" class="loja-input" type="text" maxlength="40" placeholder="Sua loja" autocomplete="off" spellcheck="false" enterkeyhint="done" data-nome-entrada>
+        <p class="loja-nota">Fica só na sua tela: nada é gravado nem enviado.</p>
+      </div>
+
+      <div class="dois-lados">
+        <!-- O LADO DO CLIENTE: o cartão do clube no celular dele -->
+        <div class="lado lado-cliente">
+          <p class="lado-rot"><i aria-hidden="true"></i>O cliente vê <span>no celular dele</span></p>
+          <div class="cel inclina" data-forca="5">
+            <div class="cel-tela">
+              <header class="cel-topo" data-profundidade="4">
+                <span class="cel-logo" data-inicial-loja aria-hidden="true">S</span>
+                <span class="cel-olho">Clube de fidelidade</span>
+                <span class="cel-loja" data-nome-loja>Sua loja</span>
+              </header>
+              <!-- o cartão vira com o dedo ou o mouse: na frente os selos, no verso o código e o que o clube guarda -->
+              <div class="cartao-clube" data-cartao data-profundidade="12">
+                <div class="cartao-giro" data-giro>
+                  <div class="cartao-face cartao-frente" data-face="frente">
+                    <span class="selo-exemplo">exemplo</span>
+                    <p class="cartao-ola">Olá, <b data-membro-nome>Ana</b>!</p>
+                    <p class="cartao-rot">Mostre este código no balcão:</p>
+                    <p class="cartao-codigo" data-membro-codigo>SL-4821</p>
+                    <div class="cartela" data-cartela role="img" aria-label="6 de 8 selos"></div>
+                    <p class="cartao-faltam" data-faltam>Faltam 2 selos para o prêmio.</p>
+                    <div class="cartao-completo" data-completo hidden>
+                      <b>Cartão completo!</b>
+                      <span>Mostre no balcão e ganhe: <span data-premio-nome>1 X-Bacon duplo</span></span>
+                      <small data-sobra hidden></small>
+                    </div>
+                  </div>
+                  <div class="cartao-face cartao-verso" data-face="verso" aria-hidden="true" inert>
+                    <span class="selo-exemplo">exemplo</span>
+                    <p class="verso-rot">O código no balcão</p>
+                    <p class="verso-codigo" data-verso-codigo>SL-4821</p>
+                    <p class="verso-presente"><span>Presente de boas-vindas</span><b data-verso-presente>Fatia de bolo · já usou</b></p>
+                    <p class="verso-rot">O clube guarda só isto</p>
+                    <dl class="verso-guarda" data-verso-guarda>
+                      <div><dt>Nome</dt><dd>Ana</dd></div>
+                      <div><dt>WhatsApp</dt><dd>(44) 9 •••• ••••</dd></div>
+                      <div><dt>Aceite</dt><dd>sim, recebe ofertas da loja</dd></div>
+                    </dl>
+                    <p class="verso-nao">Nada de CPF, endereço, nascimento ou e-mail.</p>
+                  </div>
+                </div>
+                <button type="button" class="cartao-virar" data-virar aria-pressed="false" aria-label="Virar o cartão: ver o verso">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12a8 8 0 0 1 13.7-5.7L20 8.5"/><path d="M20 4v4.5h-4.5"/><path d="M20 12a8 8 0 0 1-13.7 5.7L4 15.5"/><path d="M4 20v-4.5h4.5"/></svg>
+                </button>
+              </div>
+              <p class="cartao-dica" aria-hidden="true">Arraste o cartão de lado pra virar</p>
+              <p class="cel-premio"><span>Prêmio</span><b data-premio-nome>1 X-Bacon duplo</b></p>
+              <span class="cel-zap" aria-hidden="true">Pedir no WhatsApp da loja</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- O LADO DO DONO: o painel do clube no celular do balcão -->
+        <div class="lado lado-dono">
+          <p class="lado-rot"><i aria-hidden="true"></i>O dono vê <span>no painel do clube</span></p>
+          <div class="dono">
+            <section class="dono-bloco dono-balcao" aria-labelledby="rot-balcao">
+              <p class="bloco-rot" id="rot-balcao">Balcão</p>
+              <p class="balcao-quem"><span data-ativo-nome>Ana (exemplo)</span> <span class="balcao-codigo" data-ativo-codigo>SL-4821</span></p>
+              <!-- o carimbo que a pessoa arrasta até o cartão (quem usa o teclado tem o "+1 selo", logo abaixo) -->
+              <div class="balcao-carimbo">
+                <span class="carimbo-ninho" aria-hidden="true">
+                  <span class="carimbo-pega" data-carimbo><svg class="coroa" viewBox="5 6 22 22" focusable="false"><path d="M16 22c-4.9-3.6-4.9-9.4 0-13c4.9 3.6 4.9 9.4 0 13z"/><path d="M16 22.4c-3.8-2.8-3.8-7.2 0-10c3.8 2.8 3.8 7.2 0 10z" transform="rotate(-50 16 22.4)"/><path d="M16 22.4c-3.8-2.8-3.8-7.2 0-10c3.8 2.8 3.8 7.2 0 10z" transform="rotate(50 16 22.4)"/><path d="M10.5 25.6h11"/></svg></span>
+                </span>
+                <p class="carimbo-dica"><b>Arraste o carimbo</b> até o cartão do cliente. Ou toque em +1 selo.</p>
+              </div>
+              <button type="button" class="botao botao-selo" data-acao="selo"><span class="mais" aria-hidden="true">+1</span><span>selo<small>comprou de novo</small></span></button>
+              <div class="balcao-mais">
+                <button type="button" class="botao claro botao-premio" data-acao="premio" disabled>Usar prêmio</button>
+                <button type="button" class="chip" data-acao="desfazer" disabled>Desfazer</button>
+              </div>
+              <p class="dono-anuncio comeco" data-anuncio role="status" aria-live="polite">Arraste o carimbo até o cartão, ou toque em +1 selo, e veja o selo cair no cartão do cliente.</p>
+            </section>
+
+            <section class="dono-bloco dono-numeros" aria-labelledby="rot-numeros">
+              <p class="bloco-rot" id="rot-numeros">Quem voltou <span class="selo-exemplo">exemplo</span></p>
+              <dl class="numeros">
+                <div><dt>no clube</dt><dd data-num="membros">4</dd></div>
+                <div><dt>voltaram</dt><dd data-num="voltaram">2</dd></div>
+                <div><dt>sumiram <small>+30 dias</small></dt><dd data-num="sumiram">2</dd></div>
+              </dl>
+            </section>
+
+            <section class="dono-bloco dono-membros" aria-labelledby="rot-membros">
+              <p class="bloco-rot" id="rot-membros">Membros <span>toque para ver o cartão</span></p>
+              <ul class="membros" data-membros></ul>
+              <div class="volta" data-volta hidden>
+                <p class="volta-rot">A mensagem pronta <span class="selo-exemplo">exemplo</span></p>
+                <p class="volta-msg" data-volta-msg></p>
+                <p class="volta-nota">No clube de verdade, o WhatsApp do seu celular abre com esse texto. Quem envia é você.</p>
+                <button type="button" class="chip" data-acao="fechar-volta">Fechar</button>
+              </div>
+              <p class="membros-nota">Sem o aceite, o cliente não entra na lista de quem sumiu.</p>
+            </section>
+
+            <section class="dono-bloco dono-ajustes" aria-labelledby="rot-ajustes">
+              <p class="bloco-rot" id="rot-ajustes">Ajustes</p>
+              <p class="ajuste-rot" id="rot-meta">Selos para o prêmio</p>
+              <div class="chips" role="group" aria-labelledby="rot-meta" data-metas>
+                <button type="button" class="chip" data-meta="5" aria-pressed="false">5</button>
+                <button type="button" class="chip" data-meta="8" aria-pressed="true">8</button>
+                <button type="button" class="chip" data-meta="10" aria-pressed="false">10</button>
+              </div>
+              <p class="ajuste-rot" id="rot-premio">O prêmio</p>
+              <div class="chips" role="group" aria-labelledby="rot-premio" data-premios>
+                <button type="button" class="chip" data-premio="x-bacon" aria-pressed="true">X-Bacon duplo</button>
+                <button type="button" class="chip" data-premio="bolo-de-cenoura" aria-pressed="false">Fatia de bolo</button>
+                <button type="button" class="chip" data-premio="frango-a-passarinho" aria-pressed="false">Frango a passarinho</button>
+                <button type="button" class="chip" data-premio="parmegiana" aria-pressed="false">Parmegiana</button>
+              </div>
+            </section>
+
+            <section class="dono-bloco dono-conta" aria-labelledby="rot-conta">
+              <p class="bloco-rot" id="rot-conta">A conta do prêmio, pela ficha técnica</p>
+              <div class="conta" data-conta aria-live="polite" aria-busy="true">
+                <p class="conta-carregando">Fazendo a conta…</p>
+              </div>
+            </section>
+
+            <p class="dono-fim"><button type="button" class="texto-botao" data-acao="recomecar">Recomeçar a demonstração</button></p>
+          </div>
+        </div>
+      </div>
+      <noscript><p class="ou-mande">A demonstração precisa do JavaScript ligado.</p></noscript>
+    </div>
+  </section>
+
+  <!-- ===== PRO CLIENTE DA LOJA ===== -->
+  <section class="envolve secao" aria-labelledby="cliente">
+    <div class="secao-cab revela">
+      <p class="chapeu">Pro seu cliente</p>
+      <h2 id="cliente">Do link ao prêmio, sem baixar nada</h2>
+    </div>
+    <ol class="trilha">
+      <li class="revela" style="--atraso: 0s">
+        <span class="trilha-carimbo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>
+        <b>Entra pelo link</b>
+        <p>Da bio, do story, do status ou do QR do balcão. Só com nome e WhatsApp.</p>
+      </li>
+      <li class="revela" style="--atraso: .08s">
+        <span class="trilha-carimbo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.5 8.5h17v4h-17z"/><path d="M5 12.5h14v8H5z"/><path d="M12 8.5v12"/><path d="M12 8.5C10.6 5 7 4.3 7 6.6c0 1.6 2.6 1.9 5 1.9Z"/><path d="M12 8.5c1.4-3.5 5-4.2 5-1.9 0 1.6-2.6 1.9-5 1.9Z"/></svg></span>
+        <b>Escolhe 1 presente</b>
+        <p>Entre os que você liberou. Sem sorteio: ele mesmo escolhe.</p>
+      </li>
+      <li class="revela" style="--atraso: .16s">
+        <span class="trilha-carimbo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.5 2.5h9a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2v-15a2 2 0 0 1 2-2Z"/><path d="M9 8h6"/><path d="M9 11.5h6"/><path d="M9 15h3.5"/></svg></span>
+        <b>Mostra o código</b>
+        <p>No balcão ou no WhatsApp da loja. É assim que o selo cai.</p>
+      </li>
+      <li class="revela" style="--atraso: .24s">
+        <span class="trilha-carimbo cheio" aria-hidden="true"><svg viewBox="5 6 22 22"><path d="M16 22c-4.9-3.6-4.9-9.4 0-13c4.9 3.6 4.9 9.4 0 13z"/><path d="M16 22.4c-3.8-2.8-3.8-7.2 0-10c3.8 2.8 3.8 7.2 0 10z" transform="rotate(-50 16 22.4)"/><path d="M16 22.4c-3.8-2.8-3.8-7.2 0-10c3.8 2.8 3.8 7.2 0 10z" transform="rotate(50 16 22.4)"/><path d="M10.5 25.6h11"/></svg></span>
+        <b>Completou, ganhou</b>
+        <p>Cada pedido vale 1 selo. Com o cartão cheio, ele ganha o prêmio.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ===== PRO DONO ===== -->
+  <section class="envolve secao" aria-labelledby="dono">
+    <div class="secao-cab revela">
+      <p class="chapeu">Pra você, dono</p>
+      <h2 id="dono">Tudo no celular do balcão</h2>
+      <p>Sem planilha e sem cartão de papel. O painel do clube mostra quem voltou e deixa a conta do presente em dia.</p>
+    </div>
+    <div class="recursos">
+      <article class="vidro recurso revela" style="--atraso: 0s">
+        <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></span>
+        <b>+1 selo no balcão</b>
+        <p>Digita o código do cliente e aperta. Só a loja dá selo: o cliente não marca nada sozinho.</p>
+      </article>
+      <article class="vidro recurso revela" style="--atraso: .06s">
+        <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 13.7-5.7L20 8.5"/><path d="M20 4v4.5h-4.5"/><path d="M20 12a8 8 0 0 1-13.7 5.7L4 15.5"/><path d="M4 20v-4.5h4.5"/></svg></span>
+        <b>Quem voltou e quem sumiu</b>
+        <p>Os números do clube e a lista de quem não pede há mais de 30 dias.</p>
+      </article>
+      <article class="vidro recurso revela" style="--atraso: .12s">
+        <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8"/><path d="M8 12.5h5"/></svg></span>
+        <b>A mensagem pronta</b>
+        <p>Toca em chamar e o WhatsApp do seu celular abre com o texto. Quem envia é você.</p>
+      </article>
+      <article class="vidro recurso revela" style="--atraso: 0s">
+        <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6"/><path d="M9 12h6"/></svg></span>
+        <b>O presente pela ficha</b>
+        <p>O custo sai da ficha técnica, e o limite do mês segura a conta.</p>
+      </article>
+      <article class="vidro recurso revela" style="--atraso: .06s">
+        <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/></svg></span>
+        <b>Pedido fora do app</b>
+        <p>O presente e o selo valem no balcão e no WhatsApp. Esse pedido não paga os <strong data-taxa-app>26,5%</strong> do app.</p>
+      </article>
+      <article class="vidro recurso revela" style="--atraso: .12s">
+        <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M4.5 20.5c.8-3.6 3.9-5.5 7.5-5.5s6.7 1.9 7.5 5.5"/></svg></span>
+        <b>Funcionário só no balcão</b>
+        <p>Ele dá selo e valida o presente. Os números e os ajustes ficam só com você.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== O PRESENTE PELA FICHA: o limite do mês ===== -->
+  <section class="envolve secao" aria-labelledby="ficha">
+    <div class="secao-cab revela">
+      <p class="chapeu">O presente pela ficha</p>
+      <h2 id="ficha">A promoção que não quebra a sua loja</h2>
+      <p>O custo de cada presente sai da ficha técnica: o que custa pra fazer, não o preço de venda. Você escolhe o limite do mês. Quando a soma chega nele, o presente mais caro sai da escolha.</p>
+    </div>
+    <div class="vidro limite-palco revela" data-demo-limite>
+      <p class="palco-rot"><span>Toque num presente: é alguém entrando no clube</span><span class="ao-vivo">Mexa aqui</span></p>
+      <div class="limite-lados">
+        <div class="lado">
+          <p class="lado-rot"><i aria-hidden="true"></i>O cliente vê <span>ao entrar</span></p>
+          <div class="entrada">
+            <p class="entrada-olho">Clube da <span data-nome-loja>Sua loja</span></p>
+            <p class="entrada-titulo">Entre no clube e ganhe</p>
+            <p class="entrada-rot">Escolha seu presente de boas-vindas:</p>
+            <div class="entrada-presentes" data-presentes></div>
+            <p class="entrada-esgotou" data-esgotou hidden>Os presentes de boas-vindas deste mês já acabaram. Você ainda pode entrar no clube e juntar selos.</p>
+            <p class="entrada-conta" data-entraram aria-live="polite"></p>
+          </div>
+        </div>
+        <div class="lado lado-dono">
+          <p class="lado-rot"><i aria-hidden="true"></i>O dono vê <span>nos ajustes</span></p>
+          <div class="limite-dono">
+            <p class="ajuste-rot" id="rot-limite">Limite do mês para presentes</p>
+            <div class="chips" role="group" aria-labelledby="rot-limite" data-limites></div>
+            <div class="medidor" data-medidor>
+              <div class="medidor-barra"><i data-medidor-cheio></i></div>
+              <p class="medidor-texto" data-medidor-texto>Fazendo a conta…</p>
+            </div>
+            <ul class="limite-lista" data-limite-lista></ul>
+            <div class="limite-fim">
+              <button type="button" class="chip" data-acao="virar-mes">Virar o mês</button>
+              <p class="limite-nota"><span class="selo-exemplo">exemplo</span> As fichas são exemplos da ferramenta. A conta sai da mesma calculadora das fichas de verdade.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== O MÊS DO CLUBE (v3): a conta da hipótese do dono, pelas regras do clube ===== -->
+  <section class="envolve secao" aria-labelledby="mes">
+    <div class="secao-cab revela">
+      <p class="chapeu">O mês do clube</p>
+      <h2 id="mes">Faça a conta do seu mês</h2>
+      <p>Você diz quantos clientes entram e quantas vezes cada um volta. A página faz a conta pelas regras do clube: os cartões, os prêmios, os presentes e o limite.</p>
+    </div>
+    <div class="vidro mes-palco revela" data-demo-mes>
+      <p class="palco-rot"><span>A conta da sua hipótese</span><span class="ao-vivo">Mexa aqui</span></p>
+      <div class="mes-lados">
+        <div class="mes-controles">
+          <div class="mes-faixas">
+          <div class="mes-faixa">
+            <label class="mes-rot" for="mes-clientes">Clientes novos no mês <b data-mes-valor="clientes">20</b></label>
+            <input class="mes-range" id="mes-clientes" type="range" min="1" max="100" step="1" value="20" data-mes="clientes">
+          </div>
+          <div class="mes-faixa">
+            <label class="mes-rot" for="mes-voltas">Quantas vezes cada um volta no mês <b data-mes-valor="voltas">4</b></label>
+            <input class="mes-range" id="mes-voltas" type="range" min="1" max="12" step="1" value="4" data-mes="voltas">
+          </div>
+          <p class="mes-nota">Cada volta é 1 pedido e vale 1 selo. Só a loja dá o selo.</p>
+          </div>
+          <div class="mes-ajustes">
+          <p class="ajuste-rot" id="rot-mes-meta">Selos para o prêmio</p>
+          <div class="chips" role="group" aria-labelledby="rot-mes-meta">
+            <button type="button" class="chip" data-meta="5" aria-pressed="false">5</button>
+            <button type="button" class="chip" data-meta="8" aria-pressed="true">8</button>
+            <button type="button" class="chip" data-meta="10" aria-pressed="false">10</button>
+          </div>
+          <p class="ajuste-rot" id="rot-mes-premio">O prêmio</p>
+          <div class="chips" role="group" aria-labelledby="rot-mes-premio">
+            <button type="button" class="chip" data-premio="x-bacon" aria-pressed="true">X-Bacon duplo</button>
+            <button type="button" class="chip" data-premio="bolo-de-cenoura" aria-pressed="false">Fatia de bolo</button>
+            <button type="button" class="chip" data-premio="frango-a-passarinho" aria-pressed="false">Frango a passarinho</button>
+            <button type="button" class="chip" data-premio="parmegiana" aria-pressed="false">Parmegiana</button>
+          </div>
+          <p class="ajuste-rot" id="rot-mes-limite">Limite do mês para presentes</p>
+          <div class="chips" role="group" aria-labelledby="rot-mes-limite" data-mes-limites></div>
+          </div>
+        </div>
+        <div class="mes-resultado">
+          <p class="mes-legenda"><span class="selo-exemplo">exemplo</span><span data-mes-legenda>Os cartões no fim do mês: cada um é 1 cliente</span></p>
+          <div class="mes-cartoes" data-mes-cartoes aria-hidden="true"></div>
+          <div class="mes-conta" data-mes-conta aria-live="polite"><p class="conta-carregando">Fazendo a conta…</p></div>
+          <p class="mes-aviso">É a conta da sua hipótese, com as fichas de exemplo da ferramenta. Não é promessa de resultado.</p>
+        </div>
+      </div>
+      <noscript><p class="ou-mande">A conta do mês precisa do JavaScript ligado.</p></noscript>
+    </div>
+  </section>
+
+  <!-- ===== LGPD: só 3 dados ===== -->
+  <section class="envolve secao" aria-labelledby="dados">
+    <div class="lgpd">
+      <div class="secao-cab revela">
+        <p class="chapeu">O dado do seu cliente</p>
+        <h2 id="dados">O clube pede só 3 coisas</h2>
+        <p>O nome, o WhatsApp e o aceite. Com isso ele entra, ganha selo e escolhe o presente.</p>
+        <p class="lgpd-nao-rot">O clube não pede:</p>
+        <ul class="lgpd-nao">
+          <li><s>CPF</s></li>
+          <li><s>Endereço</s></li>
+          <li><s>Data de nascimento</s></li>
+          <li><s>E-mail</s></li>
+        </ul>
+        <ul class="lgpd-regras">
+          <li>A loja é a dona dos dados. A Pineapple só opera.</li>
+          <li>Cada loja vê só os clientes dela.</li>
+          <li>Pediu pra sair? O dono apaga no painel, e os dados dele somem de tudo.</li>
+          <li>Nenhum robô fala com o seu cliente. Quem manda a mensagem é você.</li>
+        </ul>
+      </div>
+      <div class="vidro claro lgpd-ficha revela" data-demo-lgpd>
+        <span class="selo-exemplo">exemplo</span>
+        <p class="lgpd-titulo">Entrar no clube</p>
+        <div class="lgpd-campos" data-lgpd-campos>
+          <div class="campo"><span class="campo-rot">Seu nome</span><span class="campo-valor">Ana (exemplo)</span></div>
+          <div class="campo"><span class="campo-rot">Seu WhatsApp</span><span class="campo-valor">(44) 9 •••• ••••</span></div>
+          <label class="campo-aceite"><input type="checkbox" checked data-aceite><span>Aceito receber ofertas da <span data-nome-loja>Sua loja</span> pelo WhatsApp. Posso sair quando quiser.</span></label>
+          <p class="aceite-efeito" data-aceite-efeito aria-live="polite">Com o aceite: se ela sumir, entra na lista e pode receber a mensagem da loja.</p>
+        </div>
+        <div class="lgpd-apagado" data-lgpd-apagado hidden>
+          <p><b>Apagado.</b> O dono apagou no painel: some de tudo e não volta.</p>
+        </div>
+        <button type="button" class="chip lgpd-sair" data-acao="sair">O cliente pediu pra sair</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== A VAGA DE FUNDADOR ===== -->
+  <section class="envolve secao" aria-labelledby="fundador">
+    <div class="bilhete revela">
+      <div class="bilhete-canhoto">
+        <p class="chapeu">Vaga de fundador</p>
+        <p class="bilhete-numero"><span class="numero-grande">10</span><span>vagas</span></p>
+        <p class="bilhete-sub">As primeiras lojas do Pine Club.</p>
+      </div>
+      <div class="bilhete-corpo">
+        <h2 id="fundador">Só 10 vagas de fundador</h2>
+        <ul class="bilhete-lista">
+          <li>Paga uma vez, sem mensalidade</li>
+          <li>O cartaz do balcão com o QR, pronto pra imprimir</li>
+          <li>Não gostou em 7 dias? A gente devolve</li>
+          <li>Depois das 10 vagas, vira mensalidade</li>
+        </ul>
+        <div class="precos" data-so-aberto="pine-club" hidden>
+          <span class="etiqueta-bloco"><span class="etiqueta pacote" data-valor="pine-club.pacote"></span><small>vaga de fundador</small></span>
+        </div>
+        <div class="acao" data-so-aberto="pine-club" hidden>
+          <a class="botao" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="pineClub">Quero ser fundador</a>
+          <p class="ou-mande">Ou mande: “Quero ser fundador do Pine Club 🍍”</p>
+          <p class="aviso" data-aviso aria-live="polite"></p>
+        </div>
+        <div class="enquanto" data-so-trancado="pine-club">
+          <p><b>Em breve aqui no site.</b> Enquanto isso, comece pelas fichas grátis do Pine Cost Pro.</p>
+          <a class="botao claro" href="../pine-cost/">Ver as fichas grátis <span class="seta" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PERGUNTAS ===== -->
+  <section class="envolve secao" aria-labelledby="perguntas">
+    <div class="secao-cab revela">
+      <p class="chapeu">Perguntas</p>
+      <h2 id="perguntas">Antes de entrar</h2>
+    </div>
+    <div class="perguntas">
+      <details><summary>Tem sorteio?</summary><p>Não. O cliente escolhe o presente, e todo mundo que completa o cartão ganha. Sem roleta e sem “concorra”.</p></details>
+      <details><summary>O cliente precisa baixar app?</summary><p>Não. Ele entra por um link, com nome e WhatsApp, e o cartão abre no celular dele.</p></details>
+      <details><summary>E se muita gente pegar o presente?</summary><p>Você escolhe o limite do mês. Quando a soma chega nele, o presente mais caro sai da escolha. Se nenhum couber, o clube segue dando selo.</p></details>
+      <details><summary>Alguém pode pegar selo a mais?</summary><p>Só a loja dá selo, pelo painel. E o mesmo cliente ganha no máximo 1 selo a cada 30 minutos.</p></details>
+      <details><summary>Dá pra pôr o convite dentro do pedido do app?</summary><p>Não: as regras dos apps de entrega costumam proibir. O link vai na bio, no story, no status do WhatsApp e no cartaz do balcão.</p></details>
+      <details><summary>Preciso ter ficha técnica?</summary><p>O custo do presente sai dela. Se ainda não tem, comece pelas <a href="../pine-cost/">3 fichas grátis do Pine Cost Pro</a>.</p></details>
+    </div>
+  </section>
+
+  <!-- ===== O FIM ===== -->
+  <section class="envolve secao" aria-labelledby="final">
+    <div class="maior revela">
+      <div data-so-trancado="pine-club">
+        <h2 id="final">Comece pelo custo do presente</h2>
+        <p>As 3 fichas técnicas grátis mostram quanto custa cada produto seu. É de lá que sai o presente do clube.</p>
+      </div>
+      <div data-so-aberto="pine-club" hidden>
+        <h2>Quer uma das 10 vagas?</h2>
+        <p>O clube da sua loja, com o presente que cabe no seu mês.</p>
+      </div>
+      <a class="botao claro" href="../pine-cost/" data-so-trancado="pine-club">Ver as fichas grátis <span class="seta" aria-hidden="true">→</span></a>
+      <div class="acao" data-so-aberto="pine-club" hidden>
+        <a class="botao" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="pineClub">Quero ser fundador</a>
+        <p class="ou-mande">Ou mande: “Quero ser fundador do Pine Club 🍍”</p>
+        <p class="aviso" data-aviso aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="envolve rodape">
+  <span>Pineapple Pro · Maringá (PR)</span>
+  <nav aria-label="Rodapé">
+    <a href="../index.html">Todas as ferramentas</a>
+    <a href="https://www.instagram.com/pineapplepro_/" target="_blank" rel="noopener">@pineapplepro_</a>
+    <a href="../privacidade.html">Política de privacidade</a>
+  </nav>
+</footer>
+</body>
+</html>

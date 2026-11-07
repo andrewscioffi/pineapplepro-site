@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Postagem automática · Pineapple Pro</title>
+<meta name="description" content="O Instagram postando no horário certo, pra quem vende comida: só sai o que você aprovou, de 1 a 3 por dia, e nunca apaga o que já saiu.">
+<meta name="theme-color" content="#0b0906">
+<link rel="icon" href="../img/marca.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../estilo.css">
+<link rel="stylesheet" href="postagem.css">
+<script type="module" src="../site.js"></script>
+<script type="module" src="postagem.js"></script>
+</head>
+<body data-produto="postagem" data-cor="verde">
+<div class="barra-topo">
+  <header class="envolve topo">
+    <a class="marca" href="../index.html"><img src="../img/marca.png" alt="Pineapple Pro" width="34" height="34"><span>Pineapple Pro</span></a>
+    <a class="topo-link" href="../index.html#vitrine">Todas as ferramentas</a>
+  </header>
+</div>
+
+<main>
+  <section class="envolve produto-abre pa-abre" aria-labelledby="titulo">
+    <div class="pa-abre-texto">
+      <div class="pa-abre-titulo">
+        <div class="selos">
+          <span class="selo-breve" data-so-trancado="postagem"><span data-cadeado></span>Em breve</span>
+          <span class="selo-aberto" data-so-aberto="postagem"><i></i>Aberto agora</span>
+        </div>
+        <p class="chapeu">Postagem automática</p>
+        <h1 id="titulo">O post aprovado sai <em class="brilha">sozinho, na hora dele</em></h1>
+      </div>
+      <div class="pa-abre-lado">
+        <p class="sub">Você aprova e escolhe o dia. Na hora marcada, ele entra no seu Instagram, sem você largar o balcão.</p>
+        <ul class="pa-garantias">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg>Só sai o que você aprovou</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg>De 1 a 3 por dia, cada um na hora dele</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg>Nunca apaga o que já saiu</li>
+        </ul>
+        <div class="pa-abre-acao">
+          <a class="botao" href="../pine-cost/">Comece pelas fichas grátis <span class="seta" aria-hidden="true">→</span></a>
+          <p class="pa-enquanto" data-so-trancado="postagem">Esta ainda não abriu. Enquanto isso, o Pine Cost Pro já está aberto.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="vidro palco pa-estudio" data-estudio>
+      <p class="palco-rot"><span>Demonstração · exemplo</span><span class="ao-vivo">Mexa aqui</span></p>
+      <div class="pa-corpo" data-estudio-corpo>
+        <noscript><p class="pa-sem-js">A demonstração precisa do JavaScript ligado. O resto da página explica tudo.</p></noscript>
+      </div>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="nunca">
+    <div class="secao-cab revela">
+      <p class="chapeu">O que nunca acontece</p>
+      <h2 id="nunca">Posta sozinha. Mas só o que você deixou.</h2>
+    </div>
+    <ul class="recursos pa-nunca">
+      <li class="vidro recurso revela">
+        <span class="icone"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/><path d="M12 14.5v2.4"/></svg></span>
+        <b>Sem o seu ok, não sai</b>
+        <p>O rascunho fica parado. Só entra na fila o que você aprovou.</p>
+      </li>
+      <li class="vidro recurso revela" style="--atraso: .08s">
+        <span class="icone"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.5l7 2.8v5.4c0 4.3-3 7.6-7 8.8-4-1.2-7-4.5-7-8.8V6.3z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg></span>
+        <b>Nunca apaga, nunca edita</b>
+        <p>O que saiu fica como saiu. Se precisar mexer, é você no app.</p>
+      </li>
+      <li class="vidro recurso revela" style="--atraso: .16s">
+        <span class="icone"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></span>
+        <b>Fora do horário, só com o seu “agora”</b>
+        <p>Sem o seu “agora”, o post espera a hora dele.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="como">
+    <div class="secao-cab revela">
+      <p class="chapeu">Como funciona</p>
+      <h2 id="como">Aprovou, marcou a hora, saiu</h2>
+    </div>
+    <ol class="passos">
+      <li class="revela"><b>Você aprova</b><p>O post só entra na fila depois do seu ok.</p></li>
+      <li class="revela" style="--atraso: .08s"><b>Escolhe o dia e a hora</b><p>De 1 a 3 por dia. Antes, você vê a grade como o seguidor vai ver, com o corte 3:4 de cada capa.</p></li>
+      <li class="revela" style="--atraso: .16s"><b>Sai sozinho</b><p>Na hora marcada, pelo caminho oficial do Instagram. Você não precisa estar no celular.</p></li>
+    </ol>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="rodizio">
+    <div class="pa-444">
+      <div class="secao-cab revela">
+        <p class="chapeu">O rodízio 4-4-4</p>
+        <h2 id="rodizio">Nem só mostrando trabalho, nem só vendendo</h2>
+        <p>A cada 4 posts seguidos, um de cada tipo. A ferramenta avisa quando o rodízio repete ou fica faltando um.</p>
+      </div>
+      <ol class="pa-tipos">
+        <li class="vidro pa-t-existe revela"><span class="pa-tipo-n" aria-hidden="true">1</span><b>Pra saberem que você existe</b><p>O post pra quem ainda não te conhece.</p></li>
+        <li class="vidro pa-t-quem-e revela" style="--atraso: .06s"><span class="pa-tipo-n" aria-hidden="true">2</span><b>Pra saberem quem você é</b><p>A sua história, a sua cozinha, o seu jeito.</p></li>
+        <li class="vidro pa-t-o-que-faz revela" style="--atraso: .12s"><span class="pa-tipo-n" aria-hidden="true">3</span><b>Pra saberem o que você faz</b><p>O produto, o cardápio, o capricho.</p></li>
+        <li class="vidro pa-t-vendendo revela" style="--atraso: .18s"><span class="pa-tipo-n" aria-hidden="true">4</span><b>Você vendendo</b><p>O convite direto: “pede aqui”, “chama no Direct”.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="evento">
+    <div class="pa-evento-grade">
+      <div class="secao-cab revela">
+        <p class="chapeu">Dia de evento</p>
+        <h2 id="evento">No dia do evento, 1&nbsp;por&nbsp;hora</h2>
+        <p>Feira, festa, inauguração: no dia que tem muito conteúdo, sai 1 post por hora, alternando Reels e post. Só nesse dia.</p>
+      </div>
+      <div class="vidro pa-evento revela" data-evento data-dia="normal">
+        <div class="chips" role="group" aria-label="Que dia é">
+          <button type="button" class="chip" data-dia-tipo="normal" aria-pressed="true">Dia normal</button>
+          <button type="button" class="chip" data-dia-tipo="evento" aria-pressed="false">Dia de evento</button>
+        </div>
+        <div class="pa-regua" data-regua aria-hidden="true"></div>
+        <ul class="pa-horas" data-horarios aria-label="Os horários do dia"></ul>
+        <p class="pa-evento-texto" data-evento-texto aria-live="polite">De 1 a 3 por dia, cada um no horário dele.</p>
+        <p class="pa-exemplo"><span class="selo-exemplo">exemplo</span>um evento das 14h às 22h</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="perguntas">
+    <div class="secao-cab revela">
+      <p class="chapeu">Perguntas</p>
+      <h2 id="perguntas">Antes de ligar</h2>
+    </div>
+    <div class="perguntas">
+      <details><summary>Preciso ficar com o celular na mão?</summary><p>Não. Na hora marcada, o post sai sozinho.</p></details>
+      <details><summary>E se eu quiser postar agora?</summary><p>Pode. Com o seu “agora”, ele sai na hora. Sem isso, espera o horário dele.</p></details>
+      <details><summary>Dá pra apagar ou editar depois?</summary><p>Pela ferramenta, não: ela nunca apaga nem edita post publicado. Se precisar, você mexe direto no app.</p></details>
+      <details><summary>Quantos posts por dia?</summary><p>De 1 a 3, cada um no horário dele. No dia de evento, 1 por hora, alternando Reels e post.</p></details>
+      <details><summary>Como eu sei como a grade vai ficar?</summary><p>Na prévia, a grade aparece como o seguidor vai ver. Ela corta cada capa em 3:4, como o Instagram.</p></details>
+      <details><summary>Serve pra story?</summary><p>Serve. Só não dá pra pôr figurinha (link, enquete, música): por esse caminho, o Instagram não deixa.</p></details>
+      <details><summary>Quando abre?</summary><p>Ainda não tem data. O aviso sai no @pineapplepro_.</p></details>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="final">
+    <div class="maior revela">
+      <div>
+        <h2 id="final">Comece pelas fichas grátis</h2>
+        <p><span data-so-trancado="postagem">A postagem automática ainda não abriu. </span>O Pine Cost Pro já está aberto: 3 fichas técnicas e 3 fotos, de graça, no Direct.</p>
+      </div>
+      <a class="botao" href="../pine-cost/">Ver o Pine Cost Pro <span class="seta" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="envolve rodape">
+  <span>Pineapple Pro · Maringá (PR)</span>
+  <nav aria-label="Rodapé">
+    <a href="../index.html">Todas as ferramentas</a>
+    <a href="https://www.instagram.com/pineapplepro_/" target="_blank" rel="noopener">@pineapplepro_</a>
+    <a href="../privacidade.html">Política de privacidade</a>
+  </nav>
+</footer>
+</body>
+</html>

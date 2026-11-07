@@ -1,0 +1,24 @@
+{
+  "sobre": "Imposto ESTIMADO para restaurantes e bares, por regime (25/10/2026). PROVISÓRIO: o Andrews vai conferir. O imposto varia com a tributação de cada empresa, por isso a ficha sempre escreve 'estimado'. Faixas em % do preço de venda; o DAS do MEI em R$ por mês.",
+  "mei": {
+    "nome": "MEI",
+    "das_mes": 81,
+    "faixa_sem_faturamento": [1, 2],
+    "explica": "DAS fixo de cerca de R$ 81 por mês ÷ faturamento do mês"
+  },
+  "simples": {
+    "nome": "Simples Nacional",
+    "faixa": [4, 6],
+    "explica": "Anexo I, bares e restaurantes: cerca de 4% a 6% nas primeiras faixas (4% até R$ 180 mil por ano)"
+  },
+  "presumido": {
+    "nome": "Lucro Presumido",
+    "faixa": [9, 13],
+    "explica": "cerca de 9% a 13%, depende do ICMS do estado"
+  },
+  "nao_sei": {
+    "nome": "regime não informado",
+    "usa": "simples",
+    "explica": "sem o regime, usa a faixa do Simples"
+  }
+}

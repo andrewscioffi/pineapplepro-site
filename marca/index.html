@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logo e cardápio · Pineapple Pro</title>
+<meta name="description" content="A logo que você já tem, redesenhada em vetor, e o cardápio da sua loja, pra quem vende comida. Passe a lupa na logo e monte o seu cardápio na hora.">
+<meta name="theme-color" content="#0b0906">
+<link rel="icon" href="../img/marca.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- as 3 letras do cardápio ao vivo: Bistrô (Fraunces), Balcão (Big Shoulders) e Lousa (Josefin Sans) -->
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,600;10..72,800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Josefin+Sans:wght@300;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../estilo.css">
+<link rel="stylesheet" href="marca.css">
+<script type="module" src="../site.js"></script>
+<script type="module" src="marca.js"></script>
+</head>
+<body data-produto="marca" data-cor="creme">
+<div class="barra-topo">
+  <header class="envolve topo">
+    <a class="marca" href="../index.html"><img src="../img/marca.png" alt="Pineapple Pro" width="34" height="34"><span>Pineapple Pro</span></a>
+    <a class="topo-link" href="../index.html#vitrine">Todas as ferramentas</a>
+  </header>
+</div>
+
+<main>
+  <section class="envolve produto-abre mc-abre" aria-labelledby="titulo">
+    <div class="mc-abre-texto">
+      <div class="selos">
+        <span class="selo-breve" data-so-trancado="marca"><span data-cadeado></span>Em breve</span>
+        <span class="selo-aberto" data-so-aberto="marca"><i></i>Aberto agora</span>
+      </div>
+      <p class="chapeu">Logo e cardápio</p>
+      <h1 id="titulo">A sua marca <em class="brilha">nítida</em> em qualquer tamanho</h1>
+      <p class="sub">A logo que você já tem, redesenhada em vetor. E o cardápio com a cara dela, pronto pra gráfica e pro WhatsApp.</p>
+      <ul class="mc-fitas" aria-label="O que a gente faz">
+        <li>Logo em vetor</li>
+        <li>Cardápio</li>
+        <li>Marca simples</li>
+        <li>Marca completa</li>
+      </ul>
+      <div class="precos" data-so-aberto="marca">
+        <span class="etiqueta-bloco"><span class="etiqueta pacote" data-valor="marca.pacote"></span><small>a logo em vetor</small></span>
+      </div>
+      <div class="acao mc-acao" data-so-aberto="marca">
+        <a class="botao" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="marca">Quero logo e cardápio</a>
+        <p class="ou-mande">Ou mande: “Vocês fazem logo e cardápio? 🍍”</p>
+        <p class="aviso" data-aviso aria-live="polite"></p>
+      </div>
+      <div class="mc-breve" data-so-trancado="marca">
+        <p>Abre em breve. O aviso sai no <a href="https://www.instagram.com/pineapplepro_/" target="_blank" rel="noopener">@pineapplepro_</a>. Enquanto isso, a ficha técnica já está aberta.</p>
+        <a class="botao claro" href="../pine-cost/">Ver o Pine Cost Pro <span class="seta" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="vidro palco mc-lupa" data-lupa>
+      <p class="palco-rot"><span>01 · A lupa do vetor</span><span class="ao-vivo">Mexa aqui</span></p>
+      <div class="lupa-mesa" data-mesa tabindex="0" role="group" aria-roledescription="lupa"
+        aria-label="A logo da Pineapple pequena, como chega numa foto de WhatsApp, e a lupa com a mesma logo em vetor. Use as setas para mover a lupa.">
+        <img class="lupa-foto" data-foto src="img/logo-whatsapp.jpg" alt="A logo da Pineapple pequena e borrada, como chega numa foto de WhatsApp" width="65" height="80">
+        <span class="lupa-grade" data-grade aria-hidden="true"></span>
+        <canvas class="lupa-rastro" data-rastro aria-hidden="true"></canvas>
+        <span class="lupa-regua cima" aria-hidden="true"></span>
+        <span class="lupa-regua lado" aria-hidden="true"></span>
+        <span class="lupa-etq antes" aria-hidden="true">Foto do WhatsApp · 65 × 80 px</span>
+        <span class="lupa-zoom" data-zoom aria-hidden="true"></span>
+        <div class="lupa-lente" data-lente aria-hidden="true"><span class="lupa-etq depois">Vetor</span></div>
+      </div>
+      <div class="lupa-controle">
+        <p class="lupa-dica">Passe a lupa pela logo: onde ela passa, o vetor fica nítido. Pegue a lupa e jogue de lado, ou use as setas. Depois, leve o tamanho até a fachada.</p>
+        <div class="lupa-linha">
+          <label class="lupa-rot" for="lupa-tamanho">Tamanho: <b data-parada>Camiseta</b></label>
+          <button type="button" class="chip mc-raiox" data-raiox aria-pressed="false">Raio-X</button>
+        </div>
+        <input class="lupa-tamanho" id="lupa-tamanho" type="range" min="0" max="100" step="1" value="75" data-tamanho aria-valuetext="Camiseta">
+        <div class="lupa-paradas" role="group" aria-label="Ir direto para um tamanho">
+          <button type="button" data-ir-parada="icone" style="--i: 0" aria-pressed="false">Ícone</button>
+          <button type="button" data-ir-parada="perfil" style="--i: 1" aria-pressed="false">Perfil</button>
+          <button type="button" data-ir-parada="cardapio" style="--i: 2" aria-pressed="false">Cardápio</button>
+          <button type="button" data-ir-parada="camiseta" style="--i: 3" aria-pressed="true">Camiseta</button>
+          <button type="button" data-ir-parada="fachada" style="--i: 4" aria-pressed="false">Fachada</button>
+        </div>
+        <p class="lupa-frase" data-frase-tamanho aria-live="polite">Na estampa da camiseta, aparece cada quadradinho.</p>
+        <p class="lupa-nota">No raio-X: a foto é feita de quadradinhos; o vetor, de pontos e curvas. Por isso ele não borra.</p>
+      </div>
+      <noscript><p class="lupa-nota">A lupa precisa do JavaScript ligado.</p></noscript>
+    </div>
+  </section>
+
+  <!-- (v3) do rabisco ao vetor: o controle leva a logo da Pineapple da foto borrada à logo pronta, ponto por ponto -->
+  <section class="envolve secao" aria-labelledby="t-rabisco">
+    <div class="secao-cab">
+      <p class="chapeu">02 · Do rabisco ao vetor</p>
+      <h2 id="t-rabisco">Arraste e veja a logo virar vetor</h2>
+      <p>Da foto borrada que chega no WhatsApp ao arquivo limpo, ponto por ponto. É assim que a gente redesenha a sua logo: igual, só que nítida.</p>
+    </div>
+    <div class="vidro rb-palco" data-rabisco data-cena>
+      <p class="palco-rot"><span>A logo da Pineapple</span><span class="ao-vivo">Arraste aqui</span></p>
+      <div class="rb-lados">
+        <div class="rb-quadro" data-rb-quadro>
+          <svg viewBox="0 0 728 896" aria-hidden="true" focusable="false">
+            <defs><pattern id="rb-quadradinho" width="11.2" height="11.2" patternUnits="userSpaceOnUse"><path d="M11.2 0H0V11.2" fill="none" stroke="#1F1A12" stroke-opacity=".3" stroke-width="1.4"/></pattern></defs>
+            <rect class="rb-fundo" width="728" height="896"/>
+            <image class="rb-foto" href="img/logo-whatsapp.jpg" width="728" height="896" preserveAspectRatio="none"/>
+            <rect class="rb-grade" width="728" height="896" fill="url(#rb-quadradinho)"/>
+            <rect class="rb-papel" width="728" height="896"/>
+            <path class="rb-cheia" fill-rule="evenodd" d="M0 0"/>
+            <g class="rb-contornos"></g>
+            <g class="rb-raiox"><path class="rb-alcas" d="M0 0"/><path class="rb-pontas" d="M0 0"/><path class="rb-nos-fundo" d="M0 0"/><path class="rb-nos" d="M0 0"/></g>
+            <circle class="rb-ponta" r="12" cx="0" cy="0"/>
+          </svg>
+        </div>
+        <div class="rb-controle">
+          <label class="rb-rot" for="rb-t">Da foto à logo pronta</label>
+          <input class="rb-faixa" id="rb-t" type="range" min="0" max="1000" step="1" value="0" data-rb-t>
+          <ol class="rb-etapas">
+            <li data-rb-etapa="foto" aria-current="true">Foto</li>
+            <li data-rb-etapa="contorno">Contorno</li>
+            <li data-rb-etapa="pontos">Pontos e curvas</li>
+            <li data-rb-etapa="pronta">Logo pronta</li>
+          </ol>
+          <p class="rb-frase" data-rb-frase aria-live="polite">A foto que chega no WhatsApp: 65 × 80 quadradinhos.</p>
+          <p class="rb-conta" data-rb-conta>65 × 80 quadradinhos</p>
+          <p class="rb-nota">É a logo da própria Pineapple. Na sua, a gente faz igual: segue a sua logo, ponto por ponto.</p>
+        </div>
+      </div>
+      <noscript><p class="rb-nota">O desenho precisa do JavaScript ligado.</p></noscript>
+    </div>
+  </section>
+
+  <section class="envolve secao mc-secao-cardapio" aria-labelledby="t-cardapio">
+    <div class="secao-cab">
+      <p class="chapeu">03 · O cardápio ao vivo</p>
+      <h2 id="t-cardapio">Escreva o seu cardápio. Ele fica pronto na hora.</h2>
+      <p>Troque o exemplo pelo que você vende, com os seus preços. Escolha a letra e veja no story ou na folha.</p>
+    </div>
+    <div class="estudio" data-cardapio>
+      <div class="estudio-previa">
+        <div class="estudio-barra">
+          <div class="estudio-grupo" role="group" aria-label="A letra do cardápio">
+            <span class="estudio-rot" aria-hidden="true">Letra</span>
+            <button type="button" class="chip mc-letra" data-estilo="bistro" aria-pressed="true"><span class="mc-aa aa-bistro" aria-hidden="true">Aa</span>Bistrô</button>
+            <button type="button" class="chip mc-letra" data-estilo="balcao" aria-pressed="false"><span class="mc-aa aa-balcao" aria-hidden="true">Aa</span>Balcão</button>
+            <button type="button" class="chip mc-letra" data-estilo="lousa" aria-pressed="false"><span class="mc-aa aa-lousa" aria-hidden="true">Aa</span>Lousa</button>
+          </div>
+          <div class="estudio-grupo" role="group" aria-label="O formato do cardápio">
+            <span class="estudio-rot" aria-hidden="true">Formato</span>
+            <button type="button" class="chip" data-formato="story" aria-pressed="false">Story</button>
+            <button type="button" class="chip" data-formato="folha" aria-pressed="true">Folha A4</button>
+          </div>
+        </div>
+        <div class="cv-mesa inclina" data-forca="3" id="cv-previa">
+          <div class="cv-moldura" data-moldura data-vista="folha">
+            <div class="cv-previa" data-previa role="region" aria-label="Prévia do cardápio"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vidro estudio-editor">
+        <div class="cv-campo">
+          <label class="cv-rotulo" for="cv-loja">Nome da loja <span class="cv-ex-chip solto" data-ex-loja>exemplo</span></label>
+          <input class="cv-entrada" id="cv-loja" data-campo="loja" maxlength="40" placeholder="O nome da sua loja" autocomplete="off">
+        </div>
+        <div class="cv-campo">
+          <p class="cv-rotulo" id="cv-itens-rot">Itens e preços <span class="cv-dica-mover" aria-hidden="true">arraste os pontinhos pra mudar a ordem</span></p>
+          <p class="so-leitor" id="cv-mover-dica">Arraste para mudar a ordem, ou use as setas para cima e para baixo.</p>
+          <p class="so-leitor" data-cv-anuncio aria-live="polite"></p>
+          <ul class="cv-linhas" data-linhas aria-labelledby="cv-itens-rot"></ul>
+          <div class="cv-acoes">
+            <button type="button" class="botao claro cv-mais" data-mais="item">+ Item</button>
+            <button type="button" class="botao claro cv-mais" data-mais="secao">+ Categoria</button>
+          </div>
+        </div>
+        <div class="cv-campo">
+          <label class="cv-rotulo" for="cv-rodape">Rodapé</label>
+          <input class="cv-entrada" id="cv-rodape" data-campo="rodape" maxlength="70" placeholder="Horário, endereço, WhatsApp, Pix…" autocomplete="off">
+        </div>
+        <p class="cv-contagem" data-contagem aria-live="polite"></p>
+        <p class="cv-cabe" data-cabe aria-live="polite"></p>
+        <div class="cv-recomeco">
+          <button type="button" class="cv-link" data-recomecar>Começar do zero</button>
+          <button type="button" class="cv-link" data-voltar-exemplo>Voltar o exemplo</button>
+        </div>
+        <p class="cv-nota">O exemplo sai das fichas de exemplo do Pine Cost Pro. Nada do que você escreve é guardado ou sai desta página.</p>
+        <noscript><p class="cv-nota">O cardápio ao vivo precisa do JavaScript ligado.</p></noscript>
+      </div>
+      <a class="cv-pip" href="#cv-previa" data-pip hidden aria-label="Ver o cardápio inteiro">
+        <span class="cv-pip-rot" aria-hidden="true">Ao vivo</span>
+        <span class="cv-pip-tela" data-pip-tela aria-hidden="true"></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="t-vem">
+    <div class="secao-cab">
+      <p class="chapeu">O que a gente faz</p>
+      <h2 id="t-vem">Da logo que você já tem à marca inteira</h2>
+    </div>
+    <ul class="mc-vem">
+      <li class="vidro mc-cartao revela">
+        <span class="mc-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 18C7 7 17 17 20 6"/><path d="M4 18l4.5-5.5M20 6l-4.5 5.5"/><rect x="2.5" y="16.5" width="3" height="3" rx=".5"/><rect x="18.5" y="4.5" width="3" height="3" rx=".5"/></svg></span>
+        <h3>Logo em vetor</h3>
+        <p>A sua logo redesenhada igual, sem borrão. Vai em SVG, PDF e PNG sem fundo: colorida, branca e preta.</p>
+        <p class="mc-meta">1 correção · 2 dias úteis</p>
+      </li>
+      <li class="vidro mc-cartao revela" style="--atraso: .08s">
+        <span class="mc-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="1.5"/><path d="M8.5 7h7M8.5 11h5M16 11h-.01M8.5 15h5M16 15h-.01"/></svg></span>
+        <h3>Cardápio</h3>
+        <p>Uma folha A4, com até 15 itens e a sua logo. Pronto pra gráfica e pro WhatsApp.</p>
+        <p class="mc-meta">2 correções · 4 dias úteis</p>
+      </li>
+      <li class="vidro mc-cartao revela" style="--atraso: .16s">
+        <span class="mc-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5 18 11l-6 9.5L6 11z"/><path d="M12 20.5V13"/><circle cx="12" cy="11.2" r="1.6"/></svg></span>
+        <h3>Marca simples</h3>
+        <p>Pra quem ainda não tem logo: a logo do zero, com 2 opções pra escolher, e o cardápio de 1 folha.</p>
+        <p class="mc-meta">2 correções · 5 dias úteis</p>
+      </li>
+      <li class="vidro mc-cartao revela" style="--atraso: .24s">
+        <span class="mc-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="4.5"/><circle cx="16" cy="9" r="4.5"/><circle cx="12" cy="15.5" r="4.5"/></svg></span>
+        <h3>Marca completa</h3>
+        <p>A logo com 3 opções, as cores e as fontes da marca, o cardápio frente e verso e o Instagram: a foto de perfil e os destaques.</p>
+        <p class="mc-meta">3 correções · 7 dias úteis</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="t-como">
+    <div class="mc-briefing">
+      <div>
+        <div class="secao-cab">
+          <p class="chapeu">Como funciona</p>
+          <h2 id="t-como">Antes de desenhar, a gente pergunta</h2>
+          <p>É o briefing: umas perguntas rápidas, uma de cada vez, pra acertar de primeira. Não sabe alguma? É só falar “pula”.</p>
+        </div>
+        <ol class="passos mc-passos">
+          <li><b>Chama no Direct</b><p>Diz o que precisa: a logo em vetor, o cardápio ou a marca do zero.</p></li>
+          <li><b>Responde o briefing</b><p>Uma pergunta de cada vez. Pode mandar foto, print ou o @ de uma marca que você admira.</p></li>
+          <li><b>Recebe os arquivos</b><p>Prontos pra gráfica, pro WhatsApp e pro Instagram.</p></li>
+        </ol>
+      </div>
+      <div class="vidro claro mc-ficha revela">
+        <p class="mc-ficha-cab"><span>Briefing · o negócio</span><span>7 perguntas</span></p>
+        <ol class="mc-perguntas">
+          <li>Qual o nome do negócio, do jeito que tem que aparecer?</li>
+          <li>O que você vende? E qual é o que mais sai?</li>
+          <li>Pra quem você vende mais? Galera da noite, almoço, delivery…</li>
+          <li>Onde fica e como você vende? Balcão, delivery, app, food truck…</li>
+          <li>Em 3 palavras, como você quer que o cliente veja o seu negócio? Ex.: raiz, farto, barato. Ou: moderno, caprichado, premium.</li>
+          <li>Tem alguma marca que você admira, ou um concorrente? Manda o @ ou um print.</li>
+          <li>E o que você não quer de jeito nenhum? Uma cor, um estilo, cara de criança…</li>
+        </ol>
+        <p class="mc-ficha-pe">Depois vêm as perguntas do que você pediu: a logo ou o cardápio.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="t-perguntas">
+    <div class="secao-cab">
+      <p class="chapeu">Perguntas</p>
+      <h2 id="t-perguntas">Antes de chamar</h2>
+    </div>
+    <div class="perguntas">
+      <details><summary>A minha logo é só uma foto ruim. Serve?</summary><p>Serve. Manda do jeito que tiver: foto, print ou arquivo. A gente redesenha igual, limpa, em vetor.</p></details>
+      <details><summary>Vocês mudam a minha logo?</summary><p>Na vetorização, não: é a mesma logo, sem borrão. Logo nova é a marca simples ou a completa, com o briefing antes.</p></details>
+      <details><summary>O que é vetor?</summary><p>É a logo feita de pontos e curvas, e não de quadradinhos. Por isso ela vai do adesivo à fachada sem borrar.</p></details>
+      <details><summary>Em quanto tempo fica pronto?</summary><p>A logo em vetor, em 2 dias úteis. O cardápio, em 4. A marca simples, em 5, e a completa, em 7.</p></details>
+      <details><summary>Os preços do cardápio podem vir das minhas fichas?</summary><p>Podem. Quem já fez as fichas técnicas no Pine Cost Pro começa com os preços prontos.</p></details>
+      <details><summary>Quem responde no Direct?</summary><p>O atendimento é automático, com um roteiro aprovado pela Pineapple.</p></details>
+    </div>
+  </section>
+
+  <section class="envolve secao">
+    <div class="maior" data-so-trancado="marca">
+      <div>
+        <h2 id="t-final">Logo e cardápio abre em breve</h2>
+        <p>O aviso sai no @pineapplepro_. Enquanto isso, a ficha técnica já está aberta.</p>
+      </div>
+      <a class="botao claro" href="../pine-cost/">Ver o Pine Cost Pro <span class="seta" aria-hidden="true">→</span></a>
+    </div>
+    <div class="maior" data-so-aberto="marca">
+      <div>
+        <h2 id="t-final-aberto">Manda a sua logo do jeito que tiver</h2>
+        <p>Foto, print ou arquivo. O resto é com a gente.</p>
+      </div>
+      <div class="acao">
+        <a class="botao" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="marca">Quero logo e cardápio</a>
+        <p class="ou-mande">Ou mande: “Vocês fazem logo e cardápio? 🍍”</p>
+        <p class="aviso" data-aviso aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="envolve rodape">
+  <span>Pineapple Pro · Maringá (PR)</span>
+  <nav aria-label="Rodapé">
+    <a href="../index.html">Todas as ferramentas</a>
+    <a href="https://www.instagram.com/pineapplepro_/" target="_blank" rel="noopener">@pineapplepro_</a>
+    <a href="../privacidade.html">Política de privacidade</a>
+  </nav>
+</footer>
+</body>
+</html>

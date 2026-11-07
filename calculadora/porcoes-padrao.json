@@ -1,0 +1,190 @@
+{
+  "sobre": "Medidas padrão de cozinha para quando o dono não sabe a grama (25/10/2026). Vale para todo o ramo de comida. O dono só confirma. Na ficha, a linha que usou uma medida daqui ganha um • e o aviso 'confira'. Para usar: escreva no campo vai, por exemplo '2 fatias de queijo' ou '1 xícara de açúcar'. Plural e acento não importam. Valores de PESO CRU (é o que se compra no pacote).",
+  "porcoes": {
+    "fatia de queijo": {
+      "quantidade": 20,
+      "unidade": "g"
+    },
+    "fatia de presunto": {
+      "quantidade": 15,
+      "unidade": "g"
+    },
+    "fatia de bacon": {
+      "quantidade": 15,
+      "unidade": "g"
+    },
+    "hambúrguer pequeno": {
+      "quantidade": 90,
+      "unidade": "g",
+      "tambem": [
+        "carne pequena",
+        "hambúrguer de 90"
+      ]
+    },
+    "hambúrguer médio": {
+      "quantidade": 120,
+      "unidade": "g",
+      "tambem": [
+        "carne média",
+        "hambúrguer",
+        "carne de hambúrguer"
+      ]
+    },
+    "hambúrguer grande": {
+      "quantidade": 150,
+      "unidade": "g",
+      "tambem": [
+        "carne grande"
+      ]
+    },
+    "concha de feijão": {
+      "quantidade": 100,
+      "unidade": "g"
+    },
+    "concha de molho": {
+      "quantidade": 100,
+      "unidade": "g"
+    },
+    "colher de molho": {
+      "quantidade": 15,
+      "unidade": "g",
+      "tambem": [
+        "colher de sopa",
+        "colher de maionese"
+      ]
+    },
+    "colher de chá": {
+      "quantidade": 5,
+      "unidade": "g"
+    },
+    "colher de requeijão": {
+      "quantidade": 30,
+      "unidade": "g",
+      "tambem": [
+        "colher de catupiry",
+        "colher de cream cheese"
+      ]
+    },
+    "punhado de queijo ralado": {
+      "quantidade": 20,
+      "unidade": "g"
+    },
+    "folha de alface": {
+      "quantidade": 10,
+      "unidade": "g"
+    },
+    "rodela de tomate": {
+      "quantidade": 15,
+      "unidade": "g"
+    },
+    "rodela de cebola": {
+      "quantidade": 10,
+      "unidade": "g"
+    },
+    "dente de alho": {
+      "quantidade": 5,
+      "unidade": "g"
+    },
+    "ovo": {
+      "quantidade": 1,
+      "unidade": "un"
+    },
+    "salsicha": {
+      "quantidade": 1,
+      "unidade": "un"
+    },
+    "filé de frango": {
+      "quantidade": 150,
+      "unidade": "g",
+      "tambem": [
+        "bife de frango"
+      ]
+    },
+    "bife de carne": {
+      "quantidade": 150,
+      "unidade": "g",
+      "tambem": [
+        "bife"
+      ]
+    },
+    "acompanhamento de fritas": {
+      "quantidade": 150,
+      "unidade": "g",
+      "tambem": [
+        "fritas do prato"
+      ]
+    },
+    "porção de fritas": {
+      "quantidade": 400,
+      "unidade": "g"
+    },
+    "porção de arroz cru": {
+      "quantidade": 80,
+      "unidade": "g",
+      "tambem": [
+        "arroz do prato"
+      ]
+    },
+    "pitada de sal": {
+      "quantidade": 1,
+      "unidade": "g"
+    },
+    "xícara de farinha de trigo": {
+      "quantidade": 120,
+      "unidade": "g",
+      "tambem": [
+        "xícara de farinha"
+      ]
+    },
+    "xícara de açúcar": {
+      "quantidade": 180,
+      "unidade": "g"
+    },
+    "xícara de leite": {
+      "quantidade": 240,
+      "unidade": "ml",
+      "tambem": [
+        "xícara de água"
+      ]
+    },
+    "xícara de óleo": {
+      "quantidade": 240,
+      "unidade": "ml"
+    },
+    "lata de leite condensado": {
+      "quantidade": 395,
+      "unidade": "g"
+    },
+    "caixinha de creme de leite": {
+      "quantidade": 200,
+      "unidade": "g",
+      "tambem": [
+        "caixa de creme de leite"
+      ]
+    },
+    "colher de sopa de manteiga": {
+      "quantidade": 15,
+      "unidade": "g",
+      "tambem": [
+        "colher de manteiga",
+        "colher de margarina"
+      ]
+    },
+    "colher de sopa de chocolate em pó": {
+      "quantidade": 10,
+      "unidade": "g",
+      "tambem": [
+        "colher de chocolate em pó",
+        "colher de achocolatado"
+      ]
+    },
+    "bola de sorvete": {
+      "quantidade": 60,
+      "unidade": "g"
+    },
+    "fatia de calabresa": {
+      "quantidade": 5,
+      "unidade": "g"
+    }
+  }
+}

@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pine Cost Pro · quanto sobra de cada venda</title>
+<meta name="description" content="Ficha técnica de verdade pra quem vende comida: o molho e a massa da casa entram na conta, o meio a meio também, e a conta mostra quanto sobra no balcão e no app. Comece com 3 fichas e 3 fotos grátis no Direct.">
+<meta name="theme-color" content="#0b0906">
+<link rel="icon" href="../img/marca.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../estilo.css">
+<link rel="stylesheet" href="pine-cost.css">
+<script type="module" src="../site.js"></script>
+<script type="module" src="pine-cost.js"></script>
+</head>
+<body data-produto="pine-cost" data-cor="amarelo">
+<div class="barra-topo">
+  <header class="envolve topo">
+    <a class="marca" href="../index.html"><img src="../img/marca.png" alt="Pineapple Pro" width="34" height="34"><span>Pineapple Pro</span></a>
+    <a class="topo-link" href="../index.html#vitrine">Todas as ferramentas</a>
+  </header>
+</div>
+
+<main>
+  <!-- O COMEÇO: a pergunta, o preço e o Direct; embaixo, o palco com o cupom da ficha -->
+  <section class="envolve produto-abre pc-abre">
+    <div class="pc-abre-texto">
+      <div class="selos">
+        <span class="selo-breve" data-so-trancado="pine-cost"><span data-cadeado></span>Em breve</span>
+        <span class="selo-aberto" data-so-aberto="pine-cost"><i></i>Aberto agora</span>
+      </div>
+      <p class="chapeu">Pine Cost Pro · ficha técnica de verdade</p>
+      <h1>Quanto sobra de cada coisa que você <em class="brilha">vende?</em></h1>
+      <div class="pc-abre-lado">
+        <p class="sub">Do pacote que você compra até o prato que sai: o molho da casa, a massa, o meio a meio. A conta de cada venda, no balcão e no app.</p>
+        <div class="precos" data-so-aberto="pine-cost">
+          <span class="etiqueta-bloco"><span class="etiqueta gratis" data-valor="pine-cost.gratis"></span><small>3 fichas técnicas + 3 fotos</small></span>
+          <span class="etiqueta-bloco"><span class="etiqueta pacote" data-valor="pine-cost.pacote"></span><small>o pacote completo</small></span>
+        </div>
+        <div class="acao" data-so-aberto="pine-cost">
+          <a class="botao" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="fichas">Quero as 3 fichas grátis</a>
+          <p class="ou-mande">Ou mande: “Quero as 3 fichas técnicas grátis 🍍”</p>
+          <p class="aviso" data-aviso aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- O PALCO (o cartão do Pine Cost na vitrine vira ele, na troca de página) -->
+    <div class="vidro palco inclina pc-palco" data-forca="1">
+      <p class="palco-rot"><span>Demonstração <span class="selo-exemplo">exemplo</span></span><span class="ao-vivo">Mexa aqui</span></p>
+      <div class="pc-palco-vivo">
+        <!-- 1. os 4 exemplos oficiais: deslizar com o dedo ou o mouse, as setas do teclado ou os botões -->
+        <div class="pc-exemplos">
+          <p class="pc-rot" id="pc-exemplos-rot">4 exemplos <span data-dica-exemplos>arraste pro lado</span></p>
+          <div class="pc-carrossel">
+            <div class="pc-trilho" data-trilho>
+              <div class="pc-fila" role="tablist" aria-labelledby="pc-exemplos-rot" data-fila></div>
+            </div>
+            <button type="button" class="pc-seta antes" data-anda="-1" aria-label="Exemplo anterior"></button>
+            <button type="button" class="pc-seta depois" data-anda="1" aria-label="Próximo exemplo"></button>
+          </div>
+        </div>
+
+        <div class="pc-mesa">
+          <!-- 2. a conta: o cupom da ficha V2, refeito pela calculadora a cada mexida (os números rolam) -->
+          <div class="pc-conta" id="pc-conta" role="tabpanel" data-conta>
+            <div class="pc-titulo">
+              <p class="pc-negocio" data-negocio></p>
+              <p class="pc-item"><span data-item aria-hidden="true"></span><span class="so-leitor" data-item-leitor></span></p>
+            </div>
+            <div class="pc-cupom" data-cupom aria-busy="true"></div>
+          </div>
+
+          <div class="pc-lado">
+            <!-- 3. o preço: a régua que se arrasta (com o dedo, o mouse, as setas, o − e o +) -->
+            <div class="pc-preco">
+              <p class="pc-rot" id="pc-preco-rot">Quanto você cobra no balcão</p>
+              <output class="pc-leitura rola" data-leitura for="pc-regua"></output>
+              <div class="pc-mapa" data-mapa aria-hidden="true"><div class="pc-mapa-zonas" data-mapa-zonas></div><i class="pc-marcador" data-marcador></i></div>
+              <div class="pc-regua-linha">
+                <button type="button" class="pc-passo" data-mexe="-1" aria-label="Cobrar 50 centavos a menos">−</button>
+                <div class="pc-regua" id="pc-regua" role="slider" tabindex="0" aria-labelledby="pc-preco-rot" data-regua>
+                  <div class="pc-regua-janela"><div class="pc-fita" data-fita></div></div>
+                  <i class="pc-agulha" aria-hidden="true"></i>
+                </div>
+                <button type="button" class="pc-passo" data-mexe="1" aria-label="Cobrar 50 centavos a mais">+</button>
+              </div>
+              <p class="pc-preco-nota" data-preco-nota>Arraste a régua: a conta muda na hora.</p>
+            </div>
+
+            <!-- 4. grátis × completa: o cadeado 3D do preço certo. Tocou, ele abre e a conta completa aparece -->
+            <div class="pc-certo" data-certo data-estado="trancado">
+              <button type="button" class="pc-tranca" data-cadeado-alvo data-abrir aria-controls="pc-certo-corpo" aria-label="Abrir o cadeado: a conta completa, com o preço certo"></button>
+              <div class="pc-certo-corpo" id="pc-certo-corpo" data-certo-corpo aria-live="polite">
+                <p class="pc-certo-rot">O preço certo</p>
+                <p class="pc-certo-frase">Toque no cadeado. A conta completa diz quanto cobrar no balcão.</p>
+              </div>
+              <p class="pc-certo-pacote" data-so-aberto="pine-cost">No Direct, a conta completa vem no pacote: <span class="etiqueta pacote" data-valor="pine-cost.pacote"></span></p>
+              <button type="button" class="pc-link pc-trancar" data-trancar hidden>Ver como sai na grátis</button>
+            </div>
+          </div>
+        </div>
+        <div class="pc-nota" data-nota></div>
+      </div>
+      <noscript><p class="pc-sem-js">A demonstração mexe com o JavaScript ligado. No Direct, a conta é a mesma.</p></noscript>
+    </div>
+  </section>
+
+  <!-- AS 5 CAMADAS: se montam com a rolagem; tocar numa mostra ela funcionando -->
+  <section class="envolve secao pc-camadas" aria-labelledby="camadas">
+    <div class="secao-cab revela">
+      <p class="chapeu">Do pacote ao prato</p>
+      <h2 id="camadas">A ficha técnica de uma cozinha inteira, em 5 camadas</h2>
+      <p>Antes da ficha vem o que você compra. Depois, o que você faz na cozinha. Só então o que você vende. Toque numa camada e veja ela funcionando.</p>
+    </div>
+    <div class="pc-obra">
+      <div class="pc-pilha" role="tablist" aria-orientation="vertical" aria-label="As 5 camadas" data-cena data-pilha>
+        <button type="button" class="pc-laje" role="tab" id="pc-laje-despensa" data-camada="despensa" aria-controls="pc-camada" aria-selected="true" tabindex="0" style="--i: 0">
+          <span class="pc-laje-n">1</span><span class="pc-laje-txt"><b>A despensa</b><small>O que você compra: o pacote, o preço, quanto aproveita depois de limpar, quanto tem agora e o mínimo.</small></span></button>
+        <button type="button" class="pc-laje" role="tab" id="pc-laje-receitas" data-camada="receitas" aria-controls="pc-camada" aria-selected="false" tabindex="-1" style="--i: 1">
+          <span class="pc-laje-n">2</span><span class="pc-laje-txt"><b>As receitas da casa</b><small>O molho, a massa, o tempero. Cada um com a ficha dele, e um pode ir dentro do outro.</small></span></button>
+        <button type="button" class="pc-laje" role="tab" id="pc-laje-ficha" data-camada="ficha" aria-controls="pc-camada" aria-selected="false" tabindex="-1" style="--i: 2">
+          <span class="pc-laje-n">3</span><span class="pc-laje-txt"><b>A ficha de cada produto</b><small>Você cobra, tira os ingredientes, o app, as contas da loja e o imposto. O que fica é seu.</small></span></button>
+        <button type="button" class="pc-laje" role="tab" id="pc-laje-meio" data-camada="meio" aria-controls="pc-camada" aria-selected="false" tabindex="-1" style="--i: 3">
+          <span class="pc-laje-n">4</span><span class="pc-laje-txt"><b>O meio a meio</b><small>A base inteira e metade de cada cobertura. Cobrando o sabor mais caro ou a média.</small></span></button>
+        <button type="button" class="pc-laje" role="tab" id="pc-laje-compras" data-camada="compras" aria-controls="pc-camada" aria-selected="false" tabindex="-1" style="--i: 4">
+          <span class="pc-laje-n">5</span><span class="pc-laje-txt"><b>A lista de compras</b><small>Quantas vai fazer na semana. A conta desce pelas camadas, tira o estoque e diz o que comprar.</small></span></button>
+      </div>
+      <div class="pc-camada vidro" id="pc-camada" role="tabpanel" aria-labelledby="pc-laje-despensa" data-camada-painel>
+        <div class="pc-camada-sem-js">
+          <p>Cada camada, aberta na ferramenta:</p>
+          <ul>
+            <li><a class="pc-abrir" href="../app/index.html#despensa">A despensa <span aria-hidden="true">→</span></a></li>
+            <li><a class="pc-abrir" href="../app/index.html#receitas">As receitas da casa <span aria-hidden="true">→</span></a></li>
+            <li><a class="pc-abrir" href="../app/index.html#cardapio/frango-requeijao">A ficha de cada produto <span aria-hidden="true">→</span></a></li>
+            <li><a class="pc-abrir" href="../app/index.html#meio">O meio a meio <span aria-hidden="true">→</span></a></li>
+            <li><a class="pc-abrir" href="../app/index.html#compras">A lista de compras <span aria-hidden="true">→</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p class="pc-obra-nota">A demonstração usa uma pizzaria de exemplo. No Direct, a conta é a mesma, com os produtos e os preços da sua cozinha.</p>
+  </section>
+
+  <!-- O QUE VOCÊ RECEBE: o grátis ↔ o pacote, que dá pra mexer -->
+  <section class="envolve secao pc-recebe" aria-labelledby="recebe">
+    <div class="secao-cab revela">
+      <p class="chapeu">O que você recebe</p>
+      <h2 id="recebe">Começa grátis. Paga se quiser a conta completa.</h2>
+    </div>
+    <div class="pc-recebe-mesa vidro" data-recebe data-plano="gratis">
+      <div class="pc-recebe-lado">
+        <div class="pc-alterna" role="group" aria-label="Ver o grátis ou o pacote">
+          <i class="pc-alterna-bola" aria-hidden="true"></i>
+          <button type="button" data-plano="gratis" aria-pressed="true">Grátis</button>
+          <button type="button" data-plano="pacote" aria-pressed="false">O pacote</button>
+        </div>
+        <div class="pc-quantos">
+          <div class="pc-quanto"><p><b class="rola" data-quantos="fichas"></b> <span>fichas técnicas</span></p><div class="pc-minis" data-minis="fichas" aria-hidden="true"></div></div>
+          <div class="pc-quanto"><p><b class="rola" data-quantos="fotos"></b> <span>fotos com cara de cardápio</span></p><div class="pc-minis" data-minis="fotos" aria-hidden="true"></div></div>
+        </div>
+        <p class="pc-recebe-preco" data-so-aberto="pine-cost"><span class="etiqueta gratis" data-valor="pine-cost.gratis" data-do-plano="gratis"></span><span class="etiqueta pacote" data-valor="pine-cost.pacote" data-do-plano="pacote"></span></p>
+      </div>
+      <!-- a foto: um exemplo real de foto revitalizada (foto/img/exemplo-real/, sem o nome do lugar). No grátis, a marca da
+           Pineapple no canto direito de cima, igual à da amostra; no pacote, sem a marca -->
+      <figure class="pc-foto" data-foto data-marca="sim">
+        <div class="pc-foto-quadro">
+          <img class="pc-foto-img" src="../foto/img/exemplo-real/lanche-duplo-depois.jpg" srcset="../foto/img/exemplo-real/lanche-duplo-depois-p.jpg 480w, ../foto/img/exemplo-real/lanche-duplo-depois.jpg 800w" sizes="(min-width: 760px) 360px, calc(100vw - 72px)" width="800" height="800" alt="Exemplo real: um lanche duplo, na foto revitalizada" loading="lazy" decoding="async">
+          <span class="pc-foto-marca" aria-hidden="true"><img src="../img/marca.png" alt="" aria-hidden="true" width="40" height="40"><span><b>Pineapple Pro</b><small>amostra grátis</small></span></span>
+        </div>
+        <figcaption><span class="selo-exemplo">exemplo real</span> <span data-foto-legenda>No grátis, a foto vai com a marca da Pineapple no canto.</span></figcaption>
+      </figure>
+    </div>
+    <div class="planos pc-planos">
+      <article class="plano" data-plano-cartao="gratis">
+        <p class="plano-nome">Pra começar</p>
+        <span class="etiqueta gratis" data-valor="pine-cost.gratis"></span>
+        <ul data-lista="pine-cost.gratis_inclui"></ul>
+      </article>
+      <article class="plano destaque" data-plano-cartao="pacote">
+        <p class="plano-nome">O pacote completo</p>
+        <span class="etiqueta pacote" data-valor="pine-cost.pacote"></span>
+        <ul data-lista="pine-cost.pacote_inclui"></ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="como">
+    <div class="secao-cab revela">
+      <p class="chapeu">Como funciona</p>
+      <h2 id="como">Tudo pelo Direct, em 3 passos</h2>
+    </div>
+    <ol class="passos">
+      <li class="vidro revela"><b>Chama no Direct</b><p>O botão copia a frase. É só colar e mandar.</p></li>
+      <li class="vidro revela" style="--atraso: .08s"><b>Manda a foto e diz o que vende</b><p>O produto, os ingredientes, o tamanho do pacote e quanto você paga e cobra.</p></li>
+      <li class="vidro revela" style="--atraso: .16s"><b>Recebe no Direct</b><p>A ficha com a conta pronta e a foto revitalizada, sem inventar ingrediente.</p></li>
+    </ol>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="perguntas">
+    <div class="secao-cab revela">
+      <p class="chapeu">Perguntas</p>
+      <h2 id="perguntas">Antes de chamar</h2>
+    </div>
+    <div class="perguntas pc-perguntas">
+      <details><summary>A conta é exata?</summary><div class="pc-resp"><p>É uma estimativa. O preço do ingrediente muda a cada compra, e as contas da loja e o imposto variam. Por isso a sobra vem com a faixa embaixo.</p></div></details>
+      <details><summary>Eu faço o meu molho. Entra na conta?</summary><div class="pc-resp"><p>Entra. Diga o que vai no molho e quanto ele rende: ele vira uma linha da ficha, com o custo do quilo.</p></div></details>
+      <details><summary>Serve pra pizza meio a meio?</summary><div class="pc-resp"><p>Serve. A base vai inteira e cada cobertura vai pela metade. A conta mostra quanto sobra cobrando o sabor mais caro ou a média.</p></div></details>
+      <details><summary>Preciso fazer cadastro ou baixar app?</summary><div class="pc-resp"><p>Não. É tudo no Direct do @pineapplepro_.</p></div></details>
+      <details><summary>Serve pra quem ainda vai abrir?</summary><div class="pc-resp"><p>Serve. Você manda o que pretende vender e o preço que pensa em cobrar.</p></div></details>
+      <details><summary>Quem responde no Direct?</summary><div class="pc-resp"><p>O atendimento é automático, com um roteiro aprovado pela Pineapple.</p></div></details>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="final">
+    <div class="maior vidro revela">
+      <div>
+        <h2 id="final">Comece pelas 3 grátis</h2>
+        <p>Você vê a conta de 3 produtos e decide depois.</p>
+      </div>
+      <div class="acao" data-so-aberto="pine-cost">
+        <a class="botao" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="fichas">Quero as 3 fichas grátis</a>
+        <p class="ou-mande">Ou mande: “Quero as 3 fichas técnicas grátis 🍍”</p>
+        <p class="aviso" data-aviso aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="envolve rodape">
+  <span>Pineapple Pro · Maringá (PR)</span>
+  <nav aria-label="Rodapé">
+    <a href="../index.html">Todas as ferramentas</a>
+    <a href="https://www.instagram.com/pineapplepro_/" target="_blank" rel="noopener">@pineapplepro_</a>
+    <a href="../privacidade.html">Política de privacidade</a>
+  </nav>
+</footer>
+</body>
+</html>

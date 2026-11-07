@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <title>Exemplo: um estudo de luz, a esfera de gesso num prato, com a luz vindo da esquerda</title>
+  <!-- O lugar da foto da pessoa enquanto ela não escolhe a dela (07/11/2026). Desenho geométrico, de traço fino:
+       nada de comida desenhada. A esfera de gesso é o objeto de estudo de luz de sempre. -->
+  <defs>
+    <linearGradient id="mesa" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#2c1f14"/>
+      <stop offset="0.55" stop-color="#1c140d"/>
+      <stop offset="1" stop-color="#110c08"/>
+    </linearGradient>
+    <radialGradient id="janela" cx="0" cy="0.4" r="1">
+      <stop offset="0" stop-color="#ffe6bd" stop-opacity="0.4"/>
+      <stop offset="0.45" stop-color="#ffc98f" stop-opacity="0.11"/>
+      <stop offset="1" stop-color="#ffc98f" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="prato" cx="0.42" cy="0.42" r="0.72">
+      <stop offset="0" stop-color="#30261c"/>
+      <stop offset="1" stop-color="#16110c"/>
+    </radialGradient>
+    <linearGradient id="aro" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff3dc" stop-opacity="0.6"/>
+      <stop offset="0.5" stop-color="#fff3dc" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#fff3dc" stop-opacity="0.06"/>
+    </linearGradient>
+    <radialGradient id="sombra" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#000" stop-opacity="0.72"/>
+      <stop offset="0.6" stop-color="#000" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="esfera" cx="0.36" cy="0.32" r="0.76">
+      <stop offset="0" stop-color="#fffdf7"/>
+      <stop offset="0.22" stop-color="#efe7d8"/>
+      <stop offset="0.55" stop-color="#b6a893"/>
+      <stop offset="0.82" stop-color="#574a3c"/>
+      <stop offset="1" stop-color="#372d24"/>
+    </radialGradient>
+    <radialGradient id="rebate" cx="0.66" cy="0.94" r="0.42">
+      <stop offset="0" stop-color="#d0925a" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#d0925a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1000" height="1000" fill="url(#mesa)"/>
+  <g fill="none" stroke="#f7f4ec" stroke-opacity="0.045" stroke-width="2">
+    <path d="M-20 150 C 260 120 620 180 1020 140"/>
+    <path d="M-20 290 C 300 262 640 318 1020 280"/>
+    <path d="M-20 860 C 280 830 660 890 1020 850"/>
+    <path d="M-20 960 C 320 932 640 988 1020 950"/>
+  </g>
+  <rect width="1000" height="1000" fill="url(#janela)"/>
+  <ellipse cx="500" cy="650" rx="380" ry="158" fill="url(#prato)"/>
+  <ellipse cx="500" cy="650" rx="380" ry="158" fill="none" stroke="url(#aro)" stroke-width="3"/>
+  <ellipse cx="500" cy="657" rx="282" ry="112" fill="none" stroke="#fff3dc" stroke-opacity="0.12" stroke-width="2"/>
+  <ellipse cx="592" cy="676" rx="215" ry="52" fill="url(#sombra)"/>
+  <circle cx="488" cy="496" r="182" fill="url(#esfera)"/>
+  <circle cx="488" cy="496" r="182" fill="url(#rebate)"/>
+</svg>

@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cardápio digital · Pineapple Pro</title>
+<meta name="description" content="O cardápio da sua loja no celular do cliente, por link ou QR Code, com o preço certo vindo da ficha técnica. Em breve na Pineapple Pro.">
+<meta name="theme-color" content="#0b0906">
+<link rel="icon" href="../img/marca.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../estilo.css">
+<link rel="stylesheet" href="cardapio-digital.css">
+<script type="module" src="../site.js"></script>
+<script type="module" src="cardapio-digital.js"></script>
+</head>
+<body data-produto="cardapio-digital" data-cor="laranja">
+<div class="barra-topo">
+  <header class="envolve topo">
+    <a class="marca" href="../index.html"><img src="../img/marca.png" alt="Pineapple Pro" width="34" height="34"><span>Pineapple Pro</span></a>
+    <a class="topo-link" href="../index.html#vitrine">Todas as ferramentas</a>
+  </header>
+</div>
+
+<main>
+  <section class="envolve produto-abre cd-abre" aria-labelledby="titulo">
+    <div class="cd-texto">
+      <div class="cd-titulo">
+        <div class="selos">
+          <span class="selo-breve" data-so-trancado="cardapio-digital"><span data-cadeado></span>Em breve</span>
+          <span class="selo-aberto" data-so-aberto="cardapio-digital"><i></i>Aberto agora</span>
+        </div>
+        <p class="chapeu">O cardápio no celular do cliente</p>
+        <h1 id="titulo">O preço certo <em class="brilha">direto no cardápio</em></h1>
+      </div>
+      <div class="cd-lado">
+        <p class="sub">O cliente abre pelo link ou pelo QR Code e monta o pedido. O preço de cada item sai da sua ficha técnica, não da cabeça.</p>
+        <div class="acao">
+          <a class="botao" href="../pine-cost/">Enquanto isso, comece pelas fichas grátis <span class="seta" aria-hidden="true">→</span></a>
+          <p class="ou-mande">A ficha técnica já está aberta no Pine Cost Pro.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="vidro palco cd-palco" data-cd>
+      <p class="palco-rot"><span>Demonstração</span><span class="ao-vivo">Mexa aqui</span></p>
+      <div class="cd-demo">
+
+        <section class="cd-dono" aria-labelledby="cd-dono-tit">
+          <h2 class="cd-rot" id="cd-dono-tit">O seu lado <small>só você vê</small></h2>
+          <div class="cd-controle">
+            <span class="cd-num" aria-hidden="true">1</span>
+            <div class="cd-controle-corpo">
+              <div class="cd-controle-cab">
+                <label for="cd-subiu">E se o que você compra subir?</label>
+                <output id="cd-subiu-txt" for="cd-subiu" data-cd-subiu-txt>+0%</output>
+              </div>
+              <input class="cd-faixa chama" type="range" id="cd-subiu" min="0" max="100" step="1" value="0" aria-describedby="cd-subiu-nota" data-cd-subiu>
+              <p class="cd-faixa-pontas" aria-hidden="true"><span>hoje</span><span>o dobro</span></p>
+              <p class="cd-nota" id="cd-subiu-nota">Simulação: o pacote de cada ingrediente e da embalagem fica mais caro. O item que passa a dar prejuízo acende.</p>
+            </div>
+          </div>
+          <div class="cd-controle">
+            <span class="cd-num" aria-hidden="true">2</span>
+            <div class="cd-controle-corpo">
+              <button class="cd-chave" type="button" role="switch" aria-checked="false" aria-describedby="cd-agora" data-cd-chave>
+                <span class="cd-chave-trilho" aria-hidden="true"><i></i></span>
+                <span class="cd-chave-txt">Usar o preço certo da ficha</span>
+              </button>
+              <p class="cd-nota" id="cd-agora" aria-live="polite" data-cd-agora>No cardápio agora: o seu preço.</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="cd-cliente">
+          <h2 class="cd-rot" id="cd-cliente-tit">O que o cliente vê <small>pelo link ou QR Code</small></h2>
+          <div class="cd-celular inclina" data-forca="5">
+            <div class="cd-tela" data-cd-tela role="region" aria-labelledby="cd-cliente-tit">
+              <span class="cd-ilha" aria-hidden="true"></span>
+              <div class="cd-fundo" data-cd-fundo>
+                <p class="cd-endereco" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="7" width="9" height="6.5" rx="1.6"/><path d="M5.5 7V5.2a2.5 2.5 0 0 1 5 0V7"/></svg>o link da sua loja</p>
+                <header class="cd-loja">
+                  <p class="cd-loja-nome">Cardápio de exemplo <span class="selo-exemplo">exemplo</span></p>
+                  <p class="cd-loja-sub">Os 4 exemplos da ficha técnica, num cardápio só</p>
+                </header>
+                <div class="cd-abas" role="group" aria-label="Categorias" data-cd-abas></div>
+                <div class="cd-lista" data-cd-lista aria-busy="true"></div>
+                <button class="cd-sacola" type="button" data-cd-abrir-pedido data-vazio="sim" tabindex="-1" aria-hidden="true">
+                  <span class="cd-sacola-qtd" data-cd-qtd>0</span>
+                  <span class="cd-sacola-txt">Ver pedido</span>
+                  <span class="cd-sacola-total" data-cd-total></span>
+                </button>
+              </div>
+              <div class="cd-veu" data-cd-fechar aria-hidden="true"></div>
+              <div class="cd-folha" data-cd-folha="item" role="dialog" aria-labelledby="cd-item-nome" aria-hidden="true"></div>
+              <div class="cd-folha" data-cd-folha="pedido" role="dialog" aria-labelledby="cd-pedido-tit" aria-hidden="true"></div>
+            </div>
+            <noscript><p class="cd-sem-js">A demonstração precisa do JavaScript ligado.</p></noscript>
+          </div>
+        </div>
+
+        <section class="cd-precos" aria-labelledby="cd-precos-tit">
+          <h2 class="cd-rot" id="cd-precos-tit">Seu preço e o da ficha <small>a conta da calculadora do Pine Cost Pro</small></h2>
+          <p class="cd-resumo" aria-live="polite" data-cd-resumo></p>
+          <ul class="cd-comparar" data-cd-comparar></ul>
+          <p class="cd-nota cd-nota-fim">É estimativa, como a ficha: o preço do ingrediente muda a cada compra. Os itens são os 4 exemplos oficiais da ficha técnica, marcados “exemplo”.</p>
+        </section>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="o-que-e">
+    <div class="secao-cab">
+      <p class="chapeu">O que é</p>
+      <h2 id="o-que-e">O cardápio que sabe a conta</h2>
+      <p>O cliente vê o cardápio da sua loja no celular. Você vê quanto sobra de cada item.</p>
+    </div>
+    <div class="recursos">
+      <article class="vidro recurso revela">
+        <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="6" height="6" rx="1.2"/><rect x="14.5" y="3.5" width="6" height="6" rx="1.2"/><rect x="3.5" y="14.5" width="6" height="6" rx="1.2"/><path d="M14.5 14.5h2.5v2.5M20.5 14.5v.01M14.5 20.5h.01M18 18h2.5v2.5H18z"/></svg></span>
+        <b>Abre pelo link ou QR Code</b>
+        <p>O link vai na bio e no Direct. O QR Code, na mesa e no balcão. O cliente não baixa nada.</p>
+      </article>
+      <article class="vidro recurso revela" style="--atraso: .08s">
+        <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.5 3.5h8l3.5 3.5v13.5h-11.5z"/><path d="M14.5 3.5V7H18"/><path d="M9.5 11.5h5M9.5 14.5h3"/><path d="m9.5 18 1.6 1.4 3-3"/></svg></span>
+        <b>O preço sai da ficha</b>
+        <p>Com a chave ligada, cada preço vem da ficha técnica do Pine Cost Pro. Subiu o que você compra, a conta muda junto.</p>
+      </article>
+      <article class="vidro recurso revela" style="--atraso: .16s">
+        <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 8.5h14l-1.2 11.5H6.2z"/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5"/><path d="M9.5 13.5h5"/></svg></span>
+        <b>O pedido chega somado</b>
+        <p>O cliente escolhe, vê o total e manda o pedido pronto para o WhatsApp da loja.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="como">
+    <div class="secao-cab">
+      <p class="chapeu">Como vai funcionar</p>
+      <h2 id="como">Da ficha ao celular do cliente</h2>
+    </div>
+    <ol class="passos">
+      <li class="revela"><b>Faz a ficha de cada item</b><p>No Pine Cost Pro: os ingredientes, o pacote e quanto você cobra.</p></li>
+      <li class="revela" style="--atraso: .08s"><b>Liga a chave do preço certo</b><p>O cardápio usa o preço da ficha. Se o seu já deixa mais, fica o seu.</p></li>
+      <li class="revela" style="--atraso: .16s"><b>Manda o link</b><p>Na bio, no Direct e no QR Code da mesa. O cliente pede pelo celular.</p></li>
+    </ol>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="perguntas">
+    <div class="secao-cab">
+      <p class="chapeu">Perguntas</p>
+      <h2 id="perguntas">Antes de ele abrir</h2>
+    </div>
+    <div class="perguntas">
+      <details><summary>Já dá pra usar?</summary><p>Ainda não. Esta página mostra como ele vai ser. Quando abrir, o aviso sai no @pineapplepro_.</p></details>
+      <details><summary>Qual preço a ficha põe no cardápio?</summary><p>O do topo da média do ramo: na conta da ficha, o preço que deixa uns 25% de lucro. Ele só entra quando o seu fica abaixo. Se o seu já deixa isso ou mais, fica o seu.</p></details>
+      <details><summary>O preço muda sozinho?</summary><p>Só com a chave ligada. Desligada, vale o preço que você escreveu.</p></details>
+      <details><summary>O cliente vê quanto sobra pra mim?</summary><p>Não. O cliente vê o cardápio e o preço. A conta fica do seu lado.</p></details>
+      <details><summary>A conta é exata?</summary><p>É uma estimativa, a mesma da ficha técnica. O preço do ingrediente muda a cada compra, e as contas da loja e o imposto variam.</p></details>
+      <details><summary>De quem são os itens da demonstração?</summary><p>De ninguém. São os 4 exemplos oficiais da ficha técnica, de 4 negócios de exemplo: uma lanchonete, uma cozinha, um bar e uma doceria.</p></details>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="final">
+    <div class="maior">
+      <div>
+        <h2 id="final">O preço certo começa na ficha</h2>
+        <p>Enquanto o cardápio não abre, faça a ficha técnica dos seus produtos no Pine Cost Pro.</p>
+      </div>
+      <div class="acao">
+        <a class="botao" href="../pine-cost/">Ver o Pine Cost Pro <span class="seta" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="envolve rodape">
+  <span>Pineapple Pro · Maringá (PR)</span>
+  <nav aria-label="Rodapé">
+    <a href="../index.html">Todas as ferramentas</a>
+    <a href="https://www.instagram.com/pineapplepro_/" target="_blank" rel="noopener">@pineapplepro_</a>
+    <a href="../privacidade.html">Política de privacidade</a>
+  </nav>
+</footer>
+</body>
+</html>

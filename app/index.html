@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pine Cost Pro · a sua cozinha (prévia)</title>
+<meta name="description" content="Prévia da tela de quem usa o Pine Cost Pro: a despensa (o preço e o aproveitamento), as receitas da casa (a perda no preparo), o cardápio com os tamanhos e a borda, o meio a meio que gira, a lista de compras viva e as contas da loja. Protótipo, sem login e sem gravar nada.">
+<meta name="theme-color" content="#0b0906">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/marca.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../estilo.css">
+<link rel="stylesheet" href="app.css">
+<script type="module" src="../site.js"></script>
+<script type="module" src="app.js"></script>
+</head>
+<body class="app" data-produto="pine-cost" data-cor="amarelo">
+<p class="faixa-previa" role="note">Prévia · protótipo para ajustar a tela. <b>Nada é gravado</b> e nada sai daqui.</p>
+
+<div class="app-casca">
+  <aside class="app-menu" aria-label="Menu">
+    <a class="marca" href="../index.html"><img src="../img/marca.png" alt="Pineapple Pro" width="34" height="34"><span class="marca-dupla">Pine Cost Pro<small>da Pineapple Pro</small></span></a>
+
+    <div class="cozinha-troca">
+      <label class="menu-rot" for="cozinha-menu">A cozinha</label>
+      <select id="cozinha-menu" data-trocar-cozinha></select>
+    </div>
+
+    <button type="button" class="busca-botao" data-acao="buscar" aria-keyshortcuts="Meta+K Control+K /"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5"/></svg><span>Buscar na cozinha</span><kbd data-atalho>⌘K</kbd></button>
+
+    <nav class="passos-nav" aria-label="Os 5 passos">
+      <a href="#despensa" data-vai="despensa" aria-keyshortcuts="1"><span class="n">1</span><span class="t">Despensa<small data-saida="menu-despensa"></small></span></a>
+      <a href="#receitas" data-vai="receitas" aria-keyshortcuts="2"><span class="n">2</span><span class="t">Receitas da casa<small data-saida="menu-receitas"></small></span></a>
+      <a href="#cardapio" data-vai="cardapio" aria-keyshortcuts="3"><span class="n">3</span><span class="t">Cardápio<small data-saida="menu-cardapio"></small></span></a>
+      <a href="#meio" data-vai="meio" aria-keyshortcuts="4"><span class="n">4</span><span class="t">Meio a meio<small data-saida="menu-meio"></small></span></a>
+      <a href="#compras" data-vai="compras" aria-keyshortcuts="5"><span class="n">5</span><span class="t">Lista de compras<small data-saida="menu-compras"></small></span></a>
+    </nav>
+
+    <a class="loja-menu" href="#loja" data-vai="loja"><span class="n" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-2-1.4-2 1.4-2-1.4-2 1.4-2-1.4L6 21z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span><span class="t">As contas da loja<small data-saida="menu-loja"></small></span></a>
+
+    <div class="app-outras">
+      <p class="menu-rot">Outras ferramentas</p>
+      <ul class="lista-trancados" data-ferramentas data-base="../" data-sem="pine-cost"></ul>
+    </div>
+
+    <div class="app-plano">
+      <p class="menu-rot">Seu plano</p>
+      <p class="plano-linha"><span class="etiqueta gratis" data-valor="pine-cost.gratis"></span><span>3 fichas + 3 fotos</span></p>
+      <p class="plano-linha"><span class="etiqueta pacote" data-valor="pine-cost.pacote"></span><span>o pacote completo</span></p>
+      <div class="acao" data-so-aberto="pine-cost">
+        <a class="botao" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="fichas">Quero com a minha cozinha</a>
+        <p class="ou-mande">Ou mande: “Quero as 3 fichas técnicas grátis 🍍”</p>
+        <p class="aviso" data-aviso aria-live="polite"></p>
+      </div>
+    </div>
+  </aside>
+
+  <header class="app-topo">
+    <a class="marca" href="../index.html"><img src="../img/marca.png" alt="Pineapple Pro" width="30" height="30"><span>Pine Cost Pro</span></a>
+    <label class="cozinha-chip"><span class="so-leitor">A cozinha</span><select data-trocar-cozinha></select></label>
+    <button type="button" class="topo-icone" data-acao="buscar" aria-label="Buscar na cozinha"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5"/></svg></button>
+    <a class="topo-icone" href="#ferramentas" data-vai="ferramentas" aria-label="Outras ferramentas"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg></a>
+  </header>
+
+  <main class="app-conteudo" id="conteudo" tabindex="-1">
+    <div data-tela><p class="carregando">Montando a cozinha…</p></div>
+
+    <!-- AS OUTRAS FERRAMENTAS (o menu do celular) -->
+    <section class="vista" data-vista="ferramentas" aria-labelledby="t-ferramentas" hidden>
+      <header class="passo-cab"><p class="chapeu">Pineapple Pro</p><h1 id="t-ferramentas">Ferramentas</h1>
+        <p class="sub">O Pine Cost Pro está aberto. As outras abrem quando estiverem prontas.</p></header>
+      <a class="loja-menu loja-menu-solto" href="#loja" data-vai="loja"><span class="n" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-2-1.4-2 1.4-2-1.4-2 1.4-2-1.4L6 21z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span><span class="t">As contas da loja<small data-saida="menu-loja"></small></span></a>
+      <ul class="vitrine" data-vitrine data-base="../" data-sem="pine-cost"></ul>
+      <div class="app-plano solto">
+        <p class="menu-rot">Seu plano</p>
+        <p class="plano-linha"><span class="etiqueta gratis" data-valor="pine-cost.gratis"></span><span>3 fichas + 3 fotos</span></p>
+        <p class="plano-linha"><span class="etiqueta pacote" data-valor="pine-cost.pacote"></span><span>o pacote completo</span></p>
+        <div class="acao" data-so-aberto="pine-cost">
+          <a class="botao" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="fichas">Quero com a minha cozinha</a>
+          <p class="ou-mande">Ou mande: “Quero as 3 fichas técnicas grátis 🍍”</p>
+          <p class="aviso" data-aviso aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<nav class="app-barra" aria-label="Os 5 passos">
+  <a href="#despensa" data-vai="despensa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5 12 4l8 4.5v10.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M8 20v-6h8v6"/><path d="M8 11h8"/></svg>Despensa</a>
+  <a href="#receitas" data-vai="receitas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 4 8 4-8 4-8-4z"/><path d="m4 12 8 4 8-4"/><path d="m4 16 8 4 8-4"/></svg>Receitas</a>
+  <a href="#cardapio" data-vai="cardapio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10a2 2 0 0 1 2 2v14l-3-2-2 2-2-2-2 2-2-2-3 2V6a2 2 0 0 1 2-2z"/><path d="M9 9h6M9 13h4"/></svg>Cardápio</a>
+  <a href="#meio" data-vai="meio"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17"/><path d="m6 6 1.8 1.8M18 6l-1.8 1.8"/></svg>Meio a meio</a>
+  <a href="#compras" data-vai="compras"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>Compras</a>
+</nav>
+
+<!-- A BUSCA RÁPIDA (⌘K, Ctrl+K ou /): qualquer insumo, receita ou produto; Enter leva até ele -->
+<dialog class="busca" data-busca-caixa aria-label="Buscar na cozinha">
+  <div class="busca-caixa">
+    <label class="busca-campo"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5"/></svg><span class="so-leitor">Buscar</span><input type="search" data-busca placeholder="Tomate, molho, broto, aluguel…" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="busca-lista" aria-autocomplete="list"><kbd>esc</kbd></label>
+    <ul class="busca-lista" id="busca-lista" role="listbox" aria-label="O que achou" data-busca-lista></ul>
+    <p class="busca-dica"><kbd>↑</kbd> <kbd>↓</kbd> escolhem · <kbd>Enter</kbd> vai · <kbd>1</kbd> a <kbd>5</kbd> trocam de passo</p>
+  </div>
+</dialog>
+
+<!-- O AVISO COM "DESFAZER" (por alguns segundos) -->
+<div class="aviso-desfazer" data-aviso-desfazer role="status" aria-live="polite"><span data-aviso-texto></span><button type="button" class="botao-mini" data-acao="desfazer">Desfazer</button></div>
+</body>
+</html>

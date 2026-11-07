@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vídeo editado · Pineapple Pro</title>
+<meta name="description" content="O vídeo de celular do seu produto, editado curto e em pé: 3 momentos, zoom, velocidade e o texto por cima. Teste aqui o jeito da edição com um vídeo seu.">
+<meta name="theme-color" content="#0b0906">
+<link rel="icon" href="../img/marca.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../estilo.css">
+<link rel="stylesheet" href="video.css">
+<script type="module" src="../site.js"></script>
+<script type="module" src="video.js"></script>
+</head>
+<body data-produto="video" data-cor="verde">
+<svg class="filtros" width="0" height="0" aria-hidden="true" focusable="false">
+  <!-- o borrão de velocidade da 1ª troca (só para os lados, como o hblur do robô) -->
+  <filter id="borrao-video" x="-5%" y="0" width="110%" height="100%" color-interpolation-filters="sRGB"><feGaussianBlur data-desfoque stdDeviation="0 0"/></filter>
+</svg>
+<div class="barra-topo">
+  <header class="envolve topo">
+    <a class="marca" href="../index.html"><img src="../img/marca.png" alt="Pineapple Pro" width="34" height="34"><span>Pineapple Pro</span></a>
+    <a class="topo-link" href="../index.html#vitrine">Todas as ferramentas</a>
+  </header>
+</div>
+
+<main>
+  <section class="envolve produto-abre video-abre">
+    <div class="video-texto">
+      <div class="selos">
+        <span class="selo-breve" data-so-trancado="video"><span data-cadeado></span>Em breve</span>
+        <span class="selo-aberto" data-so-aberto="video"><i></i>Aberto agora</span>
+      </div>
+      <p class="chapeu">Edição curta, no ritmo certo</p>
+      <h1>Do vídeo do celular ao vídeo que <em class="brilha">dá fome</em></h1>
+      <p class="sub">Você manda o vídeo do jeito que gravou. Ele volta curto, em pé, com corte, zoom, velocidade e o texto por cima.</p>
+      <div class="precos" data-so-aberto="video">
+        <span class="etiqueta-bloco"><span class="etiqueta gratis" data-valor="video.gratis"></span><small>até 3 vídeos, com a marca</small></span>
+      </div>
+      <div class="acao" data-so-aberto="video">
+        <a class="botao" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="fichas">Começar grátis no Direct</a>
+        <p class="ou-mande">Ou mande: “Quero as 3 fichas técnicas grátis 🍍”</p>
+        <p class="aviso" data-aviso aria-live="polite"></p>
+      </div>
+      <div class="caminho" data-so-trancado="video">
+        <p>Sozinha, esta ferramenta abre em breve. <b>Hoje, a edição já vem junto com as fichas técnicas grátis do Pine Cost Pro: é só mandar o vídeo do produto.</b></p>
+        <a class="botao claro" href="../pine-cost/">Ver o Pine Cost Pro <span class="seta" aria-hidden="true">→</span></a>
+      </div>
+      <ol class="video-ritmo" aria-label="Os 3 cortes">
+        <li><i class="r0" aria-hidden="true"></i><b>Destaque</b><span>chega perto</span></li>
+        <li><i class="r1" aria-hidden="true"></i><b>Ação</b><span>1,8x e soco</span></li>
+        <li><i class="r2" aria-hidden="true"></i><b>Detalhe</b><span>câmera lenta</span></li>
+      </ol>
+    </div>
+
+    <div class="vidro palco video-palco" data-mesa>
+      <p class="palco-rot"><span>Mesa de edição</span><span class="ao-vivo">Arraste a agulha</span></p>
+      <div class="mesa-grade">
+        <div class="monitor">
+          <span class="selo-exemplo monitor-exemplo" aria-hidden="true">Exemplo</span>
+          <span class="monitor-ritmo" data-ritmo hidden>4x mais devagar</span>
+          <div class="tela" data-tela role="img" aria-label="Prévia da edição: os 3 cortes, o nome do produto, a frase, a marca no canto e o final com a logo">
+            <div class="corte"><div class="corte-zoom"><div class="arte arte-destaque" aria-hidden="true"><i class="mesa"></i><i class="janela"></i><i class="prato"></i><i class="sombra"></i><i class="esfera"></i></div></div></div>
+          </div>
+          <div class="monitor-barra">
+            <button class="redondo tocar" type="button" data-tocar aria-label="Tocar a prévia">
+              <svg class="ic-tocar" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+              <svg class="ic-pausar" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.6v14H7zM13.4 5H17v14h-3.6z"/></svg>
+            </button>
+            <span class="agora"><span class="agora-corte" data-agora></span><b class="agora-vel rola" data-num-vel>1,0x</b></span>
+            <button class="redondo som" type="button" data-som aria-pressed="false" aria-label="Ligar o som">
+              <svg class="ic-mudo" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="m16 9.5 5 5M21 9.5l-5 5"/></svg>
+              <svg class="ic-som" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="mesa-ver">
+          <p class="mini-rot" id="rot-ver">O que ver</p>
+          <div class="chips" role="group" aria-labelledby="rot-ver">
+            <button class="chip" type="button" aria-pressed="true" data-ver="tudo">A edição</button>
+            <button class="chip ver-corte v0" type="button" aria-pressed="false" data-ver="0"><i aria-hidden="true"></i>Destaque</button>
+            <button class="chip ver-corte v1" type="button" aria-pressed="false" data-ver="1"><i aria-hidden="true"></i>Ação</button>
+            <button class="chip ver-corte v2" type="button" aria-pressed="false" data-ver="2"><i aria-hidden="true"></i>Detalhe</button>
+            <button class="chip ver-devagar" type="button" aria-pressed="false" data-ver="devagar"><span class="quarto" aria-hidden="true">¼</span>Trocas devagar</button>
+          </div>
+        </div>
+
+        <div class="modo" data-modo data-jeito="tudo">
+          <p class="modo-titulo" data-modo-titulo>A edição inteira</p>
+          <div class="modo-numeros">
+            <p><small>Zoom</small><b class="rola" data-num-zoom>1,00x</b></p>
+            <p class="modo-tempo"><small data-num-tempo-rot>Na edição</small><b class="rola" data-num-tempo>0,0 de 9,1 s</b></p>
+          </div>
+          <span class="modo-barra" aria-hidden="true"><i data-modo-barra></i></span>
+          <p class="modo-diz" data-modo-diz aria-live="polite">Os 3 cortes, as trocas e o final, do jeito que o robô monta. Arraste a agulha pra ver quadro a quadro.</p>
+        </div>
+
+        <div class="linha" data-linha></div>
+
+        <div class="ajustes">
+          <div class="controle">
+            <p class="mini-rot" id="rot-versao">A versão</p>
+            <div class="chips" role="group" aria-labelledby="rot-versao">
+              <button class="chip" type="button" aria-pressed="true" data-versao="marca">Com a marca</button>
+              <button class="chip" type="button" aria-pressed="false" data-versao="limpa">Sem a marca</button>
+            </div>
+            <p class="nota">Com a marca: o selo no canto e a logo no fim. Sem a marca: nenhum dos dois.</p>
+          </div>
+          <div class="controle">
+            <label class="mini-rot" for="video-nome">O nome do produto</label>
+            <input class="campo" id="video-nome" type="text" maxlength="40" placeholder="Seu produto" autocomplete="off" spellcheck="false" data-nome>
+          </div>
+          <div class="controle">
+            <label class="mini-rot" for="video-estilo">A frase do fim</label>
+            <select class="campo" id="video-estilo" data-estilo><option value="geral">Feito na hora</option></select>
+            <p class="nota">No robô, a IA só escolhe a frase que combina. Quem escreve é o código.</p>
+          </div>
+        </div>
+      </div>
+      <noscript><p class="nota">A mesa de edição precisa do JavaScript ligado.</p></noscript>
+
+      <div class="soltar" data-soltar>
+        <input class="so-leitor" type="file" id="video-arquivo" accept="video/*" data-arquivo>
+        <label class="soltar-alvo" for="video-arquivo">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="13.5" height="14" rx="2.8"/><path d="m16 10 5.5-3v10L16 14"/></svg>
+          <b data-soltar-titulo>Agora com um vídeo do seu produto</b>
+          <span>Toque aqui ou solte o vídeo em qualquer lugar da página</span>
+        </label>
+        <button class="voltar-exemplo" type="button" data-voltar hidden>Voltar pro exemplo</button>
+        <p class="local"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.4 3.2 8.4 7.5 9.5 4.3-1.1 7.5-5.1 7.5-9.5V6L12 3z"/><path d="m9 12 2 2 4-4"/></svg><span>O vídeo não sai do seu aparelho. Ele abre só aqui, no navegador, e some quando você fecha a página.</span></p>
+        <p class="aviso-video" data-aviso-video aria-live="polite"></p>
+        <p class="previa">É uma prévia do jeito da edição, feita aqui no seu navegador. O vídeo de verdade sai no Direct.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="cortes">
+    <div class="secao-cab revela">
+      <p class="chapeu">Os 3 cortes</p>
+      <h2 id="cortes">Uns 7 segundos, em pé, pro Reels e pro Stories</h2>
+      <p>O robô pega 3 momentos do seu vídeo e dá um jeito diferente pra cada um.</p>
+      <button class="botao claro testar" type="button" data-escolher>Testar com um vídeo meu</button>
+    </div>
+    <div class="recursos cortes">
+      <article class="vidro recurso revela">
+        <span class="mini mini-chega" aria-hidden="true"><i></i></span>
+        <b>1 · O destaque</b>
+        <p>A câmera chega perto, devagar. Uns 3 segundos.</p>
+        <button class="ver-na-mesa" type="button" data-ver-corte="0">Ver na mesa, em loop <span aria-hidden="true">↑</span></button>
+      </article>
+      <article class="vidro recurso revela" style="--atraso: .06s">
+        <span class="mini mini-soco" aria-hidden="true"><i></i></span>
+        <b>2 · A ação</b>
+        <p>Acelerada 1,8 vez, com um soco de zoom. Uns 2 segundos.</p>
+        <button class="ver-na-mesa" type="button" data-ver-corte="1">Ver na mesa, em loop <span aria-hidden="true">↑</span></button>
+      </article>
+      <article class="vidro recurso revela" style="--atraso: .12s">
+        <span class="mini mini-lento" aria-hidden="true"><i></i></span>
+        <b>3 · O detalhe</b>
+        <p>Em câmera lenta, pra ver de perto. Uns 2,5 segundos.</p>
+        <button class="ver-na-mesa" type="button" data-ver-corte="2">Ver na mesa, em loop <span aria-hidden="true">↑</span></button>
+      </article>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="acabamento">
+    <div class="acabamento-grade">
+      <div class="secao-cab revela">
+        <p class="chapeu">O acabamento</p>
+        <h2 id="acabamento">O que vai junto em todo vídeo</h2>
+        <p>A edição é igual pra todo mundo, feita pelo robô. O que muda é o seu vídeo.</p>
+      </div>
+      <ul class="vidro acabamento revela">
+        <li><b>As trocas</b><span>O borrão de velocidade e o empurrão pra cima, rapidinhos.</span></li>
+        <li><b>O texto</b><span>O nome do produto subindo no começo e a frase no fim.</span></li>
+        <li><b>Em pé</b><span>1080 × 1920. Vídeo deitado ganha o fundo desfocado dele mesmo.</span></li>
+        <li><b>A cor</b><span>Um realce leve, sem exagero.</span></li>
+        <li><b>O som</b><span>O do seu vídeo, sempre no mesmo volume, com um whoosh nas trocas. Sem música.</span></li>
+        <li><b>O final</b><span>No grátis, a marca no canto e a logo da Pineapple no fim. Quem compra o pacote recebe sem as duas.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="como">
+    <div class="secao-cab revela">
+      <p class="chapeu">Como funciona</p>
+      <h2 id="como">Do celular pro Reels, em 3 passos</h2>
+    </div>
+    <ol class="passos">
+      <li class="revela"><b>Grava do jeito que der</b><p>Em pé ou deitado, até 1 minuto.</p></li>
+      <li class="revela" style="--atraso: .06s"><b>Manda no Direct</b><p>Junto com o que você vende.</p></li>
+      <li class="revela" style="--atraso: .12s"><b>Recebe editado</b><p>Em uns minutos, na mesma conversa.</p></li>
+    </ol>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="perguntas">
+    <div class="secao-cab">
+      <p class="chapeu">Perguntas</p>
+      <h2 id="perguntas">Antes de mandar</h2>
+    </div>
+    <div class="perguntas">
+      <details><summary>Vai música?</summary><p>Não. Vai o som do seu vídeo, no mesmo volume do começo ao fim, com um whoosh nas trocas.</p></details>
+      <details><summary>Meu vídeo é deitado. Serve?</summary><p>Serve. Ele fica em pé, com o fundo desfocado dele mesmo atrás.</p></details>
+      <details><summary>E se o vídeo for bem curtinho?</summary><p>Com menos de 4,5 segundos, ele vira um corte só, com o zoom e o texto.</p></details>
+      <details><summary>Quem escolhe os momentos?</summary><p>No robô, a IA olha o vídeo e escolhe o destaque, a ação e o detalhe. Aqui na prévia eles começam em 30%, 60% e 85% do vídeo, como o robô faz quando a IA não responde, e você pode arrastar cada um.</p></details>
+      <details><summary>O vídeo que eu escolho aqui vai pra algum lugar?</summary><p>Não. Ele abre só no seu navegador, não é enviado pra ninguém e some quando você fecha a página. O vídeo de verdade você manda no Direct.</p></details>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="final">
+    <div class="maior">
+      <div>
+        <h2 id="final">O seu vídeo, editado pra dar fome</h2>
+        <p data-so-trancado="video">Hoje ele vem junto com as fichas técnicas grátis do Pine Cost Pro.</p>
+        <p data-so-aberto="video">Manda um vídeo do seu produto e vê como ele volta.</p>
+      </div>
+      <div class="acao" data-so-aberto="video">
+        <a class="botao" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="fichas">Começar grátis no Direct</a>
+        <p class="ou-mande">Ou mande: “Quero as 3 fichas técnicas grátis 🍍”</p>
+        <p class="aviso" data-aviso aria-live="polite"></p>
+      </div>
+      <div class="caminho-fim" data-so-trancado="video">
+        <a class="botao" href="../pine-cost/">Ver o Pine Cost Pro <span class="seta" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="envolve rodape">
+  <span>Pineapple Pro · Maringá (PR)</span>
+  <nav aria-label="Rodapé">
+    <a href="../index.html">Todas as ferramentas</a>
+    <a href="https://www.instagram.com/pineapplepro_/" target="_blank" rel="noopener">@pineapplepro_</a>
+    <a href="../privacidade.html">Política de privacidade</a>
+  </nav>
+</footer>
+
+<!-- solte o vídeo em qualquer lugar da página (no computador) -->
+<div class="fv-solte" data-solte hidden aria-hidden="true">
+  <div class="fv-solte-caixa">
+    <svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="13.5" height="14" rx="2.8"/><path d="m16 10 5.5-3v10L16 14"/></svg>
+    <b>Solte o vídeo aqui</b>
+    <span>Ele abre só no seu aparelho. Nada é enviado.</span>
+  </div>
+</div>
+</body>
+</html>

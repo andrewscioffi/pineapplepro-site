@@ -1,0 +1,253 @@
+/* A HOME (v3, 07/11/2026): a torre do preço, o "como funciona" que se escreve e o escritório vivo.
+   O começo da home (.abre-home) e a vitrine (.vit-*) ficam no estilo.css, porque a vitrine também aparece na ferramenta.
+   Prefixos daqui: .tp- (a torre), .cv- (a conversa), .como- (o como funciona), .esc- (o escritório).
+   Quem pediu menos movimento vê tudo pronto e parado (o inicio.js também não anima). */
+
+/* =====================================================================================================
+   1. A TORRE DO PREÇO
+   ===================================================================================================== */
+.tp { display: grid; gap: 12px; min-width: 0; align-content: start; }
+@media (min-width: 600px) { .tp { gap: 11px; padding: 22px 24px; } }
+.tp > .palco-rot { margin-bottom: 0; }
+.tp > .so-leitor { position: absolute; } /* o .vidro > * põe position: relative em tudo; o resumo do leitor de tela não ocupa lugar */
+.tp-item { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; font-weight: 800; font-size: 1.02rem; }
+
+/* balcão × app: o seletor com a luz que escorrega */
+.tp-canais { position: relative; display: grid; grid-template-columns: 1fr 1fr; padding: 3px; border-radius: 999px; background: rgba(11, 9, 6, .55); border: 1px solid var(--vidro-borda); }
+.tp-canal { position: relative; z-index: 1; min-height: 44px; padding: 8px 18px; border: 0; border-radius: 999px; background: none; color: var(--texto-2); font: inherit; font-size: .84rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: color .3s var(--suave); }
+.tp-canal:hover { color: var(--creme); }
+.tp-canal[aria-pressed="true"] { color: var(--preto); }
+.tp-canal-luz { position: absolute; z-index: 0; top: 3px; bottom: 3px; left: 3px; width: calc(50% - 3px); border-radius: 999px; background: linear-gradient(180deg, #ffd96e, var(--amarelo) 55%, #efb52c); box-shadow: 0 8px 22px -10px rgba(249, 199, 72, .8), inset 0 1px 0 rgba(255, 255, 255, .55); }
+.tp-canais[data-canal="app_hoje"] .tp-canal-luz { translate: 100% 0; }
+@media (prefers-reduced-motion: no-preference) { .tp-canal-luz { transition: translate .5s var(--mola); } }
+
+/* os números: o preço e a sobra (no celular, como um recibo: o nome à esquerda e o número à direita) */
+.tp-leitura { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; align-items: baseline; }
+.tp-ler { display: contents; }
+.tp-ler-rot { font-size: .8rem; font-weight: 700; color: var(--texto-2); }
+.tp-ler-num { font-weight: 800; font-size: clamp(1.32rem, 6vw, 2.4rem); letter-spacing: -.035em; line-height: 1.12; white-space: nowrap; text-align: right; min-height: 1.12em; }
+.tp-preco { color: var(--amarelo); }
+.tp-sobra { color: var(--verde); transition: color .35s var(--suave); }
+.tp-sobra.atencao { color: var(--amarelo); }
+.tp-sobra.ruim { color: var(--laranja); }
+.tp-sinal { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 4px 10px; min-height: 26px; }
+.tp-sinal .pill { margin: 0; }
+.tp-sinal .pill:empty { display: none; }
+.tp-faixa { font-size: .72rem; font-weight: 600; color: var(--texto-3); font-variant-numeric: tabular-nums; }
+.tp-largo { display: none; }
+
+/* a ordem no celular: a torre logo no começo (é ela que chama), os números e os controles embaixo dela */
+.tp-cab { display: contents; }
+.tp-item { order: 1; }
+.tp-cena { order: 2; }
+.tp-leitura { order: 3; }
+.tp-controle { order: 4; }
+.tp-canais { order: 5; }
+.tp-ings-rot { order: 6; }
+.tp-ings { order: 7; }
+.tp-dica { order: 8; }
+@media (min-width: 600px) {
+  .tp-cab { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 14px; order: 1; }
+  .tp-leitura { order: 2; grid-template-columns: auto minmax(0, 1fr); gap: 4px 18px; align-items: end; }
+  .tp-ler { display: grid; gap: 4px; min-width: 0; }
+  .tp-ler-sobra { justify-items: end; }
+  .tp-ler-rot { font-size: .66rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--texto-3); }
+  .tp-ler-num { text-align: left; line-height: 1.02; min-height: 1.02em; }
+  .tp-ler-sobra .tp-ler-num { text-align: right; }
+  .tp-largo { display: inline; }
+  .tp-controle { order: 3; }
+  .tp-cena { order: 4; }
+}
+
+/* o preço que se arrasta (o mesmo controle do simulador da v2) */
+.tp-controle { width: 100%; height: 44px; margin: -4px 0; -webkit-appearance: none; appearance: none; background: transparent; cursor: grab; }
+.tp-controle::-webkit-slider-runnable-track { height: 8px; border-radius: 999px; background: linear-gradient(90deg, var(--laranja), var(--amarelo) 45%, var(--verde)); }
+.tp-controle::-moz-range-track { height: 8px; border-radius: 999px; background: linear-gradient(90deg, var(--laranja), var(--amarelo) 45%, var(--verde)); }
+.tp-controle::-webkit-slider-thumb { -webkit-appearance: none; width: 30px; height: 30px; margin-top: -11px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff, var(--creme) 55%, #d9cfb8); box-shadow: 0 6px 18px rgba(0, 0, 0, .5), 0 0 0 4px rgba(249, 199, 72, .35); }
+.tp-controle::-moz-range-thumb { width: 30px; height: 30px; border: 0; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff, var(--creme) 55%, #d9cfb8); box-shadow: 0 6px 18px rgba(0, 0, 0, .5), 0 0 0 4px rgba(249, 199, 72, .35); }
+.tp-controle:active { cursor: grabbing; }
+.tp-controle:focus-visible { outline-offset: 0; }
+
+/* a cena 3D: a torre de vidro, os fios e os rótulos (tudo desenhado; o leitor de tela ouve o resumo) */
+.tp-cena { position: relative; height: 292px; margin: 0 -4px; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+@media (min-width: 600px) { .tp-cena { height: 300px; } }
+.tp-cena.tp-aponta { cursor: pointer; }
+.tp-palco3d { position: absolute; inset: 0; perspective: var(--persp, 1100px); perspective-origin: var(--fx, 30%) var(--fy, 18%); }
+.tp-torre { position: absolute; left: var(--tx, 30px); top: calc(var(--chao, 270px) - var(--talto, 240px)); width: var(--tw, 90px); height: var(--talto, 240px); transform-origin: 50% 100%; transform-style: preserve-3d; transform: rotateX(-12deg) rotateY(-24deg); will-change: transform; }
+
+/* uma camada = 4 faces de vidro (a frente, o topo e os 2 lados), na cor dela (--c) */
+.tp-laje, .tp-tampa, .tp-chao { position: absolute; bottom: 0; left: calc(var(--inf, 0px) * -1); width: calc(var(--tw, 90px) + var(--inf, 0px) * 2); height: 0; --d: calc(var(--td, 60px) + var(--inf, 0px) * 2); transform-style: preserve-3d; }
+.tp-laje > i, .tp-tampa > i, .tp-chao > i { position: absolute; display: block; -webkit-backface-visibility: hidden; backface-visibility: hidden; opacity: var(--o, 1); }
+.tp-f { inset: 0; transform: translateZ(calc(var(--d) / 2)); }
+.tp-t { left: 0; top: 0; width: 100%; height: var(--d); transform-origin: 50% 0; transform: translateZ(calc(var(--d) / -2)) rotateX(90deg); }
+.tp-d { right: 0; top: 0; width: var(--d); height: 100%; transform-origin: 100% 50%; transform: translateZ(calc(var(--d) / -2)) rotateY(90deg); }
+.tp-e { left: 0; top: 0; width: var(--d); height: 100%; transform-origin: 0 50%; transform: translateZ(calc(var(--d) / -2)) rotateY(-90deg); }
+
+.tp-laje { --c: 247, 238, 218; }
+.tp-laje .tp-f { background: linear-gradient(180deg, rgba(var(--c), .34), rgba(var(--c), .13)); box-shadow: inset 0 0 0 1px rgba(var(--c), .5), inset 0 1px 0 rgba(255, 255, 255, .42); }
+.tp-laje .tp-t { background: linear-gradient(0deg, rgba(var(--c), .46), rgba(var(--c), .2)); box-shadow: inset 0 0 0 1px rgba(255, 252, 240, .38); }
+.tp-laje .tp-d { background: linear-gradient(90deg, rgba(var(--c), .2), rgba(var(--c), .06)); box-shadow: inset 0 0 0 1px rgba(var(--c), .32); }
+.tp-laje .tp-e { background: rgba(var(--c), .09); box-shadow: inset 0 0 0 1px rgba(var(--c), .28); }
+.tp-laje.tp-par { --c: 222, 200, 160; }
+.tp-embalagem { --c: 200, 196, 186; }
+.tp-fixos { --c: 196, 146, 84; }
+.tp-app { --c: 242, 156, 52; }
+.tp-imposto { --c: 168, 146, 116; }
+.tp-sobra, .tp-sobra.bom { --c: 166, 224, 46; }
+.tp-sobra.atencao { --c: 249, 199, 72; }
+.tp-sobra.ruim { --c: 255, 122, 46; }
+.tp-sobra .tp-f { background: linear-gradient(180deg, rgba(var(--c), .5), rgba(var(--c), .2)); box-shadow: inset 0 0 0 1px rgba(var(--c), .85), inset 0 1px 0 rgba(255, 255, 255, .6), 0 0 30px rgba(var(--c), .32); }
+.tp-sobra .tp-t { background: rgba(var(--c), .55); }
+/* o buraco: o pedaço dos custos que passa do preço, listrado de laranja */
+.tp-buraco { --c: 255, 107, 26; --inf: 3px; }
+.tp-buraco .tp-f, .tp-buraco .tp-d, .tp-buraco .tp-e { background: repeating-linear-gradient(135deg, rgba(var(--c), .55) 0 3px, rgba(var(--c), .07) 3px 8px); box-shadow: inset 0 0 0 1.5px rgba(var(--c), .95), 0 0 24px rgba(var(--c), .25); }
+.tp-buraco .tp-t { background: rgba(var(--c), .3); box-shadow: inset 0 0 0 1.5px rgba(var(--c), .95); }
+/* a tampa: o preço que a pessoa cobra */
+.tp-tampa { --inf: 12px; }
+.tp-tampa .tp-t { background: radial-gradient(closest-side, rgba(249, 199, 72, .16), rgba(249, 199, 72, .04)); box-shadow: inset 0 0 0 1.5px rgba(249, 199, 72, .9), 0 0 26px rgba(249, 199, 72, .3); }
+/* o chão: a sombra e um quadriculado bem fino */
+.tp-chao { --inf: 56px; bottom: -1px; }
+.tp-chao .tp-t { background: radial-gradient(closest-side, rgba(0, 0, 0, .6), rgba(0, 0, 0, .25) 55%, transparent), repeating-linear-gradient(0deg, rgba(247, 244, 236, .07) 0 1px, transparent 1px 16px), repeating-linear-gradient(90deg, rgba(247, 244, 236, .07) 0 1px, transparent 1px 16px); -webkit-mask-image: radial-gradient(closest-side, #000 45%, transparent); mask-image: radial-gradient(closest-side, #000 45%, transparent); }
+/* a camada do ingrediente que a pessoa apontou acende */
+.tp-laje.tp-acesa { --c: 255, 226, 140; }
+.tp-laje.tp-acesa .tp-f { box-shadow: inset 0 0 0 1.5px rgba(249, 199, 72, .95), 0 0 22px rgba(249, 199, 72, .45); }
+@media (prefers-reduced-motion: no-preference) {
+  .tp-app.tp-pisca .tp-f { animation: tp-pisca 1s var(--suave); }
+  @keyframes tp-pisca { 0%, 100% { filter: none; } 30% { filter: brightness(1.9) saturate(1.3); } }
+}
+
+/* a régua do preço (de 5 em 5 reais) e o traço amarelo do preço de agora, ligado à tampa */
+.tp-marca, .tp-regua-eixo { fill: none; stroke: rgba(247, 244, 236, .26); stroke-width: 1; }
+.tp-marca-num { fill: var(--texto-3); font-size: 9px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.tp-regua-preco { fill: none; stroke: var(--amarelo); stroke-width: 1.5; stroke-dasharray: 2 3; }
+
+/* os rótulos e os fios (o inicio.js põe cada um na altura da sua camada) */
+.tp-fios { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.tp-fio { fill: none; stroke: rgba(247, 244, 236, .38); stroke-width: 1; opacity: 0; transition: opacity .3s var(--suave); }
+.tp-chave { stroke: rgba(247, 244, 236, .5); }
+.tp-ponto { fill: var(--creme); opacity: 0; transition: opacity .3s var(--suave); }
+.tp-fio.ligado, .tp-ponto.ligado { opacity: 1; }
+.tp-rotulos { position: absolute; inset: 0; pointer-events: none; }
+.tp-rot { position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: 6px; height: 16px; white-space: nowrap; font-size: .72rem; line-height: 1; opacity: 0; transition: opacity .3s var(--suave); will-change: transform; }
+@media (min-width: 600px) { .tp-rot { font-size: .78rem; } }
+@media (max-width: 359px) { .tp-rot { font-size: .68rem; gap: 5px; } }
+.tp-rot.ligado { opacity: 1; }
+.tp-rot::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 2px; background: rgb(var(--c, 247, 238, 218)); box-shadow: 0 0 0 1px rgba(255, 255, 255, .25); }
+.tp-rot-nome { color: var(--texto-2); font-weight: 600; }
+.tp-rot-valor { color: var(--creme); font-weight: 800; font-variant-numeric: tabular-nums; }
+.tp-rot-embalagem { --c: 200, 196, 186; }
+.tp-rot-fixos { --c: 196, 146, 84; }
+.tp-rot-app { --c: 242, 156, 52; }
+.tp-rot-imposto { --c: 168, 146, 116; }
+.tp-rot-sobra { --c: 166, 224, 46; }
+.tp-rot-sobra .tp-rot-valor { color: var(--verde); }
+.tp-rot-sobra.atencao { --c: 249, 199, 72; }
+.tp-rot-sobra.atencao .tp-rot-valor { color: var(--amarelo); }
+.tp-rot-sobra.ruim { --c: 255, 122, 46; }
+.tp-rot-sobra.ruim .tp-rot-valor { color: var(--laranja); }
+.tp-rot-buraco { --c: 255, 107, 26; }
+.tp-rot-buraco .tp-rot-valor { color: var(--laranja); }
+.tp-rot-foco { --c: 255, 226, 140; }
+.tp-rot-foco .tp-rot-nome { color: var(--amarelo); }
+
+/* os ingredientes: tocar tira ou põe a camada */
+.tp-ings-rot { font-size: .66rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--texto-3); margin-top: 2px; }
+.tp-ings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.tp-ings .tp-ing { min-height: 46px; padding: 5px 6px 5px 9px; display: grid; gap: 0; justify-items: start; align-content: center; text-align: left; font-size: .7rem; letter-spacing: -.005em; line-height: 1.2; border-radius: 14px; }
+.tp-ings .tp-ing span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 359px) { .tp-ings { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.tp-ings .tp-ing[aria-pressed="false"] { grid-template-columns: minmax(0, 1fr) auto; column-gap: 4px; }
+.tp-ings .tp-ing[aria-pressed="false"]::after { grid-row: 1 / span 2; grid-column: 2; align-self: center; }
+@media (min-width: 600px) {
+  .tp-ings { display: flex; flex-wrap: wrap; }
+  .tp-ings .tp-ing { display: inline-flex; align-items: center; gap: 5px; min-height: 44px; padding: 6px 11px; font-size: .76rem; border-radius: 999px; }
+}
+.tp-ings .tp-ing b { font-weight: 800; color: var(--creme); font-variant-numeric: tabular-nums; }
+.tp-ings .tp-ing[aria-pressed="true"] { background: rgba(255, 251, 238, .07); color: var(--texto-2); border-color: var(--vidro-borda); }
+.tp-ings .tp-ing[aria-pressed="true"]:hover { border-color: rgba(249, 199, 72, .6); color: var(--creme); }
+.tp-ings .tp-ing[aria-pressed="false"] { background: transparent; border-style: dashed; color: var(--texto-3); }
+.tp-ings .tp-ing[aria-pressed="false"] span, .tp-ings .tp-ing[aria-pressed="false"] b { color: var(--texto-3); text-decoration: line-through; text-decoration-color: rgba(255, 107, 26, .85); }
+.tp-ings .tp-ing[aria-pressed="false"]::after { content: "+"; font-weight: 800; color: var(--amarelo); }
+@media (prefers-reduced-motion: no-preference) {
+  .tp-ing.tp-nega { animation: tp-nega .42s var(--suave); }
+  @keyframes tp-nega { 20%, 60% { translate: -5px 0; } 40%, 80% { translate: 5px 0; } }
+}
+.tp-dica { font-size: .86rem; line-height: 1.42; color: var(--texto-2); min-height: 2.84em; }
+.tp-dica b { color: var(--amarelo); font-weight: 800; }
+
+/* =====================================================================================================
+   3. O "COMO FUNCIONA" QUE SE ESCREVE: os 3 passos e o celular com a conversa de exemplo
+   ===================================================================================================== */
+.como-palco { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; align-items: center; }
+@media (min-width: 900px) { .como-palco { grid-template-columns: minmax(0, 1fr) minmax(0, 370px); gap: 64px; } }
+.passos.como-passos { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+.como-passos li { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 14px; align-items: center; padding: 14px 16px; transition: opacity .45s var(--suave), border-color .45s var(--suave), box-shadow .45s var(--suave); }
+/* o número do passo (o ::before do .passos fica com o reflexo do .vidro, por isso o número é um elemento) */
+.passos.como-passos li::before { content: ""; display: none; }
+.como-num { grid-row: span 2; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--amarelo); color: var(--preto); font-weight: 800; font-size: 1.1rem; transition: background .45s var(--suave), color .45s var(--suave), box-shadow .45s var(--suave); }
+.como-passos li b, .como-passos li p { grid-column: 2; }
+.como-passos li p { margin-top: 2px; }
+@media (min-width: 900px) { .como-passos li { padding: 20px 22px; } }
+html.js .como-passos li.como-espera { opacity: .45; }
+html.js .como-passos li.como-espera .como-num { background: rgba(255, 251, 238, .08); color: var(--texto-3); }
+.como-passos li.como-agora { border-color: rgba(249, 199, 72, .6); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .14), 0 0 0 1px rgba(249, 199, 72, .22), 0 22px 50px -24px rgba(249, 199, 72, .55), var(--sombra-funda); }
+.como-passos li.como-agora .como-num { box-shadow: 0 0 0 6px rgba(249, 199, 72, .18); }
+.como-passos li.como-feito .como-num { background: var(--verde); }
+
+.cv-lado { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 14px; min-width: 0; }
+.cv { display: flex; flex-direction: column; width: min(100%, 350px); height: 492px; margin: 0; padding: 10px; border-radius: 36px; }
+@media (min-width: 900px) { .cv { height: 540px; } }
+.cv-topo { display: flex; align-items: center; gap: 10px; padding: 8px 8px 12px; border-bottom: 1px solid rgba(255, 249, 232, .08); }
+.cv-topo img { width: 32px; height: 32px; flex: none; border-radius: 50%; background: var(--fundo-2); box-shadow: 0 0 0 1px var(--vidro-borda); }
+.cv-nome { display: grid; line-height: 1.2; min-width: 0; }
+.cv-nome b { font-size: .86rem; font-weight: 800; }
+.cv-nome small { font-size: .7rem; color: var(--texto-3); }
+.cv-aviso { display: flex; justify-content: center; padding-top: 10px; }
+.cv-falas { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; padding: 12px 4px 8px; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, transparent, #000 44px); mask-image: linear-gradient(180deg, transparent, #000 44px); }
+.cv-msg { display: flex; flex-direction: column; max-width: 84%; flex: none; }
+.cv-eu { align-self: flex-end; align-items: flex-end; }
+.cv-pine { align-self: flex-start; align-items: flex-start; }
+.cv-balao { padding: 9px 13px; border-radius: 18px; font-size: .84rem; line-height: 1.38; overflow-wrap: anywhere; }
+.cv-eu .cv-balao { background: linear-gradient(180deg, #ffd96e, var(--amarelo)); color: var(--preto); font-weight: 600; border-bottom-right-radius: 6px; }
+.cv-pine .cv-balao { background: rgba(255, 251, 238, .08); border: 1px solid var(--vidro-borda); border-bottom-left-radius: 6px; }
+.cv-linha { display: block; min-height: 1.38em; }
+.cv-linha + .cv-linha { font-weight: 500; }
+.cv-foto { padding: 4px !important; line-height: 0; }
+.cv-foto img { display: block; border-radius: 14px; object-fit: cover; } /* a foto real da conversa (antes e depois) */
+.cv-pine .cv-ficha { width: 236px; max-width: 100%; padding: 12px 14px 4px; background: var(--papel); color: var(--tinta); border: 0; }
+.cv-ficha-rot { font-size: .6rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-3); }
+.cv-ficha .resumo-item { font-size: .9rem; margin: 2px 0 2px; }
+.cv-ficha .resumo-canal { padding: 7px 0; }
+.cv-ficha .resumo-preco { font-size: .95rem; }
+.cv-ficha .pill { font-size: .62rem; }
+.cv-ficha .resumo-sobra { font-size: .76rem; }
+.cv-legenda { margin-top: 4px; padding: 0 6px; font-size: .72rem; font-weight: 600; color: var(--texto-3); }
+.cv-digitando { display: inline-flex; gap: 4px; padding: 12px 14px !important; }
+.cv-digitando i { width: 6px; height: 6px; border-radius: 50%; background: var(--texto-3); }
+.cv-barra { display: flex; align-items: center; min-height: 40px; margin: 6px 2px 2px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--vidro-borda); color: var(--texto-3); font-size: .82rem; }
+.cv-de-novo[hidden] { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .cv-entra { animation: cv-entra .5s var(--mola) both; }
+  .cv-eu.cv-entra { transform-origin: 100% 100%; }
+  .cv-pine.cv-entra { transform-origin: 0 100%; }
+  @keyframes cv-entra { from { opacity: 0; transform: translateY(12px) scale(.94); } }
+  .cv-digitando i { animation: cv-pula 1s var(--suave) infinite; }
+  .cv-digitando i:nth-child(2) { animation-delay: .15s; }
+  .cv-digitando i:nth-child(3) { animation-delay: .3s; }
+  @keyframes cv-pula { 0%, 60%, 100% { transform: none; opacity: .45; } 30% { transform: translateY(-4px); opacity: 1; } }
+}
+
+/* =====================================================================================================
+   4. O ESCRITÓRIO VIVO: as 22 mesinhas acendem junto com a contagem (nada de nome de cargo)
+   ===================================================================================================== */
+.esc { display: grid; gap: 6px; }
+.esc-planta { position: relative; height: 128px; margin: 0 -8px -6px; overflow: hidden; }
+.esc-chao { position: absolute; left: 50%; top: 50%; width: 222px; height: 134px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: minmax(0, 1fr); gap: 9px 10px; transform: translate(-50%, -50%) rotateX(58deg) rotateZ(-34deg); }
+.esc-mesa { position: relative; display: block; border-radius: 5px; background: rgba(255, 251, 238, .05); border: 1px solid rgba(255, 249, 232, .14); }
+.esc-mesa b { position: absolute; left: 50%; top: 50%; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: 50%; background: rgba(247, 244, 236, .2); }
+.esc-planta.acesa .esc-mesa, html:not(.js) .esc-mesa { background: rgba(249, 199, 72, .12); border-color: rgba(249, 199, 72, .5); box-shadow: 0 0 16px rgba(249, 199, 72, .22); }
+.esc-planta.acesa .esc-mesa b, html:not(.js) .esc-mesa b { background: var(--amarelo); box-shadow: 0 0 10px 2px rgba(249, 199, 72, .7); }
+@media (prefers-reduced-motion: no-preference) {
+  .esc-mesa, .esc-mesa b { transition: background .4s var(--suave), border-color .4s var(--suave), box-shadow .4s var(--suave), scale .5s var(--mola); transition-delay: calc(var(--i, 0) * var(--passo, 54ms)); }
+  .esc-planta.acesa .esc-mesa b { scale: 1.25; }
+}

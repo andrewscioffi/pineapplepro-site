@@ -1,0 +1,330 @@
+/* O CARDÁPIO DIGITAL (prévia, 07/11/2026): a página e a demonstração. Tudo começa com "cd-" para não pisar nas outras páginas.
+   A cara de app de pedido: o celular claro (o papel creme da ficha), com o laranja da página nos botões; o lado do dono no vidro escuro. */
+:root {
+  --cd-tela: #f3eee2;
+  --cd-cartao: #fffefa;
+  --cd-fio: rgba(31, 26, 18, .1);
+}
+
+/* ---------- o começo: o texto em cima e a demonstração larga embaixo ---------- */
+.produto-abre.cd-abre { gap: 28px; padding-bottom: 56px; }
+.cd-texto { display: grid; }
+.cd-lado .acao { margin-top: 24px; }
+@media (min-width: 960px) {
+  .produto-abre.cd-abre { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-top: 48px; }
+  .cd-texto { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); column-gap: 64px; align-items: end; }
+  .cd-lado { padding-bottom: 8px; }
+  .cd-lado .sub { margin-top: 0; }
+}
+
+/* ---------- o palco: o seu lado, o celular e a conta ---------- */
+.cd-palco { padding: 14px 12px 16px; overflow: hidden; overflow: clip; }
+@media (min-width: 600px) { .cd-palco { padding: 24px; } }
+@media (min-width: 960px) { .cd-palco { padding: 28px 34px 34px; } }
+.cd-palco::before { background: radial-gradient(520px circle at var(--mx, 50%) var(--my, -30%), rgba(255, 140, 70, .12), transparent 46%); }
+.cd-demo { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; grid-template-areas: "dono" "celular" "precos"; min-width: 0; }
+.cd-demo > * { min-width: 0; }
+.cd-dono { grid-area: dono; }
+.cd-cliente { grid-area: celular; display: grid; justify-items: center; gap: 2px; }
+.cd-cliente > .cd-rot { width: 100%; max-width: 350px; padding: 0 6px; }
+.cd-precos { grid-area: precos; container-type: inline-size; }
+@media (min-width: 860px) {
+  .cd-demo { grid-template-columns: minmax(300px, 350px) minmax(0, 1fr); grid-template-rows: auto 1fr; grid-template-areas: "celular dono" "celular precos"; column-gap: 40px; row-gap: 16px; align-items: start; }
+}
+
+.cd-dono, .cd-precos {
+  border-radius: 22px; padding: 14px 12px;
+  background: linear-gradient(160deg, rgba(255, 251, 238, .075), rgba(255, 251, 238, .02));
+  border: 1px solid var(--vidro-borda); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08);
+}
+@media (min-width: 600px) { .cd-dono, .cd-precos { padding: 18px 18px 16px; } }
+.cd-rot {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; max-width: none; margin-bottom: 10px;
+  font-size: .72rem; font-weight: 800; letter-spacing: .14em; line-height: 1.3; text-transform: uppercase; color: var(--creme);
+}
+.cd-rot small { font-size: .7rem; font-weight: 600; letter-spacing: .02em; text-transform: none; color: var(--texto-3); }
+.cd-nota { margin-top: 4px; font-size: .78rem; line-height: 1.4; color: var(--texto-3); }
+.cd-nota b { color: var(--creme); }
+
+/* os 2 controles, numerados: 1 a simulação, 2 a chave */
+.cd-controle { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px; padding: 12px 0 4px; border-top: 1px solid var(--linha); }
+.cd-rot + .cd-controle { border-top: 0; padding-top: 2px; }
+.cd-num { display: grid; place-items: center; width: 28px; height: 28px; margin-top: 2px; border-radius: 50%; background: var(--laranja); color: var(--preto); font-weight: 800; font-size: .8rem; box-shadow: 0 0 0 4px rgba(255, 107, 26, .16); }
+.cd-controle-corpo { min-width: 0; }
+.cd-controle-cab { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.cd-controle-cab label { font-weight: 700; font-size: .95rem; line-height: 1.3; }
+.cd-controle-cab output { flex: none; font-weight: 800; font-size: 1.2rem; letter-spacing: -.02em; color: var(--laranja); font-variant-numeric: tabular-nums; }
+
+/* a régua do "e se subir?" (o --pct é posto pelo JS) */
+.cd-faixa { -webkit-appearance: none; appearance: none; display: block; width: 100%; height: 48px; margin: 0; background: transparent; cursor: pointer; --pct: 0%; }
+.cd-faixa::-webkit-slider-runnable-track { height: 8px; border-radius: 99px; background: linear-gradient(90deg, var(--laranja) var(--pct), rgba(255, 251, 238, .14) var(--pct)); }
+.cd-faixa::-webkit-slider-thumb { -webkit-appearance: none; width: 26px; height: 26px; margin-top: -9px; border-radius: 50%; background: var(--creme); border: 3px solid var(--laranja); box-shadow: 0 6px 14px rgba(0, 0, 0, .45); }
+.cd-faixa::-moz-range-track { height: 8px; border-radius: 99px; background: rgba(255, 251, 238, .14); }
+.cd-faixa::-moz-range-progress { height: 8px; border-radius: 99px; background: var(--laranja); }
+.cd-faixa::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--creme); border: 3px solid var(--laranja); }
+.cd-faixa:focus-visible { outline: 3px solid var(--verde); outline-offset: 4px; border-radius: 12px; }
+.cd-faixa-pontas { display: flex; justify-content: space-between; margin-top: -8px; font-size: .66rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--texto-3); }
+
+/* a chave "usar o preço certo da ficha" */
+.cd-chave { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 48px; padding: 4px 0; border: 0; background: none; color: inherit; font: inherit; font-weight: 700; font-size: .98rem; line-height: 1.25; text-align: left; cursor: pointer; }
+.cd-chave-trilho { position: relative; flex: none; width: 54px; height: 32px; border-radius: 99px; background: rgba(255, 251, 238, .16); box-shadow: inset 0 0 0 1px var(--vidro-borda); }
+.cd-chave-trilho i { position: absolute; top: 3px; left: 3px; width: 26px; height: 26px; border-radius: 50%; background: var(--creme); box-shadow: 0 3px 8px rgba(0, 0, 0, .45); }
+.cd-chave[aria-checked="true"] .cd-chave-trilho { background: var(--laranja); box-shadow: 0 0 0 4px rgba(255, 107, 26, .2), inset 0 0 0 1px rgba(255, 255, 255, .2); }
+.cd-chave[aria-checked="true"] .cd-chave-trilho i { translate: 22px 0; }
+.cd-chave:hover .cd-chave-txt { color: #fff; }
+
+/* ---------- o celular ---------- */
+.cd-celular {
+  position: relative; justify-self: center; width: 100%; max-width: 350px; padding: 8px; border-radius: 48px;
+  background: linear-gradient(150deg, #3d3326 0%, #19140d 36%, #0b0906 100%);
+  box-shadow: inset 0 0 0 1.5px rgba(255, 249, 232, .16), inset 0 2px 1px rgba(255, 255, 255, .14), 0 46px 90px -34px rgba(0, 0, 0, .9), 0 22px 60px -30px rgba(255, 107, 26, .45);
+}
+.cd-celular::after { /* o vidro da tela: um reflexo bem leve */
+  content: ""; position: absolute; inset: 8px; z-index: 40; border-radius: 40px; pointer-events: none;
+  background: linear-gradient(118deg, rgba(255, 255, 255, .2) 0%, rgba(255, 255, 255, 0) 26%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, .06) 100%);
+}
+@media (min-width: 860px) and (min-height: 760px) {
+  .cd-cliente { position: sticky; top: 72px; } /* o celular fica na tela enquanto a conta rola do lado */
+}
+.cd-tela { container: tela / inline-size; position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; height: 620px; border-radius: 40px; background: var(--cd-tela); color: var(--tinta); }
+@media (max-width: 380px) {
+  .cd-celular { padding: 6px; border-radius: 42px; }
+  .cd-celular::after { inset: 6px; border-radius: 36px; }
+  .cd-tela { height: 600px; border-radius: 36px; }
+}
+.cd-ilha { position: absolute; top: 10px; left: 50%; z-index: 30; width: 92px; height: 26px; margin-left: -46px; border-radius: 20px; background: #0b0906; }
+.cd-fundo { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+.cd-endereco { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 44px 16px 0; padding: 6px 12px; border-radius: 12px; background: rgba(31, 26, 18, .06); color: var(--tinta-2); font-size: .7rem; font-weight: 600; }
+.cd-endereco svg { flex: none; }
+.cd-loja { padding: 12px 18px 8px; }
+.cd-loja-nome { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-weight: 800; font-size: 1.16rem; line-height: 1.15; letter-spacing: -.02em; }
+.cd-loja-sub { margin-top: 3px; font-size: .74rem; font-weight: 500; color: var(--tinta-2); }
+.cd-tela :focus-visible { outline: 3px solid var(--tinta); outline-offset: 2px; }
+.cd-sem-js { padding: 20px; color: var(--texto-2); text-align: center; font-size: .9rem; }
+
+/* as categorias (rolam para o lado só dentro do celular; a ponta some num degradê para mostrar que tem mais) */
+.cd-abas {
+  position: relative; display: flex; flex: none; gap: 6px; overflow-x: auto; padding: 4px 16px 10px; scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 26px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 26px), transparent);
+}
+.cd-abas::-webkit-scrollbar { display: none; }
+.cd-aba { position: relative; z-index: 1; flex: none; min-height: 38px; padding: 7px 13px; border-radius: 99px; border: 1px solid rgba(31, 26, 18, .14); background: transparent; color: var(--tinta-2); font: inherit; font-size: .78rem; font-weight: 700; cursor: pointer; }
+.cd-aba::before { content: ""; position: absolute; inset: -5px -3px; } /* 48 px para o dedo */
+.cd-aba:hover { color: var(--tinta); border-color: rgba(31, 26, 18, .3); }
+.cd-aba[aria-current="true"] { border-color: transparent; color: var(--creme); }
+.cd-abas-marca { position: absolute; left: 0; top: 0; z-index: 0; width: 0; height: 38px; border-radius: 99px; background: var(--tinta); box-shadow: 0 8px 16px -10px rgba(31, 26, 18, .8); pointer-events: none; }
+/* no meio do arrasto, a pílula fica clarinha (o nome de todas as categorias continua legível) */
+.cd-abas.seguindo .cd-abas-marca { background: rgba(31, 26, 18, .16); box-shadow: none; }
+.cd-abas.seguindo .cd-aba[aria-current="true"] { color: var(--tinta); }
+
+/* a lista */
+.cd-lista { position: relative; flex: 1; min-height: 0; overflow-y: auto; padding: 0 12px var(--cd-fim, 84px); scrollbar-width: none; }
+.cd-fim { padding: 18px 12px 0; font-size: .68rem; font-weight: 600; line-height: 1.4; text-align: center; color: var(--tinta-3); }
+.cd-lista::-webkit-scrollbar { display: none; }
+.cd-lista[aria-busy="true"]:empty::after { display: block; padding: 24px 8px; text-align: center; }
+.cd-cat { padding: 12px 6px 8px; font-size: .66rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--tinta-3); }
+.cd-item { position: relative; border-radius: 20px; background: var(--cd-cartao); box-shadow: 0 1px 0 rgba(31, 26, 18, .05), 0 12px 24px -18px rgba(31, 26, 18, .45); }
+.cd-item-abre { display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 12px; align-items: start; width: 100%; padding: 10px 10px 12px; border: 0; border-radius: inherit; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.cd-item-abre:hover .cd-item-nome { text-decoration: underline; text-decoration-color: rgba(31, 26, 18, .3); text-underline-offset: 3px; }
+.cd-item-txt { min-width: 0; }
+.cd-item-nome { display: block; font-weight: 800; font-size: .9rem; line-height: 1.22; letter-spacing: -.01em; }
+.cd-item-desc { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-top: 3px; padding-right: 6px; font-size: .72rem; line-height: 1.35; color: var(--tinta-2); }
+.cd-item-preco { display: inline-block; margin: 8px 0 0 -6px; padding: 1px 6px; border-radius: 8px; font-weight: 800; font-size: .98rem; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+.cd-item .cd-passo { position: absolute; right: 10px; bottom: 10px; }
+
+/* o desenho do item: um prato de cerâmica visto de cima, na "mesa" da cor da categoria, com a inicial do item.
+   Nenhuma comida desenhada: só o prato e a letra. */
+.cd-prato {
+  position: relative; isolation: isolate; overflow: hidden; display: grid; place-items: center; width: 60px; aspect-ratio: 1; border-radius: 16px;
+  background: radial-gradient(130% 130% at 18% 8%, var(--m1) 0%, var(--m2) 48%, var(--m3) 100%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .45);
+}
+.cd-prato::before {
+  content: ""; position: absolute; left: 50%; top: 50%; z-index: -1; width: 74%; aspect-ratio: 1; translate: -50% -50%; border-radius: 50%;
+  background: radial-gradient(circle, #fffdf6 50%, #f1e9d6 51%, #fbf6ea 62%, #e7dcc4 100%); box-shadow: 0 7px 12px -5px rgba(31, 26, 18, .5);
+}
+.cd-prato b { font-weight: 800; font-size: 1.1rem; line-height: 1; letter-spacing: -.03em; color: rgba(31, 26, 18, .78); }
+.cd-prato.grande { width: 100%; height: 104px; aspect-ratio: auto; margin-top: 10px; border-radius: 20px; }
+.cd-prato.grande::before { width: 86px; }
+.cd-prato.grande b { font-size: 1.9rem; }
+.cat-lanches { --m1: #ffe9a8; --m2: #F9C748; --m3: #dc9c17; }
+.cat-pratos { --m1: #ffbe94; --m2: #FF6B1A; --m3: #c94805; }
+.cat-porcoes { --m1: #e3f9a6; --m2: #a6e02e; --m3: #6f9e10; }
+.cat-doces { --m1: #ffffff; --m2: #f1e6d1; --m3: #cfb68b; }
+
+/* pôr e tirar (o + vira "− 2 +" quando o item está no pedido) */
+.cd-passo { display: inline-flex; align-items: center; gap: 2px; border-radius: 99px; }
+.cd-passo:not([data-qtd="0"]) { padding: 2px; background: var(--cd-cartao); box-shadow: inset 0 0 0 1px rgba(31, 26, 18, .12), 0 6px 14px -10px rgba(31, 26, 18, .5); }
+.cd-passo button { position: relative; display: grid; place-items: center; width: 36px; height: 36px; border: 0; border-radius: 50%; font: inherit; cursor: pointer; }
+.cd-passo button svg { width: 16px; height: 16px; }
+.cd-passo button::before { content: ""; position: absolute; inset: -6px; } /* 48 px para o dedo */
+.cd-passo .mais { background: var(--laranja); color: var(--preto); box-shadow: 0 8px 16px -8px rgba(255, 107, 26, .8); }
+.cd-passo .mais:hover { background: #ff7f38; }
+.cd-passo .menos { background: rgba(31, 26, 18, .07); color: var(--tinta); }
+.cd-passo .menos:hover { background: rgba(31, 26, 18, .12); }
+.cd-passo button:disabled { opacity: .35; cursor: default; }
+.cd-passo .num { min-width: 22px; text-align: center; font-weight: 800; font-size: .9rem; font-variant-numeric: tabular-nums; }
+.cd-passo[data-qtd="0"] .menos, .cd-passo[data-qtd="0"] .num { display: none; }
+
+/* a sacola (aparece com o primeiro item) */
+.cd-sacola {
+  position: absolute; left: 12px; right: 12px; bottom: 12px; z-index: 6; display: flex; align-items: center; gap: 10px; min-height: 56px;
+  padding: 8px 16px 8px 8px; border: 0; border-radius: 20px; background: var(--tinta); color: var(--creme); font: inherit; font-weight: 700; font-size: .9rem; cursor: pointer;
+  box-shadow: 0 18px 32px -14px rgba(31, 26, 18, .75), inset 0 1px 0 rgba(255, 255, 255, .1);
+}
+.cd-sacola-qtd { display: grid; place-items: center; min-width: 40px; height: 40px; padding: 0 8px; border-radius: 14px; background: var(--laranja); color: var(--preto); font-weight: 800; font-variant-numeric: tabular-nums; }
+.cd-sacola-txt { flex: 1; text-align: left; }
+.cd-sacola-total { font-weight: 800; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cd-sacola[data-vazio="sim"] { visibility: hidden; transform: translateY(160%); }
+.cd-voo { position: absolute; z-index: 7; display: block; pointer-events: none; transform-origin: 0 0; border-radius: 12px; will-change: transform; box-shadow: 0 14px 26px -10px rgba(31, 26, 18, .6); }
+.cd-voo .cd-prato { width: 100%; height: 100%; border-radius: inherit; }
+
+/* as folhas que sobem (o item e o pedido) */
+.cd-veu { position: absolute; inset: 0; z-index: 8; background: rgba(31, 26, 18, .4); opacity: 0; visibility: hidden; }
+.cd-veu.aberto { opacity: 1; visibility: visible; }
+.cd-folha {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 9; display: flex; flex-direction: column; max-height: 88%; overflow-y: auto; scrollbar-width: none;
+  padding: 10px 18px 0; border-radius: 28px 28px 0 0; background: var(--cd-cartao); box-shadow: 0 -18px 40px -12px rgba(31, 26, 18, .4);
+  visibility: hidden; transform: translateY(104%);
+}
+.cd-folha > * { flex: none; }
+.cd-folha[data-cd-folha="pedido"] { padding-bottom: 14px; }
+.cd-folha::-webkit-scrollbar { display: none; }
+.cd-folha.aberta { visibility: visible; transform: none; }
+.cd-folha-puxa { cursor: grab; user-select: none; -webkit-user-select: none; }
+.cd-folha-puxa::before { content: ""; display: block; width: 40px; height: 5px; margin: 0 auto 8px; border-radius: 9px; background: rgba(31, 26, 18, .16); }
+.cd-folha-puxa.pegando { cursor: grabbing; }
+.cd-folha.cresce, .cd-folha.puxando { transition: none !important; }
+.cd-prato.grande { transform-origin: 0 0; }
+.cd-folha-topo { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.cd-folha-topo h3 { font-size: 1.2rem; font-weight: 800; letter-spacing: -.02em; }
+.cd-fechar { position: relative; flex: none; display: grid; place-items: center; width: 40px; height: 40px; border: 0; border-radius: 50%; background: rgba(31, 26, 18, .07); color: var(--tinta); font: inherit; cursor: pointer; }
+.cd-fechar svg { width: 16px; height: 16px; }
+.cd-fechar::before { content: ""; position: absolute; inset: -4px; }
+.cd-fechar:hover { background: rgba(31, 26, 18, .13); }
+.cd-folha-negocio { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; font-size: .74rem; font-weight: 600; color: var(--tinta-2); }
+.cd-folha-nome { margin-top: 12px; font-size: 1.2rem; font-weight: 800; line-height: 1.15; letter-spacing: -.02em; }
+.cd-folha-preco { margin-top: 4px; font-size: 1.12rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.cd-folha-rot { margin-top: 12px; font-size: .64rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--tinta-3); }
+.cd-folha-rot small { font-weight: 600; letter-spacing: .02em; text-transform: none; }
+.cd-folha-ingr { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.cd-folha-ingr li { padding: 5px 10px; border-radius: 99px; background: rgba(31, 26, 18, .06); color: var(--tinta-2); font-size: .72rem; font-weight: 600; }
+.cd-folha-pe { position: sticky; bottom: 0; z-index: 2; display: flex; align-items: center; gap: 10px; margin-top: 14px; padding: 12px 0 16px; border-top: 1.5px dashed var(--fio); background: var(--cd-cartao); }
+.cd-adicionar { flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 52px; padding: 0 16px; border: 0; border-radius: 16px; background: var(--laranja); color: var(--preto); font: inherit; font-weight: 800; font-size: .9rem; cursor: pointer; box-shadow: 0 10px 20px -12px rgba(255, 107, 26, .9); }
+.cd-adicionar:hover { background: #ff7f38; }
+.cd-adicionar span { font-variant-numeric: tabular-nums; white-space: nowrap; }
+@container tela (max-width: 310px) {
+  .cd-adicionar { flex-direction: column; justify-content: center; gap: 0; min-width: 0; padding: 6px 10px; line-height: 1.2; }
+  .cd-adicionar span { font-size: .84rem; }
+}
+
+/* o pedido */
+.cd-linhas { margin-top: 8px; }
+.cd-linha { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 2px 10px; padding: 12px 0; border-top: 1.5px dashed var(--fio); }
+.cd-linha-nome { font-weight: 700; font-size: .86rem; line-height: 1.25; }
+.cd-linha-conta { grid-column: 1; font-size: .72rem; color: var(--tinta-2); font-variant-numeric: tabular-nums; }
+.cd-linha-conta b { color: var(--tinta); }
+.cd-linha .cd-passo { grid-column: 2; grid-row: 1 / span 2; }
+.cd-total { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 12px 0; border-top: 3px solid var(--tinta); font-weight: 800; }
+.cd-total b { font-size: 1.3rem; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.cd-whats { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 52px; margin-top: 4px; border: 1.5px dashed rgba(31, 26, 18, .28); border-radius: 16px; background: rgba(31, 26, 18, .05); color: var(--tinta-3); font: inherit; font-weight: 800; font-size: .9rem; cursor: not-allowed; }
+.cd-whats svg { width: 20px; height: 20px; flex: none; }
+.cd-aviso-previa { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 8px; font-size: .74rem; font-weight: 700; color: var(--tinta-2); text-align: center; }
+.cd-aviso-previa svg { width: 14px; height: 14px; flex: none; }
+.cd-limpar, .cd-voltar { align-self: center; min-height: 48px; margin-top: 6px; padding: 8px 14px; border: 0; border-radius: 12px; background: none; color: var(--tinta-2); font: inherit; font-size: .78rem; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.cd-voltar { margin-top: 12px; padding: 10px 18px; border-radius: 14px; background: var(--tinta); color: var(--creme); text-decoration: none; }
+.cd-vazio { margin-top: 18px; text-align: center; font-weight: 600; color: var(--tinta-2); }
+.cd-fechar-pedido { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 52px; margin-top: 2px; border: 0; border-radius: 16px; background: var(--laranja); color: var(--preto); font: inherit; font-weight: 800; font-size: .92rem; cursor: pointer; box-shadow: 0 10px 20px -12px rgba(255, 107, 26, .9); }
+.cd-fechar-pedido svg { width: 18px; height: 18px; }
+.cd-fechar-pedido:hover { background: #ff7f38; }
+.cd-recibo { display: grid; gap: 4px; margin-top: 8px; padding: 14px 14px 2px; border-radius: 18px; background: repeating-linear-gradient(0deg, transparent 0 26px, rgba(31, 26, 18, .04) 26px 27px), #fffdf6; box-shadow: inset 0 0 0 1px rgba(31, 26, 18, .1); }
+.cd-recibo-ok { justify-self: center; display: grid; place-items: center; width: 46px; height: 46px; margin-bottom: 6px; border-radius: 50%; background: var(--verde); color: var(--preto); box-shadow: 0 10px 22px -10px rgba(111, 158, 16, .9); }
+.cd-recibo-ok svg { width: 22px; height: 22px; }
+.cd-recibo-linhas li { display: flex; justify-content: space-between; gap: 10px; padding: 6px 0; border-bottom: 1.5px dashed var(--fio); font-size: .84rem; font-weight: 600; }
+.cd-recibo-linhas b { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cd-recibo .cd-total { border-top: 0; }
+.cd-recibo-botoes { display: flex; justify-content: center; flex-wrap: wrap; gap: 0 10px; }
+
+/* ---------- o seu preço e o da ficha: lado a lado; o que está no cardápio fica aceso, com a etiqueta laranja ---------- */
+.cd-resumo { margin-bottom: 14px; font-size: .9rem; font-weight: 600; line-height: 1.45; color: var(--texto-2); }
+.cd-resumo b { color: var(--creme); }
+.cd-comparar { display: grid; gap: 10px; }
+.cd-comp {
+  display: grid; grid-template-columns: minmax(0, 1fr) 14px minmax(0, 1fr); grid-template-areas: "nome nome nome" "hoje seta ficha"; gap: 10px 4px;
+  min-width: 0; padding: 10px; border-radius: 16px; background: rgba(11, 9, 6, .34); border: 1px solid var(--linha);
+}
+.cd-comp.prejuizo { border-color: rgba(255, 107, 26, .75); background: rgba(255, 107, 26, .08); box-shadow: 0 0 0 1px rgba(255, 107, 26, .35), 0 16px 34px -22px rgba(255, 107, 26, .9); }
+.cd-comp.prejuizo .cd-comp-nome b { color: #ffc2a0; }
+.cd-comp-nome { grid-area: nome; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 8px; padding: 0 2px; font-size: .9rem; line-height: 1.25; }
+.cd-comp-nome b { font-weight: 800; }
+.cd-comp-nome small { font-size: .7rem; font-weight: 600; color: var(--texto-3); }
+.cd-comp-lado {
+  position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 5px; min-width: 0; padding: 10px 9px;
+  border-radius: 12px; background: rgba(255, 251, 238, .03); box-shadow: inset 0 0 0 1px var(--linha); opacity: .74;
+}
+.cd-comp-lado.hoje { grid-area: hoje; }
+.cd-comp-lado.ficha { grid-area: ficha; }
+.cd-comp-lado.ativo { opacity: 1; background: rgba(255, 107, 26, .07); box-shadow: inset 0 0 0 1.5px rgba(255, 107, 26, .7), 0 12px 26px -18px rgba(255, 107, 26, .9); }
+.cd-no-cardapio { position: absolute; top: -8px; right: 8px; padding: 1px 7px; border-radius: 99px; background: var(--laranja); color: var(--preto); font-size: .56rem; font-weight: 800; letter-spacing: .08em; line-height: 1.6; text-transform: uppercase; white-space: nowrap; }
+.cd-comp-rot { font-size: .6rem; font-weight: 800; letter-spacing: .1em; line-height: 1.3; text-transform: uppercase; color: var(--texto-3); }
+.cd-comp-linha { display: flex; flex-wrap: wrap; align-items: center; gap: 5px 8px; }
+.cd-comp-preco { font-weight: 800; font-size: 1.02rem; letter-spacing: -.01em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cd-comp-lado .pill { margin: 0; font-size: .64rem; padding: 3px 8px 3px 6px; }
+.cd-comp-sobra { font-size: .72rem; font-weight: 600; line-height: 1.35; color: var(--texto-2); }
+.cd-comp-sobe { display: inline-block; padding: 1px 7px; border-radius: 99px; background: rgba(255, 107, 26, .16); color: var(--laranja); font-size: .7rem; font-weight: 800; white-space: nowrap; }
+.cd-comp-fica { display: inline-flex; align-items: center; gap: 5px; font-size: .72rem; font-weight: 800; color: var(--verde); }
+.cd-comp-fica svg { width: 14px; height: 14px; flex: none; }
+.cd-comp-seta { grid-area: seta; align-self: center; text-align: center; color: var(--texto-3); font-weight: 800; font-size: .8rem; }
+.cd-nota-fim { margin-top: 12px; }
+@container (min-width: 480px) {
+  .cd-comp { grid-template-columns: minmax(0, 1fr) 20px minmax(0, 1fr); gap: 10px 6px; padding: 12px 14px 14px; }
+  .cd-comp-lado { padding: 11px 12px; }
+  .cd-comp-preco { font-size: 1.1rem; }
+  .cd-comp-lado .pill { font-size: .7rem; padding: 4px 9px 4px 7px; }
+}
+
+/* ---------- as seções de baixo, na cor da página ---------- */
+body[data-produto="cardapio-digital"] .passos li::before { background: var(--destaque); }
+body[data-produto="cardapio-digital"] .perguntas summary::after { color: var(--destaque); }
+
+/* ---------- o movimento (só para quem não pediu menos movimento) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .cd-chave-trilho { transition: background .25s, box-shadow .25s; }
+  .cd-chave-trilho i { transition: translate .32s var(--mola); }
+  .cd-sacola { transition: transform .5s var(--mola), visibility 0s; }
+  .cd-sacola[data-vazio="sim"] { transition: transform .3s var(--suave), visibility 0s .3s; }
+  .cd-veu { transition: opacity .3s, visibility 0s .3s; }
+  .cd-veu.aberto { transition: opacity .3s; }
+  .cd-folha { transition: transform .42s var(--suave), visibility 0s .42s; }
+  .cd-folha.aberta { transition: transform .42s var(--suave); }
+  .cd-passo button, .cd-aba, .cd-adicionar, .cd-fechar { transition: background .15s, color .15s, transform .15s; }
+  .cd-passo button:active, .cd-adicionar:active, .cd-sacola:active { transform: scale(.94); }
+  .cd-comp-lado { transition: opacity .3s, background .3s, box-shadow .3s; }
+  .cd-grupo { animation: cd-entra .42s var(--suave) both; }
+  .cd-item-preco.mudou { animation: cd-preco 1.1s var(--suave); }
+  .cd-comp-lado.trocou { animation: cd-pisca .7s var(--suave); }
+  .cd-comp-lado.trocou .cd-no-cardapio { animation: cd-etiqueta .5s var(--mola) both; }
+  .cd-sacola.pulou { animation: cd-pula-sacola .5s var(--mola); }
+  .cd-sacola.pulou .cd-sacola-qtd { animation: cd-pula .5s var(--mola); }
+  @keyframes cd-pula-sacola { 35% { scale: 1.05; } }
+  .cd-abas-marca { transition: translate .38s var(--mola), width .38s var(--mola), background .25s; }
+  .cd-abas.seguindo .cd-abas-marca { transition: background .2s; }
+  .cd-lista { transition: translate .42s var(--mola); }
+  .cd-lista.arrastando { transition: none; }
+  .cd-comp { transition: border-color .3s, background .3s, box-shadow .3s; }
+  .cd-comp.acende { animation: cd-acende .9s var(--suave); }
+  @keyframes cd-acende { 0% { box-shadow: 0 0 0 4px rgba(255, 107, 26, .55), 0 0 30px rgba(255, 107, 26, .5); } }
+  .cd-recibo { animation: cd-recibo .5s var(--mola) both; }
+  @keyframes cd-recibo { from { opacity: 0; transform: translateY(14px) scale(.97); } }
+  .cd-fechar-pedido { transition: background .15s, transform .15s; }
+  .cd-fechar-pedido:active { transform: scale(.97); }
+  .cd-faixa.chama::-webkit-slider-thumb { animation: cd-chama 1.8s ease-in-out 4; }
+  .cd-faixa.chama::-moz-range-thumb { animation: cd-chama 1.8s ease-in-out 4; }
+  @keyframes cd-chama { 0%, 100% { box-shadow: 0 6px 14px rgba(0, 0, 0, .45), 0 0 0 0 rgba(255, 107, 26, .55); } 60% { box-shadow: 0 6px 14px rgba(0, 0, 0, .45), 0 0 0 12px rgba(255, 107, 26, 0); } }
+  .cd-tela.varre::after { content: ""; position: absolute; inset: -30% 0; z-index: 35; pointer-events: none; background: linear-gradient(180deg, transparent 0%, rgba(255, 107, 26, .2) 50%, transparent 100%); animation: cd-varre .9s var(--suave) both; }
+  @keyframes cd-entra { from { opacity: 0; translate: 0 10px; } }
+  @keyframes cd-preco { 0% { background: rgba(255, 107, 26, 0); } 18% { background: rgba(255, 107, 26, .32); } 100% { background: rgba(255, 107, 26, 0); } }
+  @keyframes cd-pisca { 0% { background: rgba(255, 107, 26, .26); } }
+  @keyframes cd-pula { 40% { transform: scale(1.22); } }
+  @keyframes cd-etiqueta { from { opacity: 0; transform: translateY(5px) scale(.85); } }
+  @keyframes cd-varre { from { transform: translateY(-70%); } to { transform: translateY(70%); } }
+}

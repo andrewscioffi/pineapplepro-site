@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pineapple Pro · ferramentas pra quem vende comida</title>
+<meta name="description" content="Ferramentas pra quem vende comida: o preço certo, a foto que dá fome e o cliente que volta. Comece grátis no Direct do @pineapplepro_.">
+<meta name="theme-color" content="#0b0906">
+<link rel="icon" href="img/marca.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
+<link rel="stylesheet" href="inicio.css">
+<script type="module" src="site.js"></script>
+<script type="module" src="inicio.js"></script>
+</head>
+<body data-cor="amarelo">
+<div class="barra-topo">
+  <header class="envolve topo">
+    <a class="marca" href="index.html"><img src="img/marca.png" alt="Pineapple Pro" width="34" height="34"><span>Pineapple Pro</span></a>
+    <nav class="topo-acoes" aria-label="Atalhos">
+      <a class="topo-link" href="#vitrine">Ferramentas</a>
+      <a class="topo-link" href="https://www.instagram.com/pineapplepro_/" target="_blank" rel="noopener">@pineapplepro_</a>
+    </nav>
+  </header>
+</div>
+
+<main>
+  <section class="envolve abre-home">
+    <img class="fundo-marca" src="img/marca.png" alt="" aria-hidden="true">
+    <div class="abre-texto revela">
+      <p class="chapeu">Uma ferramenta de cada vez</p>
+      <h1>Ferramentas pra quem <em class="brilha">vende comida</em></h1>
+      <p class="sub">O preço certo, a foto que dá fome e o cliente que volta. Feito pra lanchonete, restaurante, bar e quem vende em casa.</p>
+      <div class="acao">
+        <a class="botao" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="fichas">Começar grátis no Direct</a>
+        <p class="ou-mande">Ou mande: “Quero as 3 fichas técnicas grátis 🍍”</p>
+        <p class="aviso" data-aviso aria-live="polite"></p>
+      </div>
+      <a class="link-seta" href="#vitrine">Ver as ferramentas <span aria-hidden="true">↓</span></a>
+    </div>
+
+    <!-- A TORRE DO PREÇO: o X-Bacon de exemplo em camadas de vidro. A conta é a da calculadora (inicio.js). -->
+    <div class="vidro palco tp revela" data-torre aria-busy="true" style="--atraso: .12s">
+      <p class="palco-rot"><span>A torre do preço</span><span class="ao-vivo">Mexa aqui</span></p>
+      <div class="tp-cab">
+        <p class="tp-item">X-Bacon duplo <span class="selo-exemplo">exemplo</span></p>
+        <div class="tp-canais" role="group" aria-label="Onde você vende" data-tp="canais" data-canal="balcao">
+          <span class="tp-canal-luz" aria-hidden="true"></span>
+          <button type="button" class="tp-canal" data-canal="balcao" aria-pressed="true">No balcão</button>
+          <button type="button" class="tp-canal" data-canal="app_hoje" aria-pressed="false">No app</button>
+        </div>
+      </div>
+      <div class="tp-cena" data-tp="cena" aria-hidden="true">
+        <div class="tp-palco3d"><div class="tp-torre" data-tp="torre"></div></div>
+        <svg class="tp-fios" data-tp="fios" xmlns="http://www.w3.org/2000/svg" focusable="false"></svg>
+        <div class="tp-rotulos" data-tp="rotulos"></div>
+      </div>
+      <div class="tp-leitura">
+        <div class="tp-ler">
+          <label class="tp-ler-rot" for="tp-preco" data-tp="rot-preco">Você cobra<span class="tp-largo"> no balcão</span></label>
+          <output class="tp-ler-num tp-preco rola" data-tp="preco" for="tp-preco"></output>
+        </div>
+        <div class="tp-ler tp-ler-sobra">
+          <span class="tp-ler-rot">Sobra pra você</span>
+          <b class="tp-ler-num tp-sobra rola" data-tp="sobra"></b>
+        </div>
+        <p class="tp-sinal"><span class="pill" data-tp="sinal"></span><span class="tp-faixa" data-tp="faixa"></span></p>
+      </div>
+      <input id="tp-preco" class="tp-controle" type="range" min="15" max="35" step="0.5" value="25" data-tp-controle>
+      <p class="tp-ings-rot">Toque pra tirar ou pôr</p>
+      <div class="tp-ings" data-tp="ings"></div>
+      <p class="tp-dica" data-tp="dica"></p>
+      <p class="so-leitor" data-tp="resumo" aria-live="polite"></p>
+      <noscript><p class="tp-dica">A torre do preço faz a conta com o JavaScript ligado.</p></noscript>
+    </div>
+  </section>
+
+  <section class="envolve secao" id="vitrine" aria-labelledby="t-vitrine">
+    <div class="secao-cab revela">
+      <p class="chapeu">A vitrine</p>
+      <h2 id="t-vitrine">Uma ferramenta pra cada parte da sua cozinha</h2>
+      <p>Passe o mouse (ou role no celular) e veja cada uma funcionando. As trancadas abrem uma de cada vez.</p>
+    </div>
+    <ul class="vitrine" data-vitrine></ul>
+    <noscript><p class="ou-mande">A vitrine aparece com o JavaScript ligado. A primeira ferramenta: <a href="pine-cost/">Pine Cost Pro</a>.</p></noscript>
+  </section>
+
+  <section class="envolve secao" id="como" aria-labelledby="t-como">
+    <div class="secao-cab revela">
+      <p class="chapeu">Como funciona</p>
+      <h2 id="t-como">Tudo pelo Direct, em 3 passos</h2>
+    </div>
+    <div class="como-palco" data-como>
+      <ol class="passos como-passos">
+        <li class="vidro revela" data-passo="1"><span class="como-num" aria-hidden="true">1</span><b>Chama no Direct</b><p>Pelo botão daqui ou direto no @pineapplepro_.</p></li>
+        <li class="vidro revela" data-passo="2" style="--atraso: .08s"><span class="como-num" aria-hidden="true">2</span><b>Manda a foto e diz o que vende</b><p>O produto, os ingredientes e quanto você cobra.</p></li>
+        <li class="vidro revela" data-passo="3" style="--atraso: .16s"><span class="como-num" aria-hidden="true">3</span><b>Recebe no Direct</b><p>A ficha com a conta pronta e a foto revitalizada.</p></li>
+      </ol>
+      <div class="cv-lado" data-cena>
+        <figure class="cv vidro forte revela" style="--atraso: .1s">
+          <figcaption class="cv-topo">
+            <img src="img/marca.png" alt="" aria-hidden="true" width="32" height="32">
+            <span class="cv-nome"><b>pineapplepro_</b><small>Pineapple Pro</small></span>
+          </figcaption>
+          <p class="cv-aviso"><span class="selo-exemplo">exemplo de conversa</span></p>
+          <div class="cv-falas" data-cv="falas" aria-hidden="true">
+            <div class="cv-msg cv-eu"><p class="cv-balao">Quero as 3 fichas técnicas grátis 🍍</p></div>
+            <div class="cv-msg cv-eu"><div class="cv-balao cv-foto"><img src="foto/img/exemplo-real/lanche-duplo-antes-p.jpg" alt="Exemplo real: a foto do celular de um lanche duplo" width="150" height="111" loading="lazy" decoding="async"></div></div>
+            <div class="cv-msg cv-eu"><p class="cv-balao">X-Bacon duplo: os ingredientes e quanto eu cobro</p></div>
+            <div class="cv-msg cv-pine"><p class="cv-balao">A ficha com a conta pronta e a foto revitalizada</p></div>
+            <div class="cv-msg cv-pine"><div class="cv-balao cv-foto"><img src="foto/img/exemplo-real/lanche-duplo-depois-p.jpg" alt="Exemplo real: o mesmo lanche, na foto revitalizada" width="132" height="132" loading="lazy" decoding="async"></div></div>
+          </div>
+          <p class="so-leitor">Exemplo de conversa no Direct: você manda “Quero as 3 fichas técnicas grátis 🍍”, a foto e o que vende (o produto, os ingredientes e quanto cobra) e recebe a ficha com a conta pronta e a foto revitalizada.</p>
+          <div class="cv-barra" aria-hidden="true">Mensagem</div>
+        </figure>
+        <button type="button" class="botao claro cv-de-novo" data-cv="de-novo" hidden>Ver de novo</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="quem">
+    <h2 id="quem" class="so-leitor">Quem está por trás</h2>
+    <div class="por-tras">
+      <div class="revela">
+        <p class="chapeu">Quem está por trás</p>
+        <p class="citacao" style="margin-top: 14px">Comecei com 12 anos, reabastecendo molho e limpando bandeja.</p>
+        <p class="quem">Andrews, fundador da Pineapple Pro</p>
+      </div>
+      <div class="escritorio esc vidro revela" style="--atraso: .1s">
+        <p class="esc-texto"><span class="numero" data-conta-ate="22" data-esc="numero">22</span><b>funcionários de IA</b> trabalham no escritório da Pineapple. Eles adiantam o trabalho, e o Andrews aprova o que é importante.</p>
+        <div class="esc-planta" data-esc="planta" aria-hidden="true"><div class="esc-chao"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="maior">
+    <div class="maior vidro revela">
+      <div>
+        <h2 id="maior">Tem um negócio maior?</h2>
+        <p>Instagram cuidado todo mês, tráfego pago e site. A gente monta junto com você.</p>
+      </div>
+      <div class="acao">
+        <a class="botao claro" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="agencia">Fale com a gente</a>
+        <p class="ou-mande">Ou mande: “Vocês fazem Instagram e tráfego? 🍍”</p>
+        <p class="aviso" data-aviso aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="envolve rodape">
+  <span>Pineapple Pro · Maringá (PR)</span>
+  <nav aria-label="Rodapé">
+    <a href="https://www.instagram.com/pineapplepro_/" target="_blank" rel="noopener">@pineapplepro_</a>
+    <a href="privacidade.html">Política de privacidade</a>
+  </nav>
+</footer>
+</body>
+</html>

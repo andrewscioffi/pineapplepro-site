@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Foto com cara de cardápio · Pineapple Pro</title>
+<meta name="description" content="A foto de celular do seu produto, com a luz, o fundo e o enquadramento de cardápio, sem inventar ingrediente. Veja exemplos reais de antes e depois e teste como a sua foto aparece no app de delivery e no Instagram.">
+<meta name="theme-color" content="#0b0906">
+<link rel="icon" href="../img/marca.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../estilo.css">
+<link rel="stylesheet" href="foto.css">
+<!-- sem JavaScript, o antes e depois mostra a foto revitalizada, parada (os botões e os chips precisam do JavaScript) -->
+<noscript><style>.ad-palco .ad-depois { opacity: 1 !important; } .ad-selo, .ad-troca, .ad-diz, .ad-conta, .ad-palco .controle, .ad-palco .ao-vivo { display: none !important; }</style></noscript>
+<script type="module" src="../site.js"></script>
+<script type="module" src="foto.js"></script>
+</head>
+<body data-produto="foto" data-cor="laranja">
+<div class="barra-topo">
+  <header class="envolve topo">
+    <a class="marca" href="../index.html"><img src="../img/marca.png" alt="Pineapple Pro" width="34" height="34"><span>Pineapple Pro</span></a>
+    <a class="topo-link" href="../index.html#vitrine">Todas as ferramentas</a>
+  </header>
+</div>
+
+<main>
+  <section class="envolve produto-abre foto-abre">
+    <div class="foto-texto">
+      <div class="selos">
+        <span class="selo-breve" data-so-trancado="foto"><span data-cadeado></span>Em breve</span>
+        <span class="selo-aberto" data-so-aberto="foto"><i></i>Aberto agora</span>
+      </div>
+      <p class="chapeu">Foto pronta pro cardápio</p>
+      <h1>A mesma comida, com a <em class="brilha">luz certa</em></h1>
+      <p class="sub">Você manda a foto do celular. Ela volta com a luz, o fundo e o enquadramento de cardápio. Sem inventar ingrediente.</p>
+      <div class="precos" data-so-aberto="foto">
+        <span class="etiqueta-bloco"><span class="etiqueta gratis" data-valor="foto.gratis"></span><small>3 fotos, com a marca</small></span>
+        <span class="etiqueta-bloco"><span class="etiqueta pacote" data-valor="foto.pacote"></span><small>8 fotos, sem a marca</small></span>
+      </div>
+      <div class="acao" data-so-aberto="foto">
+        <a class="botao" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="fichas">Quero as 3 grátis</a>
+        <p class="ou-mande">Ou mande: “Quero as 3 fichas técnicas grátis 🍍”</p>
+        <p class="aviso" data-aviso aria-live="polite"></p>
+      </div>
+      <div class="caminho" data-so-trancado="foto">
+        <p>Sozinha, esta ferramenta abre em breve. <b>Hoje, a foto já vem junto com as 3 fichas técnicas grátis do Pine Cost Pro.</b></p>
+        <a class="botao claro" href="../pine-cost/">Ver o Pine Cost Pro <span class="seta" aria-hidden="true">→</span></a>
+      </div>
+      <ul class="foto-pontos" aria-label="O que muda na foto">
+        <li><i aria-hidden="true"></i>Luz de janela, da esquerda</li>
+        <li><i aria-hidden="true"></i>Fundo limpo e desfocado</li>
+        <li><i aria-hidden="true"></i>O produto inteiro, no meio</li>
+      </ul>
+    </div>
+
+    <!-- O ANTES E DEPOIS DE VERDADE: 4 exemplos reais (img/exemplo-real/ORIGEM.md), sem o nome do lugar nem de quem é a
+         comida. O antes (4:3) e o depois (quadrado) não casam embaixo de uma linha: a troca é com fade, no mesmo quadro. -->
+    <div class="vidro palco foto-palco ad-palco" data-ad data-ver="antes">
+      <p class="palco-rot"><span>Antes e depois</span><span class="ao-vivo">Toque na foto</span></p>
+      <figure class="ad">
+        <div class="ad-quadro" data-ad-quadro>
+          <div class="ad-pilha" data-ad-pilha>
+            <img class="ad-foto ad-antes" data-ad-foto="antes" src="img/exemplo-real/lanche-queijo-antes.jpg" width="960" height="718" alt="Exemplo real, antes: um lanche de queijo, na foto do celular" fetchpriority="high" decoding="async" draggable="false">
+            <img class="ad-foto ad-depois" data-ad-foto="depois" src="img/exemplo-real/lanche-queijo-depois.jpg" width="800" height="800" alt="Exemplo real, depois: o mesmo lanche, na foto revitalizada" decoding="async" draggable="false">
+          </div>
+          <span class="ad-selo" aria-hidden="true"><i></i><span data-ad-selo>Antes · foto do celular</span></span>
+        </div>
+        <figcaption class="ad-rot"><span class="ad-legenda"><span class="selo-exemplo">Exemplo real</span><span data-ad-nome>Lanche de queijo</span></span><span class="ad-conta rola" data-ad-conta>1 de 4</span></figcaption>
+      </figure>
+      <div class="ad-troca" role="group" aria-label="Ver a foto de antes ou a de depois">
+        <i class="ad-troca-luz" aria-hidden="true"></i>
+        <button type="button" data-ad-ver="antes" aria-pressed="true"><b>Antes</b><small>do celular</small></button>
+        <button type="button" data-ad-ver="depois" aria-pressed="false"><b>Depois</b><small>revitalizada</small></button>
+      </div>
+      <p class="ad-diz" data-ad-diz aria-live="polite">Toque na foto pra ver o antes e o depois.</p>
+      <div class="controle">
+        <p class="mini-rot" id="rot-exemplos">4 exemplos reais · deslize a foto pro lado</p>
+        <div class="chips ad-exemplos" role="group" aria-labelledby="rot-exemplos">
+          <button class="chip" type="button" aria-pressed="true" data-ad-exemplo="lanche-queijo"><img src="img/exemplo-real/lanche-queijo-mini.jpg" alt="" aria-hidden="true" width="112" height="112" loading="lazy" decoding="async">Lanche de queijo</button>
+          <button class="chip" type="button" aria-pressed="false" data-ad-exemplo="lanche-duplo"><img src="img/exemplo-real/lanche-duplo-mini.jpg" alt="" aria-hidden="true" width="112" height="112" loading="lazy" decoding="async">Lanche duplo</button>
+          <button class="chip" type="button" aria-pressed="false" data-ad-exemplo="marmita-frango"><img src="img/exemplo-real/marmita-frango-mini.jpg" alt="" aria-hidden="true" width="112" height="112" loading="lazy" decoding="async">Marmita de frango</button>
+          <button class="chip" type="button" aria-pressed="false" data-ad-exemplo="marmita-carne"><img src="img/exemplo-real/marmita-carne-mini.jpg" alt="" aria-hidden="true" width="112" height="112" loading="lazy" decoding="async">Marmita de carne</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O ESTUDO DE LUZ (desenhado de propósito: é ele que mostra a luz mudando ao vivo, o que foto nenhuma faz) e a foto
+       da própria pessoa, com as guias e a medida da luz -->
+  <section class="envolve secao foto-luz" id="luz" aria-labelledby="t-luz" data-foto-cai="quadro">
+    <div class="secao-cab revela">
+      <p class="chapeu">A luz, ao vivo</p>
+      <h2 id="t-luz">Mexa na luz e veja o que ela faz</h2>
+      <p>Foto nenhuma mostra isso: a mesma esfera, com a luz vindo de cada lado. Arraste a janela. A da esquerda, suave, é a que a gente pede pra IA.</p>
+      <p>Depois, ponha a foto do seu produto: as guias mostram o que a gente olha nela.</p>
+    </div>
+
+    <div class="vidro palco foto-palco luz-palco">
+      <p class="palco-rot"><span data-palco-rot>Estudo de luz</span><span class="ao-vivo" data-palco-vivo>Arraste a janela</span></p>
+
+      <figure class="quadro" data-quadro>
+        <div class="quadro-img com-estudo" data-quadro-img>
+          <!-- o estudo de luz: a esfera de gesso no prato (desenho geométrico, nada de comida). A janela acende a luz. -->
+          <svg class="estudo" data-estudo viewBox="0 0 1000 1000" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="el-mesa" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0" stop-color="#2c1f14"/><stop offset="0.55" stop-color="#1c140d"/><stop offset="1" stop-color="#110c08"/></linearGradient>
+              <radialGradient id="el-janela" data-el="janela" gradientUnits="userSpaceOnUse" cx="115" cy="382" r="820"><stop offset="0" stop-color="#ffe6bd" stop-opacity="0.46"/><stop offset="0.45" stop-color="#ffc98f" stop-opacity="0.138"/><stop offset="1" stop-color="#ffc98f" stop-opacity="0"/></radialGradient>
+              <linearGradient id="el-facho-cor" data-el="facho-cor" gradientUnits="userSpaceOnUse" x1="115" y1="382" x2="488" y2="496"><stop offset="0" stop-color="#ffe9c4" stop-opacity="0.2"/><stop offset="1" stop-color="#ffe9c4" stop-opacity="0"/></linearGradient>
+              <radialGradient id="el-prato" cx="0.42" cy="0.42" r="0.72"><stop offset="0" stop-color="#30261c"/><stop offset="1" stop-color="#16110c"/></radialGradient>
+              <linearGradient id="el-aro" data-el="aro" x1="0.022" y1="0.354" x2="0.978" y2="0.646"><stop offset="0" stop-color="#fff3dc" stop-opacity="0.6"/><stop offset="0.5" stop-color="#fff3dc" stop-opacity="0.18"/><stop offset="1" stop-color="#fff3dc" stop-opacity="0.06"/></linearGradient>
+              <radialGradient id="el-sombra" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#000" stop-opacity="0.78"/><stop offset="0.6" stop-color="#000" stop-opacity="0.34"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+              <radialGradient id="el-esfera" data-el="esfera" gradientUnits="userSpaceOnUse" cx="449.7" cy="484.3" fx="390.5" fy="466.2" r="225.7"><stop offset="0" stop-color="#fffdf7"/><stop offset="0.22" stop-color="#efe7d8"/><stop offset="0.55" stop-color="#b6a893"/><stop offset="0.82" stop-color="#574a3c"/><stop offset="1" stop-color="#372d24"/></radialGradient>
+              <radialGradient id="el-rebate" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#d0925a" stop-opacity="0.55"/><stop offset="1" stop-color="#d0925a" stop-opacity="0"/></radialGradient>
+              <radialGradient id="el-brilho" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/><stop offset="0.5" stop-color="#fff8ea" stop-opacity="0.32"/><stop offset="1" stop-color="#fff8ea" stop-opacity="0"/></radialGradient>
+              <clipPath id="el-dentro"><circle cx="488" cy="496" r="182"/></clipPath>
+            </defs>
+            <rect width="1000" height="1000" fill="url(#el-mesa)"/>
+            <g fill="none" stroke="#f7f4ec" stroke-opacity="0.045" stroke-width="2">
+              <path d="M-20 150 C 260 120 620 180 1020 140"/>
+              <path d="M-20 290 C 300 262 640 318 1020 280"/>
+              <path d="M-20 860 C 280 830 660 890 1020 850"/>
+              <path d="M-20 960 C 320 932 640 988 1020 950"/>
+            </g>
+            <rect width="1000" height="1000" fill="url(#el-janela)"/>
+            <polygon data-el="facho" points="135.5,315.1 94.5,448.9 434.8,670.1 541.2,321.9" fill="url(#el-facho-cor)" opacity="0.85"/>
+            <ellipse cx="500" cy="650" rx="380" ry="158" fill="url(#el-prato)"/>
+            <ellipse cx="500" cy="650" rx="380" ry="158" fill="none" stroke="url(#el-aro)" stroke-width="3"/>
+            <ellipse cx="500" cy="657" rx="282" ry="112" fill="none" stroke="#fff3dc" stroke-opacity="0.12" stroke-width="2"/>
+            <ellipse data-el="sombra" cx="584.9" cy="687.7" rx="213.6" ry="54.5" fill="url(#el-sombra)" opacity="0.85"/>
+            <circle cx="488" cy="496" r="182" fill="url(#el-esfera)"/>
+            <g clip-path="url(#el-dentro)">
+              <ellipse data-el="rebate" cx="595.9" cy="569" rx="130" ry="96" fill="url(#el-rebate)" opacity="0.4"/>
+              <ellipse data-el="brilho" cx="401" cy="469.4" rx="68" ry="54" fill="url(#el-brilho)" opacity="0.55"/>
+            </g>
+          </svg>
+          <img class="quadro-foto" data-foto src="img/estudo-de-luz.svg" width="1000" height="1000" alt="Exemplo: uma esfera de gesso num prato, com a luz vindo da esquerda" data-alt-exemplo="Exemplo: uma esfera de gesso num prato, com a luz vindo da esquerda" hidden>
+          <!-- onde a janela precisa ficar pra luz vir de onde o robô pede -->
+          <span class="alvo-luz" aria-hidden="true"><span>a janela aqui</span></span>
+          <div class="guia guia-luz" data-camada="luz" aria-hidden="true">
+            <svg class="guia-raios" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <path d="M0 16 L46 30"/><path d="M0 38 L52 46"/><path d="M0 60 L48 62"/><path d="M0 82 L40 78"/>
+            </svg>
+            <span class="guia-rot rot-luz">Luz de janela, da esquerda</span>
+            <span class="guia-medido" data-medido hidden></span>
+          </div>
+          <div class="guia guia-fundo" data-camada="fundo" aria-hidden="true">
+            <i class="guia-oval"></i>
+            <span class="guia-rot rot-fundo">Fundo limpo, desfocado</span>
+          </div>
+          <div class="guia guia-angulo" data-camada="angulo" aria-hidden="true">
+            <i class="terco t1"></i><i class="terco t2"></i><i class="terco t3"></i><i class="terco t4"></i>
+            <i class="guia-centro"></i>
+            <span class="guia-rot rot-angulo">De frente ou de cima, uns 45°</span>
+          </div>
+          <div class="guia guia-prato" data-camada="prato" aria-hidden="true">
+            <i class="canto c1"></i><i class="canto c2"></i><i class="canto c3"></i><i class="canto c4"></i>
+            <i class="guia-circulo"></i>
+            <span class="guia-rot rot-prato">O produto inteiro, no meio</span>
+          </div>
+          <span class="luz-zona" data-luz-zona aria-hidden="true"><i></i><span data-luz-zona-txt>Luz da esquerda</span></span>
+          <button class="janela-luz convida" type="button" data-janela aria-label="A janela da luz. Arraste, ou use as setas do teclado pra mover a luz." aria-describedby="foto-diz" style="left: 11.5%; top: 38.2%">
+            <span class="janela-vidro" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          </button>
+        </div>
+        <figcaption class="quadro-rot"><span class="quadro-legenda"><span class="selo-exemplo" data-rotulo-exemplo>Exemplo</span><span data-quadro-rot>Um estudo de luz no lugar da sua foto</span></span><span class="quadro-tam">1080 × 1080</span></figcaption>
+      </figure>
+
+      <div class="luz-lado">
+        <p class="foto-diz" id="foto-diz" data-diz aria-live="polite">Arraste a janela em volta da esfera: a luz, o brilho e a sombra vão junto.</p>
+
+        <div class="medida" data-medida hidden>
+          <p class="mini-rot">A luz da sua foto, medida aqui</p>
+          <div class="medida-grade">
+            <div class="medida-item">
+              <span class="medida-rot">Brilho</span>
+              <b class="medida-num rola" data-num-brilho>0%</b>
+              <span class="medida-barra" aria-hidden="true"><em></em><i data-barra-brilho></i></span>
+              <small data-medida-faixa></small>
+            </div>
+            <div class="medida-item">
+              <span class="medida-rot">A luz vem</span>
+              <span class="medida-lado"><span class="bussola" aria-hidden="true"><i data-bussola></i></span><b class="medida-txt" data-medida-lado>por igual</b></span>
+              <small data-medida-diferenca><span class="rola" data-num-diferenca>0</span> pontos de brilho a mais no lado claro</small>
+            </div>
+          </div>
+          <p class="nota">É só uma medida feita no seu aparelho, não é a IA. Quem arruma a luz é a IA, no Direct.</p>
+        </div>
+
+        <div class="controle">
+          <p class="mini-rot" id="rot-guias">As guias do que a gente olha</p>
+          <div class="chips" role="group" aria-labelledby="rot-guias">
+            <button class="chip" type="button" aria-pressed="false" data-guia="luz"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M2.5 12h2M19.5 12h2M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>Luz</button>
+            <button class="chip" type="button" aria-pressed="false" data-guia="fundo"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r="9" stroke-dasharray="2.2 2.8"/></svg>Fundo</button>
+            <button class="chip" type="button" aria-pressed="false" data-guia="angulo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>Ângulo</button>
+            <button class="chip" type="button" aria-pressed="false" data-guia="prato"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 9V4.5h4.5M16 4.5h4.5V9M20.5 15v4.5H16M8 19.5H3.5V15"/><circle cx="12" cy="12" r="4.2"/></svg>Prato cheio</button>
+            <button class="chip chip-todas" type="button" aria-pressed="false" data-guia="todas"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg>Todas</button>
+          </div>
+        </div>
+
+        <div class="soltar" data-soltar>
+          <input class="so-leitor" type="file" id="foto-arquivo" accept="image/*" data-arquivo>
+          <label class="soltar-alvo" for="foto-arquivo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3.5"/><circle cx="8.6" cy="9" r="1.8"/><path d="m21 15.5-4.6-4.6L6 21"/></svg>
+            <b data-soltar-titulo>Agora com a foto do seu produto</b>
+            <span>Toque aqui ou solte a foto em qualquer lugar da página</span>
+          </label>
+          <button class="voltar-exemplo" type="button" data-voltar hidden>Voltar pro estudo de luz</button>
+          <p class="local"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.4 3.2 8.4 7.5 9.5 4.3-1.1 7.5-5.1 7.5-9.5V6L12 3z"/><path d="m9 12 2 2 4-4"/></svg><span>A foto não sai do seu aparelho. Ela abre só aqui, no navegador, e some quando você fecha a página.</span></p>
+          <p class="aviso-foto" data-aviso-foto aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="no-app" data-foto-cai="lugares">
+    <div class="no-app">
+      <div class="secao-cab revela">
+        <p class="chapeu">Onde ela aparece</p>
+        <h2 id="no-app">A mesma foto, do app ao Instagram</h2>
+        <p>O robô entrega a foto quadrada, em 1080 × 1080. Deslize o celular e veja a mesma foto em cada lugar.</p>
+        <div class="chips vistas" role="group" aria-label="Onde a foto aparece">
+          <button class="chip" type="button" aria-pressed="true" data-vista="lista">Na lista</button>
+          <button class="chip" type="button" aria-pressed="false" data-vista="cartao">No cartão</button>
+          <button class="chip" type="button" aria-pressed="false" data-vista="aberta">Aberta</button>
+          <button class="chip" type="button" aria-pressed="false" data-vista="feed">No feed</button>
+          <button class="chip" type="button" aria-pressed="false" data-vista="grade">Na grade</button>
+        </div>
+        <p class="vista-diz" data-vista-diz aria-live="polite">Na lista, a foto divide a tela com o nome e o preço. Pequena assim, a luz e o fundo limpo fazem a diferença.</p>
+        <button class="botao claro" type="button" data-escolher data-origem="lugares">Testar com a minha foto</button>
+        <p class="nota">O app e o Instagram aqui são de mentira. <span class="so-exemplo">A foto é de verdade: o exemplo real escolhido lá em cima, até você pôr a sua.</span><span class="so-sua">Só a sua foto é de verdade.</span></p>
+      </div>
+
+      <div class="celular-palco revela" style="--atraso: .1s">
+        <span class="selo-exemplo so-exemplo celular-exemplo">Exemplo real</span>
+        <div class="celular" data-celular data-vista="lista">
+          <div class="celular-tela" data-cel-tela>
+            <div class="cel-pag pag-loja" data-pag="loja" data-lado="atual">
+              <div class="app-barra" aria-hidden="true"><span class="app-volta"></span><span class="app-busca"></span></div>
+              <div class="app-capa" aria-hidden="true"><span class="app-logo"></span></div>
+              <div class="app-loja-nome" aria-hidden="true"><i class="esq l60"></i><i class="esq l40"></i></div>
+              <p class="app-rot" aria-hidden="true">Mais pedidos</p>
+              <div class="app-cartoes">
+                <button class="app-cartao seu" type="button" data-abrir aria-label="Abrir a sua foto, como na página do produto">
+                  <span class="app-foto lugar" data-lugar="cartao"></span>
+                  <b>Seu produto</b><i class="esq l70"></i>
+                </button>
+                <span class="app-cartao" aria-hidden="true"><span class="app-foto vazia"></span><i class="esq l80"></i><i class="esq l50"></i></span>
+                <span class="app-cartao" aria-hidden="true"><span class="app-foto vazia v2"></span><i class="esq l70"></i><i class="esq l40"></i></span>
+              </div>
+              <p class="app-rot" aria-hidden="true">Cardápio</p>
+              <ul class="app-lista">
+                <li>
+                  <button class="app-item seu" type="button" data-abrir aria-label="Abrir a sua foto, como na página do produto">
+                    <span class="app-item-txt"><b>Seu produto</b><i class="esq l90"></i><i class="esq l60"></i><i class="esq l30 forte"></i></span>
+                    <span class="app-foto lugar" data-lugar="lista"></span>
+                  </button>
+                </li>
+                <li class="app-item" aria-hidden="true"><span class="app-item-txt"><i class="esq l70 forte"></i><i class="esq l90"></i><i class="esq l30 forte"></i></span><span class="app-foto vazia v3"></span></li>
+                <li class="app-item" aria-hidden="true"><span class="app-item-txt"><i class="esq l60 forte"></i><i class="esq l80"></i><i class="esq l30 forte"></i></span><span class="app-foto vazia"></span></li>
+              </ul>
+            </div>
+            <div class="cel-pag pag-produto" data-pag="produto" data-lado="depois" inert>
+              <span class="app-produto-foto lugar" data-lugar="aberta"></span>
+              <div class="app-produto-txt" aria-hidden="true">
+                <b>Seu produto</b>
+                <i class="esq l90"></i><i class="esq l70"></i><i class="esq l40 forte"></i>
+                <span class="app-obs"><i class="esq l50"></i></span>
+                <span class="app-adicionar"><i></i><i class="esq l30"></i></span>
+              </div>
+            </div>
+            <div class="cel-pag pag-feed ig" data-pag="feed" data-lado="depois" inert>
+              <div class="ig-barra" aria-hidden="true"><i class="esq l30 forte"></i><span class="ig-icones"><i></i><i></i></span></div>
+              <div class="ig-cab" aria-hidden="true"><span class="ig-avatar"></span><span class="ig-nome"><i class="esq l50 forte"></i><i class="esq l30"></i></span></div>
+              <span class="ig-foto lugar" data-lugar="feed"></span>
+              <div class="ig-acoes" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.3 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.7 7.1L4 20l1.4-4.1A8 8 0 1 1 20 11.5z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M21 4 3 11l7 2.5M21 4l-7 17-4-7.5M21 4 10 13.5"/></svg>
+                <svg class="ig-salvar" viewBox="0 0 24 24"><path d="M6.5 3.5h11v17l-5.5-4-5.5 4z"/></svg>
+              </div>
+              <div class="ig-legenda" aria-hidden="true"><i class="esq l40 forte"></i><i class="esq l90"></i><i class="esq l70"></i></div>
+            </div>
+            <div class="cel-pag pag-grade ig" data-pag="grade" data-lado="depois" inert>
+              <div class="ig-barra" aria-hidden="true"><i class="esq l30 forte"></i><span class="ig-icones"><i></i><i></i></span></div>
+              <div class="ig-perfil" aria-hidden="true"><span class="ig-avatar grande"></span><span class="ig-numeros"><i></i><i></i><i></i></span></div>
+              <div class="ig-bio" aria-hidden="true"><i class="esq l50 forte"></i><i class="esq l80"></i><i class="esq l60"></i></div>
+              <div class="ig-abas" aria-hidden="true"><i class="ativa"></i><i></i><i></i></div>
+              <div class="ig-grade">
+                <span class="ig-cel v1" aria-hidden="true"></span>
+                <span class="ig-cel lugar" data-lugar="grade"></span>
+                <span class="ig-cel v2" aria-hidden="true"></span>
+                <span class="ig-cel v3" aria-hidden="true"></span><span class="ig-cel v2" aria-hidden="true"></span><span class="ig-cel v1" aria-hidden="true"></span>
+                <span class="ig-cel v2" aria-hidden="true"></span><span class="ig-cel v3" aria-hidden="true"></span><span class="ig-cel v1" aria-hidden="true"></span>
+              </div>
+            </div>
+            <!-- a moldura: a mesma foto, que voa de um lugar pro outro e muda de forma -->
+            <div class="moldura" data-moldura aria-hidden="true">
+              <span class="moldura-fantasma"><i class="moldura-img"></i></span>
+              <span class="moldura-corte"><i class="moldura-img"></i></span>
+            </div>
+            <!-- a seta de voltar da página do produto fica por cima da foto aberta -->
+            <button class="app-fechar" type="button" data-fechar aria-label="Voltar pra lista"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          </div>
+        </div>
+        <p class="celular-dica" aria-hidden="true"><span class="dica-deslize">Deslize o celular pra trocar</span><span class="dica-arraste">Arraste a foto pra ver o corte</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="marca" data-foto-cai="marca">
+    <div class="marca-grade">
+      <div class="secao-cab revela">
+        <p class="chapeu">A marca no canto</p>
+        <h2 id="marca">A amostra vai com a marca. O pacote, sem.</h2>
+        <p>Arraste a linha por cima da marca: é a mesma foto dos dois lados.</p>
+        <ul class="marca-lados">
+          <li><span class="etiqueta gratis" data-valor="foto.gratis"></span><span>3 fotos, com a marca da Pineapple no canto</span></li>
+          <li><span class="etiqueta pacote" data-valor="foto.pacote"></span><span>8 fotos no total, sem a marca</span></li>
+        </ul>
+        <button class="botao claro" type="button" data-escolher data-origem="marca">Ver com a minha foto</button>
+      </div>
+      <div class="div-palco revela" style="--atraso: .1s">
+        <div class="divisoria" data-divisoria>
+          <div class="div-lado div-pacote" aria-hidden="true"><i class="div-img"></i></div>
+          <div class="div-lado div-amostra" aria-hidden="true">
+            <i class="div-img"></i>
+            <span class="selo-amostra"><img src="../img/marca.png" alt="" aria-hidden="true" width="40" height="40"><span><b>Pineapple Pro</b><small>amostra grátis</small></span></span>
+          </div>
+          <div class="div-linha" data-div-linha role="slider" tabindex="0" aria-label="A linha entre o pacote e a amostra grátis" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-describedby="div-diz">
+            <span class="div-pega" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9.5 7 4.5 12l5 5M14.5 7l5 5-5 5"/></svg></span>
+          </div>
+          <p class="div-rot div-rot-esq" data-div-rot="esquerda" aria-hidden="true"><span class="etiqueta pacote" data-valor="foto.pacote"></span><small>no pacote, sem a marca</small></p>
+          <p class="div-rot div-rot-dir" data-div-rot="direita" aria-hidden="true"><span class="etiqueta gratis" data-valor="foto.gratis"></span><small>a amostra, com a marca</small></p>
+        </div>
+        <p class="div-diz" id="div-diz" data-div-diz aria-live="polite">A mesma foto dos dois lados: à esquerda, no pacote; à direita, a amostra grátis.</p>
+        <p class="nota so-exemplo"><span class="selo-exemplo">Exemplo real</span> Uma foto revitalizada no lugar da sua.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="mexe">
+    <div class="secao-cab revela">
+      <p class="chapeu">Sem inventar ingrediente</p>
+      <h2 id="mexe">O que a IA arruma e o que ela não toca</h2>
+      <p>É sempre o seu produto de verdade, revitalizado.</p>
+    </div>
+    <div class="mexe-grade">
+      <article class="vidro mexe revela">
+        <p class="mexe-rot sim">Arruma</p>
+        <ul class="mexe-lista sim">
+          <li><b>A luz</b><span>Suave, como de janela, vindo da esquerda, com sombra leve.</span></li>
+          <li><b>A cor</b><span>Natural, sem brilho de plástico e sem exagero.</span></li>
+          <li><b>A nitidez</b><span>O foco no produto.</span></li>
+          <li><b>O fundo</b><span>Limpo e um pouco desfocado, numa bancada escura.</span></li>
+          <li><b>A sujeira</b><span>A migalha e o que sobra em volta.</span></li>
+        </ul>
+      </article>
+      <article class="vidro mexe revela" style="--atraso: .08s">
+        <p class="mexe-rot nao">Não toca</p>
+        <ul class="mexe-lista nao">
+          <li><b>Os ingredientes</b><span>A mesma quantidade, cada um no mesmo lugar.</span></li>
+          <li><b>O pão ou a massa</b><span>O mesmo formato e o mesmo tamanho.</span></li>
+          <li><b>O prato ou a embalagem</b><span>Do jeito que estão na sua foto.</span></li>
+          <li><b>Nada a mais</b><span>Nem gergelim, folha, molho, fumaça ou enfeite.</span></li>
+          <li><b>Só o produto</b><span>Nem mão, nem pessoa.</span></li>
+        </ul>
+      </article>
+    </div>
+    <div class="vidro confere revela">
+      <span class="confere-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2.5 12.5 7 17l9.5-9.5"/><path d="m11.5 16 1 1 9-9"/></svg></span>
+      <p><b>E outra IA confere.</b> Ela compara a foto nova com a sua. Se o produto mudou, a foto é refeita.</p>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="vem">
+    <div class="secao-cab revela">
+      <p class="chapeu">O que vem</p>
+      <h2 id="vem">Pronta pro app e pro Instagram</h2>
+    </div>
+    <div class="recursos">
+      <article class="vidro recurso revela">
+        <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.5 2.5v13a2 2 0 0 0 2 2h13"/><path d="M17.5 21.5v-13a2 2 0 0 0-2-2h-13"/></svg></span>
+        <b>Quadrada, 1080 × 1080</b>
+        <p>Serve no app de delivery, no cardápio e no feed.</p>
+      </article>
+      <article class="vidro recurso revela" style="--atraso: .06s">
+        <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span>
+        <b>Com ou sem a marca</b>
+        <p>As primeiras vão com a marca da Pineapple no canto. No pacote, sem a marca.</p>
+      </article>
+      <article class="vidro recurso revela" style="--atraso: .12s">
+        <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 12a8.5 8.5 0 0 1-12.4 7.6L3 21l1.4-5.6A8.5 8.5 0 1 1 21 12z"/></svg></span>
+        <b>Na mesma conversa</b>
+        <p>Você manda a foto no Direct e ela volta ali, em uns minutos.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="como">
+    <div class="secao-cab revela">
+      <p class="chapeu">Como funciona</p>
+      <h2 id="como">Do celular pro cardápio, em 3 passos</h2>
+    </div>
+    <ol class="passos">
+      <li class="revela"><b>Tira a foto</b><p>Do celular, do jeito que tiver.</p></li>
+      <li class="revela" style="--atraso: .06s"><b>Manda no Direct</b><p>E diz qual é o produto.</p></li>
+      <li class="revela" style="--atraso: .12s"><b>Recebe com cara de cardápio</b><p>A mesma comida, com a luz certa.</p></li>
+    </ol>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="perguntas">
+    <div class="secao-cab">
+      <p class="chapeu">Perguntas</p>
+      <h2 id="perguntas">Antes de mandar</h2>
+    </div>
+    <div class="perguntas">
+      <details><summary>A IA inventa coisa na minha comida?</summary><p>Não. Ela mexe só na luz, na cor, na nitidez e no fundo. Outra IA confere se é o mesmo produto, e se mudou, a foto é refeita.</p></details>
+      <details><summary>A foto que eu escolho aqui vai pra algum lugar?</summary><p>Não. Ela abre só no seu navegador, não é enviada pra ninguém e some quando você fecha a página. A foto de verdade você manda no Direct.</p></details>
+      <details><summary>O que aparece aqui já é a foto revitalizada?</summary><p>A sua, não. Quando você põe a sua foto aqui, ela aparece do jeito que está hoje, no app e no Instagram, com o que a gente olha nela. A foto revitalizada sai no Direct. A luz que você arrasta é um estudo, numa esfera de gesso. Já os 4 exemplos do começo da página são fotos revitalizadas de verdade, cada uma com a foto de antes.</p></details>
+      <details><summary>E se a minha foto estiver ruim?</summary><p>Se ela estiver escura ou cortada, e não der pra arrumar sem mudar o produto, a gente pede outra: de dia, perto da janela, com ele inteiro aparecendo.</p></details>
+      <details><summary>Posso usar no app de delivery e no Instagram?</summary><p>Pode. Ela sai quadrada, em 1080 × 1080. Na grade do perfil, o Instagram mostra o meio dela.</p></details>
+    </div>
+  </section>
+
+  <section class="envolve secao" aria-labelledby="final">
+    <div class="maior">
+      <div>
+        <h2 id="final">A sua foto, com cara de cardápio</h2>
+        <p data-so-trancado="foto">Hoje ela vem junto com as 3 fichas técnicas grátis do Pine Cost Pro.</p>
+        <p data-so-aberto="foto">Você vê como ficam 3 fotos suas e decide depois.</p>
+      </div>
+      <div class="acao" data-so-aberto="foto">
+        <a class="botao" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="fichas">Quero as 3 grátis</a>
+        <p class="ou-mande">Ou mande: “Quero as 3 fichas técnicas grátis 🍍”</p>
+        <p class="aviso" data-aviso aria-live="polite"></p>
+      </div>
+      <div class="caminho-fim" data-so-trancado="foto">
+        <a class="botao" href="../pine-cost/">Ver o Pine Cost Pro <span class="seta" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="envolve rodape">
+  <span>Pineapple Pro · Maringá (PR)</span>
+  <nav aria-label="Rodapé">
+    <a href="../index.html">Todas as ferramentas</a>
+    <a href="https://www.instagram.com/pineapplepro_/" target="_blank" rel="noopener">@pineapplepro_</a>
+    <a href="../privacidade.html">Política de privacidade</a>
+  </nav>
+</footer>
+
+<!-- solte a foto em qualquer lugar da página (no computador) -->
+<div class="fv-solte" data-solte hidden aria-hidden="true">
+  <div class="fv-solte-caixa">
+    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3.5"/><circle cx="8.6" cy="9" r="1.8"/><path d="m21 15.5-4.6-4.6L6 21"/></svg>
+    <b>Solte a foto aqui</b>
+    <span>Ela abre só no seu aparelho. Nada é enviado.</span>
+  </div>
+</div>
+</body>
+</html>

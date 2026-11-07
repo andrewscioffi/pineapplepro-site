@@ -1,0 +1,546 @@
+/* A PÁGINA DA FOTO COM CARA DE CARDÁPIO (v3, 07/11/2026). A cara dela: a mesa de luz do fotógrafo, em laranja.
+   O antes e depois de verdade (4 exemplos reais), o estudo de luz com a janela que se arrasta, as guias que entram por
+   cima (luz, fundo, ângulo, prato cheio), a medida da luz da foto da pessoa, o celular de mentira (o app de delivery e o
+   Instagram) com a moldura que voa de um lugar pro outro, e a divisória entre a amostra grátis (com a marca) e o pacote.
+   Celular primeiro. */
+
+@property --d { syntax: '<percentage>'; inherits: true; initial-value: 50%; }
+
+/* a foto revitalizada de verdade dos lugares e da marca, até a pessoa pôr a dela (o foto.js troca pelo exemplo escolhido
+   no começo da página; a foto da pessoa entra no --foto e passa na frente) */
+:root { --foto-exemplo: url("img/exemplo-real/lanche-queijo-depois.jpg"); }
+
+/* ---------- o começo ---------- */
+.foto-abre { position: relative; }
+.foto-abre::before {
+  content: ""; position: absolute; z-index: -1; pointer-events: none; width: min(760px, 100%); aspect-ratio: 1;
+  right: 0; top: -4%; background: radial-gradient(closest-side, rgba(255, 107, 26, .17), transparent 70%);
+}
+.caminho { margin-top: 22px; display: grid; gap: 14px; padding: 16px 18px; border-radius: 20px; border: 1px solid var(--vidro-borda); background: linear-gradient(150deg, rgba(255, 251, 238, .07), rgba(255, 251, 238, .02)); max-width: 44ch; }
+.caminho p { color: var(--texto-2); font-size: .95rem; }
+.caminho b { color: var(--creme); font-weight: 700; }
+@media (min-width: 560px) { .caminho .botao { justify-self: start; } }
+.foto-pontos { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 22px; color: var(--texto-2); font-size: .86rem; font-weight: 600; }
+.foto-pontos li { display: inline-flex; align-items: center; gap: 8px; }
+.foto-pontos i { width: 8px; height: 8px; border-radius: 2px; rotate: 45deg; background: var(--laranja); box-shadow: 0 0 0 3px rgba(255, 107, 26, .18); }
+.foto-abre .precos { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.foto-abre .acao { margin-top: 22px; }
+
+/* ---------- o antes e depois de verdade (o começo da página): o depois entra por cima do antes, no mesmo quadro ---------- */
+.ad { display: grid; gap: 10px; margin: 0; }
+.ad-quadro {
+  position: relative; aspect-ratio: 1 / 1; border-radius: 18px; overflow: hidden; isolation: isolate; container-type: inline-size;
+  background: #140e09; box-shadow: 0 0 0 1px rgba(255, 249, 232, .12), 0 26px 60px -26px rgba(0, 0, 0, .85);
+  cursor: pointer; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent;
+}
+.ad-quadro.puxando { cursor: grabbing; }
+.ad-pilha { position: absolute; inset: 0; translate: var(--puxa, 0px) 0; }
+.ad-quadro.saindo .ad-pilha { opacity: .3; }
+/* cada lado é o arquivo do jeito que ele é (nada de filtro: o antes não é piorado de propósito) */
+.ad-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; -webkit-user-drag: none; }
+.ad-palco[data-ver="antes"] .ad-depois { opacity: 0; }
+/* as marcas de corte do visor (as mesmas do estudo de luz) */
+.ad-quadro::after {
+  content: ""; position: absolute; inset: 9px; z-index: 5; pointer-events: none;
+  --m: rgba(255, 249, 232, .7);
+  background:
+    linear-gradient(var(--m), var(--m)) left top / 16px 1.5px no-repeat, linear-gradient(var(--m), var(--m)) left top / 1.5px 16px no-repeat,
+    linear-gradient(var(--m), var(--m)) right top / 16px 1.5px no-repeat, linear-gradient(var(--m), var(--m)) right top / 1.5px 16px no-repeat,
+    linear-gradient(var(--m), var(--m)) left bottom / 16px 1.5px no-repeat, linear-gradient(var(--m), var(--m)) left bottom / 1.5px 16px no-repeat,
+    linear-gradient(var(--m), var(--m)) right bottom / 16px 1.5px no-repeat, linear-gradient(var(--m), var(--m)) right bottom / 1.5px 16px no-repeat;
+}
+/* o selo do lado que está na tela (verde no depois, como a luz certa do estudo) */
+.ad-selo {
+  position: absolute; z-index: 6; left: 4.2cqw; top: 4.2cqw; display: inline-flex; align-items: center; gap: .55em; max-width: calc(100% - 8.4cqw);
+  padding: .5em .95em .5em .7em; border-radius: 999px; font-size: clamp(.66rem, 2.9cqw, .82rem); font-weight: 800; line-height: 1.2; white-space: nowrap;
+  color: var(--creme); background: rgba(11, 9, 6, .66); border: 1px solid rgba(255, 249, 232, .2); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  pointer-events: none;
+}
+.ad-selo span { overflow: hidden; text-overflow: ellipsis; }
+.ad-selo i { flex: none; width: .75em; height: .75em; border-radius: 50%; background: rgba(247, 244, 236, .6); }
+.ad-palco[data-ver="depois"] .ad-selo { background: var(--verde); color: var(--preto); border-color: transparent; box-shadow: 0 8px 24px -8px rgba(166, 224, 46, .8); }
+.ad-palco[data-ver="depois"] .ad-selo i { background: var(--preto); }
+.ad-rot { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: .8rem; font-weight: 700; color: var(--texto-2); line-height: 1.4; }
+.ad-legenda { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; min-width: 0; }
+.ad-legenda .selo-exemplo { flex: none; }
+.ad-conta { white-space: nowrap; color: var(--destaque); font-weight: 800; }
+/* o antes e o depois: a luz do botão corre pro lado escolhido */
+.ad-troca { position: relative; display: grid; grid-template-columns: 1fr 1fr; padding: 4px; border-radius: 999px; background: rgba(11, 9, 6, .45); border: 1px solid var(--vidro-borda); }
+.ad-troca button {
+  position: relative; z-index: 1; display: grid; justify-items: center; align-content: center; min-height: 52px; padding: 4px 10px;
+  border: 0; border-radius: 999px; background: none; color: var(--texto-2); font: inherit; line-height: 1.2; cursor: pointer;
+}
+.ad-troca b { font-size: .95rem; font-weight: 800; }
+.ad-troca small { font-size: .7rem; font-weight: 600; opacity: .85; }
+.ad-troca button[aria-pressed="true"] { color: var(--preto); }
+.ad-troca-luz { position: absolute; z-index: 0; top: 4px; bottom: 4px; left: 4px; width: calc(50% - 4px); border-radius: 999px; background: linear-gradient(180deg, #fffaf0, #e2d9c6); box-shadow: 0 10px 24px -12px rgba(0, 0, 0, .7); }
+.ad-palco[data-ver="depois"] .ad-troca-luz { translate: 100% 0; background: linear-gradient(180deg, #c3f05a, var(--verde) 55%, #8cc21f); box-shadow: 0 10px 24px -10px rgba(166, 224, 46, .6); }
+.ad-diz { min-height: 2.9em; font-size: .9rem; color: var(--texto-2); line-height: 1.45; }
+/* os 4 exemplos: a foto pequena e o nome (2 por linha) */
+.ad-exemplos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.ad-exemplos .chip { justify-content: flex-start; gap: 9px; min-height: 52px; padding: 6px 12px 6px 6px; border-radius: 16px; text-align: left; line-height: 1.2; font-size: .84rem; }
+.ad-exemplos .chip img { flex: none; width: 38px; height: 38px; border-radius: 11px; object-fit: cover; box-shadow: 0 0 0 1px rgba(255, 249, 232, .16); }
+.ad-exemplos .chip[aria-pressed="true"] img { box-shadow: 0 0 0 2px var(--preto); }
+
+/* ---------- o estudo de luz e a foto da pessoa (a 2ª seção): no computador, o quadro de um lado e o resto do outro ---------- */
+.luz-lado { display: grid; gap: 16px; align-content: start; min-width: 0; }
+@media (min-width: 900px) {
+  .luz-palco { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); column-gap: 32px; align-items: start; }
+  .luz-palco > .palco-rot { grid-column: 1 / -1; }
+}
+body:not(.tem-foto) .so-sua { display: none !important; }
+
+/* ---------- o palco: a mesa de luz ---------- */
+.foto-palco { display: grid; gap: 16px; }
+.foto-palco .palco-rot { margin-bottom: 0; }
+.mini-rot { font-size: .66rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--texto-3); }
+.foto-palco .controle { display: grid; gap: 10px; }
+.foto-palco .nota, .no-app .nota, .div-palco .nota { font-size: .8rem; color: var(--texto-3); line-height: 1.45; }
+.foto-palco .chip svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.foto-palco .chip { min-height: 44px; }
+.chip-todas { border-style: dashed; }
+.chip-todas[aria-pressed="true"] { border-style: solid; }
+body.tem-foto .so-exemplo { display: none !important; }
+
+/* o quadro: a foto no corte quadrado, com as marcas de corte do visor */
+.quadro { display: grid; gap: 10px; margin: 0; }
+.quadro-img {
+  position: relative; aspect-ratio: 1 / 1; border-radius: 18px; overflow: hidden; isolation: isolate; container-type: inline-size;
+  background: #140e09; box-shadow: 0 0 0 1px rgba(255, 249, 232, .12), 0 26px 60px -26px rgba(0, 0, 0, .85);
+  -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent;
+}
+.quadro-img.com-estudo { cursor: pointer; }
+.estudo { position: absolute; inset: 0; width: 100%; height: 100%; }
+.quadro-img > .quadro-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.quadro-img > .quadro-foto[hidden] { display: none; }
+.quadro-img:not(.com-estudo) :is(.estudo, .janela-luz, .luz-zona, .alvo-luz) { display: none; }
+.quadro-img::after {
+  content: ""; position: absolute; inset: 9px; z-index: 5; pointer-events: none;
+  --m: rgba(255, 249, 232, .7);
+  background:
+    linear-gradient(var(--m), var(--m)) left top / 16px 1.5px no-repeat, linear-gradient(var(--m), var(--m)) left top / 1.5px 16px no-repeat,
+    linear-gradient(var(--m), var(--m)) right top / 16px 1.5px no-repeat, linear-gradient(var(--m), var(--m)) right top / 1.5px 16px no-repeat,
+    linear-gradient(var(--m), var(--m)) left bottom / 16px 1.5px no-repeat, linear-gradient(var(--m), var(--m)) left bottom / 1.5px 16px no-repeat,
+    linear-gradient(var(--m), var(--m)) right bottom / 16px 1.5px no-repeat, linear-gradient(var(--m), var(--m)) right bottom / 1.5px 16px no-repeat;
+}
+.quadro-rot { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; font-size: .78rem; font-weight: 600; color: var(--texto-3); line-height: 1.4; }
+.quadro-legenda { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; min-width: 0; }
+.quadro-legenda .selo-exemplo { flex: none; }
+.quadro.tem-foto .quadro-legenda .selo-exemplo { display: none; }
+.quadro-tam { font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--destaque); font-weight: 800; letter-spacing: .02em; }
+
+/* a janela da luz: a pessoa arrasta (ou move com as setas) e a luz vai junto */
+.janela-luz {
+  position: absolute; z-index: 8; width: 60px; height: 60px; margin: -30px 0 0 -30px; padding: 0; border: 0; border-radius: 18px;
+  display: grid; place-items: center; background: none; color: inherit; cursor: grab; touch-action: none; -webkit-tap-highlight-color: transparent;
+}
+.janela-luz.pegando { cursor: grabbing; }
+.janela-vidro {
+  position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 3px; width: 32px; height: 40px; padding: 4px; border-radius: 8px;
+  background: rgba(255, 230, 189, .24); border: 2px solid #fff1d6;
+  box-shadow: 0 0 0 2px rgba(11, 9, 6, .55), 0 0 26px 8px rgba(255, 214, 160, .55), inset 0 0 12px rgba(255, 236, 205, .5);
+}
+.janela-vidro i { border-radius: 2px; background: linear-gradient(160deg, #fffaf0, #ffe1ae); }
+.janela-luz::before { content: ""; position: absolute; inset: 0; border-radius: 20px; border: 2px dashed rgba(255, 241, 214, .85); opacity: 0; pointer-events: none; }
+.janela-luz.convida::before { opacity: .9; }
+.janela-luz:focus-visible { outline: 3px solid var(--verde); outline-offset: 2px; }
+.janela-luz.pegando .janela-vidro { scale: 1.1; }
+
+/* o selo de onde vem a luz (verde quando é a luz que o robô pede) */
+.luz-zona {
+  position: absolute; z-index: 7; left: 4.2cqw; top: 4.2cqw; display: inline-flex; align-items: center; gap: .55em; max-width: calc(100% - 8.4cqw);
+  padding: .5em .95em .5em .7em; border-radius: 999px; font-size: clamp(.66rem, 2.9cqw, .82rem); font-weight: 800; line-height: 1.2; white-space: nowrap;
+  color: var(--creme); background: rgba(11, 9, 6, .64); border: 1px solid rgba(255, 249, 232, .2); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  pointer-events: none;
+}
+.luz-zona span { overflow: hidden; text-overflow: ellipsis; }
+.quadro-img.janela-no-canto .luz-zona { left: auto; right: 4.2cqw; }
+.luz-zona i { position: relative; flex: none; width: 1em; height: 1em; border-radius: 50%; background: #ffe1ae; box-shadow: 0 0 10px #ffd28a; }
+.quadro-img.luz-certa .luz-zona { background: var(--verde); color: var(--preto); border-color: transparent; box-shadow: 0 8px 24px -8px rgba(166, 224, 46, .8); }
+.quadro-img.luz-certa .luz-zona i { background: var(--preto); box-shadow: none; }
+.quadro-img.luz-certa .luz-zona i::after { content: ""; position: absolute; left: 30%; top: 22%; width: 26%; height: 44%; border-right: 2px solid var(--verde); border-bottom: 2px solid var(--verde); rotate: 40deg; }
+
+/* onde a janela precisa ficar (aparece enquanto a pessoa arrasta, ou com a guia da luz ligada) */
+.alvo-luz {
+  position: absolute; z-index: 3; left: 11.5%; top: 38.2%; width: 21%; aspect-ratio: 1; translate: -50% -50%; border-radius: 50%;
+  border: 1.5px dashed rgba(166, 224, 46, .85); background: radial-gradient(closest-side, rgba(166, 224, 46, .16), transparent);
+  opacity: 0; pointer-events: none;
+}
+.alvo-luz span { position: absolute; left: 50%; top: 100%; translate: -50% 6px; white-space: nowrap; font-size: clamp(.56rem, 2.3cqw, .72rem); font-weight: 800; color: var(--verde); text-shadow: 0 1px 6px rgba(0, 0, 0, .8); }
+.quadro-img.com-estudo:is(.arrastando-luz, .com-guia-luz) .alvo-luz { opacity: 1; }
+.quadro-img.luz-certa .alvo-luz { border-style: solid; background: radial-gradient(closest-side, rgba(166, 224, 46, .3), transparent); }
+
+/* as guias: camadas por cima da foto, que entram e saem (cada uma do seu jeito) */
+.guia { position: absolute; inset: 0; z-index: 2; pointer-events: none; visibility: hidden; }
+.guia.ligada { visibility: visible; }
+.guia-rot {
+  position: absolute; display: inline-flex; align-items: center; gap: 6px; padding: .45em .85em; border-radius: 999px; white-space: nowrap;
+  font-size: clamp(.6rem, 2.7cqw, .76rem); font-weight: 700; color: var(--creme); background: rgba(11, 9, 6, .66);
+  border: 1px solid rgba(255, 249, 232, .18); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.guia-rot::before { content: ""; width: .55em; height: .55em; border-radius: 50%; background: var(--destaque); flex: none; }
+/* só a guia mexida por último fala (o nome dela embaixo, à esquerda); as outras ficam só com o desenho */
+.guia .guia-rot { left: 4.5cqw; bottom: 4.5cqw; opacity: 0; }
+.guia.ligada.falando .guia-rot { opacity: 1; }
+
+/* luz: os raios de janela entrando pela esquerda (a faixa acende da esquerda pra direita) */
+.guia-luz::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255, 214, 160, .3), rgba(255, 214, 160, .08) 34%, transparent 60%); opacity: 0; }
+.guia-raios { position: absolute; inset: 0; width: 100%; height: 100%; clip-path: inset(0 100% 0 0); }
+.guia-raios path { fill: none; stroke: rgba(255, 236, 205, .78); stroke-width: 1.4; stroke-dasharray: 5 5; vector-effect: non-scaling-stroke; stroke-linecap: round; }
+.guia-luz.ligada::before { opacity: 1; }
+.guia-luz.ligada .guia-raios { clip-path: inset(0 0 0 0); }
+.guia-medido {
+  position: absolute; z-index: 1; display: inline-flex; align-items: center; gap: .45em; padding: .4em .8em; border-radius: 999px;
+  font-size: clamp(.6rem, 2.6cqw, .74rem); font-weight: 800; color: var(--preto); background: var(--amarelo); white-space: nowrap;
+  box-shadow: 0 6px 20px -6px rgba(0, 0, 0, .6);
+}
+.guia-medido[hidden] { display: none; }
+.guia-medido[data-lado="esquerda"] { left: 5cqw; top: 50%; translate: 0 -50%; }
+.guia-medido[data-lado="direita"] { right: 5cqw; top: 50%; translate: 0 -50%; }
+.guia-medido[data-lado="cima"] { left: 50%; top: 17cqw; translate: -50% 0; }
+.guia-medido[data-lado="baixo"], .guia-medido[data-lado="igual"] { left: 50%; bottom: 17cqw; translate: -50% 0; }
+
+/* fundo: o que é fundo escurece, e o oval do produto fecha em volta dele */
+.guia-fundo::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 39% 37% at 50% 53%, transparent 96%, rgba(11, 9, 6, .6) 100%); opacity: 0; }
+.guia-oval { position: absolute; left: 11%; top: 16%; width: 78%; height: 74%; border-radius: 50%; border: 1.5px dashed rgba(255, 249, 232, .85); opacity: 0; scale: 1.28; }
+.guia-fundo.ligada::before { opacity: 1; }
+.guia-fundo.ligada .guia-oval { opacity: 1; scale: 1; }
+
+/* ângulo: os terços crescem do meio, e a cruz do centro aparece */
+.terco { position: absolute; background: rgba(255, 249, 232, .62); }
+.terco.t1, .terco.t2 { top: 0; bottom: 0; width: 1.5px; margin-left: -.75px; scale: 1 0; }
+.terco.t1 { left: 33.333%; } .terco.t2 { left: 66.666%; }
+.terco.t3, .terco.t4 { left: 0; right: 0; height: 1.5px; margin-top: -.75px; scale: 0 1; }
+.terco.t3 { top: 33.333%; } .terco.t4 { top: 66.666%; }
+.guia-centro { position: absolute; left: 50%; top: 50%; width: 9cqw; height: 9cqw; translate: -50% -50%; scale: 0; background: linear-gradient(var(--destaque), var(--destaque)) center / 100% 2px no-repeat, linear-gradient(var(--destaque), var(--destaque)) center / 2px 100% no-repeat; }
+.guia-angulo.ligada .terco { scale: 1 1; }
+.guia-angulo.ligada .guia-centro { scale: 1; }
+
+/* prato cheio: os 4 cantos do enquadramento chegam de fora, e o círculo que o produto ocupa fecha */
+.guia-prato .canto { position: absolute; width: 15%; height: 15%; border: 0 solid var(--destaque); opacity: 0; }
+.guia-prato .c1 { left: 7%; top: 7%; border-left-width: 2.5px; border-top-width: 2.5px; border-top-left-radius: 12px; translate: -10cqw -10cqw; }
+.guia-prato .c2 { right: 7%; top: 7%; border-right-width: 2.5px; border-top-width: 2.5px; border-top-right-radius: 12px; translate: 10cqw -10cqw; }
+.guia-prato .c3 { right: 7%; bottom: 7%; border-right-width: 2.5px; border-bottom-width: 2.5px; border-bottom-right-radius: 12px; translate: 10cqw 10cqw; }
+.guia-prato .c4 { left: 7%; bottom: 7%; border-left-width: 2.5px; border-bottom-width: 2.5px; border-bottom-left-radius: 12px; translate: -10cqw 10cqw; }
+.guia-circulo { position: absolute; inset: 11%; border-radius: 50%; border: 1.5px dashed rgba(255, 107, 26, .95); box-shadow: inset 0 0 0 1px rgba(255, 107, 26, .12); opacity: 0; scale: .55; }
+.guia-prato.ligada .canto { opacity: 1; translate: 0 0; }
+.guia-prato.ligada .guia-circulo { opacity: 1; scale: 1; }
+
+.foto-diz { min-height: 4.4em; font-size: .9rem; color: var(--texto-2); line-height: 1.45; }
+
+/* ---------- a medida da luz da foto da pessoa (os números rolam do zero) ---------- */
+.medida { display: grid; gap: 12px; padding: 14px 16px; border-radius: 18px; background: rgba(11, 9, 6, .4); border: 1px solid rgba(255, 249, 232, .1); }
+.medida[hidden] { display: none; }
+.medida-grade { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.medida-item { display: grid; gap: 6px; align-content: start; min-width: 0; }
+.medida-rot { font-size: .72rem; font-weight: 700; color: var(--texto-3); }
+.medida-num { font-size: 1.9rem; font-weight: 800; letter-spacing: -.035em; line-height: 1; color: var(--creme); }
+.medida-lado { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.medida-txt { font-size: 1.12rem; font-weight: 800; line-height: 1.15; color: var(--creme); }
+.medida small { font-size: .72rem; font-weight: 600; color: var(--texto-3); line-height: 1.35; }
+.medida small[hidden] { display: none; }
+.medida small[data-faixa="boa"] { color: var(--verde); }
+.medida small[data-faixa="escura"], .medida small[data-faixa="bem clara"] { color: var(--laranja); }
+.medida-barra { position: relative; height: 8px; border-radius: 99px; background: rgba(255, 251, 238, .08); overflow: hidden; }
+/* a faixa boa (de 30 a 78, os limites do texto da luz) e o brilho da foto */
+.medida-barra em { position: absolute; left: 30%; width: 48%; top: 0; bottom: 0; background: rgba(166, 224, 46, .2); }
+.medida-barra i { position: absolute; left: 0; top: 0; bottom: 0; width: var(--b, 0%); border-radius: inherit; background: linear-gradient(90deg, #6b4a26, var(--destaque)); }
+.bussola { position: relative; width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid rgba(255, 249, 232, .22); background: radial-gradient(closest-side, rgba(255, 251, 238, .06), transparent); }
+.bussola::before { content: ""; position: absolute; left: 50%; top: 50%; width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: var(--texto-3); }
+.bussola i { position: absolute; left: 50%; top: 50%; width: 44%; height: 2px; margin-top: -1px; transform-origin: 0 50%; rotate: var(--a, 0deg); background: linear-gradient(90deg, transparent, var(--amarelo)); }
+.bussola i::after { content: ""; position: absolute; right: -4px; top: 50%; width: 9px; height: 9px; margin-top: -4.5px; border-radius: 50%; background: var(--amarelo); box-shadow: 0 0 10px rgba(249, 199, 72, .8); }
+.bussola.igual i { opacity: 0; }
+
+/* ---------- escolher a foto (arrastar ou tocar) ---------- */
+.soltar { display: grid; gap: 10px; }
+.soltar-alvo {
+  display: grid; justify-items: center; gap: 4px; padding: 18px 16px; border-radius: 18px; text-align: center; cursor: pointer;
+  border: 1.5px dashed rgba(255, 107, 26, .6);
+  background: radial-gradient(120% 150% at 50% 0%, rgba(255, 107, 26, .16), transparent 62%), rgba(11, 9, 6, .3);
+}
+.soltar-alvo svg { width: 30px; height: 30px; fill: none; stroke: var(--destaque); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 4px; }
+.soltar-alvo b { font-size: 1rem; font-weight: 800; color: var(--creme); }
+.soltar-alvo span { font-size: .82rem; color: var(--texto-3); }
+.soltar-alvo:hover, .soltar.arrastando .soltar-alvo { border-color: var(--destaque); background: radial-gradient(120% 150% at 50% 0%, rgba(255, 107, 26, .26), transparent 66%), rgba(11, 9, 6, .3); }
+.soltar input:focus-visible + .soltar-alvo { outline: 3px solid var(--verde); outline-offset: 3px; }
+.voltar-exemplo { justify-self: center; min-height: 44px; padding: 8px 16px; border: 0; background: none; color: var(--texto-2); font: inherit; font-size: .88rem; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.voltar-exemplo:hover { color: var(--destaque); }
+.voltar-exemplo[hidden] { display: none; }
+.local { display: flex; gap: 8px; align-items: flex-start; font-size: .8rem; color: var(--texto-2); line-height: 1.45; }
+.local svg { flex: none; width: 17px; height: 17px; margin-top: 1px; fill: none; stroke: var(--verde); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.aviso-foto { font-size: .86rem; font-weight: 700; color: var(--verde); }
+.aviso-foto.erro { color: var(--laranja); }
+.aviso-foto:empty { display: none; }
+
+/* solte a foto em qualquer lugar da página: a página inteira vira o lugar de soltar */
+.fv-solte { position: fixed; inset: 0; z-index: 1100; display: grid; place-items: center; padding: 24px; background: rgba(11, 9, 6, .58); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); pointer-events: none; }
+.fv-solte[hidden] { display: none; }
+.fv-solte-caixa { display: grid; justify-items: center; gap: 8px; width: min(520px, 100%); padding: 48px 24px; border-radius: 28px; border: 2px dashed var(--destaque); background: rgba(255, 107, 26, .1); text-align: center; }
+.fv-solte-caixa svg { width: 44px; height: 44px; fill: none; stroke: var(--destaque); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.fv-solte-caixa b { font-size: 1.4rem; font-weight: 800; }
+.fv-solte-caixa span { color: var(--texto-2); font-size: .92rem; }
+
+/* ---------- onde ela aparece: o celular de mentira com a moldura que voa ---------- */
+.no-app { display: grid; gap: 34px; align-items: center; }
+@media (min-width: 900px) { .no-app { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; } }
+.no-app .secao-cab { margin-bottom: 0; gap: 12px; }
+.no-app .chips { margin-top: 6px; }
+.no-app .botao { align-self: flex-start; margin-top: 8px; }
+.vista-diz { min-height: 4.4em; color: var(--texto-2); font-size: .95rem; }
+.celular-palco { position: relative; display: grid; justify-items: center; gap: 12px; padding: 8px 0; isolation: isolate; }
+.celular-palco::before { content: ""; position: absolute; z-index: -1; top: 4%; width: 90%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(closest-side, rgba(255, 107, 26, .24), transparent 72%); }
+.celular-exemplo { position: absolute; z-index: 7; top: 0; left: 50%; translate: -50% 0; box-shadow: 0 6px 16px -6px rgba(0, 0, 0, .7); }
+.celular {
+  position: relative; width: min(100%, 300px); aspect-ratio: 9 / 18.4; padding: 10px; border-radius: 46px;
+  background: linear-gradient(150deg, rgba(255, 251, 238, .18), rgba(255, 251, 238, .05) 55%, rgba(255, 251, 238, .1));
+  border: 1px solid rgba(255, 249, 232, .22); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .22), 0 44px 90px -30px rgba(0, 0, 0, .9), 0 0 0 1px rgba(0, 0, 0, .3);
+}
+.celular::before { content: ""; position: absolute; z-index: 9; top: 20px; left: 50%; width: 28%; height: 19px; translate: -50% 0; border-radius: 999px; background: #0b0906; }
+.celular-tela {
+  position: relative; height: 100%; border-radius: 37px; overflow: hidden; background: #fbf8f1; color: #1f1a12; container-type: inline-size;
+  cursor: grab; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent;
+}
+.celular.puxando .celular-tela { cursor: grabbing; }
+.cel-pag { position: absolute; inset: 0; padding: 50px 5.4cqw 0; overflow: hidden; background: #fbf8f1; }
+.cel-pag[data-lado="atual"] { z-index: 2; translate: var(--puxa, 0px) 0; }
+.cel-pag[data-lado="antes"] { translate: -22% 0; opacity: 0; }
+.cel-pag[data-lado="depois"] { z-index: 3; translate: 102% 0; }
+.celular-dica { display: flex; justify-content: center; font-size: .76rem; font-weight: 700; color: var(--texto-3); }
+.celular-dica .dica-arraste, .celular[data-vista="grade"] ~ .celular-dica .dica-deslize { display: none; }
+.celular[data-vista="grade"] ~ .celular-dica .dica-arraste { display: inline; }
+.celular-dica span::before { content: "↔"; margin-right: 6px; color: var(--destaque); }
+
+/* o app de delivery */
+.esq { display: block; height: 7px; border-radius: 4px; background: #e9e2d3; }
+.esq.forte { background: #d6cbb5; }
+.l30 { width: 30%; } .l40 { width: 40%; } .l50 { width: 50%; } .l60 { width: 60%; } .l70 { width: 70%; } .l80 { width: 80%; } .l90 { width: 90%; }
+.app-barra { display: flex; align-items: center; gap: 8px; }
+.app-volta { width: 26px; height: 26px; border-radius: 50%; background: #efe9dc; flex: none; }
+.app-busca { flex: 1; height: 26px; border-radius: 999px; background: #efe9dc; }
+.app-capa { position: relative; margin-top: 10px; height: 62px; border-radius: 14px; background: radial-gradient(90% 140% at 20% 0%, #5a3a1e, #2a1b10 70%); overflow: hidden; }
+.app-capa::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(115deg, transparent 0 14px, rgba(255, 236, 205, .07) 14px 15px); }
+.app-logo { position: absolute; left: 10px; bottom: -1px; width: 34px; height: 34px; border-radius: 50%; background: #fbf8f1; box-shadow: 0 0 0 3px #fbf8f1; }
+.app-logo::after { content: ""; position: absolute; inset: 7px; border-radius: 50%; border: 1.5px solid #d6cbb5; }
+.app-loja-nome { display: grid; gap: 6px; margin-top: 10px; }
+.app-rot { margin: 14px 0 8px; font-size: max(11px, 4.2cqw); font-weight: 800; letter-spacing: -.01em; color: #1f1a12; }
+.app-cartoes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.app-cartao { display: grid; gap: 5px; align-content: start; padding: 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; min-width: 0; }
+.app-cartao b, .app-item b { font-size: max(10px, 3.6cqw); font-weight: 800; line-height: 1.15; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.app-foto { display: block; width: 100%; height: auto; aspect-ratio: 1; border-radius: 10px; background: #e9e2d3; }
+.app-foto.vazia { position: relative; background: linear-gradient(140deg, #ece4d4, #d9cdb6); }
+.app-foto.vazia::after { content: ""; position: absolute; inset: 24%; border-radius: 50%; border: 1.5px solid rgba(31, 26, 18, .14); }
+.app-foto.vazia.v2 { background: linear-gradient(140deg, #e6dccb, #cfc0a5); }
+.app-foto.vazia.v3 { background: linear-gradient(140deg, #efe8da, #ddd2bd); }
+.app-lista { display: grid; }
+.app-item { display: grid; grid-template-columns: minmax(0, 1fr) 27%; align-items: center; gap: 10px; width: 100%; padding: 10px 0; border: 0; border-top: 1px solid #ece5d6; background: none; color: inherit; font: inherit; text-align: left; }
+.app-lista li:first-child .app-item { border-top: 0; }
+.app-item-txt { display: grid; gap: 6px; min-width: 0; }
+.cel-pag.pag-produto { padding: 0; }
+.app-produto-foto { display: block; width: 100%; aspect-ratio: 1; background: #e9e2d3; }
+.app-fechar { position: absolute; z-index: 8; top: 46px; left: 12px; opacity: 0; visibility: hidden; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; border: 0; background: rgba(251, 248, 241, .94); color: #1f1a12; cursor: pointer; box-shadow: 0 4px 14px rgba(0, 0, 0, .25); }
+.celular[data-vista="aberta"] .app-fechar { opacity: 1; visibility: visible; }
+.app-fechar svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.app-produto-txt { display: grid; gap: 8px; padding: 16px 5.4cqw; }
+.app-produto-txt b { font-size: max(13px, 5.4cqw); font-weight: 800; }
+.app-obs { display: flex; align-items: center; height: 46px; margin-top: 8px; padding: 0 12px; border-radius: 12px; border: 1.5px solid #ece5d6; }
+.app-adicionar { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px; height: 40px; border-radius: 999px; background: #1f1a12; }
+.app-adicionar i:first-child { width: 12px; height: 12px; background: linear-gradient(#fbf8f1, #fbf8f1) center / 100% 2px no-repeat, linear-gradient(#fbf8f1, #fbf8f1) center / 2px 100% no-repeat; }
+.app-adicionar .esq { width: 30%; background: rgba(251, 248, 241, .35); }
+.app-cartao.seu, .app-item.seu { cursor: pointer; border-radius: 12px; }
+.app-cartao.seu:focus-visible, .app-item.seu:focus-visible { outline: 3px solid var(--laranja); outline-offset: 2px; }
+/* o lugar escolhido ganha o anel laranja */
+.celular[data-vista="lista"] .app-item.seu, .celular[data-vista="cartao"] .app-cartao.seu { box-shadow: 0 0 0 2.5px var(--laranja), 0 0 0 7px rgba(255, 107, 26, .2); }
+.celular[data-vista="lista"] .app-item.seu { padding-left: 8px; padding-right: 8px; margin: 0 -8px; width: calc(100% + 16px); }
+
+/* o Instagram de mentira (formas, sem nome e sem número) */
+.cel-pag.ig { background: #fdfcf9; padding-left: 0; padding-right: 0; }
+.ig-barra { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 0 5.4cqw; }
+.ig-barra .esq { height: 10px; }
+.ig-icones { display: flex; gap: 10px; }
+.ig-icones i { width: 18px; height: 18px; border-radius: 6px; border: 1.8px solid #2a241a; }
+.ig-cab { display: flex; align-items: center; gap: 9px; padding: 12px 5.4cqw 10px; }
+.ig-avatar { flex: none; width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle, #d9cdb6 52%, transparent 54%), conic-gradient(var(--amarelo), var(--laranja), var(--amarelo)); }
+.ig-avatar.grande { width: 64px; height: 64px; }
+.ig-nome { display: grid; gap: 5px; flex: 1; }
+.ig-foto { display: block; width: 100%; aspect-ratio: 1; background: #e9e2d3; }
+.ig-acoes { display: flex; align-items: center; gap: 14px; padding: 10px 5.4cqw 6px; }
+.ig-acoes svg { width: 21px; height: 21px; fill: none; stroke: #2a241a; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ig-acoes .ig-salvar { margin-left: auto; }
+.ig-legenda { display: grid; gap: 6px; padding: 4px 5.4cqw; }
+.ig-perfil { display: flex; align-items: center; gap: 16px; padding: 14px 5.4cqw 8px; }
+.ig-numeros { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.ig-numeros i { display: grid; gap: 5px; height: 24px; background: linear-gradient(#cfc4ae, #cfc4ae) 50% 2px / 46% 8px no-repeat, linear-gradient(#e6dfd0, #e6dfd0) 50% 16px / 70% 6px no-repeat; }
+.ig-bio { display: grid; gap: 6px; padding: 0 5.4cqw 12px; }
+.ig-abas { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #ece5d6; }
+.ig-abas i { height: 30px; background: linear-gradient(#b9ad95, #b9ad95) center / 14px 14px no-repeat; opacity: .5; }
+.ig-abas i.ativa { opacity: 1; box-shadow: inset 0 -2px 0 #2a241a; }
+.ig-grade { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; }
+.ig-cel { display: block; aspect-ratio: 3 / 4; background: #e4dccb; }
+.ig-cel.v1 { background: linear-gradient(150deg, #e9e1d1, #d3c6ad); }
+.ig-cel.v2 { background: linear-gradient(150deg, #ddd2bd, #c6b797); }
+.ig-cel.v3 { background: linear-gradient(150deg, #efe8da, #dcd0b9); }
+
+/* os lugares da foto: cada um já mostra a mesma foto, parada (como no app de verdade); a moldura marca o lugar escolhido.
+   Sem a foto da pessoa, é a foto revitalizada de verdade do exemplo escolhido no começo da página (--foto-exemplo) */
+.lugar { background: var(--foto, var(--foto-exemplo)) center / cover no-repeat, #e9e2d3; }
+
+/* a moldura: a mesma foto (quadrada, como o robô entrega), que voa até o lugar e muda de forma */
+.moldura {
+  position: absolute; z-index: 6; left: 0; top: 0; width: var(--mw, 60px); height: var(--mh, 60px);
+  translate: calc(var(--mx, 0px) + var(--puxa, 0px)) var(--my, 0px); border-radius: var(--mr, 10px); container-type: size; cursor: grab;
+}
+.moldura-corte { position: absolute; inset: 0; border-radius: inherit; overflow: hidden; box-shadow: 0 0 0 1px rgba(31, 26, 18, .08); }
+.moldura-fantasma { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
+.moldura-img {
+  position: absolute; left: 50%; top: 50%; width: max(100cqw, 100cqh); aspect-ratio: 1; translate: calc(-50% + var(--pan, 0px)) -50%;
+  background: var(--foto, var(--foto-exemplo)) center / cover no-repeat;
+}
+.moldura-fantasma .moldura-img { box-shadow: 0 0 0 1.5px var(--laranja), 0 12px 30px -10px rgba(0, 0, 0, .55); filter: saturate(.7) brightness(.95); }
+.moldura.mostra-corte .moldura-fantasma { opacity: .45; }
+.moldura[data-vista="grade"] .moldura-corte { box-shadow: 0 0 0 2px var(--laranja); }
+
+/* ---------- a marca no canto: a divisória entre a amostra e o pacote ---------- */
+.marca-grade { display: grid; gap: 30px; align-items: center; }
+@media (min-width: 900px) { .marca-grade { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; } }
+.marca-grade .secao-cab { margin-bottom: 0; gap: 12px; }
+.marca-grade .botao { align-self: flex-start; margin-top: 6px; }
+.marca-lados { display: grid; gap: 10px; margin-top: 4px; }
+.marca-lados li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; color: var(--texto-2); font-size: .95rem; }
+.div-palco { display: grid; gap: 12px; width: min(100%, 470px); justify-self: center; }
+.divisoria {
+  --d: 50%; position: relative; aspect-ratio: 1; border-radius: 22px; overflow: hidden; isolation: isolate; container-type: inline-size;
+  cursor: ew-resize; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent;
+  background: #140e09; box-shadow: 0 0 0 1px rgba(255, 249, 232, .14), 0 30px 70px -28px rgba(0, 0, 0, .9);
+}
+.div-lado { position: absolute; inset: 0; }
+.div-amostra { clip-path: inset(0 0 0 var(--d)); }
+.div-img { position: absolute; inset: 0; background: var(--foto, var(--foto-exemplo)) center / cover no-repeat; }
+.div-linha { position: absolute; z-index: 4; top: 0; bottom: 0; left: var(--d); width: 48px; margin-left: -24px; display: grid; place-items: center; cursor: ew-resize; outline: none; }
+.div-linha::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; margin-left: -1px; background: var(--creme); box-shadow: 0 0 16px rgba(0, 0, 0, .55); }
+.div-pega { position: relative; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: var(--creme); color: var(--preto); box-shadow: 0 10px 26px -8px rgba(0, 0, 0, .8); }
+.div-pega svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.div-linha:focus-visible .div-pega { outline: 3px solid var(--verde); outline-offset: 3px; }
+.divisoria.puxando .div-pega { scale: 1.1; }
+.div-rot { position: absolute; z-index: 3; bottom: 4cqw; display: grid; gap: 2px; padding: .5em .8em; border-radius: 12px; background: rgba(11, 9, 6, .7); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); pointer-events: none; max-width: 44%; }
+.div-rot-esq { left: 4cqw; }
+.div-rot-dir { right: 4cqw; text-align: right; justify-items: end; }
+.div-rot .etiqueta { font-size: clamp(.78rem, 3.4cqw, .98rem); }
+.div-rot small { font-size: clamp(.6rem, 2.6cqw, .74rem); font-weight: 600; color: var(--texto-2); line-height: 1.25; }
+.div-diz { min-height: 2.9em; font-size: .9rem; color: var(--texto-2); line-height: 1.45; }
+.div-palco .so-exemplo { display: flex; align-items: center; gap: 8px; }
+
+/* a marca no canto: igual à da amostra grátis do robô (a pílula com a logo, no canto direito de cima) */
+.selo-amostra {
+  position: absolute; z-index: 2; top: 3.2cqw; right: 3.2cqw; display: inline-flex; align-items: center; gap: 1.5cqw;
+  padding: 1.2cqw 2.6cqw 1.2cqw 2cqw; border-radius: 999px; background: rgba(96, 92, 84, .93); color: #fff;
+  box-shadow: 0 1cqw 3cqw rgba(0, 0, 0, .28); font-family: "Helvetica Neue", Arial, sans-serif; line-height: 1.04;
+}
+.selo-amostra img { width: 3.9cqw; height: 3.9cqw; }
+.selo-amostra b { display: block; font-size: 3.05cqw; font-weight: 700; letter-spacing: -.01em; }
+.selo-amostra small { display: block; font-size: 1.95cqw; font-weight: 600; opacity: .92; margin-top: .2cqw; }
+
+/* ---------- o que a IA arruma e o que não toca ---------- */
+.mexe-grade { display: grid; gap: 14px; }
+@media (min-width: 760px) { .mexe-grade { grid-template-columns: 1fr 1fr; gap: 18px; } }
+.mexe { padding: 22px 20px; }
+.mexe-rot { display: inline-flex; align-items: center; gap: 8px; font-size: .74rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.mexe-rot.sim { color: var(--verde); }
+.mexe-rot.nao { color: var(--laranja); }
+.mexe-lista { display: grid; gap: 14px; margin-top: 16px; }
+.mexe-lista li { position: relative; padding-left: 32px; display: grid; gap: 2px; }
+.mexe-lista li::before { content: ""; position: absolute; left: 0; top: 1px; width: 22px; height: 22px; border-radius: 50%; }
+.mexe-lista.sim li::before { background: rgba(166, 224, 46, .14); box-shadow: inset 0 0 0 1.5px rgba(166, 224, 46, .6); }
+.mexe-lista.sim li::after { content: ""; position: absolute; left: 7px; top: 7px; width: 8px; height: 5px; border-left: 2px solid var(--verde); border-bottom: 2px solid var(--verde); rotate: -45deg; }
+.mexe-lista.nao li::before { background: rgba(255, 107, 26, .12); box-shadow: inset 0 0 0 1.5px rgba(255, 107, 26, .55); }
+.mexe-lista.nao li::after { content: ""; position: absolute; left: 6px; top: 7px; width: 10px; height: 10px; background: linear-gradient(var(--laranja), var(--laranja)) center / 100% 2px no-repeat, linear-gradient(var(--laranja), var(--laranja)) center / 2px 100% no-repeat; rotate: 45deg; }
+.mexe-lista b { font-weight: 800; font-size: 1rem; }
+.mexe-lista span { color: var(--texto-2); font-size: .92rem; }
+.confere { display: flex; align-items: center; gap: 14px; margin-top: 14px; padding: 18px 20px; }
+@media (min-width: 760px) { .confere { margin-top: 18px; } }
+.confere-icone { display: grid; place-items: center; width: 46px; height: 46px; flex: none; border-radius: 14px; background: rgba(166, 224, 46, .12); border: 1px solid rgba(166, 224, 46, .35); }
+.confere-icone svg { width: 24px; height: 24px; fill: none; stroke: var(--verde); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.confere p { color: var(--texto-2); }
+.confere b { color: var(--creme); }
+
+/* ---------- o fim ---------- */
+.caminho-fim .botao { width: 100%; }
+@media (min-width: 560px) { .caminho-fim .botao { width: auto; } }
+
+/* ---------- o movimento (só para quem não pediu menos movimento) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* o antes e depois: o depois entra por cima, assentando, e a luz passa quando a foto se revitaliza */
+  .ad-depois { transition: opacity .75s var(--suave), scale .95s var(--suave); }
+  .ad-palco[data-ver="antes"] .ad-depois { scale: 1.035; }
+  .ad-selo { transition: background-color .35s, color .35s, box-shadow .35s; }
+  .ad-troca-luz { transition: translate .5s var(--mola), box-shadow .3s; }
+  .ad-pilha { transition: translate .45s var(--mola), opacity .16s var(--suave); }
+  .ad-quadro.puxando .ad-pilha { transition: opacity .16s var(--suave); }
+  .ad-quadro::before { content: ""; position: absolute; inset: 0; z-index: 4; pointer-events: none; background: linear-gradient(105deg, transparent 34%, rgba(255, 240, 215, .42) 50%, transparent 66%); translate: -130% 0; }
+  .ad-quadro.revitaliza::before { animation: luz-varre 1.25s var(--suave) .08s 1; }
+  .ad-quadro.entrou .ad-pilha { animation: ad-entra .5s var(--suave) both; }
+  .ad-quadro[data-entra="direita"] { --de: 30px; }
+  .ad-quadro[data-entra="esquerda"] { --de: -30px; }
+  @keyframes ad-entra { from { opacity: .25; transform: translateX(var(--de, 0px)) scale(.985); } }
+  .ad-exemplos .chip img { transition: box-shadow .25s var(--suave); }
+  /* as guias entram cada uma do seu jeito e saem apagando */
+  .guia { transition: visibility 0s linear .5s; }
+  .guia.ligada { transition: visibility 0s; }
+  .guia::before { transition: opacity .5s var(--suave); }
+  .guia .guia-rot { transition: opacity .3s var(--suave); }
+  .guia-raios { transition: clip-path .75s var(--suave); }
+  .guia-raios path { animation: raio-anda 2.4s linear infinite; }
+  @keyframes raio-anda { to { stroke-dashoffset: -20; } }
+  .guia-oval { transition: opacity .45s var(--suave), scale .6s var(--mola); }
+  .terco { transition: scale .55s var(--suave); }
+  .terco.t2, .terco.t4 { transition-delay: .06s; }
+  .guia-centro { transition: scale .45s var(--mola) .18s; }
+  .guia-prato .canto { transition: translate .55s var(--mola), opacity .3s var(--suave); }
+  .guia-prato .c2 { transition-delay: .04s; } .guia-prato .c3 { transition-delay: .08s; } .guia-prato .c4 { transition-delay: .12s; }
+  .guia-circulo { transition: opacity .4s var(--suave) .15s, scale .6s var(--mola) .15s; }
+  .guia-prato.ligada .guia-circulo { animation: gira-devagar 26s linear infinite; }
+  @keyframes gira-devagar { to { rotate: 360deg; } }
+  .guia:not(.ligada) .guia-centro { transition-delay: 0s; }
+  /* o texto que troca entra subindo */
+  .foto-diz.troca { animation: diz-entra .45s var(--suave); }
+  @keyframes diz-entra { from { opacity: 0; translate: 0 6px; } }
+  /* a janela convida (o anel tracejado respira) até a pessoa mexer */
+  .janela-luz.convida::before { animation: convida 1.7s var(--suave) 6; } /* respira umas vezes e para (nada pisca sem parar) */
+  @keyframes convida { 0% { scale: .86; opacity: .95; } 100% { scale: 1.35; opacity: 0; } }
+  .janela-vidro { transition: scale .25s var(--mola); }
+  .luz-zona { transition: background-color .3s, color .3s, box-shadow .3s; }
+  .luz-zona.acendeu { animation: zona-acende .7s var(--mola); }
+  @keyframes zona-acende { 0% { scale: 1; } 35% { scale: 1.14; } 100% { scale: 1; } }
+  .alvo-luz { transition: opacity .3s var(--suave), background .3s; }
+  /* a foto chegou: ela cai no lugar, e uma luz passa por cima dela */
+  .quadro-foto { transition: opacity .4s var(--suave); }
+  .quadro.trocando .quadro-foto { opacity: .2; }
+  .quadro-img::before { content: ""; position: absolute; inset: 0; z-index: 6; pointer-events: none; background: linear-gradient(105deg, transparent 34%, rgba(255, 240, 215, .38) 50%, transparent 66%); translate: -130% 0; }
+  .quadro.chegou .quadro-img::before { animation: luz-varre 1.3s var(--suave) .35s 1; }
+  @keyframes luz-varre { to { translate: 130% 0; } }
+  .quadro-img.caiu > .quadro-foto, .divisoria.caiu .div-lado, .moldura.caiu .moldura-corte { animation: cai .75s var(--mola) both; }
+  @keyframes cai { 0% { opacity: 0; transform: translateY(-16%) scale(1.12) rotate(-3deg); } 55% { opacity: 1; transform: translateY(1.5%) scale(.985) rotate(.4deg); } 100% { transform: none; } }
+  .medida.entrou { animation: medida-entra .6s var(--mola); }
+  @keyframes medida-entra { from { opacity: 0; translate: 0 10px; scale: .98; } }
+  .medida-barra i { transition: width 1.1s var(--suave); }
+  .bussola i { transition: rotate 1s var(--mola), opacity .3s; }
+  .soltar-alvo { transition: border-color .2s, background .3s; }
+  /* o celular: as telas deslizam e a moldura voa até o lugar (e muda de forma) */
+  .cel-pag { transition: translate .55s var(--suave), opacity .55s var(--suave); }
+  .celular.puxando .cel-pag[data-lado="atual"], .celular.puxando .moldura { transition: none; }
+  .moldura { transition: translate .62s var(--suave), width .62s var(--suave), height .62s var(--suave), border-radius .62s var(--suave); }
+  .moldura-img { transition: translate .5s var(--mola); }
+  .moldura.puxando .moldura-img { transition: none; }
+  .moldura-fantasma { transition: opacity .35s var(--suave); }
+  .app-cartao.seu, .app-item.seu { transition: box-shadow .35s var(--suave); }
+  .app-fechar { transition: opacity .3s var(--suave) .25s, visibility 0s linear .55s; }
+  .celular[data-vista="aberta"] .app-fechar { transition: opacity .3s var(--suave) .35s, visibility 0s; }
+  .celular[data-vista="lista"] .app-item.seu, .celular[data-vista="cartao"] .app-cartao.seu { animation: anel-pulsa 2.2s var(--suave) infinite; }
+  @keyframes anel-pulsa { 50% { box-shadow: 0 0 0 2.5px var(--laranja), 0 0 0 11px rgba(255, 107, 26, .06); } }
+  /* a divisória: anda com mola quando a pessoa toca ou usa as setas; com o dedo, segue o dedo */
+  .divisoria { transition: --d .5s var(--suave); }
+  .divisoria.puxando { transition: none; }
+  .div-rot { transition: opacity .25s var(--suave); }
+  .div-pega { transition: scale .25s var(--mola); }
+}
+.moldura.sem-anima, .moldura.sem-anima .moldura-img { transition: none !important; }

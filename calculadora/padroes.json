@@ -1,0 +1,11 @@
+{
+  "sobre": "Valores padrão da ficha técnica (25/10/2026). PROVISÓRIOS até o Andrews definir. Tudo em % (26.5 = 26,5%). Cada item pode trocar qualquer um deles no próprio JSON. O imposto fica em imposto.json.",
+  "taxa_app": 26.5,
+  "acrescimo_app": 30,
+  "acrescimo_app_regra": [29, 31],
+  "custos_fixos_faixa": [15, 25],
+  "variacao_insumos": 10,
+  "taxa_balcao": 0,
+  "lucro_final_ramo": [10, 25],
+  "lucro_final_ramo_sobre": "03/11/2026, Andrews: a média de lucro final da alimentação é de 10% a 25% (depende do produto). Só a ficha paga (completa) usa: o preço sugerido de balcão."
+}
