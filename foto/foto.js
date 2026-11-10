@@ -21,6 +21,7 @@ import {
   corteNoMeio, medirLuz, numerosDaMedida, vistaAoLado, fotoDoExemplo,
 } from './contas.js';
 import { animarNumero, estourarEm, vibrar, pedeMenosMovimento } from '../comum/interacao.js';
+import { produto } from '../valores.js';
 import { ligarAntesDepois } from './antes-depois.js';
 import { ligarEstudo } from './luz.js';
 import { ligarLugares } from './lugares.js';
@@ -215,7 +216,7 @@ function ligarPagina(doc) {
     foto.hidden = !tem;
     if (palcoRot) palcoRot.textContent = tem ? 'A sua foto' : 'Estudo de luz';
     if (palcoVivo) palcoVivo.textContent = tem ? 'Ligue as guias' : 'Arraste a janela';
-    if (rotulo) rotulo.textContent = tem ? 'A sua foto, como ela está hoje. A revitalizada sai no Direct.' : ROTULO_EXEMPLO;
+    if (rotulo) rotulo.textContent = tem ? `A sua foto, como ela está hoje.${produto('foto')?.trancado ? '' : ' A revitalizada sai no Direct.'}` : ROTULO_EXEMPLO;
     if (tituloSoltar) tituloSoltar.textContent = tem ? 'Trocar a foto' : TITULO_SOLTAR;
     if (voltar) voltar.hidden = !tem;
   }

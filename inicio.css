@@ -212,8 +212,6 @@ html.js .como-passos li.como-espera .como-num { background: rgba(255, 251, 238, 
 .cv-pine .cv-balao { background: rgba(255, 251, 238, .08); border: 1px solid var(--vidro-borda); border-bottom-left-radius: 6px; }
 .cv-linha { display: block; min-height: 1.38em; }
 .cv-linha + .cv-linha { font-weight: 500; }
-.cv-foto { padding: 4px !important; line-height: 0; }
-.cv-foto img { display: block; border-radius: 14px; object-fit: cover; } /* a foto real da conversa (antes e depois) */
 .cv-pine .cv-ficha { width: 236px; max-width: 100%; padding: 12px 14px 4px; background: var(--papel); color: var(--tinta); border: 0; }
 .cv-ficha-rot { font-size: .6rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-3); }
 .cv-ficha .resumo-item { font-size: .9rem; margin: 2px 0 2px; }

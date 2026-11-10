@@ -2,11 +2,11 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; base-uri 'self'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; base-uri 'self'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pine Cost Pro · quanto sobra de cada venda</title>
-<meta name="description" content="Ficha técnica de verdade pra quem vende comida: o molho e a massa da casa entram na conta, o meio a meio também, e a conta mostra quanto sobra no balcão e no app. Comece com 3 fichas e 3 fotos grátis no Direct.">
+<meta name="description" content="Ficha técnica de verdade pra quem vende comida: o molho e a massa da casa entram na conta, o meio a meio também, e a conta mostra quanto sobra no balcão e no app. Comece com 3 fichas grátis no Direct.">
 <meta name="theme-color" content="#0b0906">
 <link rel="icon" href="../img/marca.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,11 +38,12 @@
       <div class="pc-abre-lado">
         <p class="sub">Do pacote que você compra até o prato que sai: o molho da casa, a massa, o meio a meio. A conta de cada venda, no balcão e no app.</p>
         <div class="precos" data-so-aberto="pine-cost">
-          <span class="etiqueta-bloco"><span class="etiqueta gratis" data-valor="pine-cost.gratis"></span><small>3 fichas técnicas + 3 fotos</small></span>
+          <span class="etiqueta-bloco"><span class="etiqueta gratis" data-valor="pine-cost.gratis"></span><small>3 fichas técnicas</small></span>
           <span class="etiqueta-bloco"><span class="etiqueta pacote" data-valor="pine-cost.pacote"></span><small>o pacote completo</small></span>
         </div>
         <div class="acao" data-so-aberto="pine-cost">
           <a class="botao" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="fichas">Quero as 3 fichas grátis</a>
+          <a class="botao claro" data-comprar hidden></a>
           <p class="ou-mande">Ou mande: “Quero as 3 fichas técnicas grátis 🍍”</p>
           <p class="aviso" data-aviso aria-live="polite"></p>
         </div>
@@ -161,19 +162,9 @@
         </div>
         <div class="pc-quantos">
           <div class="pc-quanto"><p><b class="rola" data-quantos="fichas"></b> <span>fichas técnicas</span></p><div class="pc-minis" data-minis="fichas" aria-hidden="true"></div></div>
-          <div class="pc-quanto"><p><b class="rola" data-quantos="fotos"></b> <span>fotos com cara de cardápio</span></p><div class="pc-minis" data-minis="fotos" aria-hidden="true"></div></div>
         </div>
         <p class="pc-recebe-preco" data-so-aberto="pine-cost"><span class="etiqueta gratis" data-valor="pine-cost.gratis" data-do-plano="gratis"></span><span class="etiqueta pacote" data-valor="pine-cost.pacote" data-do-plano="pacote"></span></p>
       </div>
-      <!-- a foto: um exemplo real de foto revitalizada (foto/img/exemplo-real/, sem o nome do lugar). No grátis, a marca da
-           Pineapple no canto direito de cima, igual à da amostra; no pacote, sem a marca -->
-      <figure class="pc-foto" data-foto data-marca="sim">
-        <div class="pc-foto-quadro">
-          <img class="pc-foto-img" src="../foto/img/exemplo-real/lanche-duplo-depois.jpg" srcset="../foto/img/exemplo-real/lanche-duplo-depois-p.jpg 480w, ../foto/img/exemplo-real/lanche-duplo-depois.jpg 800w" sizes="(min-width: 760px) 360px, calc(100vw - 72px)" width="800" height="800" alt="Exemplo real: um lanche duplo, na foto revitalizada" loading="lazy" decoding="async">
-          <span class="pc-foto-marca" aria-hidden="true"><img src="../img/marca.png" alt="" aria-hidden="true" width="40" height="40"><span><b>Pineapple Pro</b><small>amostra grátis</small></span></span>
-        </div>
-        <figcaption><span class="selo-exemplo">exemplo real</span> <span data-foto-legenda>No grátis, a foto vai com a marca da Pineapple no canto.</span></figcaption>
-      </figure>
     </div>
     <div class="planos pc-planos">
       <article class="plano" data-plano-cartao="gratis">
@@ -185,6 +176,7 @@
         <p class="plano-nome">O pacote completo</p>
         <span class="etiqueta pacote" data-valor="pine-cost.pacote"></span>
         <ul data-lista="pine-cost.pacote_inclui"></ul>
+        <a class="botao" data-comprar hidden></a>
       </article>
     </div>
   </section>
@@ -196,8 +188,8 @@
     </div>
     <ol class="passos">
       <li class="vidro revela"><b>Chama no Direct</b><p>O botão copia a frase. É só colar e mandar.</p></li>
-      <li class="vidro revela" style="--atraso: .08s"><b>Manda a foto e diz o que vende</b><p>O produto, os ingredientes, o tamanho do pacote e quanto você paga e cobra.</p></li>
-      <li class="vidro revela" style="--atraso: .16s"><b>Recebe no Direct</b><p>A ficha com a conta pronta e a foto revitalizada, sem inventar ingrediente.</p></li>
+      <li class="vidro revela" style="--atraso: .08s"><b>Diz o que vende</b><p>O produto, os ingredientes, o tamanho do pacote e quanto você paga e cobra.</p></li>
+      <li class="vidro revela" style="--atraso: .16s"><b>Recebe no Direct</b><p>A ficha com a conta pronta, sem inventar ingrediente.</p></li>
     </ol>
   </section>
 

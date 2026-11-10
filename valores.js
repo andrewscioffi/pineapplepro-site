@@ -10,6 +10,12 @@
 
 export const LINK_DIRECT = 'https://ig.me/m/pineapplepro_';
 
+// A compra pela Stripe (08/11/2026). Link vazio = o botão "Comprar" não aparece no site.
+export const COMPRA_PINE_COST = {
+  link: '',
+  texto: 'Comprar por R$ 47',
+};
+
 // As 4 frases aprovadas. Cada uma cai no assunto certo do robô (testes/frases-do-direct.test.ts).
 export const FRASES = {
   fichas: 'Quero as 3 fichas técnicas grátis 🍍',
@@ -38,20 +44,14 @@ export const PRODUTOS = [
     precos: { gratis: 'Grátis', pacote: 'a partir de R$ 47' },
     gratis_inclui: [
       '3 fichas técnicas: quanto sobra em cada venda, no balcão e no app',
-      '3 fotos dos seus produtos com cara de cardápio, com a marca da Pineapple',
     ],
     pacote_inclui: [
       'A conta completa, com a embalagem e as contas da sua loja',
       'O preço certo pra cobrar no balcão',
-      '8 fichas e 8 fotos no total, com as fotos sem a marca',
+      '8 fichas técnicas no total',
     ],
   },
-  // a foto e o vídeo já saem do robô junto com as fichas (o grátis vai com a marca da Pineapple no canto)
-  {
-    id: 'foto', nome: 'Foto com cara de cardápio', o_que_e: 'A foto do seu produto, pronta pro cardápio',
-    chamada: 'A mesma comida, com a luz certa', cor: 'laranja', trancado: false, frase: 'fichas', pagina: 'foto/',
-    precos: { gratis: 'Grátis', pacote: 'a partir de R$ 47' },
-  },
+  // o vídeo sai do robô quando a pessoa manda um (o grátis vai com a marca da Pineapple no canto)
   {
     id: 'video', nome: 'Vídeo editado', o_que_e: 'O vídeo do seu produto, editado pra vender',
     chamada: 'Do vídeo do celular ao vídeo que dá fome', cor: 'verde', trancado: false, frase: 'fichas', pagina: 'video/',
@@ -67,6 +67,12 @@ export const PRODUTOS = [
     id: 'marca', nome: 'Logo e cardápio', o_que_e: 'A logo vetorizada e o cardápio da sua loja',
     chamada: 'A marca nítida em qualquer tamanho', cor: 'creme', trancado: false, frase: 'marca', pagina: 'marca/',
     precos: { pacote: 'a partir de R$ 67' },
+  },
+  // 10/11, o Andrews: "vamos ficar sem as fotos por enquanto". Para reabrir: trancado: false, frase: 'fichas',
+  // precos: { gratis: 'Grátis', pacote: 'a partir de R$ 47' }, e as fotos de volta no que o Pine Cost inclui, na home e na landing
+  {
+    id: 'foto', nome: 'Foto com cara de cardápio', o_que_e: 'A foto do seu produto, pronta pro cardápio',
+    chamada: 'A mesma comida, com a luz certa', cor: 'laranja', trancado: true, pagina: 'foto/', precos: {},
   },
   {
     id: 'postagem', nome: 'Postagem automática', o_que_e: 'O Instagram postando no horário certo',

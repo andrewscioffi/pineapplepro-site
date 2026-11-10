@@ -2,11 +2,11 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; base-uri 'self'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; base-uri 'self'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Foto com cara de cardápio · Pineapple Pro</title>
-<meta name="description" content="A foto de celular do seu produto, com a luz, o fundo e o enquadramento de cardápio, sem inventar ingrediente. Veja exemplos reais de antes e depois e teste como a sua foto aparece no app de delivery e no Instagram.">
+<meta name="description" content="Em breve: a foto de celular do seu produto, com a luz, o fundo e o enquadramento de cardápio, sem inventar ingrediente. Veja exemplos reais de antes e depois e teste como a sua foto aparece no app de delivery e no Instagram.">
 <meta name="theme-color" content="#0b0906">
 <link rel="icon" href="../img/marca.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +36,8 @@
       </div>
       <p class="chapeu">Foto pronta pro cardápio</p>
       <h1>A mesma comida, com a <em class="brilha">luz certa</em></h1>
-      <p class="sub">Você manda a foto do celular. Ela volta com a luz, o fundo e o enquadramento de cardápio. Sem inventar ingrediente.</p>
+      <p class="sub" data-so-aberto="foto">Você manda a foto do celular. Ela volta com a luz, o fundo e o enquadramento de cardápio. Sem inventar ingrediente.</p>
+      <p class="sub" data-so-trancado="foto">A foto de celular do seu produto, com a luz, o fundo e o enquadramento de cardápio. Sem inventar ingrediente. Esta ferramenta ainda não abriu.</p>
       <div class="precos" data-so-aberto="foto">
         <span class="etiqueta-bloco"><span class="etiqueta gratis" data-valor="foto.gratis"></span><small>3 fotos, com a marca</small></span>
         <span class="etiqueta-bloco"><span class="etiqueta pacote" data-valor="foto.pacote"></span><small>8 fotos, sem a marca</small></span>
@@ -47,7 +48,7 @@
         <p class="aviso" data-aviso aria-live="polite"></p>
       </div>
       <div class="caminho" data-so-trancado="foto">
-        <p>Sozinha, esta ferramenta abre em breve. <b>Hoje, a foto já vem junto com as 3 fichas técnicas grátis do Pine Cost Pro.</b></p>
+        <p>Esta ferramenta abre em breve. <b>Enquanto isso, comece pelas 3 fichas técnicas grátis do Pine Cost Pro.</b></p>
         <a class="botao claro" href="../pine-cost/">Ver o Pine Cost Pro <span class="seta" aria-hidden="true">→</span></a>
       </div>
       <ul class="foto-pontos" aria-label="O que muda na foto">
@@ -187,7 +188,7 @@
               <small data-medida-diferenca><span class="rola" data-num-diferenca>0</span> pontos de brilho a mais no lado claro</small>
             </div>
           </div>
-          <p class="nota">É só uma medida feita no seu aparelho, não é a IA. Quem arruma a luz é a IA, no Direct.</p>
+          <p class="nota">É só uma medida feita no seu aparelho, não é a IA.<span data-so-aberto="foto"> Quem arruma a luz é a IA, no Direct.</span></p>
         </div>
 
         <div class="controle">
@@ -221,7 +222,7 @@
       <div class="secao-cab revela">
         <p class="chapeu">Onde ela aparece</p>
         <h2 id="no-app">A mesma foto, do app ao Instagram</h2>
-        <p>O robô entrega a foto quadrada, em 1080 × 1080. Deslize o celular e veja a mesma foto em cada lugar.</p>
+        <p>A foto sai quadrada, em 1080 × 1080. Deslize o celular e veja a mesma foto em cada lugar.</p>
         <div class="chips vistas" role="group" aria-label="Onde a foto aparece">
           <button class="chip" type="button" aria-pressed="true" data-vista="lista">Na lista</button>
           <button class="chip" type="button" aria-pressed="false" data-vista="cartao">No cartão</button>
@@ -311,7 +312,7 @@
     </div>
   </section>
 
-  <section class="envolve secao" aria-labelledby="marca" data-foto-cai="marca">
+  <section class="envolve secao" aria-labelledby="marca" data-foto-cai="marca" data-so-aberto="foto">
     <div class="marca-grade">
       <div class="secao-cab revela">
         <p class="chapeu">A marca no canto</p>
@@ -376,7 +377,7 @@
     </div>
   </section>
 
-  <section class="envolve secao" aria-labelledby="vem">
+  <section class="envolve secao" aria-labelledby="vem" data-so-aberto="foto">
     <div class="secao-cab revela">
       <p class="chapeu">O que vem</p>
       <h2 id="vem">Pronta pro app e pro Instagram</h2>
@@ -400,7 +401,7 @@
     </div>
   </section>
 
-  <section class="envolve secao" aria-labelledby="como">
+  <section class="envolve secao" aria-labelledby="como" data-so-aberto="foto">
     <div class="secao-cab revela">
       <p class="chapeu">Como funciona</p>
       <h2 id="como">Do celular pro cardápio, em 3 passos</h2>
@@ -412,7 +413,7 @@
     </ol>
   </section>
 
-  <section class="envolve secao" aria-labelledby="perguntas">
+  <section class="envolve secao" aria-labelledby="perguntas" data-so-aberto="foto">
     <div class="secao-cab">
       <p class="chapeu">Perguntas</p>
       <h2 id="perguntas">Antes de mandar</h2>
@@ -430,7 +431,7 @@
     <div class="maior">
       <div>
         <h2 id="final">A sua foto, com cara de cardápio</h2>
-        <p data-so-trancado="foto">Hoje ela vem junto com as 3 fichas técnicas grátis do Pine Cost Pro.</p>
+        <p data-so-trancado="foto">Esta ferramenta abre em breve. Enquanto isso, as 3 fichas técnicas grátis do Pine Cost Pro já estão abertas.</p>
         <p data-so-aberto="foto">Você vê como ficam 3 fotos suas e decide depois.</p>
       </div>
       <div class="acao" data-so-aberto="foto">

@@ -417,7 +417,7 @@ body::after {
 .selo-breve svg { width: 20px; height: 20px; }
 .selo-aberto { color: var(--laranja); }
 .selo-aberto i { width: 8px; height: 8px; border-radius: 50%; background: var(--laranja); box-shadow: 0 0 0 4px rgba(255, 107, 26, .2); }
-[data-so-aberto][hidden], [data-so-trancado][hidden] { display: none !important; }
+[data-so-aberto][hidden], [data-so-trancado][hidden], [data-comprar][hidden] { display: none !important; }
 
 /* ---------- a página de um produto (o modelo: comum/GUIA-DAS-PAGINAS.md) ---------- */
 .produto-abre { display: grid; gap: 34px; padding-top: 30px; padding-bottom: 64px; }

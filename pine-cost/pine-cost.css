@@ -357,7 +357,7 @@ html:not(.js) .pc-palco { min-height: 0; }
 
 /* =========================== o que você recebe =========================== */
 .pc-recebe-mesa { display: grid; gap: 22px; padding: 18px 16px; margin-bottom: 18px; }
-@media (min-width: 760px) { .pc-recebe-mesa { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 32px; padding: 26px; align-items: center; } }
+@media (min-width: 760px) { .pc-recebe-mesa { padding: 26px; } .pc-recebe-lado { grid-template-columns: minmax(0, 340px) minmax(0, 1fr) auto; gap: 32px; align-items: center; } }
 html:not(.js) .pc-recebe-mesa { display: none; }
 .pc-recebe-lado { display: grid; gap: 18px; align-content: start; }
 .pc-alterna { position: relative; display: grid; grid-template-columns: 1fr 1fr; max-width: 360px; padding: 4px; border-radius: 999px; background: var(--fundo-2); border: 1px solid var(--linha); }
@@ -368,7 +368,6 @@ html:not(.js) .pc-recebe-mesa { display: none; }
 .pc-recebe-mesa[data-plano="pacote"] .pc-alterna-bola { translate: 100% 0; }
 @media (prefers-reduced-motion: no-preference) { .pc-alterna-bola { transition: translate .5s var(--mola), background-color .3s; } }
 .pc-quantos { display: grid; gap: 16px; }
-@media (min-width: 520px) { .pc-quantos { grid-template-columns: 1fr 1fr; } }
 .pc-quanto p { display: flex; align-items: baseline; gap: 8px; font-weight: 700; color: var(--texto-2); }
 .pc-recebe-preco { display: flex; align-items: baseline; gap: 10px; min-height: 2.4rem; }
 .pc-recebe-preco .etiqueta { font-size: clamp(1.5rem, 6vw, 2rem); letter-spacing: -.02em; }
@@ -379,33 +378,8 @@ html.js .pc-recebe-mesa[data-plano="gratis"] [data-do-plano="pacote"], html.js .
 .pc-mini.cheio { border: 0; scale: 1; opacity: 1; }
 .pc-mini.fichas.cheio { background: repeating-linear-gradient(180deg, transparent 0 5px, rgba(31, 26, 18, .16) 5px 6px), var(--papel); box-shadow: 0 6px 12px -6px rgba(0, 0, 0, .6); }
 .pc-mini.fichas.cheio::after { content: ""; position: absolute; left: 4px; right: 4px; bottom: 5px; height: 4px; border-radius: 2px; background: var(--verde); }
-.pc-mini.fotos { width: 26px; height: 26px; border-radius: 7px; }
-/* cada foto que vem é uma foto pequena dos exemplos reais (as 4 se revezam), não mais a bolinha desenhada */
-.pc-mini.fotos.cheio { background: #2a1f12 center / cover no-repeat; box-shadow: 0 6px 12px -6px rgba(0, 0, 0, .6), inset 0 0 0 1px rgba(255, 249, 232, .14); }
-.pc-mini.fotos.cheio:nth-child(4n + 1) { background-image: url("../foto/img/exemplo-real/lanche-queijo-mini.jpg"); }
-.pc-mini.fotos.cheio:nth-child(4n + 2) { background-image: url("../foto/img/exemplo-real/lanche-duplo-mini.jpg"); }
-.pc-mini.fotos.cheio:nth-child(4n + 3) { background-image: url("../foto/img/exemplo-real/marmita-frango-mini.jpg"); }
-.pc-mini.fotos.cheio:nth-child(4n + 4) { background-image: url("../foto/img/exemplo-real/marmita-carne-mini.jpg"); }
-/* a marca no canto direito de cima, como na amostra */
-.pc-mini.com-marca::after { content: ""; position: absolute; right: 3px; top: 3px; width: 7px; height: 7px; border-radius: 50%; background: var(--amarelo); box-shadow: 0 0 0 1.5px var(--preto); }
 @media (prefers-reduced-motion: no-preference) { .pc-mini { transition: scale .45s var(--mola) calc(var(--n) * 55ms), opacity .3s calc(var(--n) * 55ms), background-color .3s; } }
 
-/* a foto: um exemplo real de foto revitalizada (foto/img/exemplo-real/), quadrada, como sai pronta. No grátis, a marca
-   da Pineapple no canto direito de cima, igual à da amostra (a pílula com a logo); no pacote, sem a marca */
-.pc-foto { display: grid; gap: 10px; max-width: 360px; width: 100%; justify-self: center; }
-.pc-foto-quadro { position: relative; aspect-ratio: 1 / 1; border-radius: 20px; overflow: hidden; isolation: isolate; container-type: inline-size; background: #1a130b; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .9), 0 0 0 1px rgba(255, 249, 232, .12); }
-.pc-foto-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.pc-foto-marca {
-  position: absolute; z-index: 2; top: 3.2cqw; right: 3.2cqw; display: inline-flex; align-items: center; gap: 1.5cqw;
-  padding: 1.2cqw 2.6cqw 1.2cqw 2cqw; border-radius: 999px; background: rgba(96, 92, 84, .93); color: #fff;
-  box-shadow: 0 1cqw 3cqw rgba(0, 0, 0, .28); font-family: "Helvetica Neue", Arial, sans-serif; line-height: 1.04;
-}
-.pc-foto-marca img { width: 3.9cqw; height: 3.9cqw; }
-.pc-foto-marca b { display: block; font-size: 3.05cqw; font-weight: 700; letter-spacing: -.01em; }
-.pc-foto-marca small { display: block; font-size: 1.95cqw; font-weight: 600; opacity: .92; margin-top: .2cqw; }
-.pc-foto[data-marca="nao"] .pc-foto-marca { clip-path: inset(0 0 0 100%); opacity: 0; }
-@media (prefers-reduced-motion: no-preference) { .pc-foto-marca { transition: clip-path .7s var(--suave), opacity .5s .15s; } }
-.pc-foto figcaption { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 8px; font-size: .84rem; font-weight: 600; color: var(--texto-2); text-align: center; }
 @media (prefers-reduced-motion: no-preference) { .pc-planos .plano { transition: opacity .35s, border-color .35s, box-shadow .35s; } }
 html.js .pc-planos .plano:not(.escolhido) { opacity: .74; }
 .pc-planos .plano.escolhido { box-shadow: 0 0 0 1.5px rgba(249, 199, 72, .55), 0 24px 50px -30px rgba(249, 199, 72, .5); }

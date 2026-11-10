@@ -145,13 +145,13 @@ export function afastarRotulos(ys, { min = 24, topo = -Infinity, base = Infinity
   return saida;
 }
 
-/** As legendas da resposta da Pineapple: o texto do 3º passo da página ("A ficha com a conta pronta e a foto revitalizada."). */
-export const LEGENDAS = { ficha: 'A ficha com a conta pronta', foto: 'e a foto revitalizada' };
+/** A legenda da resposta da Pineapple: o texto do 3º passo da página ("A ficha com a conta pronta."). */
+export const LEGENDAS = { ficha: 'A ficha com a conta pronta' };
 
 /**
  * A conversa de exemplo do "como funciona" (marcada "exemplo de conversa"). As falas saem dos 3 passos da página:
- * a frase do Direct (FRASES.fichas), a foto e o que vende (o produto, os ingredientes e o preço do exemplo oficial),
- * e a resposta: a ficha (o resumo da calculadora) e a foto revitalizada. Nada de texto do robô, nada de promessa.
+ * a frase do Direct (FRASES.fichas), o que vende (o produto, os ingredientes e o preço do exemplo oficial) e a resposta:
+ * a ficha (o resumo da calculadora). Nada de texto do robô, nada de promessa. Sem foto desde 10/11: o Andrews pausou a foto.
  */
 export function conversaDeExemplo(exemplo, f) {
   const balcao = f.canais.find((c) => c.id === 'balcao');
@@ -159,10 +159,8 @@ export function conversaDeExemplo(exemplo, f) {
   const lista = nomes.length > 1 ? `${nomes.slice(0, -1).join(', ')} e ${nomes.at(-1)}` : (nomes[0] ?? '');
   return [
     { quem: 'eu', tipo: 'texto', passo: 1, linhas: [FRASES.fichas] },
-    { quem: 'eu', tipo: 'foto', passo: 2, foto: 'antes' },
     { quem: 'eu', tipo: 'texto', passo: 2, linhas: [f.item, lista, `${reais(balcao.preco_c)} no balcão`] },
     { quem: 'pine', tipo: 'ficha', passo: 3, legenda: LEGENDAS.ficha },
-    { quem: 'pine', tipo: 'foto', passo: 3, foto: 'depois', legenda: LEGENDAS.foto },
   ];
 }
 
@@ -695,21 +693,6 @@ function ligarVitrineViva(doc) {
 // 3. O "COMO FUNCIONA" QUE SE ESCREVE (a conversa de exemplo anda junto com a rolagem)
 // =====================================================================================================
 
-/**
- * As fotos da conversa: um exemplo real (07/11, o Andrews: "a gente podia pôr exemplo real nosso"). A pessoa manda a foto
- * do celular (o antes, 4:3) e a resposta traz a revitalizada (o depois, quadrada), junto com a ficha. As cópias de 480 px
- * (foto/img/exemplo-real/, sem o nome do lugar); a largura e a altura vão no HTML, e a conversa não pula quando ela chega.
- */
-export const FOTOS_DA_CONVERSA = {
-  antes: { src: 'foto/img/exemplo-real/lanche-duplo-antes-p.jpg', largura: 150, altura: 111, alt: 'Exemplo real: a foto do celular de um lanche duplo' },
-  depois: { src: 'foto/img/exemplo-real/lanche-duplo-depois-p.jpg', largura: 132, altura: 132, alt: 'Exemplo real: o mesmo lanche, na foto revitalizada' },
-};
-
-function fotoReal(qual) {
-  const f = FOTOS_DA_CONVERSA[qual];
-  return `<img src="${f.src}" alt="${esc(f.alt)}" width="${f.largura}" height="${f.altura}" loading="lazy" decoding="async" draggable="false">`;
-}
-
 function ligarConversa(palco, tab) {
   const falas = palco.querySelector('[data-cv="falas"]');
   const deNovo = palco.querySelector('[data-cv="de-novo"]');
@@ -727,13 +710,6 @@ function ligarConversa(palco, tab) {
   let vez = 0; // muda a cada "ver de novo": a sequência velha para
   const espera = (ms) => new Promise((ok) => setTimeout(ok, ms));
 
-  // as 2 fotos de verdade já vêm vindo quando o celular chega perto da tela (o balão da foto não aparece vazio)
-  const trazerFotos = () => { for (const f of Object.values(FOTOS_DA_CONVERSA)) { const i = new Image(); i.decoding = 'async'; i.src = f.src; } };
-  if (typeof IntersectionObserver === 'function') {
-    const olho = new IntersectionObserver(([e]) => { if (e?.isIntersecting) { olho.disconnect(); trazerFotos(); } }, { rootMargin: '700px 0px' });
-    olho.observe(palco);
-  } else trazerFotos();
-
   const marcarPassos = (atual) => {
     passos.forEach((li, k) => {
       const p = k + 1;
@@ -747,7 +723,6 @@ function ligarConversa(palco, tab) {
     const d = document.createElement('div');
     d.className = `cv-msg cv-${m.quem}`;
     if (m.tipo === 'texto') d.innerHTML = `<p class="cv-balao">${m.linhas.map(() => '<span class="cv-linha"></span>').join('')}</p>`;
-    else if (m.tipo === 'foto') d.innerHTML = `<div class="cv-balao cv-foto">${fotoReal(m.foto)}</div>${m.legenda ? `<p class="cv-legenda">${esc(m.legenda)}</p>` : ''}`;
     else d.innerHTML = `<div class="cv-balao cv-ficha"><p class="cv-ficha-rot">Ficha técnica</p><p class="resumo-item">${esc(f.item)} <span class="selo-exemplo">exemplo</span></p>${montarResumo(f)}</div><p class="cv-legenda">${esc(m.legenda)}</p>`;
     return d;
   };
@@ -785,7 +760,7 @@ function ligarConversa(palco, tab) {
         if (molde && Number.isFinite(para)) animarNumero(num, para, { de: 0, ms: 1000, formato: (v) => (v === para ? final : noMolde(molde, v)) });
       }
     }
-    if (!rapido) await espera((m.tipo === 'foto' ? 420 : 260) * pressa());
+    if (!rapido) await espera(260 * pressa());
   }
 
   async function seguir() {

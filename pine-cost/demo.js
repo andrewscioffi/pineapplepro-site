@@ -419,22 +419,21 @@ export function htmlCompras(x, comprados = new Set()) {
 // O QUE VOCÊ RECEBE: quantas fichas e fotos, lido do valores.js (o mesmo que o robô entrega: testes/frases-do-direct)
 // =====================================================================================================
 
-/** As quantidades do grátis e do pacote, tiradas dos textos do valores.js ("3 fichas técnicas", "8 fichas e 8 fotos"). */
+/** As quantidades do grátis e do pacote, tiradas dos textos do valores.js ("3 fichas técnicas", "8 fichas técnicas no total"). */
 export function quantidades(p = produto('pine-cost')) {
   const achar = (lista, rx) => {
     for (const t of lista ?? []) { const m = String(t).match(rx); if (m) return Number(m[1]); }
     return null;
   };
-  const total = (p?.pacote_inclui ?? []).map((t) => String(t).match(/(\d+) fichas e (\d+) fotos/)).find(Boolean);
   return {
-    gratis: { fichas: achar(p?.gratis_inclui, /^(\d+) fichas/), fotos: achar(p?.gratis_inclui, /^(\d+) fotos/) },
-    pacote: { fichas: total ? Number(total[1]) : null, fotos: total ? Number(total[2]) : null },
+    gratis: { fichas: achar(p?.gratis_inclui, /^(\d+) fichas/) },
+    pacote: { fichas: achar(p?.pacote_inclui, /^(\d+) fichas/) },
   };
 }
 
-/** Os quadradinhos que contam: o total do pacote, com os do plano escolhido cheios (e a marca nas fotos do grátis). */
+/** Os quadradinhos que contam: o total do pacote, com os do plano escolhido cheios. */
 export function htmlMinis(tipo, plano, q = quantidades()) {
   const total = q.pacote[tipo] ?? 0;
   const cheios = q[plano]?.[tipo] ?? 0;
-  return Array.from({ length: total }, (_, i) => `<i class="pc-mini ${tipo}${i < cheios ? ' cheio' : ''}${tipo === 'fotos' && plano === 'gratis' && i < cheios ? ' com-marca' : ''}" style="--n:${i}"></i>`).join('');
+  return Array.from({ length: total }, (_, i) => `<i class="pc-mini ${tipo}${i < cheios ? ' cheio' : ''}" style="--n:${i}"></i>`).join('');
 }

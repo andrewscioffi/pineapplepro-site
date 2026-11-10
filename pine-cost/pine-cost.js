@@ -553,35 +553,23 @@ function ligarRecebe() {
   const caixa = $('[data-recebe]');
   if (!caixa) return;
   const q = D.quantidades();
-  const minis = {};
-  for (const tipo of ['fichas', 'fotos']) {
-    const el = $(`[data-minis="${tipo}"]`, caixa);
-    el.innerHTML = D.htmlMinis(tipo, 'gratis', q);
-    minis[tipo] = $$('.pc-mini', el);
-  }
+  const caixaMinis = $('[data-minis="fichas"]', caixa);
+  caixaMinis.innerHTML = D.htmlMinis('fichas', 'gratis', q);
+  const minis = $$('.pc-mini', caixaMinis);
   const botoes = $$('button[data-plano]', caixa);
-  const foto = $('[data-foto]', caixa);
-  const legenda = $('[data-foto-legenda]', caixa);
   const cartoesDosPlanos = $$('[data-plano-cartao]');
   const mostrar = (plano, { primeira = false } = {}) => {
     const mudou = plano !== estado.plano;
     estado.plano = plano;
     caixa.dataset.plano = plano;
     for (const b of botoes) b.setAttribute('aria-pressed', String(b.dataset.plano === plano));
-    for (const tipo of ['fichas', 'fotos']) {
-      const n = q[plano][tipo] ?? 0;
-      animarNumero($(`[data-quantos="${tipo}"]`, caixa), n, { ms: primeira ? 0 : 750 });
-      minis[tipo].forEach((m, i) => {
-        m.classList.toggle('cheio', i < n);
-        if (tipo === 'fotos') m.classList.toggle('com-marca', plano === 'gratis' && i < n);
-      });
-    }
-    foto.dataset.marca = plano === 'gratis' ? 'sim' : 'nao';
-    legenda.textContent = plano === 'gratis' ? 'No grátis, a foto vai com a marca da Pineapple no canto.' : 'No pacote, as fotos vão sem a marca.';
+    const n = q[plano].fichas ?? 0;
+    animarNumero($('[data-quantos="fichas"]', caixa), n, { ms: primeira ? 0 : 750 });
+    minis.forEach((m, i) => m.classList.toggle('cheio', i < n));
     for (const c of cartoesDosPlanos) c.classList.toggle('escolhido', c.dataset.planoCartao === plano);
     if (!primeira && mudou) {
       vibrar(10);
-      if (plano === 'pacote') estourarEm(foto, { quantos: 16, raio: 90 });
+      if (plano === 'pacote') estourarEm(caixaMinis, { quantos: 16, raio: 90 });
     }
   };
   caixa.addEventListener('click', (ev) => {

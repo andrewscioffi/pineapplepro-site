@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; base-uri 'self'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>Pagamento confirmado · Pineapple Pro</title>
+<meta name="description" content="O seu código para receber o Pine Cost Pro no Direct.">
+<meta name="theme-color" content="#0b0906">
+<link rel="icon" href="../img/marca.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../estilo.css">
+<link rel="stylesheet" href="confirmado.css">
+<script type="module" src="confirmado.js"></script>
+</head>
+<body>
+<div class="barra-topo">
+  <header class="envolve topo">
+    <a class="marca" href="../index.html"><img src="../img/marca.png" alt="Pineapple Pro" width="34" height="34"><span>Pineapple Pro</span></a>
+    <a class="topo-link" href="../index.html#vitrine">Todas as ferramentas</a>
+  </header>
+</div>
+
+<main class="envolve confirmado">
+  <div data-com-codigo hidden>
+    <p class="chapeu">Pine Cost Pro</p>
+    <h1>Pagamento confirmado</h1>
+    <p class="sub">Falta só me chamar no Direct pra receber as suas fichas.</p>
+    <p class="vidro confirmado-caixa"><small>O seu código</small><b class="confirmado-codigo" data-codigo></b></p>
+    <div class="acao">
+      <a class="botao" data-receber href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener">Receber no Direct</a>
+      <p class="ou-mande" data-frase-codigo></p>
+      <p class="aviso" data-aviso aria-live="polite"></p>
+    </div>
+  </div>
+  <div data-sem-codigo hidden>
+    <h1>Não achei o seu código</h1>
+    <p class="sub">Se você já pagou, me chama no Direct que eu confiro aqui.</p>
+    <div class="acao"><a class="botao" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener">Chamar no Direct</a></div>
+  </div>
+</main>
+
+<footer class="envolve rodape">
+  <span>Pineapple Pro · Maringá (PR)</span>
+  <nav aria-label="Rodapé">
+    <a href="../index.html">Todas as ferramentas</a>
+    <a href="https://www.instagram.com/pineapplepro_/" target="_blank" rel="noopener">@pineapplepro_</a>
+    <a href="../privacidade.html">Política de privacidade</a>
+  </nav>
+</footer>
+</body>
+</html>

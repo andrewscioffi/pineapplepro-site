@@ -1,0 +1,8 @@
+.confirmado { max-width: 520px; margin: 0 auto; padding: 64px 0 80px; text-align: center; }
+.confirmado h1 { margin: 12px auto; max-width: none; text-align: center; font-size: clamp(2rem, 7vw, 2.8rem); }
+.confirmado .sub { margin: 0 auto 28px; }
+.confirmado-caixa { margin: 0 0 24px; padding: 24px 16px; border-radius: 18px; }
+.confirmado-caixa small { display: block; margin-bottom: 8px; opacity: .75; }
+.confirmado-codigo { display: block; font-size: clamp(1.9rem, 9vw, 2.6rem); font-weight: 800; letter-spacing: .12em; color: var(--amarelo); overflow-wrap: anywhere; }
+.confirmado .acao { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+[data-com-codigo][hidden], [data-sem-codigo][hidden] { display: none !important; }
