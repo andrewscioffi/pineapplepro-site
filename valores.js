@@ -17,9 +17,18 @@ export const LANCAMENTO_ATE = '2026-12-31';
 export const lancamentoAberto = (agora = Date.now()) => agora <= Date.parse(`${LANCAMENTO_ATE}T23:59:59-03:00`);
 
 // A compra pela Stripe (08/11/2026). Link vazio = o botão "Comprar" não aparece no site.
+// 12/11, o Andrews: os produtos baratos, validados e de entrega facilitada vão no modo real sem pedir; os links são os de
+// estrategia/upgrade-3.0/LINKS-STRIPE-3.0.md. O Pine Cost é autoatendimento: pagou, a ferramenta libera na hora (comum/acesso.js).
 export const COMPRA_PINE_COST = {
   link: 'https://buy.stripe.com/00wbJ16C6esH2698SafUQ00',
   texto: 'Comprar por R$ 47',
+};
+export const COMPRAS = {
+  pineCost: COMPRA_PINE_COST,
+  mais10: { link: 'https://buy.stripe.com/14A6oH1hMckzaCF1pIfUQ01', texto: 'Mais 10 fichas por R$ 97' },
+  // o serviço: quem faz é a gente; depois de pagar, a página mostra o código e leva ao Direct
+  vetor: { link: 'https://buy.stripe.com/4gMfZh7Ga84j269c4mfUQ03', texto: 'Vetorizar a logo por R$ 67' },
+  cardapio: { link: 'https://buy.stripe.com/cNicN5gcG98n4eh5FYfUQ04', texto: 'Cardápio de até 15 itens por R$ 127' },
 };
 
 // As 4 frases aprovadas. Cada uma cai no assunto certo do robô (testes/frases-do-direct.test.ts).

@@ -7,7 +7,7 @@
 //   6. (v2) [data-so-aberto="id"] só aparece com o produto aberto; [data-so-trancado="id"] só com ele trancado
 //   7. (v3) a interação (comum/interacao.js): o botão que vem atrás do mouse, a onda, o estouro quando a frase copia,
 //      os números que rolam, as cenas da rolagem, a luz do cursor e a troca de página com o cartão virando o palco
-import { PRODUTOS, FRASES, cadeadoSvg, COMPRA_PINE_COST, lancamentoAberto } from './valores.js';
+import { PRODUTOS, FRASES, cadeadoSvg, COMPRA_PINE_COST, COMPRAS, lancamentoAberto } from './valores.js';
 import { ligarVidro } from './comum/vidro.js';
 import { ligarInteracao, estourarEm, vibrar, temMouse, pedeMenosMovimento } from './comum/interacao.js';
 
@@ -196,11 +196,12 @@ export function menuDeFerramentas(produtos = PRODUTOS, { base = '', sem = 'pine-
 }
 
 /** Põe na tela os preços ([data-valor="produto.qual"]), as listas ([data-lista]) e os cartões ([data-trancados], [data-abertos], [data-vitrine], [data-ferramentas]). */
-export function preencherValores(doc, produtos = PRODUTOS, compra = COMPRA_PINE_COST) {
-  // o botão de comprar pela Stripe: sem link, fica escondido
+export function preencherValores(doc, produtos = PRODUTOS, compra = COMPRA_PINE_COST, compras = COMPRAS) {
+  // o botão de comprar pela Stripe: sem link, fica escondido. data-comprar="vetor" escolhe outro de COMPRAS (12/11)
   for (const el of doc.querySelectorAll('[data-comprar]')) {
-    el.hidden = !compra.link;
-    if (compra.link) { el.href = compra.link; el.textContent = compra.texto; }
+    const c = el.dataset?.comprar ? compras[el.dataset.comprar] ?? {} : compra;
+    el.hidden = !c.link;
+    if (c.link) { el.href = c.link; el.textContent = c.texto; }
   }
   const achar = (id) => produtos.find((p) => p.id === id);
   for (const el of doc.querySelectorAll('[data-valor]')) {

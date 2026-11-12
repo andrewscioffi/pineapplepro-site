@@ -1,5 +1,7 @@
-// A TELA DO USUÁRIO DO PINE COST PRO (prévia, v3 de 07/11/2026). É PROTÓTIPO: sem login, sem gravar nada (nem no navegador)
-// e sem mandar nada para lugar nenhum. Tudo fica na memória da aba e some quando ela fecha (ou quando recarrega).
+// A TELA DO USUÁRIO DO PINE COST PRO (v3 de 07/11/2026; a ferramenta de verdade desde 12/11/2026).
+// 12/11, o Andrews: "Pagou, recebe já o acesso... é ele que vai gerar todo o serviço." Os exemplos continuam na memória da aba;
+// "A minha cozinha" fica salva neste navegador e, para quem comprou, também no Supabase (comum/acesso.js). Sem compra: até 3
+// fichas, na conta grátis. Com compra: as fichas do plano (8, 18...) e o pacote completo (o preço certo). O guia da 1ª vez em cada passo.
 // Pedido do Andrews: a ficha técnica dentro de uma empresa, com as camadas (o molho que vai na pizza), o meio a meio e a
 // lista de compras. E na v3: "eu quero que a interface seja altamente interativa". A ordem guiada, uma rota por passo:
 //   #despensa        1. o que se compra; "e se o preço mudar?" desce pelas camadas até o cardápio e a semana
@@ -21,6 +23,8 @@ import { carregarTabelas, esc, reais } from '../comum/ficha.js';
 import { COZINHAS } from '../comum/exemplos-cozinha.js';
 import { ligarVidro } from '../comum/vidro.js';
 import { trocarConteudo, trocarVista, estourarEm, vibrar, pedeMenosMovimento, temMouse } from '../comum/interacao.js';
+import * as A from '../comum/acesso.js';
+import { COMPRAS } from '../valores.js';
 import * as T from './telas.js';
 import * as V from './vivo.js';
 
@@ -63,6 +67,9 @@ const estado = {
   tamanho: null, // o tamanho na tela: a broto, a média ou a grande (vale no cardápio, no produto e no meio a meio)
   adicionaisLigados: new Set(), // a pizza com a borda: os adicionais ligados na ficha do produto
   tamEditorAberto: false,
+  // (12/11) o acesso de quem comprou: { token, fichas } ou null; a versão da cozinha salva no Supabase
+  acesso: null,
+  versao: 0,
 };
 
 // ---------- a cozinha ----------
@@ -113,10 +120,19 @@ function arrumar(d) {
   return d;
 }
 
-function usarCozinha(id) {
+/** A cozinha da pessoa: a que veio do Supabase, a deste navegador ou uma vazia. */
+function dadosDaMinha(daNuvem = null) {
+  const base = daNuvem ?? A.cozinhaLocal()?.dados ?? null;
+  if (!base) return VAZIA();
+  try { return arrumar({ ...VAZIA(), ...copia(base), exemplo: false }); } catch { return VAZIA(); }
+}
+
+function usarCozinha(id, daNuvem = null) {
   const c = COZINHAS.find((x) => x.id === id);
-  estado.cozinha = c ? id : 'zero';
-  estado.dados = arrumar(c ? copia(c.dados) : VAZIA());
+  estado.cozinha = c ? id : 'minha';
+  estado.dados = c ? arrumar(copia(c.dados)) : dadosDaMinha(daNuvem);
+  // a cozinha da pessoa sai na conta grátis até ela comprar; os exemplos mostram o pacote completo
+  estado.completa = c ? true : !!estado.acesso;
   estado.comprados = new Map();
   estado.simula = new Map();
   estado.simulaAprov = new Map();
@@ -136,7 +152,7 @@ function usarCozinha(id) {
 
 const opcoesCozinha = () => `<optgroup label="O exemplo completo">${COZINHAS.filter((c) => c.id === 'pizzaria').map((c) => `<option value="${c.id}">${esc(c.nome)}</option>`).join('')}</optgroup>`
   + `<optgroup label="Uma ficha só (os exemplos da ferramenta)">${COZINHAS.filter((c) => c.id !== 'pizzaria').map((c) => `<option value="${c.id}">${esc(c.nome)}</option>`).join('')}</optgroup>`
-  + '<optgroup label="A sua"><option value="zero">Começar do zero</option></optgroup>';
+  + '<optgroup label="A sua"><option value="minha">A minha cozinha</option></optgroup>';
 
 let contador = 0;
 function novoId(prefixo) {
@@ -197,6 +213,8 @@ function atualizar(so = null, { refazer = true } = {}) {
     ultimo.set(el, html);
     if (antes) trocarConteudo(el, html); else el.innerHTML = html;
   }
+  desenharPlano();
+  if (estado.cozinha === 'minha') salvador.agendar(estado.dados);
 }
 
 function chaveDoFoco(el) {
@@ -244,6 +262,7 @@ function desenhar({ rolar = false, focar = null } = {}) {
     if (estado.selecionar && typeof f?.select === 'function') f.select();
   }
   estado.linhaNova = null;
+  mostrarGuia(passo);
   const depois = estado.depois;
   estado.depois = null;
   depois?.();
@@ -289,7 +308,7 @@ function irPara(alvo) {
 function trocarCozinha(id) {
   usarCozinha(id);
   const d = estado.dados;
-  irPara(id !== 'pizzaria' && id !== 'zero' && d.cardapio[0] ? `#cardapio/${d.cardapio[0].id}` : '#despensa');
+  irPara(id !== 'pizzaria' && estado.cozinha !== 'minha' && d.cardapio[0] ? `#cardapio/${d.cardapio[0].id}` : '#despensa');
 }
 
 // ---------- o aviso com "desfazer" ----------
@@ -794,6 +813,7 @@ const ACOES = {
   'mais-conta': () => { estado.dados.loja.custos_fixos.push({ nome: '', por_mes: '' }); estado.lojaAberta = true; desenhar(); },
   'mais-produto': () => {
     const d = estado.dados;
+    if (estado.cozinha === 'minha' && A.fichasUsadas(d) >= A.limiteDeFichas(estado.acesso)) { ofertar('limite'); return; }
     const id = novoId('produto');
     d.cardapio.push({ id, nome: d.bases.length ? 'Sabor novo' : 'Produto novo', base: d.bases[0]?.id, itens: [{ usa: '', vai: '' }], embalagem: [], precos: { balcao: '', app: '' } });
     arrumar(d);
@@ -813,7 +833,14 @@ const ACOES = {
   },
   'tirar-adicional': (el) => tirarProduto(estado.dados.adicionais[Number(el.dataset.i)]?.id),
   'tirar-produto': (el) => tirarProduto(el.dataset.id),
-  completa: (el) => { estado.completa = el.dataset.v === 'sim'; marcarBotoes('completa', el.dataset.v); atualizar(); },
+  completa: (el) => {
+    if (el.dataset.v === 'sim' && estado.cozinha === 'minha' && !estado.acesso) { ofertar('completa'); return; }
+    estado.completa = el.dataset.v === 'sim'; marcarBotoes('completa', el.dataset.v); atualizar();
+  },
+  'guia-ok': () => fecharGuia(),
+  'guia-exemplo': () => guiaExemplo(),
+  'oferta-fechar': () => $('[data-oferta]')?.close(),
+  'copiar-acesso': (el) => copiarAcesso(el),
   'arvore-tudo': () => { estado.abrirTudo = !estado.abrirTudo; estado.alternados.clear(); desenhar(); },
   sabor: (el) => escolherSabor(Number(el.dataset.lado), el.dataset.id),
   regra: (el) => { estado.dados.meio_a_meio.regra = el.dataset.id; marcarBotoes('regra', el.dataset.id); atualizar(); },
@@ -1057,6 +1084,7 @@ function ligar() {
   document.addEventListener('click', (ev) => {
     const el = ev.target.closest('button[data-acao]');
     if (!el || !ACOES[el.dataset.acao]) return;
+    if (el.dataset.acao.startsWith('mais-') && guiaAberto) fecharGuia();
     ACOES[el.dataset.acao](el);
   });
   // segurar o + ou o −: repete cada vez mais rápido
@@ -1119,9 +1147,130 @@ function ligar() {
   }
 }
 
+// ---------- (12/11) o acesso, o salvar, a oferta e o guia ----------
+
+const TEXTO_SALVO = { salvando: 'Salvando…', salvo: 'Salvo ✓', 'so-aqui': 'Salvo neste aparelho', erro: 'Salvo só neste aparelho (sem internet?)' };
+const salvador = A.criarSalvador({
+  aoMudar: (q) => { for (const el of $$('[data-salvo]')) { el.textContent = TEXTO_SALVO[q] ?? ''; el.dataset.q = q; } },
+  gravar: async (dados) => {
+    A.guardarCozinhaLocal(dados, estado.versao);
+    if (!estado.acesso || estado.acesso.semRede) return estado.acesso ? 'erro' : 'so-aqui';
+    let r = await A.salvarNaNuvem(estado.acesso.token, dados, estado.versao);
+    if (!r.ok && r.porque === 'versao') {
+      // outra aba (ou aparelho) salvou antes: vale a última mudança, a desta tela
+      const c = await A.carregar(estado.acesso.token);
+      if (c.ok) { estado.versao = c.versao ?? 0; r = await A.salvarNaNuvem(estado.acesso.token, dados, estado.versao); }
+    }
+    if (!r.ok) return 'erro';
+    estado.versao = r.versao;
+    A.guardarCozinhaLocal(dados, estado.versao);
+    return 'salvo';
+  },
+});
+// salvar antes de fechar a aba
+window.addEventListener('pagehide', () => { if (estado.cozinha === 'minha') A.guardarCozinhaLocal(estado.dados, estado.versao); });
+
+/** O resumo do plano no menu: quantas fichas a pessoa tem e usa, o link de acesso e o "mais 10". */
+let planoAntes = '';
+function desenharPlano() {
+  const usadas = A.fichasUsadas(estado.dados);
+  const minha = estado.cozinha === 'minha';
+  const html = estado.acesso
+    ? `<p class="plano-linha"><b>${minha ? usadas : '—'} de ${estado.acesso.fichas}</b><span>fichas da sua cozinha</span></p>
+       <button type="button" class="botao-mini" data-acao="copiar-acesso">Copiar meu link de acesso</button>
+       <p class="plano-dica">Guarde o link para abrir a sua cozinha em outro aparelho.</p>
+       ${COMPRAS.mais10.link ? `<a class="botao claro" href="${esc(COMPRAS.mais10.link)}">${esc(COMPRAS.mais10.texto)}</a>` : ''}`
+    : minha ? `<p class="plano-linha"><b>${usadas} de ${A.FICHAS_GRATIS}</b><span>fichas grátis (sem o preço certo)</span></p>` : '';
+  if (html === planoAntes) return;
+  planoAntes = html;
+  for (const el of $$('[data-plano-acesso]')) el.innerHTML = html;
+  for (const el of $$('[data-sem-acesso]')) el.hidden = !!estado.acesso;
+}
+
+async function copiarAcesso(el) {
+  const link = A.linkDeAcesso(estado.acesso.token);
+  try { await navigator.clipboard.writeText(link); el.textContent = 'Link copiado ✓'; } catch { prompt('Copie o seu link de acesso:', link); }
+}
+
+/** A oferta: a conta completa (o preço certo) ou mais fichas. */
+function ofertar(motivo) {
+  const caixa = $('[data-oferta]');
+  if (!caixa) return;
+  const tem = !!estado.acesso;
+  const compra = tem ? COMPRAS.mais10 : COMPRAS.pineCost;
+  const textos = {
+    completa: ['O preço certo é do pacote completo', 'A conta grátis mostra quanto sobra hoje. O pacote completo põe a embalagem e as contas da sua loja e diz o preço certo pra cobrar. Pagou, libera aqui na hora.'],
+    limite: tem
+      ? [`As ${estado.acesso.fichas} fichas do seu plano estão em uso`, 'Mais 10 fichas, na hora, sem perder nada do que você já fez.']
+      : [`As ${A.FICHAS_GRATIS} fichas grátis estão em uso`, 'Com o pacote você fica com 8 fichas, a conta completa e o preço certo pra cobrar. Pagou, libera aqui na hora, e a sua cozinha continua do jeito que está.'],
+  };
+  const [titulo, texto] = textos[motivo] ?? textos.limite;
+  $('[data-oferta-titulo]').textContent = titulo;
+  $('[data-oferta-texto]').textContent = texto;
+  const a = $('[data-oferta-comprar]');
+  a.href = compra.link;
+  a.textContent = compra.texto;
+  $('[data-oferta-direct]').hidden = tem;
+  A.guardarCozinhaLocal(estado.dados, estado.versao);
+  caixa.showModal();
+}
+
+let guiaAberto = null;
+function mostrarGuia(passo) {
+  const g = A.GUIAS[passo];
+  const caixa = $('[data-guia]');
+  if (!caixa) return;
+  if (!g || A.guiaVisto(passo)) { caixa.hidden = true; guiaAberto = null; return; }
+  guiaAberto = passo;
+  $('[data-guia-titulo]').textContent = g.titulo;
+  $('[data-guia-texto]').textContent = g.texto;
+  const b = $('[data-guia-botao]');
+  b.hidden = !g.acao;
+  b.textContent = g.botao ?? '';
+  caixa.hidden = false;
+}
+function fecharGuia() {
+  if (guiaAberto) A.marcarGuia(guiaAberto);
+  guiaAberto = null;
+  const caixa = $('[data-guia]');
+  if (caixa) caixa.hidden = true;
+}
+/** "Pôr um de exemplo": vai para a cozinha da pessoa e faz a 1ª coisa do passo por ela. */
+function guiaExemplo() {
+  const g = A.GUIAS[guiaAberto];
+  fecharGuia();
+  if (!g?.acao) return;
+  if (estado.cozinha !== 'minha') { usarCozinha('minha'); desenhar(); }
+  if (g.acao === 'mais-insumo') {
+    const d = estado.dados;
+    const id = novoId('insumo');
+    d.despensa.push({ id, nome: 'Farinha de trigo (exemplo)', categoria: 'Massa e secos', pacote: '1 kg', preco_pacote: 5, estoque: '', minimo: '' });
+    estado.editando = id;
+    estado.linhaNova = id;
+    desenhar({ focar: `[data-e="despensa.${d.despensa.length - 1}.nome"]` });
+    return;
+  }
+  ACOES[g.acao]?.();
+}
+
 async function comecar() {
   for (const s of $$('[data-trocar-cozinha]')) s.innerHTML = opcoesCozinha();
-  usarCozinha('pizzaria');
+  // quem comprou: as fichas dele e a cozinha salva no Supabase
+  const token = A.lerAcesso(window);
+  let daNuvem = null;
+  if (token) {
+    const r = await A.carregar(token);
+    if (r.ok) {
+      estado.acesso = { token, fichas: r.fichas };
+      estado.versao = r.versao ?? 0;
+      daNuvem = r.dados ?? null;
+      // a deste navegador é mais nova que a da nuvem (salvou sem internet): fica a daqui
+      const local = A.cozinhaLocal();
+      if (local && (local.versao ?? 0) >= estado.versao && local.quando > Date.parse(r.atualizado_em ?? 0)) daNuvem = local.dados;
+    } else if (r.porque === 'acesso') A.esquecerAcesso();
+    else estado.acesso = { token, fichas: A.cozinhaLocal()?.dados ? Math.max(A.fichasUsadas(A.cozinhaLocal().dados), 8) : 8, semRede: true };
+  }
+  usarCozinha(estado.acesso || A.cozinhaLocal() ? 'minha' : 'pizzaria', daNuvem);
   try {
     estado.tab = await carregarTabelas();
   } catch (err) {

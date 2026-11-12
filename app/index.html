@@ -2,16 +2,16 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; base-uri 'self'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https://foijkkdofcdzgohrixqm.supabase.co; base-uri 'self'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pine Cost Pro · a sua cozinha (prévia)</title>
-<meta name="description" content="Prévia da tela de quem usa o Pine Cost Pro: a despensa (o preço e o aproveitamento), as receitas da casa (a perda no preparo), o cardápio com os tamanhos e a borda, o meio a meio que gira, a lista de compras viva e as contas da loja. Protótipo, sem login e sem gravar nada.">
+<title>Pine Cost Pro · a sua cozinha</title>
+<meta name="description" content="A ferramenta do Pine Cost Pro: a despensa (o preço e o aproveitamento), as receitas da casa (a perda no preparo), o cardápio com os tamanhos e a borda, o meio a meio que gira, a lista de compras viva e as contas da loja. Protótipo, sem login e sem gravar nada.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Pineapple Pro">
-<meta property="og:title" content="Pine Cost Pro · a sua cozinha (prévia)">
-<meta property="og:description" content="Prévia da tela de quem usa o Pine Cost Pro: a despensa (o preço e o aproveitamento), as receitas da casa (a perda no preparo), o cardápio com os tamanhos e a borda, o meio a meio que gira, a lista de compras viva e as contas da loja. Protótipo, sem login e sem gravar nada.">
+<meta property="og:title" content="Pine Cost Pro · a sua cozinha">
+<meta property="og:description" content="A ferramenta do Pine Cost Pro: a despensa (o preço e o aproveitamento), as receitas da casa (a perda no preparo), o cardápio com os tamanhos e a borda, o meio a meio que gira, a lista de compras viva e as contas da loja. Protótipo, sem login e sem gravar nada.">
 <meta property="og:url" content="https://pineapplepro.com.br/app/">
 <meta property="og:image" content="https://pineapplepro.com.br/img/previa.jpg">
 <meta property="og:image:width" content="1200">
@@ -30,7 +30,7 @@
 <script type="module" src="app.js"></script>
 </head>
 <body class="app" data-produto="pine-cost" data-cor="amarelo">
-<p class="faixa-previa" role="note">Prévia · protótipo para ajustar a tela. <b>Nada é gravado</b> e nada sai daqui.</p>
+<p class="faixa-previa" role="note">Os exemplos são só para ver como funciona. <b>A minha cozinha</b> fica salva: escolha ela no topo.</p>
 
 <div class="app-casca">
   <aside class="app-menu" aria-label="Menu">
@@ -62,8 +62,10 @@
       <p class="menu-rot">Seu plano</p>
       <p class="plano-linha"><span class="etiqueta gratis" data-valor="pine-cost.gratis"></span><span>3 fichas técnicas</span></p>
       <p class="plano-linha"><span class="etiqueta pacote" data-valor="pine-cost.pacote"></span><span>o pacote completo</span></p>
-      <div class="acao" data-so-aberto="pine-cost">
-        <a class="botao" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="fichas">Quero com a minha cozinha</a>
+      <div class="plano-acesso" data-plano-acesso></div>
+      <div class="acao" data-so-aberto="pine-cost" data-sem-acesso>
+        <a class="botao" data-comprar hidden></a>
+        <a class="botao claro" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="fichas">Quero as 3 grátis no Direct</a>
         <p class="ou-mande">Ou mande: “Quero as 3 fichas técnicas grátis 🍍”</p>
         <p class="aviso" data-aviso aria-live="polite"></p>
       </div>
@@ -72,6 +74,7 @@
 
   <header class="app-topo">
     <a class="marca" href="../index.html"><img src="../img/marca.png" alt="Pineapple Pro" width="30" height="30"><span>Pine Cost Pro</span></a>
+    <span class="salvo" data-salvo role="status" aria-live="polite"></span>
     <label class="cozinha-chip"><span class="so-leitor">A cozinha</span><select data-trocar-cozinha></select></label>
     <button type="button" class="topo-icone" data-acao="buscar" aria-label="Buscar na cozinha"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5"/></svg></button>
     <a class="topo-icone" href="#ferramentas" data-vai="ferramentas" aria-label="Outras ferramentas"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg></a>
@@ -90,8 +93,10 @@
         <p class="menu-rot">Seu plano</p>
         <p class="plano-linha"><span class="etiqueta gratis" data-valor="pine-cost.gratis"></span><span>3 fichas técnicas</span></p>
         <p class="plano-linha"><span class="etiqueta pacote" data-valor="pine-cost.pacote"></span><span>o pacote completo</span></p>
-        <div class="acao" data-so-aberto="pine-cost">
-          <a class="botao" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="fichas">Quero com a minha cozinha</a>
+        <div class="plano-acesso" data-plano-acesso></div>
+        <div class="acao" data-so-aberto="pine-cost" data-sem-acesso>
+          <a class="botao" data-comprar hidden></a>
+          <a class="botao claro" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="fichas">Quero as 3 grátis no Direct</a>
           <p class="ou-mande">Ou mande: “Quero as 3 fichas técnicas grátis 🍍”</p>
           <p class="aviso" data-aviso aria-live="polite"></p>
         </div>
@@ -118,6 +123,26 @@
 </dialog>
 
 <!-- O AVISO COM "DESFAZER" (por alguns segundos) -->
+<aside class="guia" data-guia hidden aria-labelledby="guia-titulo">
+  <p class="chapeu">Como funciona</p>
+  <h2 id="guia-titulo" data-guia-titulo></h2>
+  <p data-guia-texto></p>
+  <div class="guia-botoes">
+    <button type="button" class="botao" data-acao="guia-exemplo" data-guia-botao hidden></button>
+    <button type="button" class="botao claro" data-acao="guia-ok">Entendi</button>
+  </div>
+</aside>
+
+<dialog class="oferta" data-oferta aria-labelledby="oferta-titulo">
+  <h2 id="oferta-titulo" data-oferta-titulo></h2>
+  <p data-oferta-texto></p>
+  <div class="guia-botoes">
+    <a class="botao" data-oferta-comprar href="#"></a>
+    <a class="botao claro" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-oferta-direct data-frase="fichas">Prefiro pelo Direct</a>
+    <button type="button" class="botao-mini" data-acao="oferta-fechar">Agora não</button>
+  </div>
+</dialog>
+
 <div class="aviso-desfazer" data-aviso-desfazer role="status" aria-live="polite"><span data-aviso-texto></span><button type="button" class="botao-mini" data-acao="desfazer">Desfazer</button></div>
 </body>
 </html>

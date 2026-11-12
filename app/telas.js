@@ -221,7 +221,7 @@ function ondeHtml(estado, ins) {
       <div class="simula-cab"><p class="simula-rot">E se o preço mudar?</p><b class="simula-pct${pct > 0 ? ' sobe' : pct < 0 ? ' desce' : ''}" data-simula-pct="${id}">${textoPct(pct)}</b></div>
       <input type="range" class="faixa simula-faixa" data-simula="${id}" min="-50" max="100" step="1" value="${pct}" aria-label="E se o preço de ${esc(ins.nome)} mudar? De 50% mais barato a 100% mais caro" aria-valuetext="${esc(valor)}">
       <div class="simula-marcas" aria-hidden="true"><span style="--p:0">−50%</span><span style="--p:.3333">hoje</span><span style="--p:.6667">+50%</span><span style="--p:1">+100%</span></div>
-      <p class="simula-dica">Arraste: a conta desce pelas camadas até o cardápio. Nada é gravado.</p>
+      <p class="simula-dica">Arraste: a conta desce pelas camadas até o cardápio. É só uma simulação: o preço não muda.</p>
       <button type="button" class="botao-mini simula-volta" data-acao="preco-hoje" data-id="${id}"${pct ? '' : ' hidden'}>Voltar ao preço de hoje</button>
       <p class="so-leitor" aria-live="polite" data-simula-fala="${id}"></p>
     </div>
@@ -853,7 +853,7 @@ export function telaCompras(estado) {
     <div data-saida="preparo"></div>
     <section class="compras" aria-labelledby="t-compras">
       <h2 class="titulo-secao" id="t-compras">O que comprar ${selo(d)}</h2>
-      <p class="ajuda">Marque o que já comprou: vai pro estoque da despensa (só nesta prévia, nada é gravado).</p>
+      <p class="ajuda">Marque o que já comprou: vai pro estoque da despensa.</p>
       <div data-saida="compras-erros"></div>
       <div class="compras-grupos" data-saida="compras-lista"></div>
       <div data-saida="ja-tem"></div>
