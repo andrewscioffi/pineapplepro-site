@@ -18,7 +18,7 @@ export const lancamentoAberto = (agora = Date.now()) => agora <= Date.parse(`${L
 
 // A compra pela Stripe (08/11/2026). Link vazio = o botão "Comprar" não aparece no site.
 export const COMPRA_PINE_COST = {
-  link: '',
+  link: 'https://buy.stripe.com/00wbJ16C6esH2698SafUQ00',
   texto: 'Comprar por R$ 47',
 };
 
