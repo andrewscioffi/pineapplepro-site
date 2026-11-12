@@ -8,6 +8,7 @@
 //   - sem resposta (sem internet, a função fora): o código e o Direct, como era
 import { LINK_DIRECT } from '../valores.js';
 import * as A from './acesso.js';
+import { medirCompra } from './pixel.js';
 
 const ALFABETO = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
 const RX_SESSAO = /^cs_(test|live)_[A-Za-z0-9]{10,200}$/;
@@ -46,6 +47,8 @@ export async function ligarConfirmacao(doc, janela, copiar, { buscar = janela.fe
     const g = A.guarda(janela);
     const tinha = A.lerAcesso({ location: { search: '' } }, g);
     const r = await A.ativar(sessao, tinha, buscar);
+    // 12/11: a compra conferida na Stripe vai para o pixel (só o valor; uma vez só; só com o "Pode medir")
+    if (r.ok && Number.isInteger(r.centavos)) { try { medirCompra(codigo, r.centavos); } catch { /* nunca atrapalha a liberação */ } }
     if (r.ok && r.tipo === 'ferramenta' && (r.token || (r.ja_usada && tinha))) {
       const token = r.token ?? tinha;
       A.guardarAcesso(token, g);

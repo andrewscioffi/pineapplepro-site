@@ -10,6 +10,7 @@
 import { PRODUTOS, FRASES, cadeadoSvg, COMPRA_PINE_COST, COMPRAS, lancamentoAberto } from './valores.js';
 import { ligarVidro } from './comum/vidro.js';
 import { ligarInteracao, estourarEm, vibrar, temMouse, pedeMenosMovimento } from './comum/interacao.js';
+import { ligarPixel } from './comum/pixel.js';
 
 const AVISO_COPIOU = 'Frase copiada: é só colar no Direct';
 
@@ -281,6 +282,7 @@ if (typeof document !== 'undefined') {
   ligarVidro(document);
   ligarInteracao(document);
   ligarVitrineViva(document);
+  try { ligarPixel(document, window); } catch { /* o pixel nunca derruba a página */ }
   ligarCadeados(document).catch(() => {}); // sem WebGL, fica o cadeado desenhado (o SVG de dentro)
   preencherExemplos(document).catch((e) => {
     for (const el of document.querySelectorAll('[data-exemplo]')) el.textContent = `Não deu para montar o exemplo (${e.message}).`;
