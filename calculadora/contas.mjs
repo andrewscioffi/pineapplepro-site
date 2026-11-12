@@ -385,6 +385,8 @@ export function calcularFicha(entrada, porcoes = {}, padroes = {}, impostos = {}
     percentuais: { fixos, imposto, taxa_app: taxaApp, taxa_balcao: taxaBalcao, acrescimo_app: acrescimo, regra_app: regra, variacao },
     canais,
     avisos,
+    // 11/11 (o robô, rodada 2): o principal que ela disse que não usa ("sem ovo"); a página escreve "Montada sem ovo, como você disse"
+    sem: Array.isArray(e.sem) ? e.sem.map((x) => String(x ?? '').trim()).filter(Boolean).slice(0, 5) : [],
     ...completa,
   };
 }

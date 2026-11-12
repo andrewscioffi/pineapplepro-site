@@ -7,7 +7,7 @@
 //   6. (v2) [data-so-aberto="id"] só aparece com o produto aberto; [data-so-trancado="id"] só com ele trancado
 //   7. (v3) a interação (comum/interacao.js): o botão que vem atrás do mouse, a onda, o estouro quando a frase copia,
 //      os números que rolam, as cenas da rolagem, a luz do cursor e a troca de página com o cartão virando o palco
-import { PRODUTOS, FRASES, cadeadoSvg, COMPRA_PINE_COST } from './valores.js';
+import { PRODUTOS, FRASES, cadeadoSvg, COMPRA_PINE_COST, lancamentoAberto } from './valores.js';
 import { ligarVidro } from './comum/vidro.js';
 import { ligarInteracao, estourarEm, vibrar, temMouse, pedeMenosMovimento } from './comum/interacao.js';
 
@@ -52,6 +52,12 @@ export function etiqueta(produto, qual) {
   return produto.precos?.[qual] ?? null;
 }
 
+/** A linha do preço de tabela (11/11, tabela 3.0), ou null: produto trancado, sem tabela, ou lançamento encerrado. */
+export function etiquetaTabela(produto, agora = Date.now()) {
+  if (!produto || produto.trancado || !produto.tabela || !lancamentoAberto(agora)) return null;
+  return produto.tabela;
+}
+
 const esc = (t) => String(t ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 /**
@@ -71,7 +77,8 @@ export function cartoesTrancados(produtos = PRODUTOS, { jeito = 'cartao', base }
 export function cartoesAbertos(produtos = PRODUTOS) {
   return produtos.filter((p) => !p.trancado && p.id !== 'pine-cost' && p.frase && FRASES[p.frase]).map((p) => {
     const preco = etiqueta(p, 'pacote') ?? etiqueta(p, 'gratis');
-    return `<li class="aberto cartao"><h3>${esc(p.nome)}</h3>${p.o_que_e ? `<p>${esc(p.o_que_e)}</p>` : ''}${preco ? `<span class="etiqueta">${esc(preco)}</span>` : ''}
+    const tabela = etiqueta(p, 'pacote') ? etiquetaTabela(p) : null;
+    return `<li class="aberto cartao"><h3>${esc(p.nome)}</h3>${p.o_que_e ? `<p>${esc(p.o_que_e)}</p>` : ''}${preco ? `<span class="etiqueta">${esc(preco)}</span>` : ''}${tabela ? `<small class="etiqueta-tabela">${esc(tabela)}</small>` : ''}
 <div class="acao"><a class="botao" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="${esc(p.frase)}">Chamar no Direct</a><p class="ou-mande">Ou mande: “${esc(FRASES[p.frase])}”</p><p class="aviso" data-aviso aria-live="polite"></p></div></li>`;
   }).join('');
 }
@@ -201,6 +208,15 @@ export function preencherValores(doc, produtos = PRODUTOS, compra = COMPRA_PINE_
     const texto = etiqueta(achar(id), qual);
     el.textContent = texto ?? '';
     el.hidden = !texto;
+    // 11/11 (tabela 3.0): embaixo do preço do pacote, o preço de tabela e a data do lançamento
+    const bloco = qual === 'pacote' && texto ? el.closest?.('.etiqueta-bloco') : null;
+    const tabela = bloco ? etiquetaTabela(achar(id)) : null;
+    if (tabela && !bloco.querySelector('.etiqueta-tabela')) {
+      const linha = doc.createElement('small');
+      linha.className = 'etiqueta-tabela';
+      linha.textContent = tabela;
+      bloco.append(linha);
+    }
   }
   for (const el of doc.querySelectorAll('[data-lista]')) {
     const [id, qual] = el.dataset.lista.split('.');

@@ -6,9 +6,15 @@
 //   - um preço: troque o texto entre aspas em "precos" (o teste só aceita os aprovados: Grátis, a partir de R$ 47, a partir de R$ 67)
 //   - abrir um produto: troque "trancado: true" por "trancado: false" (precisa ter frase e preço)
 //   - o cadeado: troque o CADEADO por 'coroa', 'folha' ou 'fruta' (as 3 opções estão em cadeados.html)
+//   - o preço de tabela (11/11/2026, tabela 3.0): "tabela" é a linha pequena embaixo do preço; some sozinha depois de LANCAMENTO_ATE
 // Depois de mudar, rode os testes: node --test empresas/pineapple-pro/site/testes/
 
 export const LINK_DIRECT = 'https://ig.me/m/pineapplepro_';
+
+// A TABELA 3.0 (11/11/2026, o Andrews: "Pode aplicar"): o preço de hoje é o de lançamento, até esta data (fim do dia, hora de Brasília).
+// Depois dela a linha "tabela" de cada produto não aparece mais. O preço só muda aqui, com a decisão do Andrews.
+export const LANCAMENTO_ATE = '2026-12-31';
+export const lancamentoAberto = (agora = Date.now()) => agora <= Date.parse(`${LANCAMENTO_ATE}T23:59:59-03:00`);
 
 // A compra pela Stripe (08/11/2026). Link vazio = o botão "Comprar" não aparece no site.
 export const COMPRA_PINE_COST = {
@@ -42,6 +48,7 @@ export const PRODUTOS = [
     frase: 'fichas',
     pagina: 'pine-cost/',
     precos: { gratis: 'Grátis', pacote: 'a partir de R$ 47' },
+    tabela: 'na tabela, R$ 97 · lançamento até 31/12',
     gratis_inclui: [
       '3 fichas técnicas: quanto sobra em cada venda, no balcão e no app',
     ],
@@ -62,11 +69,13 @@ export const PRODUTOS = [
     id: 'pine-club', nome: 'Pine Club', o_que_e: 'O clube de fidelidade da sua loja, sem sorteio',
     chamada: 'O cliente que volta', cor: 'amarelo', trancado: false, frase: 'pineClub', pagina: 'pine-club/',
     precos: { pacote: 'a partir de R$ 47' },
+    tabela: 'uma vez só · depois das 10 vagas ou de 31/12, R$ 97 por mês',
   },
   {
     id: 'marca', nome: 'Logo e cardápio', o_que_e: 'A logo vetorizada e o cardápio da sua loja',
     chamada: 'A marca nítida em qualquer tamanho', cor: 'creme', trancado: false, frase: 'marca', pagina: 'marca/',
     precos: { pacote: 'a partir de R$ 67' },
+    tabela: 'na tabela, R$ 97 · lançamento até 31/12',
   },
   // 10/11, o Andrews: "vamos ficar sem as fotos por enquanto". Para reabrir: trancado: false, frase: 'fichas',
   // precos: { gratis: 'Grátis', pacote: 'a partir de R$ 47' }, e as fotos de volta no que o Pine Cost inclui, na home e na landing

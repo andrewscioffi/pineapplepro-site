@@ -92,6 +92,8 @@ h1 em, h2 em { font-style: normal; color: var(--amarelo); }
 .precos { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
 .etiqueta-bloco { display: flex; flex-direction: column; gap: 2px; padding: 10px 14px; border-radius: 14px; background: var(--fundo-3); border: 1px solid var(--linha); min-width: 0; }
 .etiqueta-bloco small { font-size: .74rem; color: var(--texto-3); font-weight: 600; }
+/* 11/11 (tabela 3.0): o preço de tabela e a data do lançamento, embaixo do preço de hoje */
+.etiqueta-tabela { display: block; font-size: .74rem; color: var(--texto-2, var(--texto-3)); font-weight: 600; }
 .etiqueta { display: inline-block; font-weight: 800; font-size: 1.02rem; letter-spacing: -.01em; }
 .etiqueta.gratis { color: var(--verde); }
 .etiqueta.pacote { color: var(--amarelo); }
