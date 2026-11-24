@@ -1,6 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /app/
 Disallow: /pagamento-confirmado/
-
-Sitemap: https://pineapplepro.com.br/sitemap.xml
