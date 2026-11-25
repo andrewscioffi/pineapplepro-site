@@ -2,156 +2,173 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="referrer" content="no-referrer">
-<title>Alarmino · o alarme do remédio que chega no WhatsApp</title>
-<meta name="description" content="O lembrete do remédio chega no WhatsApp, diz qual é o remédio e avisa a família quando a resposta não vem. Sem baixar aplicativo.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://www.facebook.com; media-src 'self' blob:; connect-src 'self' https://foijkkdofcdzgohrixqm.supabase.co; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pineapple Pro · ferramentas pra quem vende comida</title>
+<meta name="description" content="Ferramentas pra quem vende comida: o preço certo, a marca nítida e o cliente que volta. Comece grátis no Direct do @pineapplepro_.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:site_name" content="Alarmino">
-<meta property="og:title" content="Alarmino · o alarme do remédio que chega no WhatsApp">
-<meta property="og:description" content="O lembrete do remédio chega no WhatsApp, diz qual é o remédio e avisa a família quando a resposta não vem. Sem baixar aplicativo.">
-<meta name="theme-color" content="#0f2f36">
-<link rel="icon" href="img/icone.png">
-<link rel="apple-touch-icon" href="img/icone.png">
+<meta property="og:site_name" content="Pineapple Pro">
+<meta property="og:title" content="Pineapple Pro · ferramentas pra quem vende comida">
+<meta property="og:description" content="Ferramentas pra quem vende comida: o preço certo, a marca nítida e o cliente que volta. Comece grátis no Direct do @pineapplepro_.">
+<meta property="og:url" content="https://pineapplepro.com.br/">
+<meta property="og:image" content="https://pineapplepro.com.br/img/previa.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Pineapple Pro: ferramentas pra quem vende comida">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0906">
+<link rel="icon" href="img/marca.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="estilo.css">
+<link rel="stylesheet" href="inicio.css">
 <script type="module" src="site.js"></script>
+<script type="module" src="inicio.js"></script>
 </head>
-<body>
-<div class="topo">
-  <header class="envolve">
-    <a class="marca" href="index.html"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="8.5" r="4" fill="none" stroke="#f4b94a" stroke-width="3"/><circle cx="24" cy="28" r="16" fill="#f4b94a"/><path d="M9.6 24.4c4.5 2.6 9.3 3.9 14.4 3.9s9.9-1.3 14.4-3.9" fill="none" stroke="#b97a1c" stroke-width="2.4" stroke-linecap="round"/><path d="M17.5 36.4h13" stroke="#6f460f" stroke-width="3.2" stroke-linecap="round"/><circle cx="24" cy="36.4" r="2.7" fill="#6f460f"/></svg><span>Alarmino</span></a>
-    <a class="botao pequeno" data-comprar href="#oferta">Garantir minha vaga</a>
+<body data-cor="amarelo">
+<div class="barra-topo">
+  <header class="envolve topo">
+    <a class="marca" href="index.html"><img src="img/marca.png" alt="Pineapple Pro" width="34" height="34"><span>Pineapple Pro</span></a>
+    <nav class="topo-acoes" aria-label="Atalhos">
+      <a class="topo-link" href="#vitrine">Ferramentas</a>
+      <a class="topo-link" href="https://www.instagram.com/pineapplepro_/" target="_blank" rel="noopener">@pineapplepro_</a>
+    </nav>
   </header>
 </div>
 
 <main>
-<section class="abre">
-  <div class="envolve">
-    <div class="abre-texto">
-      <p class="selo"><i></i><span>Pré-venda · <span data-vagas-curto>100 vagas de fundador</span></span></p>
-      <h1>O alarme do <em>remédio</em> que chega no WhatsApp.</h1>
-      <p class="sub">Para você ou para quem você cuida. O lembrete chega na hora, diz qual é o remédio e, sem resposta, avisa a família. Sem baixar aplicativo.</p>
+  <section class="envolve abre-home">
+    <img class="fundo-marca" src="img/marca.png" alt="" aria-hidden="true">
+    <div class="abre-texto revela">
+      <p class="chapeu">Uma ferramenta de cada vez</p>
+      <h1>Ferramentas pra quem <em class="brilha">vende comida</em></h1>
+      <p class="sub">O preço certo, a marca nítida e o cliente que volta. Feito pra lanchonete, restaurante, bar e quem vende em casa.</p>
       <div class="acao">
-        <a class="botao" data-comprar href="#oferta"><span>Garantir minha vaga · <span data-preco>R$ 97</span> no 1º ano</span></a>
-        <p class="debaixo">Os lembretes começam até <span data-inicio>15/12/2026</span>. Garantia de 7 dias.</p>
+        <a class="botao" data-comprar hidden></a>
+        <a class="botao claro" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="fichas">Começar grátis no Direct</a>
+        <p class="ou-mande">Ou mande: “Quero as 3 fichas técnicas grátis 🍍”</p>
+        <p class="aviso" data-aviso aria-live="polite"></p>
       </div>
+      <a class="link-seta" href="#vitrine">Ver as ferramentas <span aria-hidden="true">↓</span></a>
     </div>
-    <div class="cena" aria-label="Exemplo de conversa com o Alarmino">
-      <img class="cao" src="img/sentado-atento.png" alt="O Alarmino, um vira-lata caramelo de coleira azul e sininho dourado" width="507" height="760">
-      <div class="fone">
-        <div class="fone-tela">
-          <div class="fone-topo"><img src="img/rosto-atento.png" alt="" width="38" height="38"><div><b>Alarmino</b><small>conversa de exemplo</small></div></div>
-          <div class="conversa">
-            <p class="balao b1">Bom dia! É o Alarmino 🐶</p>
-            <p class="balao b2">Hora de tomar:<b>Vitamina D</b></p>
-            <div class="teclas"><span class="toque">✅ Tomei</span><span>⏰ Me lembra em 15 min</span></div>
-            <p class="balao meu b3">Tomei</p>
-            <p class="balao b4">Anotado! 🐶</p>
-          </div>
+
+    <!-- A TORRE DO PREÇO: o X-Bacon de exemplo em camadas de vidro. A conta é a da calculadora (inicio.js). -->
+    <div class="vidro palco tp revela" data-torre aria-busy="true" style="--atraso: .12s">
+      <p class="palco-rot"><span>A torre do preço</span><span class="ao-vivo">Mexa aqui</span></p>
+      <div class="tp-cab">
+        <p class="tp-item">X-Bacon duplo <span class="selo-exemplo">exemplo</span></p>
+        <div class="tp-canais" role="group" aria-label="Onde você vende" data-tp="canais" data-canal="balcao">
+          <span class="tp-canal-luz" aria-hidden="true"></span>
+          <button type="button" class="tp-canal" data-canal="balcao" aria-pressed="true">No balcão</button>
+          <button type="button" class="tp-canal" data-canal="app_hoje" aria-pressed="false">No app</button>
         </div>
       </div>
+      <div class="tp-cena" data-tp="cena" aria-hidden="true">
+        <div class="tp-palco3d"><div class="tp-torre" data-tp="torre"></div></div>
+        <svg class="tp-fios" data-tp="fios" xmlns="http://www.w3.org/2000/svg" focusable="false"></svg>
+        <div class="tp-rotulos" data-tp="rotulos"></div>
+      </div>
+      <div class="tp-leitura">
+        <div class="tp-ler">
+          <label class="tp-ler-rot" for="tp-preco" data-tp="rot-preco">Você cobra<span class="tp-largo"> no balcão</span></label>
+          <output class="tp-ler-num tp-preco rola" data-tp="preco" for="tp-preco"></output>
+        </div>
+        <div class="tp-ler tp-ler-sobra">
+          <span class="tp-ler-rot">Sobra pra você</span>
+          <b class="tp-ler-num tp-sobra rola" data-tp="sobra"></b>
+        </div>
+        <p class="tp-sinal"><span class="pill" data-tp="sinal"></span><span class="tp-faixa" data-tp="faixa"></span></p>
+      </div>
+      <input id="tp-preco" class="tp-controle" type="range" min="15" max="35" step="0.5" value="25" data-tp-controle>
+      <p class="tp-ings-rot">Toque pra tirar ou pôr</p>
+      <div class="tp-ings" data-tp="ings"></div>
+      <p class="tp-dica" data-tp="dica"></p>
+      <p class="so-leitor" data-tp="resumo" aria-live="polite"></p>
+      <noscript><p class="tp-dica">A torre do preço faz a conta com o JavaScript ligado.</p></noscript>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="como">
-  <div class="envolve">
-    <p class="chapeu">Como funciona</p>
-    <h2>3 passos e pronto.</h2>
-    <div class="passos">
-      <div class="cartao"><span class="num">1</span><h3>Escolha os horários</h3><p>Você escreve a hora e o nome de cada remédio, do seu jeito. Até <span data-horarios>4</span> horários por dia.</p></div>
-      <div class="cartao"><span class="num">2</span><h3>O lembrete chega no WhatsApp</h3><p>Na hora certa, a mensagem diz qual é o remédio. Nada para baixar nem para aprender.</p></div>
-      <div class="cartao"><span class="num">3</span><h3>Um toque em “Tomei”</h3><p>Fica anotado. Se não der agora, o botão “Me lembra em 15 min” chama de novo.</p></div>
+  <section class="envolve secao" id="vitrine" aria-labelledby="t-vitrine">
+    <div class="secao-cab revela">
+      <p class="chapeu">A vitrine</p>
+      <h2 id="t-vitrine">Uma ferramenta pra cada parte da sua cozinha</h2>
+      <p>Passe o mouse (ou role no celular) e veja cada uma funcionando. As trancadas abrem uma de cada vez.</p>
     </div>
-  </div>
-</section>
+    <ul class="vitrine" data-vitrine></ul>
+    <noscript><p class="ou-mande">A vitrine aparece com o JavaScript ligado. A primeira ferramenta: <a href="pine-cost/">Pine Cost Pro</a>.</p></noscript>
+  </section>
 
-<section class="fundo-creme">
-  <div class="envolve duas">
-    <div>
-      <p class="chapeu">Para quem você cuida</p>
-      <h2>Sem resposta? Ele avisa a família.</h2>
-      <p class="sub">Você escolhe quem recebe o aviso. O aviso nunca leva o nome do remédio.</p>
-      <div class="linha-tempo">
-        <div class="hora"><b>8h00</b><span>O lembrete chega.</span></div>
-        <div class="hora"><b>8h30</b><span>Ele lembra mais uma vez.</span></div>
-        <div class="hora forte"><b>9h00</b><span>Ele avisa a família.</span></div>
+  <section class="envolve secao" id="como" aria-labelledby="t-como">
+    <div class="secao-cab revela">
+      <p class="chapeu">Como funciona</p>
+      <h2 id="t-como">Tudo pelo Direct, em 3 passos</h2>
+    </div>
+    <div class="como-palco" data-como>
+      <ol class="passos como-passos">
+        <li class="vidro revela" data-passo="1"><span class="como-num" aria-hidden="true">1</span><b>Chama no Direct</b><p>Pelo botão daqui ou direto no @pineapplepro_.</p></li>
+        <li class="vidro revela" data-passo="2" style="--atraso: .08s"><span class="como-num" aria-hidden="true">2</span><b>Diz o que vende</b><p>O produto, os ingredientes e quanto você cobra.</p></li>
+        <li class="vidro revela" data-passo="3" style="--atraso: .16s"><span class="como-num" aria-hidden="true">3</span><b>Recebe no Direct</b><p>A ficha com a conta pronta.</p></li>
+      </ol>
+      <div class="cv-lado" data-cena>
+        <figure class="cv vidro forte revela" style="--atraso: .1s">
+          <figcaption class="cv-topo">
+            <img src="img/marca.png" alt="" aria-hidden="true" width="32" height="32">
+            <span class="cv-nome"><b>pineapplepro_</b><small>Pineapple Pro</small></span>
+          </figcaption>
+          <p class="cv-aviso"><span class="selo-exemplo">exemplo de conversa</span></p>
+          <div class="cv-falas" data-cv="falas" aria-hidden="true">
+            <div class="cv-msg cv-eu"><p class="cv-balao">Quero as 3 fichas técnicas grátis 🍍</p></div>
+            <div class="cv-msg cv-eu"><p class="cv-balao">X-Bacon duplo: os ingredientes e quanto eu cobro</p></div>
+            <div class="cv-msg cv-pine"><p class="cv-balao">A ficha com a conta pronta</p></div>
+          </div>
+          <p class="so-leitor">Exemplo de conversa no Direct: você manda “Quero as 3 fichas técnicas grátis 🍍” e o que vende (o produto, os ingredientes e quanto cobra) e recebe a ficha com a conta pronta.</p>
+          <div class="cv-barra" aria-hidden="true">Mensagem</div>
+        </figure>
+        <button type="button" class="botao claro cv-de-novo" data-cv="de-novo" hidden>Ver de novo</button>
       </div>
     </div>
-    <img class="cao" src="img/de-pe.png" alt="" width="507" height="760" loading="lazy">
-  </div>
-</section>
+  </section>
 
-<section>
-  <div class="envolve">
-    <p class="chapeu">Combinado</p>
-    <h2>3 coisas que o Alarmino não faz.</h2>
-    <div class="nao">
-      <div><small>NÃO DÁ</small><b>conselho médico</b></div>
-      <div><small>NÃO VENDE</small><b>os seus dados</b></div>
-      <div><small>NÃO MANDA</small><b>propaganda</b></div>
+  <section class="envolve secao" aria-labelledby="quem">
+    <h2 id="quem" class="so-leitor">Quem está por trás</h2>
+    <div class="por-tras">
+      <div class="revela">
+        <p class="chapeu">Quem está por trás</p>
+        <p class="citacao" style="margin-top: 14px">Comecei com 12 anos, reabastecendo molho e limpando bandeja.</p>
+        <p class="quem">Andrews, fundador da Pineapple Pro</p>
+      </div>
+      <div class="escritorio esc vidro revela" style="--atraso: .1s">
+        <p class="esc-texto"><span class="numero" data-conta-ate="22" data-esc="numero">22</span><b>funcionários de IA</b> trabalham no escritório da Pineapple. Eles adiantam o trabalho, e o Andrews aprova o que é importante.</p>
+        <div class="esc-planta" data-esc="planta" aria-hidden="true"><div class="esc-chao"></div></div>
+      </div>
     </div>
-    <p class="sub">É só o lembrete, na hora certa. Dose, receita e doença ficam fora: isso é com o seu médico.</p>
-  </div>
-</section>
+  </section>
 
-<section class="oferta" id="oferta">
-  <div class="envolve">
-    <p class="chapeu">Pré-venda</p>
-    <h2>Entre como fundador.</h2>
-    <p class="sub">Quem entra agora paga menos e ajuda a decidir o que vem depois.</p>
-    <div class="plano">
-      <span class="etiqueta" data-nome-plano>Plano Fundador</span>
-      <p class="preco"><b data-preco>R$ 97</b><span>pelo 1º ano</span></p>
-      <p class="conta">Dá <span data-por-mes>R$ 8,08</span> por mês. O preço normal será <span data-preco-normal>R$ 19,90 por mês</span>.</p>
-      <ul>
-        <li>Lembretes para 1 pessoa, em até <span data-horarios>4</span> horários por dia</li>
-        <li>O lembrete diz qual é o remédio</li>
-        <li>Aviso para até <span data-familia>2</span> pessoas da família</li>
-        <li>Os 12 meses contam do 1º lembrete, não de hoje</li>
-        <li>Garantia de <span data-garantia>7</span> dias, contados do 1º lembrete</li>
-        <li>Se os lembretes não começarem até <span data-inicio>15/12/2026</span>, devolvemos tudo</li>
-        <li>Pagamento único: nada renova sozinho</li>
-      </ul>
-      <a class="botao escuro" data-comprar data-pagar href="#oferta">Garantir minha vaga</a>
-      <p class="vagas" data-vagas aria-live="polite"></p>
-      <p class="miudo">Pagamento seguro por cartão ou Pix. Na fatura aparece “Pineapple”.</p>
+  <section class="envolve secao" aria-labelledby="maior">
+    <div class="maior vidro revela">
+      <div>
+        <h2 id="maior">Tem um negócio maior?</h2>
+        <p>Instagram cuidado todo mês, tráfego pago e site. A gente monta junto com você.</p>
+      </div>
+      <div class="acao">
+        <a class="botao claro" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener" data-frase="agencia">Fale com a gente</a>
+        <p class="ou-mande">Ou mande: “Vocês fazem Instagram e tráfego? 🍍”</p>
+        <p class="aviso" data-aviso aria-live="polite"></p>
+      </div>
     </div>
-  </div>
-</section>
-
-<section>
-  <div class="envolve">
-    <p class="chapeu">Perguntas</p>
-    <h2>Antes de entrar.</h2>
-    <div class="perguntas">
-      <details><summary>Preciso baixar algum aplicativo?</summary><p>Não. O lembrete chega no WhatsApp que a pessoa já usa. O cadastro é feito aqui no site, logo depois do pagamento.</p></details>
-      <details><summary>O que é a pré-venda? Quando começa?</summary><p>O Alarmino está abrindo. Você garante a vaga agora e faz o cadastro na hora. Os lembretes começam até <span data-inicio>15/12/2026</span>. Se não começarem até essa data, devolvemos 100% do valor, sem você precisar pedir.</p></details>
-      <details><summary>E se eu não gostar?</summary><p>Você tem <span data-garantia>7</span> dias de garantia, contados do 1º lembrete que chegar. É só escrever para a gente que o dinheiro volta. Antes do início, você também pode desistir quando quiser.</p></details>
-      <details><summary>Serve para mim ou para outra pessoa?</summary><p>Para os dois. No cadastro você escolhe “para mim” ou “para outra pessoa”. Quando é para outra pessoa, ela mesma precisa aceitar no WhatsApp antes de o 1º lembrete chegar.</p></details>
-      <details><summary>O Alarmino diz que remédio eu devo tomar?</summary><p>Não. Ele só lembra do que você mesmo cadastrou, com o nome que você escreveu. Não confere dose nem receita e não dá conselho de saúde.</p></details>
-      <details><summary>O que acontece com os meus dados?</summary><p>Guardamos só o necessário: o primeiro nome, o WhatsApp, os horários e o nome de cada remédio. Não vendemos nem passamos a ninguém. O nome do remédio é um dado de saúde, e você pode pedir para apagar tudo a qualquer hora. Está tudo na <a href="privacidade.html">política de privacidade</a>.</p></details>
-      <details><summary>O que acontece depois do 1º ano?</summary><p>Nada é cobrado sozinho. Perto do fim dos 12 meses a gente avisa, e você decide se quer continuar.</p></details>
-    </div>
-  </div>
-</section>
+  </section>
 </main>
-<footer class="rodape">
-  <div class="envolve">
-    <span>Alarmino · <span data-empresa></span></span>
-    <nav aria-label="Rodapé">
-      <a href="termos.html">Termos de uso</a>
-      <a href="privacidade.html">Política de privacidade</a>
-      <a data-email href="#">Falar com a gente</a>
-      <a href="https://www.instagram.com/alarminoapp/" target="_blank" rel="noopener">@alarminoapp</a>
-    </nav>
-  </div>
-</footer>
 
-<div class="barra-compra" data-barra>
-  <b><span data-preco>R$ 97</span> no 1º ano<small>Plano Fundador · garantia de 7 dias</small></b>
-  <a class="botao pequeno" data-comprar data-pagar href="#oferta">Garantir vaga</a>
-</div>
+<footer class="envolve rodape">
+  <span>Pineapple Pro · Maringá (PR)</span>
+  <nav aria-label="Rodapé">
+    <a href="https://www.instagram.com/pineapplepro_/" target="_blank" rel="noopener">@pineapplepro_</a>
+    <a href="privacidade.html">Política de privacidade</a>
+    <a href="termos.html">Termos de uso</a>
+  </nav>
+</footer>
 </body>
 </html>

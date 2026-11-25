@@ -2,109 +2,81 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://www.facebook.com; media-src 'self' blob:; connect-src 'self' https://foijkkdofcdzgohrixqm.supabase.co; base-uri 'self'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="noindex">
-<title>Pagamento confirmado · Alarmino</title>
-<meta name="description" content="O seu cadastro no Alarmino.">
+<title>Pagamento confirmado · Pineapple Pro</title>
+<meta name="description" content="O seu acesso à Pineapple Pro.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:site_name" content="Alarmino">
-<meta property="og:title" content="Pagamento confirmado · Alarmino">
-<meta property="og:description" content="O seu cadastro no Alarmino.">
-<meta name="theme-color" content="#0f2f36">
-<link rel="icon" href="../img/icone.png">
-<link rel="apple-touch-icon" href="../img/icone.png">
+<meta property="og:site_name" content="Pineapple Pro">
+<meta property="og:title" content="Pagamento confirmado · Pineapple Pro">
+<meta property="og:description" content="O seu acesso à Pineapple Pro.">
+<meta property="og:url" content="https://pineapplepro.com.br/pagamento-confirmado/">
+<meta property="og:image" content="https://pineapplepro.com.br/img/previa.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Pineapple Pro: ferramentas pra quem vende comida">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0906">
+<link rel="icon" href="../img/marca.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../estilo.css">
+<link rel="stylesheet" href="confirmado.css">
 <script type="module" src="confirmado.js"></script>
 </head>
-<body class="claro">
-<div class="topo">
-  <header class="envolve">
-    <a class="marca" href="../index.html"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="8.5" r="4" fill="none" stroke="#f4b94a" stroke-width="3"/><circle cx="24" cy="28" r="16" fill="#f4b94a"/><path d="M9.6 24.4c4.5 2.6 9.3 3.9 14.4 3.9s9.9-1.3 14.4-3.9" fill="none" stroke="#b97a1c" stroke-width="2.4" stroke-linecap="round"/><path d="M17.5 36.4h13" stroke="#6f460f" stroke-width="3.2" stroke-linecap="round"/><circle cx="24" cy="36.4" r="2.7" fill="#6f460f"/></svg><span>Alarmino</span></a>
-    
+<body>
+<div class="barra-topo">
+  <header class="envolve topo">
+    <a class="marca" href="../index.html"><img src="../img/marca.png" alt="Pineapple Pro" width="34" height="34"><span>Pineapple Pro</span></a>
+    <a class="topo-link" href="../index.html#vitrine">Todas as ferramentas</a>
   </header>
 </div>
 
-<main class="envolve confirma">
-  <noscript><h1>Falta só o cadastro</h1><p class="sub">Esta página precisa do JavaScript para abrir o seu cadastro. Se você já pagou e não conseguir, escreva para a gente pelo e-mail do rodapé.</p></noscript>
-
-  <div data-carregando>
-    <p class="chapeu">Alarmino</p>
-    <h1>Conferindo o seu pagamento…</h1>
-    <p class="sub">Leva só um instante.</p>
+<main class="envolve confirmado">
+  <noscript>
+    <h1>Falta só me chamar no Direct</h1>
+    <p class="sub">Esta página precisa do JavaScript para liberar o seu acesso. Se você já pagou, me chama no Direct que eu confiro aqui.</p>
+    <div class="acao"><a class="botao" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener">Chamar no Direct</a></div>
+  </noscript>
+  <div data-com-codigo hidden>
+    <p class="chapeu">Pineapple Pro</p>
+    <h1>Pagamento confirmado</h1>
+    <p class="sub" data-texto-codigo>Falta só me chamar no Direct com o código. Eu confiro e já sigo com você.</p>
+    <p class="vidro confirmado-caixa"><small>O seu código</small><b class="confirmado-codigo" data-codigo></b></p>
+    <div class="acao">
+      <a class="botao" data-receber href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener">Receber no Direct</a>
+      <p class="ou-mande" data-frase-codigo></p>
+      <p class="aviso" data-aviso aria-live="polite"></p>
+    </div>
   </div>
-
-  <div data-problema hidden>
-    <p class="chapeu">Alarmino</p>
-    <h1 data-problema-titulo>Não achei o seu pagamento</h1>
-    <p class="sub" data-problema-texto>Se você já pagou, escreva para a gente que eu confiro aqui.</p>
-    <a class="botao" data-email href="#">Falar com a gente</a>
+  <div data-liberado hidden>
+    <p class="chapeu">Pine Cost Pro</p>
+    <h1>Pronto, está liberado</h1>
+    <p class="sub">Você tem <b data-fichas>8</b> fichas técnicas com a conta completa e o preço certo. Monte as fichas da sua cozinha agora: tudo fica salvo.</p>
+    <div class="acao">
+      <a class="botao" data-abrir-app href="../app/">Abrir a minha cozinha</a>
+      <button type="button" class="botao claro" data-copiar-acesso>Copiar o meu link de acesso</button>
+      <p class="ou-mande">Guarde o link: é com ele que você abre a sua cozinha no celular ou em outro computador.</p>
+    </div>
   </div>
-
-  <form data-cadastro hidden novalidate>
-    <p class="chapeu">Pagamento confirmado</p>
-    <h1>Agora, o seu cadastro.</h1>
-    <p class="sub">Leva 2 minutos. Você pode voltar e corrigir até os lembretes começarem.</p>
-
-    <div class="bloco">
-      <h2>Para quem é o lembrete?</h2>
-      <div class="escolha">
-        <label><input type="radio" name="para" value="mim"><span>Para mim</span></label>
-        <label><input type="radio" name="para" value="outra"><span>Para outra pessoa</span></label>
-      </div>
-      <label class="campo"><span data-rotulo-nome>Primeiro nome de quem recebe</span><input name="nome" maxlength="40" autocomplete="given-name" placeholder="Maria"></label>
-      <label class="campo"><span data-rotulo-zap>WhatsApp de quem recebe (com DDD)</span><input name="whatsapp" inputmode="tel" autocomplete="tel-national" maxlength="20" placeholder="(44) 99999-9999"></label>
-    </div>
-
-    <div class="bloco">
-      <h2>Os horários</h2>
-      <p>A hora e o nome do remédio, do jeito que você fala em casa. Não escreva dose.</p>
-      <div data-horarios-lista></div>
-      <button type="button" class="mais" data-mais-horario>+ Outro horário</button>
-    </div>
-
-    <div class="bloco">
-      <h2>Quem recebe o aviso</h2>
-      <p data-texto-familia>Se a resposta não vier em 1 hora, o Alarmino avisa estas pessoas. O aviso não leva o nome do remédio.</p>
-      <div data-familia-lista></div>
-      <button type="button" class="mais" data-mais-familia>+ Outra pessoa</button>
-    </div>
-
-    <div class="bloco">
-      <h2>Os aceites</h2>
-      <label class="aceite destaque"><input type="checkbox" name="aceite_saude"><span><b>O lembrete leva o nome do remédio.</b> Esse nome é um dado de saúde. Eu autorizo o Alarmino a guardar e a usar esse dado só para mandar os lembretes, e sei que posso pedir para apagar a qualquer hora. <span data-texto-outra hidden>Sei também que a pessoa que vai receber precisa aceitar no WhatsApp antes do 1º lembrete.</span></span></label>
-      <label class="aceite"><input type="checkbox" name="aceite_termos"><span>Li e aceito os <a href="../termos.html" target="_blank" rel="noopener">termos de uso</a> e a <a href="../privacidade.html" target="_blank" rel="noopener">política de privacidade</a>.</span></label>
-    </div>
-
-    <ul class="erros" data-erros role="alert"></ul>
-    <button class="botao escuro" type="submit" data-salvar>Salvar o meu cadastro</button>
-  </form>
-
-  <div data-salvo hidden>
-    <p class="chapeu">Tudo certo</p>
-    <h1>Cadastro salvo. 🐶</h1>
-    <p class="sub">Os lembretes começam até <span data-inicio>15/12/2026</span>. Quando abrirem, a gente avisa no e-mail do pagamento.</p>
-    <div class="bloco">
-      <h2>O que ficou combinado</h2>
-      <ul class="resumo" data-resumo></ul>
-    </div>
-    <button type="button" class="botao" data-copiar>Copiar o meu link de acesso</button>
-    <button type="button" class="botao liso" data-corrigir>Corrigir o cadastro</button>
-    <p class="debaixo">Guarde o link: é com ele que você abre e corrige o cadastro em outro aparelho. Não mande para ninguém.</p>
+  <div data-sem-codigo hidden>
+    <h1>Não achei o seu código</h1>
+    <p class="sub">Se você já pagou, me chama no Direct que eu confiro aqui.</p>
+    <div class="acao"><a class="botao" href="https://ig.me/m/pineapplepro_" target="_blank" rel="noopener">Chamar no Direct</a></div>
   </div>
 </main>
-<footer class="rodape">
-  <div class="envolve">
-    <span>Alarmino · <span data-empresa></span></span>
-    <nav aria-label="Rodapé">
-      <a href="../termos.html">Termos de uso</a>
-      <a href="../privacidade.html">Política de privacidade</a>
-      <a data-email href="#">Falar com a gente</a>
-      <a href="https://www.instagram.com/alarminoapp/" target="_blank" rel="noopener">@alarminoapp</a>
-    </nav>
-  </div>
-</footer>
 
+<footer class="envolve rodape">
+  <span>Pineapple Pro · Maringá (PR)</span>
+  <nav aria-label="Rodapé">
+    <a href="../index.html">Todas as ferramentas</a>
+    <a href="https://www.instagram.com/pineapplepro_/" target="_blank" rel="noopener">@pineapplepro_</a>
+    <a href="../privacidade.html">Política de privacidade</a>
+  </nav>
+</footer>
 </body>
 </html>
