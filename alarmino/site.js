@@ -1,0 +1,51 @@
+// O SITE DO ALARMINO (24/11/2026): preenche os valores (valores.js), liga os botões de compra e mostra as vagas que restam.
+// Sem pixel e sem cookie: o conjunto de dados da Meta do Alarmino ainda não existe (e nunca será o "pinecost").
+import { LINK_PAGAMENTO, FUNCAO, OFERTA, EMPRESA } from './valores.js';
+
+export function preencher(doc = document) {
+  const por = (seletor, texto) => doc.querySelectorAll(seletor).forEach((el) => { el.textContent = texto; });
+  por('[data-preco]', OFERTA.preco); por('[data-por-mes]', OFERTA.por_mes); por('[data-preco-normal]', OFERTA.preco_normal);
+  por('[data-inicio]', OFERTA.inicio_ate); por('[data-horarios]', String(OFERTA.horarios)); por('[data-familia]', String(OFERTA.familia));
+  por('[data-garantia]', String(OFERTA.garantia_dias)); por('[data-nome-plano]', OFERTA.nome);
+  por('[data-cnpj]', EMPRESA.cnpj); por('[data-cidade]', EMPRESA.cidade); por('[data-email-texto]', EMPRESA.email);
+  por('[data-empresa]', `CNPJ ${EMPRESA.cnpj} · ${EMPRESA.cidade}`);
+  doc.querySelectorAll('a[data-email]').forEach((a) => { a.href = `mailto:${EMPRESA.email}?subject=Alarmino`; });
+}
+
+/** A frase das vagas: só com o número real da função; sem resposta, não diz número nenhum. */
+export function fraseDasVagas(r) {
+  if (!r || r.ok !== true || !Number.isInteger(r.restam)) return '';
+  if (r.restam <= 0) return 'As vagas de fundador acabaram.';
+  return r.restam === 1 ? 'Resta 1 vaga de fundador.' : `Restam ${r.restam} das ${r.total} vagas de fundador.`;
+}
+
+async function ligar() {
+  preencher();
+  const pagar = document.querySelectorAll('a[data-pagar]');
+  pagar.forEach((a) => {
+    if (LINK_PAGAMENTO) a.href = LINK_PAGAMENTO;
+    else { a.setAttribute('aria-disabled', 'true'); a.textContent = 'Abre em breve'; }
+  });
+  // a barra de compra do celular aparece depois da abertura e some em cima da oferta
+  const barra = document.querySelector('[data-barra]');
+  const abre = document.querySelector('.abre');
+  const oferta = document.querySelector('#oferta');
+  if (barra && abre && oferta && 'IntersectionObserver' in window) {
+    const vistos = new Map();
+    const io = new IntersectionObserver((es) => {
+      es.forEach((e) => vistos.set(e.target, e.isIntersecting));
+      barra.classList.toggle('visivel', !vistos.get(abre) && !vistos.get(oferta));
+    }, { threshold: 0.12 });
+    io.observe(abre); io.observe(oferta);
+  }
+  const ondeVagas = document.querySelector('[data-vagas]');
+  if (!ondeVagas) return;
+  try {
+    const r = await (await fetch(FUNCAO, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ acao: 'vagas' }) })).json();
+    const frase = fraseDasVagas(r);
+    ondeVagas.textContent = frase;
+    if (frase && r.restam > 0) document.querySelectorAll('[data-vagas-curto]').forEach((el) => { el.textContent = `restam ${r.restam} vagas de fundador`; });
+    if (r.ok && r.restam <= 0) pagar.forEach((a) => { a.setAttribute('aria-disabled', 'true'); a.textContent = 'Vagas esgotadas'; });
+  } catch { /* sem a função, a página segue sem o número */ }
+}
+if (typeof document !== 'undefined') ligar();
