@@ -5,7 +5,7 @@
 // O cadastro (com o nome do remédio, que é dado de saúde) NÃO fica guardado no navegador: só no Supabase.
 // Para ver a tela sem pagamento, só no computador de quem constrói: http://localhost.../pagamento-confirmado/?demo=1
 import { FUNCAO } from '../valores.js';
-import { preencher } from '../site.js';
+import { preencher } from '../site.js?v=2';
 import { conferirCadastro, MAX_HORARIOS, MAX_FAMILIA } from '../comum/cadastro.js';
 
 const RX_TOKEN = /^[0-9a-f]{64}$/;

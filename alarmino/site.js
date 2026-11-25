@@ -1,6 +1,7 @@
 // O SITE DO ALARMINO (24/11/2026): preenche os valores (valores.js), liga os botões de compra e mostra as vagas que restam.
 // Sem pixel e sem cookie: o conjunto de dados da Meta do Alarmino ainda não existe (e nunca será o "pinecost").
 import { LINK_PAGAMENTO, FUNCAO, OFERTA, EMPRESA } from './valores.js';
+import { ligarTeste } from './comum/teste.js';
 
 export function preencher(doc = document) {
   const por = (seletor, texto) => doc.querySelectorAll(seletor).forEach((el) => { el.textContent = texto; });
@@ -38,12 +39,25 @@ async function ligar() {
     }, { threshold: 0.12 });
     io.observe(abre); io.observe(oferta);
   }
+  ligarTeste(document.querySelector('[data-teste]'));
+  // "para mim" ou "para quem eu cuido"
+  document.querySelectorAll('[data-quem]').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('[data-quem]').forEach((x) => x.setAttribute('aria-selected', String(x === b)));
+    document.querySelectorAll('[data-lista-quem]').forEach((l) => { l.hidden = l.dataset.listaQuem !== b.dataset.quem; });
+  }));
+  // as seções entram quando aparecem (sem isso, tudo fica visível do mesmo jeito)
+  if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io2 = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visto'); io2.unobserve(e.target); } }), { threshold: 0.08 });
+    document.querySelectorAll('main section:not(.abre) .envolve').forEach((el) => { el.classList.add('entra'); io2.observe(el); });
+  }
   const ondeVagas = document.querySelector('[data-vagas]');
   if (!ondeVagas) return;
   try {
     const r = await (await fetch(FUNCAO, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ acao: 'vagas' }) })).json();
     const frase = fraseDasVagas(r);
     ondeVagas.textContent = frase;
+    const barra2 = document.querySelector('[data-barra-vagas]');
+    if (barra2 && frase && r.total > 0) { barra2.hidden = false; requestAnimationFrame(() => { barra2.firstElementChild.style.width = `${Math.max(3, Math.round(100 * (r.total - r.restam) / r.total))}%`; }); }
     if (frase && r.restam > 0) document.querySelectorAll('[data-vagas-curto]').forEach((el) => { el.textContent = `restam ${r.restam} vagas de fundador`; });
     if (r.ok && r.restam <= 0) pagar.forEach((a) => { a.setAttribute('aria-disabled', 'true'); a.textContent = 'Vagas esgotadas'; });
   } catch { /* sem a função, a página segue sem o número */ }

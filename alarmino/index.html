@@ -14,8 +14,9 @@
 <meta name="theme-color" content="#0f2f36">
 <link rel="icon" href="img/icone.png">
 <link rel="apple-touch-icon" href="img/icone.png">
-<link rel="stylesheet" href="estilo.css">
-<script type="module" src="site.js"></script>
+<link rel="stylesheet" href="estilo.css?v=3">
+<script type="module" src="site.js?v=2"></script>
+<link rel="preload" as="image" href="img/sentado-atento.png">
 </head>
 <body>
 <div class="topo">
@@ -31,11 +32,13 @@
     <div class="abre-texto">
       <p class="selo"><i></i><span>Pré-venda · <span data-vagas-curto>100 vagas de fundador</span></span></p>
       <h1>O alarme do <em>remédio</em> que chega no WhatsApp.</h1>
-      <p class="sub">Para você ou para quem você cuida. O lembrete chega na hora, diz qual é o remédio e, sem resposta, avisa a família. Sem baixar aplicativo.</p>
+      <p class="sub">Para você ou para quem você cuida. O lembrete chega na hora, diz qual é o remédio e, sem resposta, avisa a família.</p>
+      <ul class="fichas"><li>Sem baixar aplicativo</li><li>Garantia de <span data-garantia>7</span> dias</li><li>Nada renova sozinho</li></ul>
       <div class="acao">
         <a class="botao" data-comprar href="#oferta"><span>Garantir minha vaga · <span data-preco>R$ 97</span> no 1º ano</span></a>
-        <p class="debaixo">Os lembretes começam até <span data-inicio>15/12/2026</span>. Garantia de 7 dias.</p>
+        <a class="botao vidro" href="#teste">Testar agora, de graça</a>
       </div>
+      <p class="debaixo">Os lembretes começam até <span data-inicio>15/12/2026</span>. Se não começarem, devolvemos tudo.</p>
     </div>
     <div class="cena" aria-label="Exemplo de conversa com o Alarmino">
       <img class="cao" src="img/sentado-atento.png" alt="O Alarmino, um vira-lata caramelo de coleira azul e sininho dourado" width="507" height="760">
@@ -45,10 +48,68 @@
           <div class="conversa">
             <p class="balao b1">Bom dia! É o Alarmino 🐶</p>
             <p class="balao b2">Hora de tomar:<b>Vitamina D</b></p>
-            <div class="teclas"><span class="toque">✅ Tomei</span><span>⏰ Me lembra em 15 min</span></div>
+            <div class="teclas anima"><span class="toque">✅ Tomei</span><span>⏰ Me lembra em 15 min</span></div>
             <p class="balao meu b3">Tomei</p>
             <p class="balao b4">Anotado! 🐶</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dor">
+  <div class="envolve">
+    <p class="chapeu">O problema</p>
+    <h2>O alarme do celular toca. A gente desliga. E esquece.</h2>
+    <div class="versus">
+      <div class="lado fraco">
+        <h3>O alarme do celular</h3>
+        <ul>
+          <li>Toca e some com 1 toque</li>
+          <li>Não diz qual é o remédio</li>
+          <li>Ninguém fica sabendo se foi tomado</li>
+          <li>Quem cuida precisa ligar todo dia para perguntar</li>
+        </ul>
+      </div>
+      <div class="lado forte">
+        <h3>O Alarmino</h3>
+        <ul>
+          <li>A mensagem fica na conversa até o “Tomei”</li>
+          <li>Diz o nome do remédio, do jeito que você escreveu</li>
+          <li>Anota a hora de cada confirmação</li>
+          <li>Sem resposta em 1 hora, avisa a família</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="teste fundo-creme" id="teste" data-teste>
+  <div class="envolve duas">
+    <div>
+      <p class="chapeu">Teste agora</p>
+      <h2>Veja o seu lembrete chegar.</h2>
+      <p class="sub">Escreva um remédio e uma hora. O celular ao lado mostra o que vai chegar no WhatsApp. É só uma demonstração: nada é enviado nem guardado.</p>
+      <form class="teste-form" data-teste-form>
+        <label class="campo"><span>Nome do remédio</span><input data-teste-remedio maxlength="40" value="Vitamina D" autocomplete="off"></label>
+        <label class="campo"><span>Hora</span><input type="time" data-teste-hora value="08:00"></label>
+        <button class="botao escuro" type="submit">Mandar o lembrete</button>
+      </form>
+      <p class="dica">Depois, toque nos botões da conversa: <b>Tomei</b> ou <b>Me lembra em 15 min</b>.</p>
+    </div>
+    <div class="palco">
+      <div class="fone inteiro">
+        <div class="fone-tela">
+          <div class="fone-topo"><img src="img/rosto-atento.png" alt="" width="38" height="38"><div><b>Alarmino</b><small>demonstração</small></div></div>
+          <div class="conversa viva" data-conversa aria-live="polite"></div>
+        </div>
+      </div>
+      <div class="teste-baixo">
+        <button type="button" class="botao liso pequeno" data-teste-silencio data-teste-acoes hidden>E se ninguém responder?</button>
+        <div data-teste-fim hidden>
+          <button type="button" class="botao liso pequeno" data-teste-denovo>Testar de novo</button>
+          <a class="botao pequeno" data-comprar href="#oferta">Quero o meu</a>
         </div>
       </div>
     </div>
@@ -60,9 +121,35 @@
     <p class="chapeu">Como funciona</p>
     <h2>3 passos e pronto.</h2>
     <div class="passos">
-      <div class="cartao"><span class="num">1</span><h3>Escolha os horários</h3><p>Você escreve a hora e o nome de cada remédio, do seu jeito. Até <span data-horarios>4</span> horários por dia.</p></div>
+      <div class="cartao"><span class="num">1</span><h3>Você garante a vaga e faz o cadastro</h3><p>Leva 2 minutos, aqui no site: a hora e o nome de cada remédio, do seu jeito. Até <span data-horarios>4</span> horários por dia.</p></div>
       <div class="cartao"><span class="num">2</span><h3>O lembrete chega no WhatsApp</h3><p>Na hora certa, a mensagem diz qual é o remédio. Nada para baixar nem para aprender.</p></div>
       <div class="cartao"><span class="num">3</span><h3>Um toque em “Tomei”</h3><p>Fica anotado. Se não der agora, o botão “Me lembra em 15 min” chama de novo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="fundo-petroleo conheca">
+  <div class="envolve duas">
+    <video class="filme" src="video/chegou.mp4" poster="video/chegou.jpg" width="720" height="1280" autoplay muted loop playsinline preload="metadata" aria-label="O Alarmino levanta a orelha quando o sininho toca"></video>
+    <div>
+      <p class="chapeu">Conheça o Alarmino</p>
+      <h2>Um amigo fiel, que lembra na hora certa.</h2>
+      <p class="sub">Ele não dá bronca e não enche a conversa. Chega, lembra, anota e vai embora.</p>
+      <div class="troca" role="tablist" aria-label="Para quem é">
+        <button type="button" role="tab" aria-selected="true" data-quem="mim">Para mim</button>
+        <button type="button" role="tab" aria-selected="false" data-quem="outra">Para quem eu cuido</button>
+      </div>
+      <ul class="lista-quem" data-lista-quem="mim">
+        <li>O lembrete chega no seu WhatsApp, com o nome do remédio</li>
+        <li>Você confirma com 1 toque e vê o que já tomou no dia</li>
+        <li>Se quiser, alguém de confiança é avisado quando você não responde</li>
+      </ul>
+      <ul class="lista-quem" data-lista-quem="outra" hidden>
+        <li>Você faz o cadastro; a pessoa só precisa do WhatsApp que já usa</li>
+        <li>Ela mesma aceita receber, na 1ª mensagem</li>
+        <li>Sem resposta em 1 hora, o aviso chega no seu WhatsApp</li>
+        <li>Toda semana, um resumo: quantos lembretes foram confirmados</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -70,7 +157,7 @@
 <section class="fundo-creme">
   <div class="envolve duas">
     <div>
-      <p class="chapeu">Para quem você cuida</p>
+      <p class="chapeu">Tranquilidade</p>
       <h2>Sem resposta? Ele avisa a família.</h2>
       <p class="sub">Você escolhe quem recebe o aviso. O aviso nunca leva o nome do remédio.</p>
       <div class="linha-tempo">
@@ -79,7 +166,11 @@
         <div class="hora forte"><b>9h00</b><span>Ele avisa a família.</span></div>
       </div>
     </div>
-    <img class="cao" src="img/de-pe.png" alt="" width="507" height="760" loading="lazy">
+    <div class="avisos">
+      <div class="notif"><img src="img/rosto-atento.png" alt="" width="44" height="44"><div><small>ALARMINO · agora</small><b>Ainda sem confirmação</b><span>O remédio das 8h ainda não foi confirmado.</span></div></div>
+      <div class="notif"><img src="img/rosto-atento.png" alt="" width="44" height="44"><div><small>ALARMINO · domingo</small><b>Resumo da semana</b><span>13 de 14 lembretes confirmados. Faltou: quinta, às 20h.</span></div></div>
+      <p class="legenda">Exemplos do que a família recebe.</p>
+    </div>
   </div>
 </section>
 
@@ -97,24 +188,29 @@
 </section>
 
 <section class="oferta" id="oferta">
-  <div class="envolve">
-    <p class="chapeu">Pré-venda</p>
-    <h2>Entre como fundador.</h2>
-    <p class="sub">Quem entra agora paga menos e ajuda a decidir o que vem depois.</p>
+  <div class="envolve duas topo-alinhado">
+    <div>
+      <p class="chapeu">Pré-venda</p>
+      <h2>Entre como fundador.</h2>
+      <p class="sub">Quem entra agora paga menos da metade do preço normal e garante o lugar antes da abertura.</p>
+      <div class="garantias">
+        <div><b>Não começou até <span data-inicio>15/12/2026</span>?</b><span>Devolvemos 100%, sem você pedir.</span></div>
+        <div><b>Não gostou?</b><span><span data-garantia>7</span> dias de garantia, contados do 1º lembrete.</span></div>
+        <div><b>Sem pegadinha.</b><span>Pagamento único. Nada renova sozinho.</span></div>
+      </div>
+    </div>
     <div class="plano">
       <span class="etiqueta" data-nome-plano>Plano Fundador</span>
       <p class="preco"><b data-preco>R$ 97</b><span>pelo 1º ano</span></p>
-      <p class="conta">Dá <span data-por-mes>R$ 8,08</span> por mês. O preço normal será <span data-preco-normal>R$ 19,90 por mês</span>.</p>
+      <p class="conta">Dá <span data-por-mes>R$ 8,08</span> por mês, ou 27 centavos por dia. O preço normal será <s data-preco-normal>R$ 19,90 por mês</s>.</p>
       <ul>
         <li>Lembretes para 1 pessoa, em até <span data-horarios>4</span> horários por dia</li>
         <li>O lembrete diz qual é o remédio</li>
         <li>Aviso para até <span data-familia>2</span> pessoas da família</li>
         <li>Os 12 meses contam do 1º lembrete, não de hoje</li>
-        <li>Garantia de <span data-garantia>7</span> dias, contados do 1º lembrete</li>
-        <li>Se os lembretes não começarem até <span data-inicio>15/12/2026</span>, devolvemos tudo</li>
-        <li>Pagamento único: nada renova sozinho</li>
       </ul>
       <a class="botao escuro" data-comprar data-pagar href="#oferta">Garantir minha vaga</a>
+      <div class="barra-vagas" data-barra-vagas hidden><i></i></div>
       <p class="vagas" data-vagas aria-live="polite"></p>
       <p class="miudo">Pagamento seguro por cartão ou Pix. Na fatura aparece “Pineapple”.</p>
     </div>
@@ -129,11 +225,22 @@
       <details><summary>Preciso baixar algum aplicativo?</summary><p>Não. O lembrete chega no WhatsApp que a pessoa já usa. O cadastro é feito aqui no site, logo depois do pagamento.</p></details>
       <details><summary>O que é a pré-venda? Quando começa?</summary><p>O Alarmino está abrindo. Você garante a vaga agora e faz o cadastro na hora. Os lembretes começam até <span data-inicio>15/12/2026</span>. Se não começarem até essa data, devolvemos 100% do valor, sem você precisar pedir.</p></details>
       <details><summary>E se eu não gostar?</summary><p>Você tem <span data-garantia>7</span> dias de garantia, contados do 1º lembrete que chegar. É só escrever para a gente que o dinheiro volta. Antes do início, você também pode desistir quando quiser.</p></details>
+      <details><summary>Serve para quem não tem costume com celular?</summary><p>Sim. Quem recebe só precisa abrir o WhatsApp e tocar em 1 botão. Também vale responder “tomei” por escrito.</p></details>
       <details><summary>Serve para mim ou para outra pessoa?</summary><p>Para os dois. No cadastro você escolhe “para mim” ou “para outra pessoa”. Quando é para outra pessoa, ela mesma precisa aceitar no WhatsApp antes de o 1º lembrete chegar.</p></details>
+      <details><summary>Posso mudar os horários depois?</summary><p>Pode. Você guarda um link de acesso e corrige o cadastro quando quiser.</p></details>
       <details><summary>O Alarmino diz que remédio eu devo tomar?</summary><p>Não. Ele só lembra do que você mesmo cadastrou, com o nome que você escreveu. Não confere dose nem receita e não dá conselho de saúde.</p></details>
       <details><summary>O que acontece com os meus dados?</summary><p>Guardamos só o necessário: o primeiro nome, o WhatsApp, os horários e o nome de cada remédio. Não vendemos nem passamos a ninguém. O nome do remédio é um dado de saúde, e você pode pedir para apagar tudo a qualquer hora. Está tudo na <a href="privacidade.html">política de privacidade</a>.</p></details>
       <details><summary>O que acontece depois do 1º ano?</summary><p>Nada é cobrado sozinho. Perto do fim dos 12 meses a gente avisa, e você decide se quer continuar.</p></details>
     </div>
+  </div>
+</section>
+
+<section class="fecha">
+  <div class="envolve">
+    <img src="img/de-pe.png" alt="" width="507" height="760" loading="lazy">
+    <h2>Menos um esquecimento. Menos uma ligação de preocupação.</h2>
+    <a class="botao" data-comprar data-pagar href="#oferta">Garantir minha vaga</a>
+    <p class="debaixo"><span data-preco>R$ 97</span> pelo 1º ano · garantia de <span data-garantia>7</span> dias</p>
   </div>
 </section>
 </main>
