@@ -5,7 +5,7 @@
 // até 2 pessoas da família e os aceites. Nada de CPF, endereço, dose, receita ou doença.
 
 // --- inicio da copia ---
-const MAX_HORARIOS = 4;
+const MAX_HORARIOS = 3;
 const MAX_FAMILIA = 2;
 const RX_HORA = /^([01]\d|2[0-3]):[0-5]\d$/;
 const RX_ZAP = /^[1-9][1-9]9?\d{8}$/; // DDD + número, só algarismos (10 ou 11)

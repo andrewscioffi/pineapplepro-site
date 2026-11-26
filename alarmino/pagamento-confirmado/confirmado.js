@@ -5,8 +5,9 @@
 // O cadastro (com o nome do remédio, que é dado de saúde) NÃO fica guardado no navegador: só no Supabase.
 // Para ver a tela sem pagamento, só no computador de quem constrói: http://localhost.../pagamento-confirmado/?demo=1
 import { FUNCAO } from '../valores.js';
-import { preencher } from '../site.js?v=2';
+import { preencher } from '../site.js?v=4';
 import { conferirCadastro, MAX_HORARIOS, MAX_FAMILIA } from '../comum/cadastro.js';
+import { contar } from '../comum/funil.js?v=4';
 
 const RX_TOKEN = /^[0-9a-f]{64}$/;
 const RX_SESSAO = /^cs_(test|live)_[A-Za-z0-9]{10,200}$/;
@@ -138,6 +139,7 @@ async function ligar() {
   if (!RX_TOKEN.test(token ?? '')) token = null;
   if (demo) token = 'd'.repeat(64);
 
+  if (!demo && RX_SESSAO.test(cs)) contar('chegou_pagamento');
   if (!demo && RX_SESSAO.test(cs)) {
     const r = await pedir({ acao: 'ativar', cs });
     if (r.ok && r.token) token = r.token;
@@ -173,6 +175,7 @@ async function ligar() {
     const r = await pedir({ acao: 'salvar', token, dados: conf.dados });
     b.disabled = false; b.textContent = 'Salvar o meu cadastro';
     if (!r.ok) { listar(r.erros?.length ? r.erros : [r.porque === 'rede' ? 'Sem conexão agora. Tente de novo em instantes.' : 'Não consegui salvar. Tente de novo ou escreva para a gente.']); return; }
+    if (!demo) contar('cadastro_salvo');
     resumo(conf.dados);
     mostrar('[data-salvo]');
   });

@@ -13,7 +13,8 @@ export const OFERTA = {
   preco_normal: 'R$ 19,90 por mês',
   vagas: 100,
   inicio_ate: '15/12/2026',
-  horarios: 4,
+  horarios: 3,          // 26/11, o Andrews: "pode ser 3 horários e acima disso ele paga avulso por horário 9,90"
+  horario_extra: 'R$ 9,90',
   familia: 2,
   garantia_dias: 7,
 };

@@ -2,12 +2,13 @@
 // Sem pixel e sem cookie: o conjunto de dados da Meta do Alarmino ainda não existe (e nunca será o "pinecost").
 import { LINK_PAGAMENTO, FUNCAO, OFERTA, EMPRESA } from './valores.js';
 import { ligarTeste } from './comum/teste.js';
+import { contar } from './comum/funil.js?v=4';
 
 export function preencher(doc = document) {
   const por = (seletor, texto) => doc.querySelectorAll(seletor).forEach((el) => { el.textContent = texto; });
   por('[data-preco]', OFERTA.preco); por('[data-por-mes]', OFERTA.por_mes); por('[data-preco-normal]', OFERTA.preco_normal);
   por('[data-inicio]', OFERTA.inicio_ate); por('[data-horarios]', String(OFERTA.horarios)); por('[data-familia]', String(OFERTA.familia));
-  por('[data-garantia]', String(OFERTA.garantia_dias)); por('[data-nome-plano]', OFERTA.nome);
+  por('[data-garantia]', String(OFERTA.garantia_dias)); por('[data-horario-extra]', OFERTA.horario_extra); por('[data-nome-plano]', OFERTA.nome);
   por('[data-cnpj]', EMPRESA.cnpj); por('[data-cidade]', EMPRESA.cidade); por('[data-email-texto]', EMPRESA.email);
   por('[data-empresa]', `CNPJ ${EMPRESA.cnpj} · ${EMPRESA.cidade}`);
   doc.querySelectorAll('a[data-email]').forEach((a) => { a.href = `mailto:${EMPRESA.email}?subject=Alarmino`; });
@@ -22,6 +23,16 @@ export function fraseDasVagas(r) {
 
 async function ligar() {
   preencher();
+  contar('visita');
+  // 26/11: os passos do funil (só contagem): clicou em qualquer botão de compra, viu a oferta, usou o teste
+  document.querySelectorAll('a[data-pagar]').forEach((b) => b.addEventListener('click', () => contar('clicou_comprar')));
+  const ofertaSec = document.querySelector('#oferta');
+  if (ofertaSec && 'IntersectionObserver' in window) {
+    const io3 = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { contar('viu_oferta'); io3.disconnect(); } }, { threshold: 0.35 });
+    io3.observe(ofertaSec);
+  }
+  document.querySelector('[data-teste-form]')?.addEventListener('submit', () => contar('usou_teste'));
+  document.querySelector('[data-conversa]')?.addEventListener('click', (e) => { if (e.target.closest('button')) contar('usou_teste'); });
   const pagar = document.querySelectorAll('a[data-pagar]');
   pagar.forEach((a) => {
     if (LINK_PAGAMENTO) a.href = LINK_PAGAMENTO;
