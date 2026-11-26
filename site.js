@@ -7,7 +7,7 @@
 //   6. (v2) [data-so-aberto="id"] só aparece com o produto aberto; [data-so-trancado="id"] só com ele trancado
 //   7. (v3) a interação (comum/interacao.js): o botão que vem atrás do mouse, a onda, o estouro quando a frase copia,
 //      os números que rolam, as cenas da rolagem, a luz do cursor e a troca de página com o cartão virando o palco
-import { PRODUTOS, FRASES, cadeadoSvg, COMPRA_PINE_COST, COMPRAS, lancamentoAberto } from './valores.js';
+import { PRODUTOS, FRASES, cadeadoSvg, COMPRA_PINE_COST, COMPRAS, ISCA, SERVICOS, MENSAIS, NOTA_MENSAIS, LINK_DIRECT, lancamentoAberto } from './valores.js';
 import { ligarVidro } from './comum/vidro.js';
 import { ligarInteracao, estourarEm, vibrar, temMouse, pedeMenosMovimento } from './comum/interacao.js';
 import { ligarPixel } from './comum/pixel.js';
@@ -196,8 +196,54 @@ export function menuDeFerramentas(produtos = PRODUTOS, { base = '', sem = 'pine-
     : `<li class="ferramenta-menu"><a href="${esc(base + (p.pagina ?? ''))}"><b>${esc(p.nome)}</b><small>${esc(p.o_que_e ?? '')}</small></a></li>`)).join('');
 }
 
+// ---------- o portfólio v2 (26/11/2026, o Andrews: "Aprovo, aplica tudo") ----------
+// A isca se compra direto (a Stripe); o que a gente faz (serviços e mensais) é com "a partir de" e o Direct.
+const botaoDirect = (frase, texto, classe = 'botao claro') => `<a class="${classe}" href="${esc(LINK_DIRECT)}" target="_blank" rel="noopener" data-frase="${esc(frase)}">${esc(texto)}</a>`;
+const lista = (itens = []) => `<ul class="oferta-lista">${itens.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>`;
+
+/** A isca ([data-isca]): as 3 fichas grátis, o Pine Cost e o Pacote dos 2. Os botões de compra o preencherValores liga (data-comprar). */
+export function cartoesIsca(itens = ISCA, agora = Date.now()) {
+  return itens.map((o, i) => {
+    const tabela = o.tabela && lancamentoAberto(agora) ? `<small class="etiqueta-tabela">${esc(o.tabela)}</small>` : '';
+    const acao = o.compra
+      ? `<a class="botao${o.destaque ? '' : ' claro'}" data-comprar="${esc(o.compra)}" hidden></a>`
+      : `${botaoDirect(o.frase, o.botao ?? 'Chamar no Direct')}<p class="aviso" data-aviso aria-live="polite"></p>`;
+    const extra = o.extra ? `<p class="oferta-extra">Já tem o Pine Cost? <a data-comprar="${esc(o.extra)}" hidden></a></p>` : '';
+    return `<li class="oferta vidro${o.destaque ? ' forte destaque' : ''} revela" style="--atraso: ${(i * 0.08).toFixed(2)}s" data-oferta="${esc(o.id)}">
+  ${o.destaque ? '<span class="oferta-selo">A mais pedida</span>' : ''}<p class="plano-nome">${esc(o.nome)}</p>
+  <p class="oferta-preco"><span class="etiqueta ${o.preco === 'Grátis' ? 'gratis' : 'pacote'}">${esc(o.preco)}</span>${tabela}</p>
+  ${lista(o.inclui)}
+  <div class="acao">${acao}${extra}</div>
+</li>`;
+  }).join('');
+}
+
+/** Os serviços feitos pela gente ([data-servicos]): o nome, o que entrega e o "a partir de". Sem botão de compra. */
+export function cartoesServicos(itens = SERVICOS) {
+  return itens.map((s, i) => `<li class="servico vidro revela" style="--atraso: ${(i * 0.06).toFixed(2)}s" data-servico="${esc(s.id)}">
+  <b class="servico-nome">${esc(s.nome)}</b>
+  <span class="servico-entrega">${esc(s.entrega)}</span>
+  <span class="etiqueta pacote servico-preco">${esc(s.preco)}</span>
+</li>`).join('');
+}
+
+/** Os mensais ([data-mensais]): o que cada um entrega, o "a partir de" e o "Fale com a gente" no Direct. */
+export function cartoesMensais(itens = MENSAIS) {
+  return itens.map((m, i) => `<li class="plano mensal vidro${m.destaque ? ' forte destaque' : ''} revela" style="--atraso: ${(i * 0.08).toFixed(2)}s" data-mensal="${esc(m.id)}">
+  <p class="plano-nome">${esc(m.nome)}</p>
+  <span class="etiqueta pacote">${esc(m.preco)}</span>
+  ${lista(m.inclui)}
+  <div class="acao">${botaoDirect('agencia', 'Fale com a gente', m.destaque ? 'botao' : 'botao claro')}<p class="aviso" data-aviso aria-live="polite"></p></div>
+</li>`).join('');
+}
+
 /** Põe na tela os preços ([data-valor="produto.qual"]), as listas ([data-lista]) e os cartões ([data-trancados], [data-abertos], [data-vitrine], [data-ferramentas]). */
 export function preencherValores(doc, produtos = PRODUTOS, compra = COMPRA_PINE_COST, compras = COMPRAS) {
+  // o portfólio v2 primeiro: os cartões da isca trazem botões de compra, que o laço de baixo liga
+  for (const el of doc.querySelectorAll('[data-isca]')) el.innerHTML = cartoesIsca();
+  for (const el of doc.querySelectorAll('[data-servicos]')) el.innerHTML = cartoesServicos();
+  for (const el of doc.querySelectorAll('[data-mensais]')) el.innerHTML = cartoesMensais();
+  for (const el of doc.querySelectorAll('[data-nota-mensais]')) el.textContent = NOTA_MENSAIS;
   // o botão de comprar pela Stripe: sem link, fica escondido. data-comprar="vetor" escolhe outro de COMPRAS (12/11)
   for (const el of doc.querySelectorAll('[data-comprar]')) {
     const c = el.dataset?.comprar ? compras[el.dataset.comprar] ?? {} : compra;

@@ -392,3 +392,9 @@ html.js .pc-planos .plano:not(.escolhido) { opacity: .74; }
   .pc-perguntas summary::after { transition: rotate .5s var(--mola); }
   .pc-perguntas details[open]:not(.fechando) summary::after { rotate: 180deg; }
 }
+/* 26/11 (portfólio v2): o 3º plano, o pacote dos 2 */
+@media (min-width: 960px) { .pc-planos { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.pc-planos .plano { display: flex; flex-direction: column; }
+.pc-planos .plano .botao { margin-top: auto; }
+.pc-planos .plano ul { margin-bottom: 20px; }
+.pc-planos .oferta-extra { margin-top: 12px; }

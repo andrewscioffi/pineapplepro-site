@@ -3,7 +3,7 @@
 // As 3 telas (a home, a landing e a tela do usuário) leem este arquivo. Nenhum HTML tem preço escrito.
 //
 // Como mudar:
-//   - um preço: troque o texto entre aspas em "precos" (o teste só aceita os aprovados: Grátis, a partir de R$ 47, a partir de R$ 67)
+//   - um preço: troque o texto entre aspas em "precos", ISCA, SERVICOS ou MENSAIS (o teste só aceita os aprovados no portfólio v2, 26/11)
 //   - abrir um produto: troque "trancado: true" por "trancado: false" (precisa ter frase e preço)
 //   - o cadeado: troque o CADEADO por 'coroa', 'folha' ou 'fruta' (as 3 opções estão em cadeados.html)
 //   - o preço de tabela (11/11/2026, tabela 3.0): "tabela" é a linha pequena embaixo do preço; some sozinha depois de LANCAMENTO_ATE
@@ -25,13 +25,52 @@ export const COMPRA_PINE_COST = {
   texto: 'Comprar por R$ 47',
   valor: 47,
 };
+// 26/11 (portfólio v2, o Andrews: "Aprovo, aplica tudo"): só a isca se compra direto (o que o cliente faz sozinho).
+// Os serviços feitos pela gente (vetor, cardápio, marca) saíram daqui: viram cartões com "a partir de" e o Direct (SERVICOS).
+// Os links deles continuam na Stripe; só não aparecem mais no site.
 export const COMPRAS = {
   pineCost: COMPRA_PINE_COST,
   mais10: { link: 'https://buy.stripe.com/14A6oH1hMckzaCF1pIfUQ01', texto: 'Mais 10 fichas por R$ 97', valor: 97 },
-  // o serviço: quem faz é a gente; depois de pagar, a página mostra o código e leva ao Direct
-  vetor: { link: 'https://buy.stripe.com/4gMfZh7Ga84j269c4mfUQ03', texto: 'Vetorizar a logo por R$ 67', valor: 67 },
-  cardapio: { link: 'https://buy.stripe.com/cNicN5gcG98n4eh5FYfUQ04', texto: 'Cardápio de até 15 itens por R$ 127', valor: 127 },
+  pacote2: { link: 'https://buy.stripe.com/cNi00j0dI3O3aCF2tMfUQ02', texto: 'Levar as 18 por R$ 127', valor: 127 },
 };
+
+// A ISCA (portfólio v2, seção 1): o que chama atenção, o cliente faz sozinho e libera na hora.
+//   compra: a chave em COMPRAS (o botão da Stripe); frase: a do Direct (o grátis); extra: o 2º botão, pequeno
+export const ISCA = [
+  {
+    id: 'gratis', nome: '3 fichas grátis', preco: 'Grátis', frase: 'fichas', botao: 'Pedir no Direct',
+    inclui: ['3 fichas técnicas, pelo Direct', 'Quanto sobra no balcão e no app'],
+  },
+  {
+    id: 'pine-cost', nome: 'Pine Cost', preco: 'R$ 47', tabela: 'na tabela, R$ 97', compra: 'pineCost', destaque: true,
+    inclui: ['8 fichas técnicas, você monta no site', 'O preço certo pra cobrar', 'Libera na hora · garantia de 7 dias'],
+  },
+  {
+    id: 'pacote-2', nome: 'Pacote dos 2', preco: 'R$ 127', compra: 'pacote2', extra: 'mais10',
+    inclui: ['O Pine Cost e mais 10 fichas', '18 fichas técnicas de uma vez'],
+  },
+];
+
+// OS SERVIÇOS FEITOS PELA GENTE (portfólio v2, seção 2): pagamento único, sem "comprar agora". O botão é o Direct (frase "marca").
+export const SERVICOS = [
+  { id: 'vetor', nome: 'Vetorização da logo', entrega: 'A logo que você já tem, limpa e em vetor', preco: 'a partir de R$ 197' },
+  { id: 'cardapio', nome: 'Cardápio', entrega: 'Pronto pra gráfica e pro digital, com as suas fotos revitalizadas', preco: 'a partir de R$ 497' },
+  { id: 'marca-essencial', nome: 'Marca Essencial', entrega: 'Logo do zero, cores, letras e o cardápio', preco: 'a partir de R$ 1.497' },
+  { id: 'marca-completa', nome: 'Marca Completa', entrega: 'A identidade inteira: logo, manual, sacola, fachada, uniforme e redes', preco: 'a partir de R$ 2.997' },
+];
+
+// OS MENSAIS (portfólio v2, seção 3): o que entregam e "fale com a gente" (frase "agencia"). Nunca o preço de fundador.
+export const MENSAIS = [
+  {
+    id: 'presenca', nome: 'Presença', preco: 'a partir de R$ 997 por mês',
+    inclui: ['12 posts por mês, editados na identidade da loja', 'As legendas e a fila no horário certo', 'O Pine Club incluso'],
+  },
+  {
+    id: 'gestao', nome: 'Gestão completa', preco: 'a partir de R$ 1.997 por mês', destaque: true,
+    inclui: ['Tudo da Presença', 'Tráfego pago: montagem, acompanhamento e relatório', 'Ficha técnica e cardápio do mês', '1 reunião por mês'],
+  },
+];
+export const NOTA_MENSAIS = 'Contrato de 3 meses. A verba do anúncio é à parte, paga direto à Meta.';
 
 // As 4 frases aprovadas. Cada uma cai no assunto certo do robô (testes/frases-do-direct.test.ts).
 export const FRASES = {
@@ -58,7 +97,7 @@ export const PRODUTOS = [
     trancado: false,
     frase: 'fichas',
     pagina: 'pine-cost/',
-    precos: { gratis: 'Grátis', pacote: 'a partir de R$ 47' },
+    precos: { gratis: 'Grátis', pacote: 'a partir de R$ 47', dos2: 'R$ 127' },
     tabela: 'na tabela, R$ 97 · lançamento até 31/12',
     gratis_inclui: [
       '3 fichas técnicas: quanto sobra em cada venda, no balcão e no app',
@@ -67,6 +106,11 @@ export const PRODUTOS = [
       'A conta completa, com a embalagem e as contas da sua loja',
       'O preço certo pra cobrar no balcão',
       '8 fichas técnicas no total',
+    ],
+    // 26/11 (portfólio v2): o Pacote dos 2, o Pine Cost e mais 10 de uma vez
+    dos2_inclui: [
+      'O Pine Cost e mais 10 fichas, de uma vez',
+      '18 fichas técnicas no total',
     ],
   },
   // o vídeo sai do robô quando a pessoa manda um (o grátis vai com a marca da Pineapple no canto)
@@ -80,13 +124,13 @@ export const PRODUTOS = [
     id: 'pine-club', nome: 'Pine Club', o_que_e: 'O clube de fidelidade da sua loja, sem sorteio',
     chamada: 'O cliente que volta', cor: 'amarelo', trancado: false, frase: 'pineClub', pagina: 'pine-club/',
     precos: { pacote: 'a partir de R$ 47' },
-    tabela: 'uma vez só · depois das 10 vagas ou de 31/12, R$ 97 por mês',
+    tabela: 'uma vez só · depois das 10 vagas ou de 31/12, R$ 147 por mês',
   },
   {
-    id: 'marca', nome: 'Logo e cardápio', o_que_e: 'A logo vetorizada e o cardápio da sua loja',
+    id: 'marca', nome: 'Logo e cardápio', o_que_e: 'A logo, o cardápio e a marca inteira, feitos pela gente',
     chamada: 'A marca nítida em qualquer tamanho', cor: 'creme', trancado: false, frase: 'marca', pagina: 'marca/',
-    precos: { pacote: 'a partir de R$ 67' },
-    tabela: 'na tabela, R$ 97 · lançamento até 31/12',
+    // 26/11 (portfólio v2): preço de mercado, sem linha de tabela; o orçamento é no Direct
+    precos: { pacote: 'a partir de R$ 197' },
   },
   // 10/11, o Andrews: "vamos ficar sem as fotos por enquanto". Para reabrir: trancado: false, frase: 'fichas',
   // precos: { gratis: 'Grátis', pacote: 'a partir de R$ 47' }, e as fotos de volta no que o Pine Cost inclui, na home e na landing
